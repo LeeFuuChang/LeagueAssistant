@@ -6,6 +6,7 @@ requests.packages.urllib3.disable_warnings()
 
 import requests as rq
 import socket
+import json as JSON
 import os
 
 os.environ["RIOT_AUTH_PORT_0"] = ""
@@ -92,7 +93,7 @@ class LeagueClientAPI:
                 data=data,
                 json=json,
                 auth=("riot", AuthToken), 
-                verify=False
+                verify=False,
             )
             response = (res.json() if(res.text)else res.text)
             if("errorCode" in res.text or "errorCode" in response): 
@@ -119,12 +120,18 @@ class LeagueClientAPI:
 
     @classmethod
     def post(cls, authId, route, payload={}):
-        return cls.send(rq.post, authId, route, json=payload)
+        response = cls.send(rq.post, authId, route, data=JSON.dumps(payload))
+        if(response["success"]): return response
+        return cls.send(rq.post, authId, route, data=payload)
 
     @classmethod
     def delete(cls, authId, route, payload={}):
+        response = cls.send(rq.delete, authId, route, data=JSON.dumps(payload))
+        if(response["success"]): return response
         return cls.send(rq.delete, authId, route, data=payload)
 
     @classmethod
     def patch(cls, authId, route, payload={}):
-        return cls.send(rq.patch, authId, route, json=payload)
+        response = cls.send(rq.patch, authId, route, data=JSON.dumps(payload))
+        if(response["success"]): return response
+        return cls.send(rq.patch, authId, route, data=payload)
