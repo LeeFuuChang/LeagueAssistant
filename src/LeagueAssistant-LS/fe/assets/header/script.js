@@ -152,6 +152,13 @@ $(document).ready(()=>{
             window.LoadMain(Main_LiveInspect, window.MakeData());
         });
     });
+    $("#app-nav-fast-dodge").on("click", (e)=>{
+        $.post("/riot/lcu/0/lol-login/v1/session/invoke", JSON.stringify({
+            "destination": "lcdsServiceProxy",
+            "method": "call",
+            "args": '["", "teambuilder-draft", "quitV2", ""]'
+        }));
+    });
     $("#app-nav-fast-reload").on("click", (e)=>{
         location.reload();
     });
