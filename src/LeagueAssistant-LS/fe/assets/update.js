@@ -23,7 +23,7 @@ window.PhaseHandler = (function(){
                             $.post("/app/controls/app-controls-show"),
                             window.LoadClasses("assets/body/main/pages/live-inspect/classes.json"),
                         ]).then(()=>window.LoadMain(Main_LiveInspect, window.MakeData()));
-                    }, 3000));
+                    }, 5000));
                 });
             }))
             default: return (()=>Promise.resolve());
