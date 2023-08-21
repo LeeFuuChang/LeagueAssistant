@@ -39,6 +39,11 @@
 #app #app-cover.loading__Update #loader {
     display: flex;
 }
+#app #app-cover #loader img {
+    position: absolute;
+    width: calc(var(--S) * 0.1);
+    height: calc(var(--S) * 0.1);
+}
 #app #app-cover #loader .spinner {
     position: relative;
     width: calc(var(--S) * 0.125);
