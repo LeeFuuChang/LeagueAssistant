@@ -43,15 +43,23 @@ window.Updater = (function(){
 
     this.Update = (()=>{
         let prePromises = [
-    
+
         ];
         let sufPromises = [
             // resize window base on league client
             (()=>new Promise((resolve, reject)=>{
-                $.get("/riot/lcu/0/lol-settings/v2/local/video", {}, (request)=>{
-                    let zoom = parseFloat(((request["response"]||{})["data"]||{})["ZoomScale"]);
-                    if(!request["success"] || isNaN(zoom)) return resolve();
-                    return window.resizeDisplay({"zoom":zoom}).then(()=>resolve());
+                $.get("/app/config/window-zoom", {}, (request)=>{
+                    if(request["auto"]){
+                        $.get("/riot/lcu/0/lol-settings/v2/local/video", {}, (request)=>{
+                            let zoom = parseFloat(((request["response"]||{})["data"]||{})["ZoomScale"]);
+                            if(!request["success"] || !zoom || isNaN(zoom)) return resolve();
+                            return window.resizeDisplay({"zoom":zoom}).then(()=>resolve());
+                        });
+                    }else{
+                        let zoom = parseFloat(request["zoom"]);
+                        if(!zoom || isNaN(zoom)) return resolve();
+                        return window.resizeDisplay({"zoom":zoom}).then(()=>resolve());
+                    }
                 });
             })),
 
