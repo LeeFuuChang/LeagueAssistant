@@ -1,11 +1,29 @@
 from flask import Blueprint, request
+import requests as rq
 import json
+import bs4
+import re
 
 from .LeagueClientAPI import LeagueClientAPI
 from .LiveClientAPI import LiveClientAPI
 
 
 Riot = Blueprint("Riot", __name__)
+
+
+@Riot.route("/mmr/<string:summonerId>", methods=["GET"])
+def Riot_Mmr(**kwargs):
+    summonerId = kwargs["summonerId"]
+    soup = bs4.BeautifulSoup(rq.get(
+        f"https://lol.moa.tw/Ajax/interestscore/{summonerId}", 
+    ).text, "html.parser")
+    text = getattr(soup.select_one(".label.label-danger"), "text", "")
+    regex = re.search(r"\d+", text)
+    return {
+        "success": bool(regex),
+        "reason": f"TEXT PARSED: {text}",
+        "response": int(regex.group(0)) if(regex)else 0,
+    }
 
 
 @Riot.route("/lcu", methods=["GET"])
