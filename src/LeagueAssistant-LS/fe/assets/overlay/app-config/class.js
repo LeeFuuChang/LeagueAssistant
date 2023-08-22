@@ -2,6 +2,8 @@ class AppOverlay_AppConfig extends AppOverlay {
     static elementURL = "/ui/assets/overlay/app-config/element.html";
 
     Setup = ()=>{
+        window.Widgets.Setup_Stepper($(this.element).find(".config-item .option .stepper"));
+
         $(this.element).find(".config-item .option input").on("change", this.OnConfigChange);
 
         $(this.element).find(".config-item[data-name='options'] .option[data-name='dark-theme'] input")

@@ -33,6 +33,25 @@
                 </form>
             </div>
         </div>
+        <div class="config-item" data-name="window-zoom">
+            <h3 class="item-name">視窗縮放</h3>
+            <div class="options-container">
+                <form class="item-options">
+                    <label class="option hover-pointer" data-name="auto">
+                        <input tabindex="-1" class="switch" type="checkbox">
+                        <h4 class="text">自動縮放</h4>
+                    </label>
+                    <label class="option hover-pointer" data-name="zoom">
+                        <h4 class="text">自訂倍數</h4>
+                        <div class="stepper">
+                            <div class="mask button hover-pointer" data-action="-"></div>
+                            <input type="text" value="1" min="0.8" max="1.6" step="0.1" decimal="1">
+                            <div class="mask button hover-pointer" data-action="+"></div>
+                        </div>
+                    </label>
+                </form>
+            </div>
+        </div>
         <div class="config-item" data-name="live-inspect">
             <h3 class="item-name">稽查彈窗</h3>
             <div class="options-container">

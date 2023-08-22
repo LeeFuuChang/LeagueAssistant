@@ -68,3 +68,7 @@
 #app #app-overlay .app-config .app-config-inner .config-item .item-options .option .switch {
     --switch-size: calc(var(--S) * 0.02);
 }
+#app #app-overlay .app-config .app-config-inner .config-item .item-options .option .stepper {
+    --stepper-width: calc(var(--S) * 0.1);
+    --stepper-height: calc(var(--S) * 0.03);
+}
