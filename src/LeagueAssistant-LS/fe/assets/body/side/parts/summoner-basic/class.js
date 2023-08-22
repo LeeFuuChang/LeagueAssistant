@@ -10,6 +10,7 @@ class Side_Part_SummonerBasic extends AppBodySide_Part {
         return new Promise((resolve, reject)=>{
             let displayName = this.data["summoner"]["displayName"];
             let puuid = this.data["summoner"]["puuid"];
+            let summonerId = this.data["summoner"]["summonerId"];
             let percentCompleteForNextLevel = this.data["summoner"]["percentCompleteForNextLevel"];
             let profileIconId = this.data["summoner"]["profileIconId"];
             let summonerLevel = this.data["summoner"]["summonerLevel"];
@@ -27,6 +28,11 @@ class Side_Part_SummonerBasic extends AppBodySide_Part {
                 $(this.element).find(".summoner-info .title")
                     .attr("data-rank", title["level"].toLowerCase())
                     .text(title["challengeName"]);
+            });
+            $.get(`/riot/mmr/${summonerId}`, {}, (request)=>{
+                if(!request["success"]) return;
+                let mmr = parseInt(request["response"]);
+                $(this.element).find(".summoner-info .mmr").text(((mmr&&!isNaN(mmr))?mmr:"-"));
             });
 
             resolve();
