@@ -1,0 +1,7 @@
+#app[theme="light"] .body-side-block.summoner-rank .rank-stats .rank-name {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] .body-side-block.summoner-rank .rank-stats .rank-queue,
+#app[theme="light"] .body-side-block.summoner-rank .rank-stats .rank-detail {
+    color: var(--black-700) !important;
+}

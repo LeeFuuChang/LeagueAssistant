@@ -1,0 +1,89 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.body-side-block.summoner-rank {
+    height: max-content;
+}
+.body-side-block.summoner-rank .rank-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: calc(var(--S) * 0.2);
+    min-height: calc(var(--S) * 0.2);
+    max-height: calc(var(--S) * 0.2);
+}
+.body-side-block.summoner-rank .rank-type {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: calc(var(--S) * 0.1);
+}
+.body-side-block.summoner-rank .rank-icon {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--S) * 0.1);
+    height: calc(var(--S) * 0.1);
+    margin: 0 calc(var(--S) * 0.01);
+}
+.body-side-block.summoner-rank .rank-icon img {
+    aspect-ratio: 1 / 1;
+    width: calc(var(--S) * 0.1);
+    height: calc(var(--S) * 0.1);
+    border-radius: 50%;
+}
+.body-side-block.summoner-rank .rank-stats {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    padding: calc(var(--S) * 0.02) calc(var(--S) * 0.01);
+}
+.body-side-block.summoner-rank .rank-stats .rank-name,
+.body-side-block.summoner-rank .rank-stats .rank-detail {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 500;
+}
+.body-side-block.summoner-rank .rank-stats .rank-name {
+    font-size: calc(var(--S) * 0.023);
+    line-height: calc(var(--S) * 0.035);
+    height: calc(var(--S) * 0.035);
+}
+.body-side-block.summoner-rank .rank-stats .rank-name span[data-name="tier"] {
+    width: calc(var(--S) * 0.05);
+    margin-right: calc(var(--S) * 0.01);
+}
+.body-side-block.summoner-rank .rank-stats .rank-name span[data-name="division"] {
+    text-align: center;
+    width: calc(var(--S) * 0.03);
+}
+.body-side-block.summoner-rank .rank-stats .rank-detail div {
+    margin-right: calc(var(--S) * 0.01);
+}
+.body-side-block.summoner-rank .rank-stats .rank-queue,
+.body-side-block.summoner-rank .rank-stats .rank-wins,
+.body-side-block.summoner-rank .rank-stats .rank-points {
+    display: flex;
+    align-items: center;
+    width: auto;
+    min-width: calc(var(--S) * 0.06);
+    font-size: calc(var(--S) * 0.016);
+    line-height: calc(var(--S) * 0.02);
+    height: calc(var(--S) * 0.02);
+}
+.body-side-block.summoner-rank .rank-stats .rank-queue {
+    justify-content: flex-start;
+}
+.body-side-block.summoner-rank .rank-stats .rank-wins,
+.body-side-block.summoner-rank .rank-stats .rank-points {
+    justify-content: flex-end;
+}
