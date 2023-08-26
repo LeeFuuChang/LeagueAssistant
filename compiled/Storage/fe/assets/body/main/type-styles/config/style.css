@@ -1,0 +1,262 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+*[type="config"] .app-body-block .config-inner {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    margin-top: calc(var(--S) * 0.01);
+    padding: 0 calc(var(--S) * 0.01);
+    list-style: none;
+}
+*[type="config"] .app-body-block .config-inner .config-group {
+    width: 100%;
+    margin-bottom: calc(var(--S) * 0.02);
+    list-style: none;
+}
+*[type="config"] .app-body-block .config-group .group-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: calc(var(--S) * 0.01) 0;
+    max-height: unset;
+}
+*[type="config"] .app-body-block .group-inner .config-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    border-radius: calc(var(--S) * 0.01);
+    border-bottom: calc(var(--S) * 0.0025) solid transparent;
+    padding: calc(var(--S) * 0.01) calc(var(--S) * 0.02);
+    pointer-events: auto;
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+}
+*[type="config"] .app-body-block .group-inner .config-item:last-child {
+    border-bottom: 0;
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-name {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: calc(var(--S) * 0.12);
+    height: calc(var(--S) * 0.04);
+    margin-right: calc(var(--S) * 0.04);
+    font-size: calc(var(--S) * 0.018);
+    font-weight: 500;
+}
+*[type="config"] .app-body-block .group-inner .config-item .options-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin-bottom: calc(var(--S) * 0.0125);
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-group:last-child {
+    margin-bottom: 0;
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(var(--S) * 0.04);
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-options .option {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: auto;
+    height: 100%;
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-options[readonly] .option {
+    cursor: default;
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-options .option .text {
+    margin: 0 calc(var(--S) * 0.01);
+    font-size: calc(var(--S) * 0.018);
+    font-weight: 500;
+    letter-spacing: calc(var(--S) * 0.001);
+}
+
+
+*[type="config"] .app-body-block .group-inner .config-item .item-options .checkbox {
+    --checkbox-size: calc(var(--S) * 0.016);
+}
+
+
+*[type="config"] .app-body-block .group-inner .config-item .item-options .switch {
+    --switch-size: calc(var(--S) * 0.02);
+}
+
+
+*[type="config"] .app-body-block .group-inner .config-item .item-options .stepper {
+    --stepper-width: calc(var(--S) * 0.1);
+    --stepper-height: calc(var(--S) * 0.03);
+}
+
+
+*[type="config"] .app-body-block .group-inner .config-item .item-options .slider {
+    flex: 1;
+    --slider-width: auto;
+    --slider-height: calc(var(--S) * 0.03);
+}
+
+
+*[type="config"] .app-body-block .group-inner .config-item .item-options .color-picker {
+    flex: 1;
+    --picker-width: auto;
+    --picker-height: calc(var(--S) * 0.03);
+}
+
+
+*[type="config"] .app-body-block .group-inner .config-item .item-options .champion {
+    text-align: center;
+    border-radius: calc(var(--S) * 0.005);
+    padding: 0 calc(var(--S) * 0.005);
+    width: calc(var(--S) * 0.12);
+    height: calc(var(--S) * 0.025);
+    cursor: pointer;
+    font-size: calc(var(--S) * 0.018);
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+}
+
+
+*[type="config"] .app-body-block .group-inner .config-item .item-options .spell {
+    text-align: center;
+    border-radius: calc(var(--S) * 0.005);
+    padding: 0 calc(var(--S) * 0.005);
+    width: calc(var(--S) * 0.08);
+    height: calc(var(--S) * 0.025);
+    cursor: pointer;
+    font-size: calc(var(--S) * 0.018);
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+}
+
+
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage {
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: 100%;
+    cursor: pointer;
+    pointer-events: auto;
+    padding: 0 calc(var(--S) * 0.01);
+    border-radius: calc(var(--S) * 0.01);
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .runes-icon {
+    width: auto;
+    height: 50%;
+    pointer-events: none;
+    margin: 0 calc(var(--S) * 0.005);
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option input {
+    opacity: 0;
+    pointer-events: none;
+    height: 100%;
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option img {
+    position: absolute;
+    pointer-events: none;
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option[data-step="primary-style"] input,
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option[data-step="primary-style"] input~img,
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option[data-step="secondary-style"] input,
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option[data-step="secondary-style"] input~img {
+    width: calc(var(--S) * 0.02);
+    margin: 0 calc(var(--S) * 0.008);
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option[data-step="primary-keystone"] input,
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option[data-step="primary-keystone"] input~img {
+    width: calc(var(--S) * 0.04);
+    margin: 0 calc(var(--S) * 0.004);
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option[data-step="primary-perks"] input,
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option[data-step="primary-perks"] input~img,
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option[data-step="secondary-perks"] input,
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option[data-step="secondary-perks"] input~img {
+    width: calc(var(--S) * 0.03);
+    margin: 0 calc(var(--S) * 0.006);
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option[data-step="statmods"] input,
+*[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .option[data-step="statmods"] input~img {
+    width: calc(var(--S) * 0.03);
+    margin: 0 calc(var(--S) * 0.004);
+}
+
+
+*[type="config"] .app-body-block .group-inner .config-item .item-options .nickname {
+    text-align: center;
+    border-radius: calc(var(--S) * 0.005);
+    padding: 0 calc(var(--S) * 0.005);
+    width: calc(var(--S) * 0.12);
+    height: calc(var(--S) * 0.025);
+    font-size: calc(var(--S) * 0.018);
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-options .nickname:focus {
+    text-align: left;
+}
+*[type="config"] .app-body-block .group-inner .config-item .item-options .nickname:read-only:focus {
+    text-align: center;
+}
+
+
+*[type="config"] .app-body-block .group-inner .config-item .item-options .keybind {
+    text-align: center;
+    border-radius: calc(var(--S) * 0.005);
+    padding: 0 calc(var(--S) * 0.005);
+    width: calc(var(--S) * 0.12);
+    height: calc(var(--S) * 0.025);
+    cursor: pointer;
+    caret-color: transparent;
+    font-size: calc(var(--S) * 0.018);
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+}
+
+
+*[type="config"] .app-body-block .group-inner .config-item .item-options .text-preview {
+    border-radius: calc(var(--S) * 0.005);
+    padding: 0 calc(var(--S) * 0.01);
+    width: 100%;
+    height: calc(var(--S) * 0.025);
+    cursor: default;
+    font-size: calc(var(--S) * 0.018);
+}
+
+
+*[type="config"] .app-body-block .group-inner .config-item .item-description {
+    display: none;
+}
+
+
+*[type="config"] .app-body-block .group-inner .preview-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    border-radius: calc(var(--S) * 0.01);
+    padding: calc(var(--S) * 0.01) calc(var(--S) * 0.02);
+    pointer-events: auto;
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+}

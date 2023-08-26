@@ -1,0 +1,73 @@
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item:hover {
+    background-color: var(--white-300);
+}
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-name {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .option.invalid * {
+    background-color: #E84057 !important;
+}
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .option .text {
+    color: var(--black-400);
+}
+
+
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .champion {
+    color: var(--black-300);
+    background-color: var(--white-500);
+}
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .champion:focus {
+    color: var(--white-400);
+    background-color: var(--gray-700);
+}
+
+
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .spell {
+    color: var(--black-300);
+    background-color: var(--white-500);
+}
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .spell:focus {
+    color: var(--white-400);
+    background-color: var(--gray-700);
+}
+
+
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .runepage {
+    background-color: var(--white-500);
+}
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .runepage:hover {
+    background-color: var(--white-700);
+}
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .runepage .runes-icon {
+    filter: brightness(0.6);
+}
+
+
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .nickname {
+    color: var(--black-300);
+    background-color: var(--white-500);
+}
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .nickname:focus {
+    color: var(--white-400);
+    background-color: var(--gray-700);
+}
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .nickname:read-only:focus {
+    color: var(--black-300);
+    background-color: var(--white-500);
+}
+
+
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .keybind {
+    color: var(--black-300);
+    background-color: var(--white-500);
+}
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .keybind:focus {
+    color: var(--white-400);
+    background-color: var(--gray-700);
+}
+
+
+#app[theme="light"] *[type="config"] .app-body-block .group-inner .config-item .item-options .text-preview {
+    color: var(--black-300);
+    background-color: var(--white-500);
+}
