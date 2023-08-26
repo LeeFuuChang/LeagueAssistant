@@ -1,0 +1,183 @@
+@font-face {
+    font-family: "LoL Body TW";
+    font-weight: 400;
+    font-style: normal;
+    src: url("../fonts/noto-sans/NotoSansCJKtc-Regular.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Body TW";
+    font-weight: 700;
+    font-style: normal;
+    src: url("../fonts/noto-sans/NotoSansCJKtc-Bold.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Body TW";
+    font-weight: 900;
+    font-style: normal;
+    src: url("../fonts/noto-sans/NotoSansCJKtc-Black.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display TW";
+    font-weight: 300;
+    font-style: normal;
+    src: url("../fonts/noto-sans/NotoSansCJKtc-Light.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display TW";
+    font-weight: 400;
+    font-style: normal;
+    src: url("../fonts/noto-sans/NotoSansCJKtc-Regular.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display TW";
+    font-weight: 500;
+    font-style: normal;
+    src: url("../fonts/noto-sans/NotoSansCJKtc-Medium.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display TW";
+    font-weight: 700;
+    font-style: normal;
+    src: url("../fonts/noto-sans/NotoSansCJKtc-Bold.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display TW";
+    font-weight: 900;
+    font-style: normal;
+    src: url("../fonts/noto-sans/NotoSansCJKtc-Black.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Body";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 400;
+    font-style: normal;
+    src: url("../fonts/spiegel/Spiegel-Regular.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Body";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 600;
+    font-style: normal;
+    src: url("../fonts/spiegel/Spiegel-SemiBold.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Body";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 700;
+    font-style: normal;
+    src: url("../fonts/spiegel/Spiegel-Bold.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Body";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 400;
+    font-style: italic;
+    src: url("../fonts/spiegel/Spiegel-RegularItalic.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Body";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 600;
+    font-style: italic;
+    src: url("../fonts/spiegel/Spiegel-SemiBoldItalic.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Body";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 700;
+    font-style: italic;
+    src: url("../fonts/spiegel/Spiegel-BoldItalic.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 300;
+    font-style: normal;
+    src: url("../fonts/beaufort/BeaufortForLoL-Light.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 400;
+    font-style: normal;
+    src: url("../fonts/beaufort/BeaufortForLoL-Regular.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 500;
+    font-style: normal;
+    src: url("../fonts/beaufort/BeaufortForLoL-Medium.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 700;
+    font-style: normal;
+    src: url("../fonts/beaufort/BeaufortForLoL-Bold.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 900;
+    font-style: normal;
+    src: url("../fonts/beaufort/BeaufortForLoL-Heavy.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 300;
+    font-style: italic;
+    src: url("../fonts/beaufort/BeaufortForLoL-LightItalic.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 400;
+    font-style: italic;
+    src: url("../fonts/beaufort/BeaufortForLoL-Italic.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 500;
+    font-style: italic;
+    src: url("../fonts/beaufort/BeaufortForLoL-MediumItalic.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 700;
+    font-style: italic;
+    src: url("../fonts/beaufort/BeaufortForLoL-BoldItalic.otf?main") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL Display";
+    unicode-range: U+00-024F;    /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    font-weight: 900;
+    font-style: italic;
+    src: url("../fonts/beaufort/BeaufortForLoL-HeavyItalic.otf?main") format("opentype");
+}

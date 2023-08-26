@@ -1,0 +1,3 @@
+#app[theme="light"] #app-footer {
+    color: var(--black-700) !important;
+}

@@ -1,0 +1,7 @@
+@import url("./fonts-main.css");
+@import url("./fonts.css");
+:root {
+    --font-display: "LoL Display", "Times New Roman", Times, Baskerville, Georgia, serif;
+    --font-body: "LoL Body", Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+  
