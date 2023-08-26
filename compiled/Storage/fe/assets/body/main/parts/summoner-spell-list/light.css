@@ -1,0 +1,13 @@
+#app[theme="light"] .app-body-block.summoner-spell-list .spell-list-filter .filter-by-text {
+    border-color: #666666 !important;
+    background-color: var(--white-100) !important;
+}
+#app[theme="light"] .app-body-block.summoner-spell-list .spell-list-filter .filter-by-text .mask {
+    background-color: #666666 !important;
+}
+#app[theme="light"] .app-body-block.summoner-spell-list .spell-list-filter .filter-by-text input {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] .app-body-block.summoner-spell-list .spell-container .spell-wrapper .spell span {
+    color: var(--black-200) !important;
+}

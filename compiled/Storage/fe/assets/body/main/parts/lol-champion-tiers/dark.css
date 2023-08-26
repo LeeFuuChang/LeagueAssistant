@@ -1,0 +1,21 @@
+#app[theme="dark"] .app-body-block.lol-champion-tiers .list-options .options-positions .option-positions-item {
+    background-color: #589A8D !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-tiers .list-options .options-positions .option-positions-item:hover {
+    background-color: #8FC1B5 !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-tiers .list-options .options-positions .option-positions-item.active {
+    background-color: #007566 !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-tiers table tbody tr:hover {
+    background-color: #1C1C1F !important; /* gray 200 */
+}
+#app[theme="dark"] .app-body-block.lol-champion-tiers table tbody td:nth-child(1) .mask {
+    background-color: #9E9EB1 !important; /* gray 600 */
+}
+#app[theme="dark"] .app-body-block.lol-champion-tiers table tbody td:nth-child(1)[data-trend="1"] .mask {
+    background-color: #00AE0A !important; /* green 600 */
+}
+#app[theme="dark"] .app-body-block.lol-champion-tiers table tbody td:nth-child(1)[data-trend="-1"] .mask {
+    background-color: #E84057 !important; /* red 600 */
+}

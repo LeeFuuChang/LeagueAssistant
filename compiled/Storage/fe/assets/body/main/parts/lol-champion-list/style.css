@@ -1,0 +1,87 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.app-body-block.lol-champion-list {
+    height: 100%;
+}
+.app-body-block.lol-champion-list>.block-inner {
+    position: relative;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 calc(var(--S) * 0.01);
+}
+.app-body-block.lol-champion-list>.block-inner .champion-list-filter {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(var(--S) * 0.05);
+    margin-bottom: calc(var(--S) * 0.01);
+}
+.app-body-block.lol-champion-list .champion-list-filter .filter-by-text {
+    padding: 0 calc(var(--S) * 0.01);
+    border-radius: calc(var(--S) * 0.0125);
+    border-width: calc(var(--S) * 0.0025);
+    border-style: solid;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: calc(var(--S) * 0.27);
+    height: 100%;
+    overflow: hidden;
+}
+.app-body-block.lol-champion-list .champion-list-filter .filter-by-text .mask {
+    margin: calc(var(--S) * 0.01) 0;
+    min-width: calc(var(--S) * 0.03);
+    min-height: calc(var(--S) * 0.03);
+    mask-image: url("/ui/assets/media/actions/search2.png");
+    -webkit-mask-image: url("/ui/assets/media/actions/search2.png");
+}
+.app-body-block.lol-champion-list .champion-list-filter .filter-by-text input {
+    width: calc(var(--S) * 0.18);
+    margin-left: calc(var(--S) * 0.01);
+    height: 100%;
+    font-size: calc(var(--S) * 0.02);
+    background: transparent;
+}
+.app-body-block.lol-champion-list .champion-list-filter .filter-by-position {
+    margin-left: calc(var(--S) * 0.01);
+    width: calc(var(--S) * 0.14);
+    height: calc(var(--S) * 0.05);
+}
+.app-body-block.lol-champion-list>.block-inner .champion-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.lol-champion-list .champion-container .champion-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.app-body-block.lol-champion-list .champion-container .champion-wrapper .champion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 calc(var(--S) * 0.005) calc(var(--S) * 0.01) calc(var(--S) * 0.005);
+    width: calc(var(--S) * 0.065);
+    height: calc(var(--S) * 0.09);
+}
+.app-body-block.lol-champion-list .champion-container .champion-wrapper .champion img {
+    border-radius: calc(var(--S) * 0.01);
+    width: calc(var(--S) * 0.065);
+    height: calc(var(--S) * 0.065);
+}
+.app-body-block.lol-champion-list .champion-container .champion-wrapper .champion span {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: calc(var(--S) * 0.016);
+    width: 100%;
+    height: calc(var(--S) * 0.025);
+}

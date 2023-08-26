@@ -1,0 +1,21 @@
+#app[theme="dark"] .app-body-block.lol-challenge-thresholds .thresholds-options .options-category .option-category-item {
+    background-color: #589A8D !important;
+}
+#app[theme="dark"] .app-body-block.lol-challenge-thresholds .thresholds-options .options-category .option-category-item:hover {
+    background-color: #8FC1B5 !important;
+}
+#app[theme="dark"] .app-body-block.lol-challenge-thresholds .thresholds-options .options-category .option-category-item.active {
+    background-color: #007566 !important;
+}
+#app[theme="dark"] .app-body-block.lol-challenge-thresholds .challenge-detail .challenge-stat .challenge-stages div {
+    background-color: #cdbe91 !important;
+}
+#app[theme="dark"] .app-body-block.lol-challenge-thresholds .challenge-detail .challenge-stat .challenge-progress {
+    --base-color: #424254 !important;
+}
+#app[theme="dark"] .app-body-block.lol-challenge-thresholds .thresholds-table .body-ul li {
+    --highlight-color: var(--black-500) !important;
+}
+#app[theme="dark"] .app-body-block.lol-challenge-thresholds .thresholds-table .body-ul li:hover {
+    background-color: var(--highlight-color);
+}

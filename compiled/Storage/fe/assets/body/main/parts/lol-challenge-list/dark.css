@@ -1,0 +1,16 @@
+#app[theme="dark"] .app-body-block.lol-challenge-list .challenge-list-filter .filter-by-text {
+    border-color: #cdbe91 !important;
+    background-color: var(--black-200) !important;
+}
+#app[theme="dark"] .app-body-block.lol-challenge-list .challenge-list-filter .filter-by-text .mask {
+    background-color: #cdbe91 !important;
+}
+#app[theme="dark"] .app-body-block.lol-challenge-list .challenge-list-filter .filter-by-text input {
+    color: var(--white-100) !important;
+}
+#app[theme="dark"] .app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge {
+    --highlight-color: var(--black-500) !important;
+}
+#app[theme="dark"] .app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge:hover {
+    background-color: var(--highlight-color);
+}

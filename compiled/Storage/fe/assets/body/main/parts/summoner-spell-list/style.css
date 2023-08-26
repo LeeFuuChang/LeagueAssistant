@@ -1,0 +1,83 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.app-body-block.summoner-spell-list {
+    height: 100%;
+}
+.app-body-block.summoner-spell-list>.block-inner {
+    position: relative;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 calc(var(--S) * 0.01);
+}
+.app-body-block.summoner-spell-list>.block-inner .spell-list-filter {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(var(--S) * 0.05);
+    margin-bottom: calc(var(--S) * 0.01);
+}
+.app-body-block.summoner-spell-list .spell-list-filter .filter-by-text {
+    padding: 0 calc(var(--S) * 0.01);
+    border-radius: calc(var(--S) * 0.0125);
+    border-width: calc(var(--S) * 0.0025);
+    border-style: solid;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+}
+.app-body-block.summoner-spell-list .spell-list-filter .filter-by-text .mask {
+    margin: calc(var(--S) * 0.01) 0;
+    min-width: calc(var(--S) * 0.03);
+    min-height: calc(var(--S) * 0.03);
+    mask-image: url("/ui/assets/media/actions/search2.png");
+    -webkit-mask-image: url("/ui/assets/media/actions/search2.png");
+}
+.app-body-block.summoner-spell-list .spell-list-filter .filter-by-text input {
+    width: calc(var(--S) * 0.32);
+    margin-left: calc(var(--S) * 0.01);
+    height: 100%;
+    font-size: calc(var(--S) * 0.02);
+    background: transparent;
+}
+.app-body-block.summoner-spell-list>.block-inner .spell-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.summoner-spell-list .spell-container .spell-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.app-body-block.summoner-spell-list .spell-container .spell-wrapper .spell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 calc(var(--S) * 0.012) calc(var(--S) * 0.015) calc(var(--S) * 0.012);
+    width: calc(var(--S) * 0.06975);
+    height: calc(var(--S) * 0.09);
+}
+.app-body-block.summoner-spell-list .spell-container .spell-wrapper .spell img {
+    border-radius: calc(var(--S) * 0.005);
+    width: calc(var(--S) * 0.065);
+    height: calc(var(--S) * 0.065);
+}
+.app-body-block.summoner-spell-list .spell-container .spell-wrapper .spell span {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: calc(var(--S) * 0.018);
+    text-align: center;
+    width: 100%;
+    height: calc(var(--S) * 0.025);
+}

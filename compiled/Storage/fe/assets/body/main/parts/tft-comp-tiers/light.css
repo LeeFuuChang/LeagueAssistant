@@ -1,0 +1,6 @@
+#app[theme="light"] .app-body-block.tft-comp-tiers>.block-inner .tier-list .list-item {
+    background-color: var(--white-100) !important;
+}
+#app[theme="light"] .app-body-block.tft-comp-tiers>.block-inner .tier-list .list-item:hover {
+    background-color: var(--white-200) !important;
+}

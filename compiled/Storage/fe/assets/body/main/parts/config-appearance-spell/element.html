@@ -1,0 +1,196 @@
+<section class="body-part-container body-part-size-2" data-id="" data-type="appearance" data-name="spell" style="display:none">
+    <link rel="stylesheet" href="assets/body/main/parts/config-appearance-spell/style.css">
+    <div class="app-body-block body-main-block config-appearance-spell">
+        <div class="block-title horizontal-stretched-border">
+            <h1 class="block-title-text">技能助手</h1>
+        </div>
+        <ul class="block-inner config-inner y-scrollable">
+            <li class="body-sub-block config-group" data-name="overall">
+                <div class="block-title horizontal-stretched-border">
+                    <h2 class="block-title-text">助手外觀設定</h2>
+                </div>
+                <div class="block-inner group-inner overall-inner">
+                    <div class="config-item" data-name="options">
+                        <h3 class="item-name">版面配置</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="format-u">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="ui-format">
+                                    <h4 class="text">橫向+技能靠上</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="format-d">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="ui-format">
+                                    <h4 class="text">橫向+技能靠下</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="format-l">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="ui-format" checked>
+                                    <h4 class="text">直向+技能靠左</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="format-r">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="ui-format">
+                                    <h4 class="text">直向+技能靠右</h4>
+                                </label>
+                            </form>
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="size" style="width:100%">
+                                    <h4 class="text">縮放</h4>
+                                    <input tabindex="-1" class="slider" min="5" max="20" value="10" type="range">
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">助手外觀設定－版面配置</h1>
+                            <p class="block">（介面大小縮放並不會出現在預覽當中</p>
+                            <div class="option">
+                                <h2 class="name">橫向 + 技能靠上</h2>
+                                <p class="detail">玩家由左至右排列</p>
+                                <p class="detail">召喚師技能在上，英雄頭像在下</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">橫向 + 技能靠下</h2>
+                                <p class="detail">玩家由左至右排列</p>
+                                <p class="detail">召喚師技能在下，英雄頭像在上</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">直向 + 技能靠左</h2>
+                                <p class="detail">玩家由上至下排列</p>
+                                <p class="detail">召喚師技能在左，英雄頭像在右</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">直向 + 技能靠右</h2>
+                                <p class="detail">玩家由上至下排列</p>
+                                <p class="detail">召喚師技能在右，英雄頭像在左</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">縮放</h2>
+                                <p class="detail">調整實際技能助手介面大小</p>
+                                <p class="detail">由左(小)至右(大)分為5~20，代表0.5倍~2.0倍</p>
+                                <p class="detail">（此選項調整並不會出現在預覽當中</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="notify-color">
+                        <h3 class="item-name">冷卻提示顏色</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="c" style="width:40%">
+                                    <h4 class="text">底色</h4>
+                                    <input tabindex="-1" class="color-picker"  value="#000000" type="color">
+                                </label>
+                                <label class="option hover-pointer" data-name="a" style="width:60%">
+                                    <h4 class="text">透明度</h4>
+                                    <input tabindex="-1" class="slider" min="5" max="10" value="5" type="range">
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">助手外觀設定－冷卻提示顏色</h1>
+                            <p class="block">技能如果在冷卻中的話<br>會出現在技能圖像上方的覆蓋顏色</p>
+                            <div class="option">
+                                <h2 class="name">底色</h2>
+                                <p class="detail">選擇覆蓋在技能圖像上方的顏色</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">透明度</h2>
+                                <p class="detail">選擇覆蓋在技能圖像上方的顏色的透明度</p>
+                                <p class="detail">由左至右分為5~10，代表0.5(半透)~1(全實)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="counter-color">
+                        <h3 class="item-name">冷卻倒數顏色</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="c" style="width:40%">
+                                    <h4 class="text">底色</h4>
+                                    <input tabindex="-1" class="color-picker" value="#FFFFFF" type="color">
+                                </label>
+                                <label class="option hover-pointer" data-name="a" style="width:60%">
+                                    <h4 class="text">透明度</h4>
+                                    <input tabindex="-1" class="slider" min="5" max="10" value="10" type="range">
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">助手外觀設定－冷卻倒數顏色</h1>
+                            <p class="block">技能如果在冷卻中的話<br>會出現在技能圖像上方的倒數文字顏色</p>
+                            <div class="option">
+                                <h2 class="name">底色</h2>
+                                <p class="detail">選擇覆蓋在技能圖像上方的倒數文字顏色</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">透明度</h2>
+                                <p class="detail">選擇覆蓋在技能圖像上方的倒數文字的透明度</p>
+                                <p class="detail">由左至右分為5~10，代表0.5(半透)~1(全實)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="body-sub-block config-group" data-name="preview">
+                <div class="block-title horizontal-stretched-border">
+                    <h2 class="block-title-text">助手外觀預覽</h2>
+                </div>
+                <div class="block-inner group-inner overall-inner">
+                    <div class="preview-item" data-name="spell-single" data-type="format-l">
+                        <div class="item" data-position="top">
+                            <div class="spells">
+                                <div class="spell cd">
+                                    <img class="icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_teleport.png" alt="">
+                                </div>
+                                <div class="spell">
+                                    <img class="icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_flash.png" alt="">
+                                </div>
+                            </div>
+                            <img class="champion" src="https://cdn.communitydragon.org/latest/champion/generic/square" alt="">
+                        </div>
+                        <div class="item" data-position="jungle">
+                            <div class="spells">
+                                <div class="spell">
+                                    <img class="icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_smite.png" alt="">
+                                </div>
+                                <div class="spell cd">
+                                    <img class="icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_flash.png" alt="">
+                                </div>
+                            </div>
+                            <img class="champion" src="https://cdn.communitydragon.org/latest/champion/generic/square" alt="">
+                        </div>
+                        <div class="item" data-position="mid">
+                            <div class="spells">
+                                <div class="spell">
+                                    <img class="icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summonerignite.png" alt="">
+                                </div>
+                                <div class="spell cd">
+                                    <img class="icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_flash.png" alt="">
+                                </div>
+                            </div>
+                            <img class="champion" src="https://cdn.communitydragon.org/latest/champion/generic/square" alt="">
+                        </div>
+                        <div class="item" data-position="adc">
+                            <div class="spells">
+                                <div class="spell">
+                                    <img class="icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_boost.png" alt="">
+                                </div>
+                                <div class="spell">
+                                    <img class="icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_flash.png" alt="">
+                                </div>
+                            </div>
+                            <img class="champion" src="https://cdn.communitydragon.org/latest/champion/generic/square" alt="">
+                        </div>
+                        <div class="item" data-position="support">
+                            <div class="spells">
+                                <div class="spell cd">
+                                    <img class="icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_exhaust.png" alt="">
+                                </div>
+                                <div class="spell">
+                                    <img class="icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_flash.png" alt="">
+                                </div>
+                            </div>
+                            <img class="champion" src="https://cdn.communitydragon.org/latest/champion/generic/square" alt="">
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>

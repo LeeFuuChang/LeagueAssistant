@@ -1,0 +1,160 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.app-body-block.select-rune-page>.block-inner {
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    margin-top: calc(var(--S) * 0.01);
+    padding: 0 calc(var(--S) * 0.01);
+}
+.app-body-block.select-rune-page>.block-inner .rune-row {
+    width: 100%;
+    height: var(--rune-row-size);
+    margin-bottom: calc(var(--S) * 0.015);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: calc(var(--rune-row-size) * 0.25);
+    background-color: transparent;
+}
+.app-body-block.select-rune-page>.block-inner .rune-row-0 {
+    --rune-row-size: calc(var(--S) * 0.04);
+    --rune-icon-scale: 60%;
+}
+.app-body-block.select-rune-page>.block-inner .rune-row-1 {
+    --rune-row-size: calc(var(--S) * 0.04);
+    --rune-icon-scale: 70%;
+}
+.app-body-block.select-rune-page>.block-inner .rune-row-2 {
+    --rune-row-size: calc(var(--S) * 0.05);
+    --rune-icon-scale: 90%;
+}
+.app-body-block.select-rune-page>.block-inner .rune-row-3 {
+    --rune-row-size: calc(var(--S) * 0.06);
+    --rune-icon-scale: 120%;
+}
+.app-body-block.select-rune-page>.block-inner .rune-row[data-step="primary-style"] .option,
+.app-body-block.select-rune-page>.block-inner .rune-row[data-step="secondary-style"] .option,
+.app-body-block.select-rune-page>.block-inner .rune-row[data-step="statmods"] .option {
+    --hover-brightness: 1.4;
+    --hover-ring-scale: 140%;
+}
+.app-body-block.select-rune-page>.block-inner .option {
+    --hover-brightness: 1.2;
+    --hover-ring-scale: 120%;
+    position: relative;
+    border-radius: 50%;
+    width: var(--rune-row-size);
+    height: var(--rune-row-size);
+}
+.app-body-block.select-rune-page>.block-inner .option::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    width: var(--hover-ring-scale);
+    height: var(--hover-ring-scale);
+    background: transparent;
+    transition: border 0.3s;
+    -webkit-transition: border 0.3s;
+    border: calc(var(--S) * 0.0025) solid transparent;
+}
+.app-body-block.select-rune-page>.block-inner .option:hover::before {
+    border: calc(var(--S) * 0.0025) solid var(--hover-ring-color);
+}
+.app-body-block.select-rune-page>.block-inner .option input {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.app-body-block.select-rune-page>.block-inner .option input~img {
+    pointer-events: none;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: var(--rune-icon-scale);
+    height: var(--rune-icon-scale);
+    transition: filter 0.3s;
+    -webkit-transition: filter 0.3s;
+    filter: grayscale(1) brightness(0.8);
+    -webkit-filter: grayscale(1) brightness(0.8);
+    justify-content: center;
+}
+.app-body-block.select-rune-page>.block-inner .option input:checked~img {
+    filter: grayscale(0) brightness(1);
+    -webkit-filter: grayscale(0) brightness(1);
+}
+.app-body-block.select-rune-page>.block-inner .option input:checked~img::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    width: var(--hover-ring-scale);
+    height: var(--hover-ring-scale);
+    background: transparent;
+    transition: border 0.3s;
+    -webkit-transition: border 0.3s;
+    border: calc(var(--S) * 0.0025) solid var(--hover-ring-color);
+}
+.app-body-block.select-rune-page>.block-inner .option:hover input~img {
+    filter: grayscale(0) brightness(var(--hover-brightness));
+    -webkit-filter: grayscale(0) brightness(var(--hover-brightness));
+}
+.app-body-block.select-rune-page>.block-inner .option .ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    width: var(--hover-ring-scale);
+    height: var(--hover-ring-scale);
+    background: transparent;
+    transition: border 0.3s;
+    -webkit-transition: border 0.3s;
+    border: calc(var(--S) * 0.0025) solid transparent;
+}
+.app-body-block.select-rune-page>.block-inner .option:hover .ring,
+.app-body-block.select-rune-page>.block-inner .option input:checked~.ring {
+    border: calc(var(--S) * 0.0025) solid var(--hover-ring-color);
+}
+.app-body-block.select-rune-page>.block-inner .button-container {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.app-body-block.select-rune-page>.block-inner .button-container button {
+    overflow: hidden;
+    width: calc(var(--S) * 0.18);
+    height: calc(var(--S) * 0.04);
+    border-radius: calc(var(--S) * 0.04);
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+}
+.app-body-block.select-rune-page>.block-inner .button-container button .mask {
+    display: block;
+    width: 100%;
+    height: 100%;
+    mask-size: calc(var(--S) * 0.03);
+    -webkit-mask-size: calc(var(--S) * 0.03);
+}
+.app-body-block.select-rune-page>.block-inner .button-container button.rune-save .mask {
+    mask-image: url("https://cdn-icons-png.flaticon.com/512/2874/2874050.png");
+    -webkit-mask-image: url("https://cdn-icons-png.flaticon.com/512/2874/2874050.png");
+}
+.app-body-block.select-rune-page>.block-inner .button-container button.rune-clear .mask {
+    mask-image: url("https://cdn-icons-png.flaticon.com/512/9755/9755169.png");
+    -webkit-mask-image: url("https://cdn-icons-png.flaticon.com/512/9755/9755169.png");
+}

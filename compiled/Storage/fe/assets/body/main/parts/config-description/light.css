@@ -1,0 +1,12 @@
+#app[theme="light"] .app-body-block.config-description>.block-inner .title {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] .app-body-block.config-description>.block-inner .block {
+    color: var(--black-600) !important;
+}
+#app[theme="light"] .app-body-block.config-description>.block-inner .option .name {
+    color: var(--black-400) !important;
+}
+#app[theme="light"] .app-body-block.config-description>.block-inner .option .detail {
+    color: var(--black-600) !important;
+}

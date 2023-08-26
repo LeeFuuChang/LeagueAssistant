@@ -1,0 +1,107 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.body-main-block.summoner-recent-performance {
+    height: 100%;
+}
+.body-main-block.summoner-recent-performance>.block-inner {
+    position: relative;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 calc(var(--S) * 0.01);
+}
+.body-main-block.summoner-recent-performance>.block-inner .recent-performance-options {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(var(--S) * 0.05);
+    margin-bottom: calc(var(--S) * 0.01);
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .performance-options-group {
+    position: relative;
+    display: flex;
+    width: auto;
+    height: 100%;
+    font-size: calc(var(--S) * 0.02);
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .performance-options-group .option {
+    margin-right: calc(var(--S) * 0.01);
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .performance-options-group .options-mode {
+    width: calc(var(--S) * 0.16);
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .performance-options-group .options-time {
+    width: calc(var(--S) * 0.16);
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .performance-options-group .options-data {
+    width: calc(var(--S) * 0.16);
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .options-time .drop-down-menu-li[data-label="day"] .mask {
+    mask-image: url("/ui/assets/media/menu-icons/day.png");
+    -webkit-mask-image: url("/ui/assets/media/menu-icons/day.png");
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .options-time .drop-down-menu-li[data-label="week"] .mask {
+    mask-image: url("/ui/assets/media/menu-icons/week.png");
+    -webkit-mask-image: url("/ui/assets/media/menu-icons/week.png");
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .options-time .drop-down-menu-li[data-label="month"] .mask {
+    mask-image: url("/ui/assets/media/menu-icons/month.png");
+    -webkit-mask-image: url("/ui/assets/media/menu-icons/month.png");
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .options-data .drop-down-menu-li[data-label="kda"] .mask {
+    mask-image: url("/ui/assets/media/menu-icons/rating.png");
+    -webkit-mask-image: url("/ui/assets/media/menu-icons/rating.png");
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .options-data .drop-down-menu-li[data-label="damage-dealt"] .mask {
+    mask-image: url("/ui/assets/media/menu-icons/sword.png");
+    -webkit-mask-image: url("/ui/assets/media/menu-icons/sword.png");
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .options-data .drop-down-menu-li[data-label="damage-taken"] .mask {
+    mask-image: url("/ui/assets/media/menu-icons/shield.png");
+    -webkit-mask-image: url("/ui/assets/media/menu-icons/shield.png");
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .options-champion {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: auto;
+    height: 100%;
+    font-size: calc(var(--S) * 0.02);
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .options-champion .option-champion-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--S) * 0.01);
+    margin-left: calc(var(--S) * 0.01);
+    width: calc(var(--S) * 0.05);
+    height: calc(var(--S) * 0.05);
+    border-radius: 50%;
+    overflow: hidden;
+    border-width: calc(var(--S) * 0.0025);
+    border-style: solid;
+    -webkit-transition: border-color 0.3s, border-width 0.1s;
+    transition: border-color 0.3s, border-width 0.1s;
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .options-champion .option-champion-item:hover,
+.body-main-block.summoner-recent-performance .recent-performance-options .options-champion .option-champion-item.active {
+    border-width: calc(var(--S) * 0.005);
+}
+.body-main-block.summoner-recent-performance .recent-performance-options .options-champion .option-champion-item img {
+    width: calc(var(--S) * 0.05);
+    height: calc(var(--S) * 0.05);
+}
+
+.body-main-block.summoner-recent-performance .chart-container {
+    position: relative;
+    width: 100%;
+    height: calc(var(--S) * 0.72);
+}
+.body-main-block.summoner-recent-performance .chart-container canvas {
+    position: relative;
+    max-width: 100%;
+    max-height: calc(var(--S) * 0.72);
+}
