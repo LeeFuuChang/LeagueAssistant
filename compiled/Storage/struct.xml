@@ -1,4 +1,4 @@
-<folder name="LeagueAssistant-LS" version="110">
+<folder name="LeagueAssistant-LS" version="120">
     <folder name="logo">
         <file updated="1B" name="Filled" type="ico" path="logo"/>
         <file updated="1B" name="Filled" type="png" path="logo"/>
@@ -18,10 +18,10 @@
                 <folder name="PhaseHandler">
                     <file updated="0" name="__init__" type="py" path="be/modules/Client/PhaseHandler"/>
                     <file updated="73" name="ChampSelect" type="pyd" path="be/modules/Client/PhaseHandler"/>
-                    <file updated="110" name="EndOfGame" type="pyd" path="be/modules/Client/PhaseHandler"/>
-                    <file updated="110" name="handler" type="pyd" path="be/modules/Client/PhaseHandler"/>
+                    <file updated="120" name="EndOfGame" type="pyd" path="be/modules/Client/PhaseHandler"/>
+                    <file updated="120" name="handler" type="pyd" path="be/modules/Client/PhaseHandler"/>
                     <file updated="0" name="InProgress" type="pyd" path="be/modules/Client/PhaseHandler"/>
-                    <file updated="110" name="PreEndOfGame" type="pyd" path="be/modules/Client/PhaseHandler"/>
+                    <file updated="120" name="PreEndOfGame" type="pyd" path="be/modules/Client/PhaseHandler"/>
                     <file updated="0" name="ReadyCheck" type="pyd" path="be/modules/Client/PhaseHandler"/>
                     <file updated="73" name="utility" type="pyd" path="be/modules/Client/PhaseHandler"/>
                 </folder>
@@ -33,7 +33,7 @@
                 </folder>
                 <folder name="Server">
                     <file updated="0" name="__init__" type="py" path="be/modules/Client/Server"/>
-                    <file updated="110" name="utility" type="pyd" path="be/modules/Client/Server"/>
+                    <file updated="120" name="utility" type="pyd" path="be/modules/Client/Server"/>
                     <folder name="AD">
                         <file updated="50" name="__init__" type="py" path="be/modules/Client/Server/AD"/>
                         <file updated="6C" name="blueprint" type="pyd" path="be/modules/Client/Server/AD"/>
@@ -56,15 +56,15 @@
                     </folder>
                     <folder name="OPGG">
                         <file updated="0" name="__init__" type="py" path="be/modules/Client/Server/OPGG"/>
-                        <file updated="110" name="blueprint" type="pyd" path="be/modules/Client/Server/OPGG"/>
+                        <file updated="120" name="blueprint" type="pyd" path="be/modules/Client/Server/OPGG"/>
                     </folder>
                     <folder name="QQ">
-                        <file updated="110" name="__init__" type="py" path="be/modules/Client/Server/QQ"/>
-                        <file updated="110" name="blueprint" type="pyd" path="be/modules/Client/Server/QQ"/>
+                        <file updated="120" name="__init__" type="py" path="be/modules/Client/Server/QQ"/>
+                        <file updated="120" name="blueprint" type="pyd" path="be/modules/Client/Server/QQ"/>
                     </folder>
                     <folder name="RIOT">
                         <file updated="0" name="__init__" type="py" path="be/modules/Client/Server/RIOT"/>
-                        <file updated="110" name="blueprint" type="pyd" path="be/modules/Client/Server/RIOT"/>
+                        <file updated="120" name="blueprint" type="pyd" path="be/modules/Client/Server/RIOT"/>
                         <file updated="9C" name="LeagueClientAPI" type="pyd" path="be/modules/Client/Server/RIOT"/>
                         <file updated="6C" name="LiveClientAPI" type="pyd" path="be/modules/Client/Server/RIOT"/>
                     </folder>
@@ -81,11 +81,11 @@
         </folder>
     </folder>
     <folder name="fe">
-        <file updated="110" name="index" type="html" path="fe"/>
+        <file updated="120" name="index" type="html" path="fe"/>
         <folder name="assets">
-            <file updated="110" name="index" type="js" path="fe/assets"/>
-            <file updated="110" name="style" type="css" path="fe/assets"/>
-            <file updated="110" name="update" type="js" path="fe/assets"/>
+            <file updated="120" name="index" type="js" path="fe/assets"/>
+            <file updated="120" name="style" type="css" path="fe/assets"/>
+            <file updated="120" name="update" type="js" path="fe/assets"/>
             <folder name="body">
                 <file updated="93" name="script" type="js" path="fe/assets/body"/>
                 <file updated="34" name="style" type="css" path="fe/assets/body"/>
@@ -110,7 +110,7 @@
                             <file updated="0" name="classes" type="json" path="fe/assets/body/main/pages/lol-match-history"/>
                         </folder>
                         <folder name="lol-trend">
-                            <file updated="110" name="class" type="js" path="fe/assets/body/main/pages/lol-trend"/>
+                            <file updated="120" name="class" type="js" path="fe/assets/body/main/pages/lol-trend"/>
                             <file updated="0" name="classes" type="json" path="fe/assets/body/main/pages/lol-trend"/>
                         </folder>
                         <folder name="summoner">
@@ -144,7 +144,7 @@
                         <folder name="config-settings-game">
                             <file updated="0" name="class" type="js" path="fe/assets/body/main/parts/config-settings-game"/>
                             <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/config-settings-game"/>
-                            <file updated="110" name="element" type="html" path="fe/assets/body/main/parts/config-settings-game"/>
+                            <file updated="120" name="element" type="html" path="fe/assets/body/main/parts/config-settings-game"/>
                             <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/config-settings-game"/>
                             <file updated="0" name="style" type="css" path="fe/assets/body/main/parts/config-settings-game"/>
                         </folder>
@@ -158,16 +158,16 @@
                         <folder name="config-settings-stats">
                             <file updated="0" name="class" type="js" path="fe/assets/body/main/parts/config-settings-stats"/>
                             <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/config-settings-stats"/>
-                            <file updated="110" name="element" type="html" path="fe/assets/body/main/parts/config-settings-stats"/>
+                            <file updated="120" name="element" type="html" path="fe/assets/body/main/parts/config-settings-stats"/>
                             <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/config-settings-stats"/>
                             <file updated="0" name="style" type="css" path="fe/assets/body/main/parts/config-settings-stats"/>
                         </folder>
                         <folder name="live-game-player-list">
-                            <file updated="110" name="class" type="js" path="fe/assets/body/main/parts/live-game-player-list"/>
-                            <file updated="110" name="dark" type="css" path="fe/assets/body/main/parts/live-game-player-list"/>
+                            <file updated="120" name="class" type="js" path="fe/assets/body/main/parts/live-game-player-list"/>
+                            <file updated="120" name="dark" type="css" path="fe/assets/body/main/parts/live-game-player-list"/>
                             <file updated="76" name="element" type="html" path="fe/assets/body/main/parts/live-game-player-list"/>
-                            <file updated="110" name="light" type="css" path="fe/assets/body/main/parts/live-game-player-list"/>
-                            <file updated="110" name="style" type="css" path="fe/assets/body/main/parts/live-game-player-list"/>
+                            <file updated="120" name="light" type="css" path="fe/assets/body/main/parts/live-game-player-list"/>
+                            <file updated="120" name="style" type="css" path="fe/assets/body/main/parts/live-game-player-list"/>
                         </folder>
                         <folder name="lol-challenge-list">
                             <file updated="8D" name="class" type="js" path="fe/assets/body/main/parts/lol-challenge-list"/>
@@ -184,18 +184,18 @@
                             <file updated="7C" name="style" type="css" path="fe/assets/body/main/parts/lol-challenge-thresholds"/>
                         </folder>
                         <folder name="lol-champion-build">
-                            <file updated="110" name="class" type="js" path="fe/assets/body/main/parts/lol-champion-build"/>
-                            <file updated="110" name="dark" type="css" path="fe/assets/body/main/parts/lol-champion-build"/>
-                            <file updated="110" name="element" type="html" path="fe/assets/body/main/parts/lol-champion-build"/>
-                            <file updated="110" name="light" type="css" path="fe/assets/body/main/parts/lol-champion-build"/>
-                            <file updated="110" name="style" type="css" path="fe/assets/body/main/parts/lol-champion-build"/>
+                            <file updated="120" name="class" type="js" path="fe/assets/body/main/parts/lol-champion-build"/>
+                            <file updated="120" name="dark" type="css" path="fe/assets/body/main/parts/lol-champion-build"/>
+                            <file updated="120" name="element" type="html" path="fe/assets/body/main/parts/lol-champion-build"/>
+                            <file updated="120" name="light" type="css" path="fe/assets/body/main/parts/lol-champion-build"/>
+                            <file updated="120" name="style" type="css" path="fe/assets/body/main/parts/lol-champion-build"/>
                         </folder>
                         <folder name="lol-champion-list">
                             <file updated="92" name="class" type="js" path="fe/assets/body/main/parts/lol-champion-list"/>
                             <file updated="5A" name="dark" type="css" path="fe/assets/body/main/parts/lol-champion-list"/>
                             <file updated="5A" name="element" type="html" path="fe/assets/body/main/parts/lol-champion-list"/>
                             <file updated="5A" name="light" type="css" path="fe/assets/body/main/parts/lol-champion-list"/>
-                            <file updated="110" name="style" type="css" path="fe/assets/body/main/parts/lol-champion-list"/>
+                            <file updated="120" name="style" type="css" path="fe/assets/body/main/parts/lol-champion-list"/>
                         </folder>
                         <folder name="lol-champion-tiers">
                             <file updated="8D" name="class" type="js" path="fe/assets/body/main/parts/lol-champion-tiers"/>
@@ -272,7 +272,7 @@
                         <folder name="config">
                             <file updated="61" name="dark" type="css" path="fe/assets/body/main/type-styles/config"/>
                             <file updated="61" name="light" type="css" path="fe/assets/body/main/type-styles/config"/>
-                            <file updated="110" name="style" type="css" path="fe/assets/body/main/type-styles/config"/>
+                            <file updated="120" name="style" type="css" path="fe/assets/body/main/type-styles/config"/>
                         </folder>
                         <folder name="tft">
                             <file updated="0" name="dark" type="css" path="fe/assets/body/main/type-styles/tft"/>
@@ -292,11 +292,11 @@
                     </folder>
                     <folder name="parts">
                         <folder name="summoner-basic">
-                            <file updated="110" name="class" type="js" path="fe/assets/body/side/parts/summoner-basic"/>
-                            <file updated="110" name="dark" type="css" path="fe/assets/body/side/parts/summoner-basic"/>
-                            <file updated="110" name="element" type="html" path="fe/assets/body/side/parts/summoner-basic"/>
-                            <file updated="110" name="light" type="css" path="fe/assets/body/side/parts/summoner-basic"/>
-                            <file updated="110" name="style" type="css" path="fe/assets/body/side/parts/summoner-basic"/>
+                            <file updated="120" name="class" type="js" path="fe/assets/body/side/parts/summoner-basic"/>
+                            <file updated="120" name="dark" type="css" path="fe/assets/body/side/parts/summoner-basic"/>
+                            <file updated="120" name="element" type="html" path="fe/assets/body/side/parts/summoner-basic"/>
+                            <file updated="120" name="light" type="css" path="fe/assets/body/side/parts/summoner-basic"/>
+                            <file updated="120" name="style" type="css" path="fe/assets/body/side/parts/summoner-basic"/>
                         </folder>
                         <folder name="summoner-mastery">
                             <file updated="92" name="class" type="js" path="fe/assets/body/side/parts/summoner-mastery"/>
@@ -371,10 +371,10 @@
                 </folder>
             </folder>
             <folder name="footer">
-                <file updated="110" name="dark" type="css" path="fe/assets/footer"/>
-                <file updated="110" name="light" type="css" path="fe/assets/footer"/>
-                <file updated="110" name="script" type="js" path="fe/assets/footer"/>
-                <file updated="110" name="style" type="css" path="fe/assets/footer"/>
+                <file updated="120" name="dark" type="css" path="fe/assets/footer"/>
+                <file updated="120" name="light" type="css" path="fe/assets/footer"/>
+                <file updated="120" name="script" type="js" path="fe/assets/footer"/>
+                <file updated="120" name="style" type="css" path="fe/assets/footer"/>
             </folder>
             <folder name="header">
                 <file updated="0" name="dark" type="css" path="fe/assets/header"/>
@@ -409,7 +409,7 @@
                     <file updated="0" name="theme" type="png" path="fe/assets/media/app-controls"/>
                 </folder>
                 <folder name="app-logo">
-                    <file updated="110" name="Animated" type="gif" path="fe/assets/media/app-logo"/>
+                    <file updated="120" name="Animated" type="gif" path="fe/assets/media/app-logo"/>
                     <file updated="0" name="Combine" type="png" path="fe/assets/media/app-logo"/>
                     <file updated="0" name="Icon" type="png" path="fe/assets/media/app-logo"/>
                     <file updated="0" name="Logo" type="png" path="fe/assets/media/app-logo"/>
@@ -458,11 +458,11 @@
                     <file updated="97" name="style" type="css" path="fe/assets/overlay/about-info"/>
                 </folder>
                 <folder name="app-config">
-                    <file updated="110" name="class" type="js" path="fe/assets/overlay/app-config"/>
+                    <file updated="120" name="class" type="js" path="fe/assets/overlay/app-config"/>
                     <file updated="0" name="dark" type="css" path="fe/assets/overlay/app-config"/>
-                    <file updated="110" name="element" type="html" path="fe/assets/overlay/app-config"/>
+                    <file updated="120" name="element" type="html" path="fe/assets/overlay/app-config"/>
                     <file updated="0" name="light" type="css" path="fe/assets/overlay/app-config"/>
-                    <file updated="110" name="style" type="css" path="fe/assets/overlay/app-config"/>
+                    <file updated="120" name="style" type="css" path="fe/assets/overlay/app-config"/>
                 </folder>
                 <folder name="report-history">
                     <file updated="8D" name="class" type="js" path="fe/assets/overlay/report-history"/>
@@ -485,12 +485,12 @@
                 <file updated="95" name="master" type="css" path="fe/assets/theme"/>
             </folder>
             <folder name="widgets">
-                <file updated="110" name="master" type="css" path="fe/assets/widgets"/>
+                <file updated="120" name="master" type="css" path="fe/assets/widgets"/>
                 <file updated="7C" name="script" type="js" path="fe/assets/widgets"/>
                 <folder name="app-cover">
                     <file updated="0" name="dark" type="css" path="fe/assets/widgets/app-cover"/>
                     <file updated="0" name="light" type="css" path="fe/assets/widgets/app-cover"/>
-                    <file updated="110" name="style" type="css" path="fe/assets/widgets/app-cover"/>
+                    <file updated="120" name="style" type="css" path="fe/assets/widgets/app-cover"/>
                 </folder>
                 <folder name="checkbox">
                     <file updated="0" name="dark" type="css" path="fe/assets/widgets/checkbox"/>
@@ -518,7 +518,7 @@
                     <file updated="75" name="style" type="css" path="fe/assets/widgets/hover-detail"/>
                 </folder>
                 <folder name="marquee">
-                    <file updated="110" name="style" type="css" path="fe/assets/widgets/marquee"/>
+                    <file updated="120" name="style" type="css" path="fe/assets/widgets/marquee"/>
                 </folder>
                 <folder name="percentage-bar">
                     <file updated="0" name="dark" type="css" path="fe/assets/widgets/percentage-bar"/>
