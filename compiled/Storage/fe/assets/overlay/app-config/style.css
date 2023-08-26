@@ -1,0 +1,74 @@
+@import url("./dark.css");
+@import url("./light.css");
+@import url("../style.css");
+
+#app #app-overlay .app-config {
+    width: calc(var(--S) * 0.6);
+    height: calc(var(--S) * 0.8);
+}
+#app #app-overlay .app-config .app-config-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: calc(var(--S) * 0.01);
+}
+#app #app-overlay .app-config .app-config-inner .config-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    border-radius: calc(var(--S) * 0.01);
+    padding: calc(var(--S) * 0.01) calc(var(--S) * 0.02);
+    pointer-events: auto;
+}
+#app #app-overlay .app-config .app-config-inner .config-item .item-name {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: calc(var(--S) * 0.1);
+    height: calc(var(--S) * 0.04);
+    margin-right: calc(var(--S) * 0.04);
+    font-size: calc(var(--S) * 0.018);
+    font-weight: 500;
+}
+#app #app-overlay .app-config .app-config-inner .config-item .options-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+}
+#app #app-overlay .app-config .app-config-inner .config-item .item-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(var(--S) * 0.04);
+}
+#app #app-overlay .app-config .app-config-inner .config-item .item-options .option {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: auto;
+    height: 100%;
+}
+#app #app-overlay .app-config .app-config-inner .config-item .item-options .option .text {
+    margin: 0 calc(var(--S) * 0.01);
+    font-size: calc(var(--S) * 0.018);
+    font-weight: 500;
+}
+#app #app-overlay .app-config .app-config-inner .config-item .item-options .option .checkbox {
+    --checkbox-size: calc(var(--S) * 0.016);
+}
+#app #app-overlay .app-config .app-config-inner .config-item .item-options .option .switch {
+    --switch-size: calc(var(--S) * 0.02);
+}
+#app #app-overlay .app-config .app-config-inner .config-item .item-options .option .stepper {
+    --stepper-width: calc(var(--S) * 0.1);
+    --stepper-height: calc(var(--S) * 0.03);
+}

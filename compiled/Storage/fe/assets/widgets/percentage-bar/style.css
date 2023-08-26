@@ -1,0 +1,60 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.horizontal-percentage-bar, .vertical-percentage-bar {
+    display: flex;
+    align-items: center;
+    background: var(--base-color, transparent);
+}
+
+.horizontal-percentage-bar .percentage-bar-item,
+.vertical-percentage-bar .percentage-bar-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: var(--fill-color, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-transition: width 0.3s, min-width 0.3s, max-width 0.3s, height 0.3s, min-height 0.3s, max-height 0.3s;
+    transition: width 0.3s, min-width 0.3s, max-width 0.3s, height 0.3s, min-height 0.3s, max-height 0.3s;
+}
+.horizontal-percentage-bar .percentage-bar-item {
+    width: var(--percentage);
+    height: 100%;
+    min-height: 100%;
+}
+.vertical-percentage-bar .percentage-bar-item {
+    width: 100%;
+    min-width: 100%;
+    height: var(--percentage);
+}
+
+.percentage-bar-item .bar-item-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+}
+
+.horizontal-percentage-bar .bar-item-icon img {
+    pointer-events: auto;
+    position: absolute;
+    width: auto;
+    height: 80%;
+    cursor: pointer;
+}
+.vertical-percentage-bar .bar-item-icon img {
+    pointer-events: auto;
+    position: absolute;
+    width: 80%;
+    height: auto;
+    cursor: pointer;
+}
+
+
+
+

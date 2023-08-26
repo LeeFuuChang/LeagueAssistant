@@ -1,0 +1,9 @@
+#app[theme="dark"] .drop-down-menu {
+    background-color: var(--black-200) !important;
+}
+#app[theme="dark"] .drop-down-menu span {
+    color: var(--white-100) !important;
+}
+#app[theme="dark"] .drop-down-menu .drop-down-menu-ul {
+    background-color: var(--black-200) !important;
+}

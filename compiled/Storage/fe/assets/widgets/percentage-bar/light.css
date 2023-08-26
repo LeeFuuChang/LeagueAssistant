@@ -1,0 +1,23 @@
+#app[theme="light"] .horizontal-percentage-bar, .vertical-percentage-bar {
+    --base-color: transparent;
+}
+#app[theme="light"] .horizontal-percentage-bar .percentage-bar-item:nth-child(1),
+#app[theme="light"] .vertical-percentage-bar .percentage-bar-item:nth-child(1) {
+    --fill-color: #00261C;
+}
+#app[theme="light"] .horizontal-percentage-bar .percentage-bar-item:nth-child(2),
+#app[theme="light"] .vertical-percentage-bar .percentage-bar-item:nth-child(2) {
+    --fill-color: #36402D;
+}
+#app[theme="light"] .horizontal-percentage-bar .percentage-bar-item:nth-child(3),
+#app[theme="light"] .vertical-percentage-bar .percentage-bar-item:nth-child(3) {
+    --fill-color: #4B5E3E;
+}
+#app[theme="light"] .horizontal-percentage-bar .percentage-bar-item:nth-child(4),
+#app[theme="light"] .vertical-percentage-bar .percentage-bar-item:nth-child(4) {
+    --fill-color: #6F944B;
+}
+#app[theme="light"] .horizontal-percentage-bar .percentage-bar-item:nth-child(5),
+#app[theme="light"] .vertical-percentage-bar .percentage-bar-item:nth-child(5) {
+    --fill-color: #9CBA82;
+}

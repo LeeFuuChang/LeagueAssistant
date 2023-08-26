@@ -1,0 +1,9 @@
+#app[theme="dark"] #app-overlay .app-config .app-config-inner .config-item:hover {
+    background-color: var(--black-400) !important;
+}
+#app[theme="dark"] #app-overlay .app-config .app-config-inner .config-item .item-name {
+    color: var(--white-300) !important;
+}
+#app[theme="dark"] #app-overlay .app-config .app-config-inner .config-item .item-options .option .text {
+    color: var(--white-500) !important;
+}

@@ -1,0 +1,76 @@
+.marquee-left-right,
+.marquee-right-left,
+.marquee-top-bottom,
+.marquee-bottom-top {
+    --marquee-speed: 3s;
+    --marquee-gap: 0;
+    --marquee-progress-beg: 0%;
+    --marquee-progress-end: -100%;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+}
+.marquee-left-right,
+.marquee-right-left {
+    flex-direction: row;
+}
+.marquee-top-bottom,
+.marquee-bottom-top {
+    flex-direction: column;
+}
+.marquee-left-right .marquee-content,
+.marquee-right-left .marquee-content,
+.marquee-top-bottom .marquee-content,
+.marquee-bottom-top .marquee-content {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+}
+.marquee-left-right.no-scroll .marquee-content,
+.marquee-right-left.no-scroll .marquee-content,
+.marquee-top-bottom.no-scroll .marquee-content,
+.marquee-bottom-top.no-scroll .marquee-content {
+    animation: none;
+}
+@keyframes marquee-horizontal-scroll {
+    from {
+        transform: translateX(var(--marquee-progress-beg));
+    }
+    to {
+        transform: translateX(var(--marquee-progress-end));
+    }
+}
+.marquee-left-right .marquee-content,
+.marquee-right-left .marquee-content {
+    flex-direction: row;
+    min-width: 100%;
+    animation: marquee-horizontal-scroll var(--marquee-speed) linear infinite;
+}
+.marquee-left-right .marquee-content {
+    animation-direction: reverse;
+}
+.marquee-left-right .marquee-content .marquee-item,
+.marquee-right-left .marquee-content .marquee-item {
+    margin-right: var(--marquee-gap);
+}
+@keyframes marquee-vertical-scroll {
+    from {
+        transform: translateY(var(--marquee-progress-beg));
+    }
+    to {
+        transform: translateY(var(--marquee-progress-end));
+    }
+}
+.marquee-top-bottom .marquee-content,
+.marquee-bottom-top .marquee-content {
+    flex-direction: column;
+    min-height: 100%;
+    animation: marquee-vertical-scroll var(--marquee-speed) linear infinite;
+}
+.marquee-top-bottom .marquee-content {
+    animation-direction: reverse;
+}
+.marquee-top-bottom .marquee-content .marquee-item,
+.marquee-bottom-top .marquee-content .marquee-item {
+    margin-bottom: var(--marquee-gap);
+}

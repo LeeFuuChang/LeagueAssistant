@@ -1,0 +1,39 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.stepper {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--stepper-width);
+    height: var(--stepper-height);
+    border-style: solid;
+    border-width: calc(var(--stepper-height)  * 0.05);
+    border-radius: calc(var(--stepper-height)  * 0.16);
+}
+.stepper .button {
+    width: var(--stepper-height);
+    height: var(--stepper-height);
+    mask-size: calc(var(--stepper-height)  * 0.6);
+    -webkit-mask-size: calc(var(--stepper-height)  * 0.6);
+}
+.stepper .button[data-action="-"] {
+    mask-image: url("/ui/assets/media/actions/flat.png");
+    -webkit-mask-image: url("/ui/assets/media/actions/flat.png");
+}
+.stepper .button[data-action="+"] {
+    mask-image: url("/ui/assets/media/actions/cross.png");
+    -webkit-mask-image: url("/ui/assets/media/actions/cross.png");
+}
+.stepper input[type="text"] {
+    border: 0;
+    border-style: solid;
+    border-left-width: calc(var(--stepper-height)  * 0.05);
+    border-right-width: calc(var(--stepper-height)  * 0.05);
+    outline: none;
+    width: calc(var(--stepper-width) - var(--stepper-height) - var(--stepper-height));
+    height: var(--stepper-height);
+    text-align: center;
+    font-size: calc(var(--stepper-height) * 0.6);
+}

@@ -1,0 +1,19 @@
+#app[theme="light"] #app-overlay .about-info .about-info-inner .navigation .navigation-item {
+    color: var(--white-200) !important;
+    background-color: #6F944B !important;
+}
+#app[theme="light"] #app-overlay .about-info .about-info-inner .navigation .navigation-item:hover {
+    background-color: #9CBA82 !important;
+}
+#app[theme="light"] #app-overlay .about-info .about-info-inner .navigation .navigation-item.active {
+    background-color: #4B5E3E !important;
+}
+#app[theme="light"] #app-overlay .about-info .about-info-inner .container .content .group .title {
+    color: var(--black-400) !important;
+}
+#app[theme="light"] #app-overlay .about-info .about-info-inner .container .content .group p {
+    color: var(--black-500) !important;
+}
+#app[theme="light"] #app-overlay .about-info .about-info-inner .container .content .group ul li {
+    color: var(--black-500) !important;
+}

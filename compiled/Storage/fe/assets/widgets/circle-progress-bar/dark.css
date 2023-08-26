@@ -1,0 +1,5 @@
+#app[theme="dark"] .circle-progress {
+    --foreground: var(--black-200);
+    --background: var(--gray-100);
+    --progress-color: #06987b;
+}
