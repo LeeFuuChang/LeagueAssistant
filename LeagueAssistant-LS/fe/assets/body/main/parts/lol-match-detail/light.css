@@ -1,0 +1,64 @@
+#app[theme="light"] .app-body-block.lol-match-detail .match-detail-info .match-info-item .info-item-title {
+    color: #758592 !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-detail-info .match-info-item .info-item-inner {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-detail-info .match-info-item.match-info-data .info-item-inner span {
+    color: #36402D !important;
+    background-color: #9CBA82 !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player {
+    background: var(--white-100);
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-champion span {
+    color: var(--white-300) !important;
+    background-color: var(--black-500) !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info .player-name {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info .player-kda {
+    color: #9AA4AF !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info .player-kda .player-kda-k,
+#app[theme="light"] .app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info .player-kda .player-kda-a {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info .player-kda .player-kda-d {
+    color: #E84057 !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-build .player-build-item {
+    background-color: #758592 !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player-basic .player-basic-data .data-percentage-bar {
+    --base-color: #DBE0E4 !important; /* #424254 */
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player-basic .player-basic-data .data-percentage-bar .percentage-bar-item .data-detail {
+    background-color: var(--white-100) !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player-basic .player-basic-data .data-percentage-bar .percentage-bar-item .data-detail::before {
+    border-top-color: var(--white-100) !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player-basic .player-basic-data .data-percentage-bar .percentage-bar-item .data-detail .detail-item {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player-stats .player-stats .stats-item {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player-stats .player-stats .stats-item[data-name="build"] .player-build-item {
+    background-color: #758592 !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player-stats .player-stats .stats-item .stats-name,
+#app[theme="light"] .app-body-block.lol-match-detail .match-player-stats .player-stats .stats-item .stats-data {
+    color: #44515C !important;
+    background-color: #DBE0E4 !important;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player-stats .player-actions .player-view {
+    color: var(--white-100);
+    background: #3CBC8D;
+}
+#app[theme="light"] .app-body-block.lol-match-detail .match-player-stats .player-actions .player-report {
+    color: var(--white-100);
+    background: #E84057;
+}

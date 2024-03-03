@@ -1,0 +1,605 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.app-body-block.summoner-season-overview {
+    height: 100%;
+}
+.app-body-block.summoner-season-overview>.block-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: min-content 1fr;
+    grid-gap: calc(var(--S) * 0.02);
+    width: 100%;
+    height: 100%;
+}
+
+.app-body-block.summoner-season-overview>.block-inner .player-banner {
+    position: relative;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    width: 100%;
+    height: calc(var(--S) * 0.25);
+    padding: 0 calc(var(--S) * 0.03);
+}
+.app-body-block.summoner-season-overview>.block-inner .player-banner .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: calc(var(--S) * 0.0125);
+    box-shadow: inset 0px 0px calc(var(--S) * 0.1) calc(var(--S) * 0.1) rgba(var(--black-200-rgb), 0.5);
+    overflow: hidden;
+    background-size: 100% auto;
+    background-position: center 15%;
+}
+.app-body-block.summoner-season-overview>.block-inner .player-banner .profile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.app-body-block.summoner-season-overview .player-banner .profile .basic {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    grid-row: 1 / 4;
+    grid-column: 1 / 7;
+    padding-top: calc(var(--S) * 0.01);
+}
+.app-body-block.summoner-season-overview .player-banner .profile .basic .icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--S) * 0.15);
+    height: calc(var(--S) * 0.15);
+    background-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/uikit/themed-borders/theme-1-border.png");
+    background-size: 145%;
+    background-repeat: no-repeat;
+    background-position-x: calc(var(--S) * -0.033);
+    background-position-y: calc(var(--S) * -0.026);
+}
+.app-body-block.summoner-season-overview .player-banner .profile .basic .icon .xp-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--S) * 0.085);
+    height: calc(var(--S) * 0.085);
+    --progress-start: 180deg;
+}
+.app-body-block.summoner-season-overview .player-banner .profile .basic .icon .xp-progress img {
+    width: calc(var(--S) * 0.08);
+    height: calc(var(--S) * 0.08);
+    border-radius: 50%;
+}
+.app-body-block.summoner-season-overview .player-banner .profile .basic .icon .level {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: calc(var(--S) * 0.025);
+    width: calc(var(--S) * 0.06);
+    height: auto;
+}
+.app-body-block.summoner-season-overview .player-banner .profile .basic .icon .level img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+}
+.app-body-block.summoner-season-overview .player-banner .profile .basic .icon .level span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    font-size: calc(var(--S) * 0.015);
+    color: var(--white-100);
+}
+.app-body-block.summoner-season-overview .player-banner .profile .basic .info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: calc(var(--S) * 0.02);
+    flex: 1;
+    height: calc(var(--S) * 0.1);
+}
+.app-body-block.summoner-season-overview .player-banner .profile .basic .info .name {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    width: 100%;
+    height: 60%;
+    font-size: calc(var(--S) * 0.03);
+    font-weight: 600;
+    color: #f0e6d2 !important;
+}
+.app-body-block.summoner-season-overview .player-banner .profile .basic .info .title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: calc(var(--S) * 0.025);
+    width: 100%;
+    height: 40%;
+    font-size: calc(var(--S) * 0.02);
+    font-weight: 500;
+    color: #cdbe91 !important;
+}
+.app-body-block.summoner-season-overview .player-banner .profile .basic .info .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    margin: calc(var(--S) * 0.001);
+    width: calc(var(--S) * 0.016);
+    height: calc(var(--S) * 0.016);
+    border-radius: 50%;
+    background: var(--rank-core-color);
+    border: calc(var(--S) * 0.004) solid var(--rank-wing-color);
+}
+
+.app-body-block.summoner-season-overview .player-banner .profile .stats {
+    grid-row: 4 / 6;
+    grid-column: 1 / 5;
+    justify-content: flex-start;
+    height: 100%;
+}
+.app-body-block.summoner-season-overview .player-banner .profile .ranks {
+    grid-row: 3 / 6;
+    grid-column: 5 / 7;
+    justify-content: flex-end;
+    height: 100%;
+}
+.app-body-block.summoner-season-overview .player-banner .profile .stats,
+.app-body-block.summoner-season-overview .player-banner .profile .ranks {
+    display: flex;
+    align-items: flex-end;
+    padding: calc(var(--S) * 0.02) 0;
+}
+.app-body-block.summoner-season-overview .player-banner .profile .stats .item,
+.app-body-block.summoner-season-overview .player-banner .profile .ranks .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: calc(var(--S) * 0.12);
+    border-right: 2px solid transparent;
+}
+.app-body-block.summoner-season-overview .player-banner .profile .stats .item {
+    height: calc(var(--S) * 0.06);
+}
+.app-body-block.summoner-season-overview .player-banner .profile .ranks .item {
+    height: calc(var(--S) * 0.15);
+}
+.app-body-block.summoner-season-overview .player-banner .profile .stats .item:last-child,
+.app-body-block.summoner-season-overview .player-banner .profile .ranks .item:last-child {
+    border-right: 0;
+}
+.app-body-block.summoner-season-overview .player-banner .profile .stats .item .data,
+.app-body-block.summoner-season-overview .player-banner .profile .ranks .item .data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(var(--S) * 0.04);
+}
+.app-body-block.summoner-season-overview .player-banner .profile .stats .item .icon,
+.app-body-block.summoner-season-overview .player-banner .profile .ranks .item .icon {
+    position: relative;
+    top: calc(var(--S) * 0.01);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 calc(var(--S) * 0.01);
+    width: calc(var(--S) * 0.08);
+    height: calc(var(--S) * 0.08);
+}
+.app-body-block.summoner-season-overview .player-banner .profile .stats .item .data span,
+.app-body-block.summoner-season-overview .player-banner .profile .ranks .item .data span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 calc(var(--S) * 0.005);
+    font-size: calc(var(--S) * 0.024);
+    font-weight: 600;
+    color: #f0e6d2 !important;
+}
+.app-body-block.summoner-season-overview .player-banner .profile .stats .item .name,
+.app-body-block.summoner-season-overview .player-banner .profile .ranks .item .name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--S) * 0.1);
+    height: calc(var(--S) * 0.02);
+    font-size: calc(var(--S) * 0.016);
+    font-weight: 400;
+    color: #cdbe91 !important;
+}
+
+.app-body-block.summoner-season-overview .body-sub-block {
+    display: grid;
+    grid-template-columns: 2fr 1fr 5fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: calc(var(--S) * 0.01);
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.summoner-season-overview .body-sub-block .block-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: calc(var(--S) * 0.01) 0;
+}
+
+.app-body-block.summoner-season-overview .career-stats {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+.app-body-block.summoner-season-overview .career-stats-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 calc(var(--S) * 0.02);
+    width: 100%;
+    height: 100%;
+    border-bottom: calc(var(--S) * 0.0025) solid transparent;
+}
+.app-body-block.summoner-season-overview .career-stats-inner .item {
+    --career-item-size: calc(var(--S) * 0.175);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: transparent;
+    width: var(--career-item-size);
+    height: var(--career-item-size);
+    border: calc(var(--career-item-size) * 0.032) solid var(--rank-wing-color);
+    border: calc(var(--S) * 0.005) solid var(--rank-wing-color);
+    -webkit-transition: border-color 1s;
+    transition: border-color 1s;
+}
+@keyframes careerloadingRotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.app-body-block.summoner-season-overview .career-stats-inner .item.loading,
+.app-body-block.summoner-season-overview .career-stats-inner .item.loading>* {
+    animation: careerloadingRotation 1.25s ease-in-out infinite;
+}
+.app-body-block.summoner-season-overview .career-stats-inner .item.loading>* {
+    animation-direction: reverse;
+}
+.app-body-block.summoner-season-overview .career-stats-inner .item::before {
+    content: "";
+    position: absolute;
+    top: calc(var(--career-item-size) * -0.075);
+    width: calc(var(--career-item-size) * 0.125);
+    height: calc(var(--career-item-size) * 0.125);
+    transform: rotate(45deg);
+    background-color: var(--rank-core-color);
+    -webkit-transition: background-color 1s;
+    transition: background-color 1s;
+}
+.app-body-block.summoner-season-overview .career-stats-inner .item::after {
+    content: "";
+    position: absolute;
+    transform: rotate(45deg);
+    top: calc(var(--career-item-size) * -0.15);
+    width: calc(var(--career-item-size) * 0.25);
+    height: calc(var(--career-item-size) * 0.25);
+    border-width: calc(var(--career-item-size) * 0.075);
+    border-style: solid;
+    -webkit-transition: border-color 1s;
+    transition: border-color 1s;
+}
+.app-body-block.summoner-season-overview .career-stats-inner .item .background {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--career-item-size) * 0.845);
+    height: calc(var(--career-item-size) * 0.845);
+    border-radius: 50%;
+    overflow: hidden;
+}
+.app-body-block.summoner-season-overview .career-stats-inner .item .background img {
+    height: 100%;
+}
+.app-body-block.summoner-season-overview .career-stats-inner .item .inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--career-item-size) * 0.845);
+    height: calc(var(--career-item-size) * 0.845);
+}
+.app-body-block.summoner-season-overview .career-stats-inner .item .inner .name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(var(--career-item-size) * 0.1875);
+    font-size: calc(var(--career-item-size) * 0.12);
+    font-weight: 600;
+    color: #cdbe91 !important;
+}
+.app-body-block.summoner-season-overview .career-stats-inner .item .inner .data {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: auto;
+    height: calc(var(--career-item-size) * 0.25);
+    font-size: calc(var(--career-item-size) * 0.094);
+    line-height: calc(var(--career-item-size) * 0.1875);
+    font-weight: 700;
+    color: #f0e6d2 !important;
+}
+.app-body-block.summoner-season-overview .career-stats-inner .item .inner .data span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 100%;
+    margin: 0 calc(var(--career-item-size) * 0.0375);
+    font-size: calc(var(--career-item-size) * 0.1875);
+    line-height: calc(var(--career-item-size) * 0.1875);
+    font-weight: 700;
+    color: #f0e6d2 !important;
+}
+.app-body-block.summoner-season-overview .career-stats-inner .item .inner .detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(var(--career-item-size) * 0.125);
+    font-size: calc(var(--career-item-size) * 0.094);
+    font-weight: 500;
+    color: #cdbe91 !important;
+}
+.app-body-block.summoner-season-overview .career-stats-inner .item .inner .detail span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 100%;
+    margin: 0 calc(var(--career-item-size) * 0.0375);
+    font-size: calc(var(--career-item-size) * 0.094);
+    font-weight: 500;
+}
+
+.app-body-block.summoner-season-overview .primary-champions {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+}
+.app-body-block.summoner-season-overview .primary-champions-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 calc(var(--S) * 0.01);
+}
+.app-body-block.summoner-season-overview .primary-champions-inner .table-head,
+.app-body-block.summoner-season-overview .primary-champions-inner .table-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: min-content;
+}
+.app-body-block.summoner-season-overview .primary-champions-inner .table-head {
+    border-bottom: 2px solid transparent;
+    margin-bottom: calc(var(--S) * 0.01);
+}
+.app-body-block.summoner-season-overview .primary-champions-inner .table-body {
+    flex: 1;
+}
+.app-body-block.summoner-season-overview .primary-champions-inner .table-head li,
+.app-body-block.summoner-season-overview .primary-champions-inner .table-body li {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-auto-flow: column;
+    grid-template-columns: 6fr 2fr 4fr 2fr 7fr 2fr 3fr;
+    width: 100%;
+    height: calc(var(--S) * 0.05);
+    font-size: calc(var(--S) * 0.019);
+    font-weight: 500;
+}
+.app-body-block.summoner-season-overview .primary-champions-inner .table-body li {
+    padding-left: calc(var(--S) * 0.005);
+    border-radius: calc(var(--S) * 0.01);
+    transition: 0.3s;
+}
+.app-body-block.summoner-season-overview .primary-champions-inner .table-head li .item,
+.app-body-block.summoner-season-overview .primary-champions-inner .table-body li .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.summoner-season-overview .primary-champions-inner .table-head li .item span,
+.app-body-block.summoner-season-overview .primary-champions-inner .table-body li .item span {
+    margin: 0 calc(var(--S) * 0.005);
+}
+.app-body-block.summoner-season-overview .primary-champions-inner .table-head li .item:nth-child(1),
+.app-body-block.summoner-season-overview .primary-champions-inner .table-body li .item:nth-child(1) {
+    justify-content: flex-start;
+}
+.app-body-block.summoner-season-overview .primary-champions-inner .table-body li .item:nth-child(1) img {
+    height: calc(var(--S) * 0.04);
+    border-radius: calc(var(--S) * 0.005);
+}
+.app-body-block.summoner-season-overview .primary-champions-inner .table-body li .item:nth-child(1) span {
+    flex: 1;
+    max-width: calc(var(--S) * 0.0825);
+    margin-left: calc(var(--S) * 0.01);
+}
+
+.app-body-block.summoner-season-overview .role-distribution {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 6fr 5fr;
+    width: 100%;
+    height: 100%;
+    padding: 0 calc(var(--S) * 0.02);
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-chart,
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-chart .item,
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-chart {
+    grid-row: 1 / 2;
+    border-bottom-width: calc(var(--S) * 0.005);
+    border-bottom-style: dotted;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-chart .item .bar {
+    display: flex;
+    align-items: flex-end;
+    margin: 0 calc(var(--S) * 0.001);
+    border-radius: calc(var(--S) * 0.005);
+    width: calc(var(--S) * 0.005);
+    height: 100%;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-chart .item .bar span {
+    width: 100%;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-chart .item .bar-w span {
+    background-color: var(--color-w);
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-chart .item .bar-l span {
+    background-color: var(--color-l);
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label {
+    grid-row: 2 / 3;
+    padding-top: calc(var(--S) * 0.01);
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item {
+    flex-direction: column;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item li {
+    width: 100%;
+    flex: 2;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    font-weight: 600;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item li[data-label="icon"] {
+    flex: 3;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item li[data-label="icon"] img {
+    width: calc(var(--S) * 0.025);
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item li[data-label="gamePlayed"] {
+    font-size: calc(var(--S) * 0.018);
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item li[data-label="winRate"] {
+    grid-auto-flow: column;
+    grid-template-columns: min-content min-content;
+    font-size: calc(var(--S) * 0.014);
+    align-items: flex-end;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item li[data-label="winRate"] span {
+    font-size: calc(var(--S) * 0.016);
+    margin: 0 calc(var(--S) * 0.0025);
+    align-self: center;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item .hover-detail-top {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    width: calc(var(--S) * 0.12);
+    height: min-content;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item .hover-detail-top .games {
+    display: flex;
+    flex-direction: column;
+    grid-auto-flow: row;
+    grid-template-rows: calc(var(--S) * 0.04) 1fr;
+    align-items: center;
+    justify-content: center;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item .hover-detail-top .w-games {
+    border-right: calc(var(--S) * 0.003) dotted var(--white-700);
+    padding-right: calc(var(--S) * 0.01);
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item .hover-detail-top .l-games {
+    border-left: calc(var(--S) * 0.003) dotted var(--white-700);
+    padding-left: calc(var(--S) * 0.01);
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item .hover-detail-top .games h3,
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item .hover-detail-top .games span {
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item .hover-detail-top .games h3 {
+    font-size: calc(var(--S) * 0.02);
+    height: calc(var(--S) * 0.03);
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item .hover-detail-top .w-games h3 {
+    color: var(--color-w);
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item .hover-detail-top .l-games h3 {
+    color: var(--color-l);
+}
+.app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item .hover-detail-top .games span {
+    font-size: calc(var(--S) * 0.018);
+    height: calc(var(--S) * 0.03);
+}
+
+.app-body-block.summoner-season-overview .lp-history {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+.app-body-block.summoner-season-overview .lp-history-inner {
+    position: relative;
+    width: 100%;
+    height: calc(var(--S) * 0.18);
+    padding: 0 calc(var(--S) * 0.01);
+}
+.app-body-block.summoner-season-overview .lp-history-inner canvas {
+    position: relative;
+    max-width: 100%;
+    max-height: calc(var(--S) * 0.18);
+}

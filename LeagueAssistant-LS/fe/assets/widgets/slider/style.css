@@ -1,0 +1,33 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.slider[type="range"] {
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
+    overflow: hidden;
+    width: var(--slider-width);
+    height: var(--slider-height);
+    outline: none;
+    background: transparent;
+}
+.slider[type="range"]::-webkit-slider-thumb {
+    position: relative;
+    -webkit-appearance: none;
+    top: calc(var(--slider-height) * -0.2);
+    width: calc(var(--slider-height) * 0.6);
+    height: calc(var(--slider-height) * 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.slider[type=range]::-webkit-slider-runnable-track {
+    position: relative;
+    border-radius: calc(var(--slider-height) * 0.4);
+    top: calc(var(--slider-height) * 0.2);
+    transform: translateY(-50%);
+    width: var(--slider-width);
+    height: calc(var(--slider-height) * 0.4);
+    cursor: pointer;
+    border-width: calc(var(--slider-height) * 0.1);
+    border-style: solid;
+}

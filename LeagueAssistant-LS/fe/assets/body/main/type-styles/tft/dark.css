@@ -1,0 +1,30 @@
+#app[theme="dark"] *[type="tft"] .tft-build-overview {
+    background-color: var(--black-200) !important;
+}
+#app[theme="dark"] *[type="tft"] .tft-build-overview .overview-info .info-basic .basic-name {
+    color: #f0e6d2 !important;
+}
+#app[theme="dark"] *[type="tft"] .tft-build-overview .overview-info .info-basic .basic-cost .mask {
+    background-color: #cdbe91 !important;
+}
+#app[theme="dark"] *[type="tft"] .tft-build-overview .overview-info .info-basic .basic-cost span {
+    color: #f0e6d2 !important;
+}
+#app[theme="dark"] *[type="tft"] .tft-build-overview .overview-info .info-stats .stats-item .stats-title span {
+    color: #cdbe91 !important;
+}
+#app[theme="dark"] *[type="tft"] .tft-build-overview .overview-info .info-stats .stats-item .stats-detail span {
+    color: #f0e6d2 !important;
+}
+#app[theme="dark"] *[type="tft"] .tft-build-overview .overview-comp .comp-stats .stats-item {
+    background: var(--black-400) !important;
+}
+#app[theme="dark"] *[type="tft"] .tft-build-overview .overview-comp .comp-stats .stats-item span {
+    color: #f0e6d2 !important;
+}
+#app[theme="dark"] *[type="tft"] .tft-build-overview .overview-comp .comp-units .unit-item .comp-unit-name {
+    color: #f0e6d2 !important;
+}
+#app[theme="dark"] *[type="tft"] .tft-build-overview .overview-comp .comp-units .unit-item .clip-path-hexagon .clip-path-hexagon {
+    background-color: var(--black-200) !important;
+}

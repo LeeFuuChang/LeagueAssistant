@@ -1,0 +1,16 @@
+#app #app-body .app-body-main {
+    border-right: calc(var(--S) * 0.0025) solid transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+#app[size="contract"] #app-body .app-body-main {
+    display: none;
+}
+
+#app #app-body .app-body-main .body-part-container .body-main-block {
+    top: 0%;
+    width: 100%;
+    height: 100%;
+}

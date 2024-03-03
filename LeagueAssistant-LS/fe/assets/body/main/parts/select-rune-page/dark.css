@@ -1,0 +1,32 @@
+#app[theme="dark"] .app-body-block.select-rune-page>.block-inner .rune-row[data-step="primary-style"] .option,
+#app[theme="dark"] .app-body-block.select-rune-page>.block-inner .rune-row[data-step="secondary-style"] .option,
+#app[theme="dark"] .app-body-block.select-rune-page>.block-inner .rune-row[data-step="statmods"] .option {
+    background-color: var(--black-100) !important;
+}
+#app[theme="dark"] .app-body-block.select-rune-page>.block-inner .rune-row.invalid {
+    background-color: #E84057 !important;
+}
+#app[theme="dark"] .app-body-block.select-rune-page>.block-inner .option {
+    --hover-ring-color: var(--gray-400) !important;
+}
+#app[theme="dark"] .app-body-block.select-rune-page>.block-inner .option[data-style="precision"] {
+    --hover-ring-color: #c8aa6e !important;
+}
+#app[theme="dark"] .app-body-block.select-rune-page>.block-inner .option[data-style="domination"] {
+    --hover-ring-color: #d44242 !important;
+}
+#app[theme="dark"] .app-body-block.select-rune-page>.block-inner .option[data-style="sorcery"] {
+    --hover-ring-color: #9faafc !important;
+}
+#app[theme="dark"] .app-body-block.select-rune-page>.block-inner .option[data-style="resolve"] {
+    --hover-ring-color: #a1d586 !important;
+}
+#app[theme="dark"] .app-body-block.select-rune-page>.block-inner .option[data-style="inspiration"] {
+    --hover-ring-color: #49aab9 !important;
+}
+#app[theme="dark"] .app-body-block.select-rune-page>.block-inner button {
+    background-color: var(--black-600) !important;
+}
+#app[theme="dark"] .app-body-block.select-rune-page>.block-inner button:hover {
+    background-color: var(--gray-100) !important;
+}

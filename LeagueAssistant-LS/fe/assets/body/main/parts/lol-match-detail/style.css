@@ -1,0 +1,539 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.app-body-block.lol-match-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+}
+.app-body-block.lol-match-detail .match-detail-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(var(--S) * 0.08);
+    padding: calc(var(--S) * 0.005) calc(var(--S) * 0.01);
+    margin-bottom: calc(var(--S) * 0.005);
+    border-bottom: calc(var(--S) * 0.0025) solid transparent;
+}
+.app-body-block.lol-match-detail .match-detail-info .match-info-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    font-size: calc(var(--S) * 0.02);
+}
+.app-body-block.lol-match-detail .match-detail-info .match-info-item *[data-team="1"] {
+    color: var(--team-1-color) !important;
+}
+.app-body-block.lol-match-detail .match-detail-info .match-info-item *[data-team="2"] {
+    color: var(--team-2-color) !important;
+}
+.app-body-block.lol-match-detail .match-detail-info .match-info-item .info-item-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40%;
+    font-weight: 500;
+}
+.app-body-block.lol-match-detail .match-detail-info .match-info-item .info-item-inner {
+    margin: calc(var(--S) * 0.005) 0;
+    padding: calc(var(--S) * 0.005) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40%;
+    font-weight: 600;
+}
+.app-body-block.lol-match-detail .match-detail-info .match-info-item .info-item-inner span {
+    position: relative;
+    padding: calc(var(--S) * 0.0025);
+}
+.app-body-block.lol-match-detail .match-detail-info .match-info-item.match-info-data .info-item-inner span {
+    padding: calc(var(--S) * 0.0025) calc(var(--S) * 0.0075);
+    border-radius: calc(var(--S) * 0.005);
+}
+
+.app-body-block.lol-match-detail .match-detail-info .match-info-item.match-info-gold .info-item-inner span::before,
+.app-body-block.lol-match-detail .match-detail-info .match-info-item.match-info-gold .info-item-inner span::after {
+    position: absolute;
+    display: grid;
+    place-content: center;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(var(--S) * 0.01);
+    height: 100%;
+    font-weight: 600;
+}
+.app-body-block.lol-match-detail .match-detail-info .match-info-item.match-info-gold .info-item-inner span::before {
+    content: "+";
+    left: calc(var(--S) * -0.01);
+}
+.app-body-block.lol-match-detail .match-detail-info .match-info-item.match-info-gold .info-item-inner span::after {
+    content: "K";
+    right: calc(var(--S) * -0.01);
+}
+
+
+
+.app-body-block.lol-match-detail .match-detail-game {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+    padding: calc(var(--S) * 0.02);
+}
+.app-body-block.lol-match-detail .match-detail-game .match-game-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: calc(var(--S) * 0.42);
+    height: 100%;
+}
+.app-body-block.lol-match-detail .match-detail-game .match-game-team[data-team="1"] {
+    align-items: flex-start;
+}
+.app-body-block.lol-match-detail .match-detail-game .match-game-team[data-team="2"] {
+    align-items: flex-end;
+}
+.app-body-block.lol-match-detail .match-game-team .match-player {
+    --transition-duration: 0.3s;
+    -webkit-transition: 
+        height var(--transition-duration) linear, 
+        min-height var(--transition-duration) linear, 
+        max-height var(--transition-duration) linear, 
+        padding var(--transition-duration) linear, 
+        margin var(--transition-duration) linear;
+    transition: 
+        height var(--transition-duration) linear, 
+        min-height var(--transition-duration) linear, 
+        max-height var(--transition-duration) linear, 
+        padding var(--transition-duration) linear, 
+        margin var(--transition-duration) linear;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+    height: calc(var(--S) * 0.125);
+    min-height: calc(var(--S) * 0.125);
+    max-height: calc(var(--S) * 0.125);
+    margin-bottom: calc(var(--S) * 0.0175);
+}
+.app-body-block.lol-match-detail .match-game-team .match-player.active {
+    min-height: 100%;
+    max-height: 100%;
+}
+.app-body-block.lol-match-detail .match-game-team .match-player.inactive {
+    margin: 0;
+    padding: 0;
+    min-height: 0%;
+    max-height: 0%;
+}
+.app-body-block.lol-match-detail .match-game-team .match-player .match-player-basic {
+    display: grid;
+    width: 100%;
+    height: calc(var(--S) * 0.125);
+    grid-template-rows: calc(var(--S) * 0.076) calc(var(--S) * 0.029);
+    padding: calc(var(--S) * 0.01);
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player .match-player-basic {
+    grid-template-columns: calc(var(--S) * 0.086) calc(var(--S) * 0.0362) calc(var(--S) * 0.04) 1fr;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player .match-player-basic {
+    grid-template-columns: 1fr calc(var(--S) * 0.04) calc(var(--S) * 0.0362) calc(var(--S) * 0.086);
+}
+
+
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-champion {
+    position: relative;
+    grid-row: 1 / 2;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player .match-player-basic .player-basic-champion {
+    margin-right: calc(var(--S) * 0.01);
+    grid-column: 1 / 2;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player .match-player-basic .player-basic-champion {
+    margin-left: calc(var(--S) * 0.01);
+    grid-column: 4 / 5;
+
+}
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-champion img {
+    /* aspect-ratio: 1 / 1; */
+    width: auto;
+    height: 100%;
+    border-radius: calc(var(--S) * 0.005);
+}
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-champion span {
+    position: absolute;
+    padding-right: 2%;
+    bottom: 0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    height: 45%;
+    border-radius: 50%;
+    font-size: calc(var(--S) * 0.018);
+    font-weight: 600;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player .match-player-basic .player-basic-champion span {
+    left: 0;
+    transform: translate(-25%, 25%);
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player .match-player-basic .player-basic-champion span {
+    right: 0;
+    transform: translate(25%, 25%);
+}
+
+
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-spells {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    grid-row: 1 / 2;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player .match-player-basic .player-basic-spells {
+    grid-column: 2 / 3;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player .match-player-basic .player-basic-spells {
+    grid-column: 3 / 4;
+}
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-spells img {
+    width: 100%;
+    border-radius: calc(var(--S) * 0.005);
+}
+
+
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-runes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    grid-row: 1 / 2;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player .match-player-basic .player-basic-runes {
+    align-items: flex-start;
+    grid-column: 3 / 4;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player .match-player-basic .player-basic-runes {
+    align-items: flex-end;
+    grid-column: 2 / 3;
+}
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-runes .player-runes {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+}
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-runes .player-runes[data-name="perk0"] img {
+    height: 100%;
+}
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-runes .player-runes[data-name="perkSubStyle"] img {
+    height: 60%;
+}
+
+
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    grid-row: 1 / 2;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player .match-player-basic .player-basic-other {
+    grid-column: 4 / 5;
+
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player .match-player-basic .player-basic-other {
+    grid-column: 1 / 2;
+}
+
+
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-build {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: min-content;
+}
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-build .player-build-item {
+    width: calc(var(--S) * 0.036);
+    height: calc(var(--S) * 0.036);
+    border-radius: calc(var(--S) * 0.005);
+    overflow: hidden;
+}
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-build .player-build-item img {
+    width: calc(var(--S) * 0.036);
+    height: calc(var(--S) * 0.036);
+}
+
+
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex: 1;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player .match-player-basic .player-basic-other .player-basic-info {
+    flex-direction: row;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player .match-player-basic .player-basic-other .player-basic-info {
+    flex-direction: row-reverse;
+}
+
+
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info .player-name,
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info .player-kda {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: calc(var(--S) * 0.02);
+    font-weight: 600;
+}
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info .player-name {
+    flex: 1;
+}
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info .player-name span {
+    max-width: calc(var(--S) * 0.125);
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player .match-player-basic .player-basic-other .player-basic-info .player-name {
+    justify-content: flex-start;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player .match-player-basic .player-basic-other .player-basic-info .player-name {
+    justify-content: flex-end;
+}
+
+
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info .player-kda {
+    max-width: calc(var(--S) * 0.11);
+    min-width: calc(var(--S) * 0.11);
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player .match-player-basic .player-basic-other .player-basic-info .player-kda {
+    right: 0;
+    justify-content: flex-end;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player .match-player-basic .player-basic-other .player-basic-info .player-kda {
+    left: 0;
+    justify-content: flex-start;
+}
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info .player-kda span:nth-child(1) {
+    margin-right: calc(var(--S) * 0.004);
+}
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info .player-kda span:nth-child(2) {
+    margin-left: calc(var(--S) * 0.004);
+    margin-right: calc(var(--S) * 0.004);
+}
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-other .player-basic-info .player-kda span:nth-child(3) {
+    margin-left: calc(var(--S) * 0.004);
+}
+
+
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-more {
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-transition: transform 0.2s;
+    transition: transform 0.2s;
+    grid-row: 2 / 3;
+    mask-size: calc(var(--S) * 0.03);
+    -webkit-mask-size: calc(var(--S) * 0.03);
+    mask-image: url("/ui/assets/media/actions/down2.png");
+    -webkit-mask-image: url("/ui/assets/media/actions/down2.png");
+}
+.app-body-block.lol-match-detail .match-player.active .match-player-basic .player-basic-more {
+    transform: rotate(180deg);
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player .match-player-basic .player-basic-more {
+    grid-column: 1 / 2;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player .match-player-basic .player-basic-more {
+    grid-column: 4 / 5;
+}
+
+
+.app-body-block.lol-match-detail .match-player .match-player-basic .player-basic-data {
+    display: flex;
+    align-items: center;
+    grid-row: 2 / 3;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player .match-player-basic .player-basic-data {
+    justify-content: flex-start;
+    grid-column: 2 / 5;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player .match-player-basic .player-basic-data {
+    justify-content: flex-end;
+    grid-column: 1 / 4;
+}
+.app-body-block.lol-match-detail .match-player-basic .player-basic-data .data-percentage-bar {
+    width: 100%;
+    height: calc(var(--S) * 0.014);
+    border-radius: calc(var(--S) * 0.007);
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player .match-player-basic .player-basic-data .data-percentage-bar {
+    justify-content: flex-start;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player .match-player-basic .player-basic-data .data-percentage-bar {
+    justify-content: flex-end;
+}
+.app-body-block.lol-match-detail .match-game-team .match-player .match-player-basic .player-basic-data .data-percentage-bar .percentage-bar-item {
+    border-radius: calc(var(--S) * 0.007);
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player .match-player-basic .player-basic-data .data-percentage-bar .percentage-bar-item {
+    --fill-color: var(--team-1-color) !important;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player .match-player-basic .player-basic-data .data-percentage-bar .percentage-bar-item {
+    --fill-color: var(--team-2-color) !important;
+}
+.app-body-block.lol-match-detail .match-player-basic .player-basic-data .data-percentage-bar .percentage-bar-item .data-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(-105%);
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="1"] .match-player-basic .player-basic-data .data-percentage-bar .percentage-bar-item .data-detail {
+    left: 0;
+}
+.app-body-block.lol-match-detail .match-game-team[data-team="2"] .match-player-basic .player-basic-data .data-percentage-bar .percentage-bar-item .data-detail {
+    right: 0;
+}
+.app-body-block.lol-match-detail .match-player-basic .player-basic-data .data-percentage-bar .percentage-bar-item .data-detail .detail-item {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    width: 100%;
+    height: calc(var(--S) * 0.025);
+    font-size: calc(var(--S) * 0.0175);
+}
+.app-body-block.lol-match-detail .match-player-basic .player-basic-data .data-percentage-bar .percentage-bar-item .data-detail .detail-item span {
+    display: block;
+    margin-left: calc(var(--S) * 0.01);
+    min-width: calc(var(--S) * 0.06);
+    flex: 1;
+    text-align: right;
+}
+
+
+
+.app-body-block.lol-match-detail .match-player .match-player-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+    border-top: calc(var(--S) * 0.0025) solid transparent;
+    padding: 0 calc(var(--S) * 0.01);
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding-right: calc(var(--S) * 0.0125);
+    flex: 1;
+    max-height: calc(var(--S) * 0.5);
+    overflow-y: scroll;
+    pointer-events: auto;
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .horizontal-stretched-border {
+    border-bottom: calc(var(--S) * 0.0025) solid transparent;
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: height;
+    width: 100%;
+    min-height: calc(var(--S) * 0.06);
+    padding: calc(var(--S) * 0.01) 0;
+    margin-bottom: calc(var(--S) * 0.0025);
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item img {
+    aspect-ratio: 1 / 1;
+    width: auto;
+    height: 100%;
+    min-height: calc(var(--S) * 0.04);
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item[data-name="summonerName"] {
+    font-size: calc(var(--S) * 0.022);
+    font-weight: 500;
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item[data-name="build"] .player-build-item {
+    border-radius: calc(var(--S) * 0.005);
+    width: calc(var(--S) * 0.04);
+    height: calc(var(--S) * 0.04);
+    overflow: hidden;
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item[data-name="build"] .player-build-item img {
+    width: calc(var(--S) * 0.04);
+    height: calc(var(--S) * 0.04);
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item[data-name="runes"] img {
+    position: relative;
+    height: calc(var(--S) * 0.04);
+    border-radius: 50%;
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item[data-name="runes"] img:nth-child(1) {
+    height: calc(var(--S) * 0.064);
+    border-radius: 50%;
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item[data-name="runes"] img:nth-child(2),
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item[data-name="runes"] img:nth-child(3),
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item[data-name="runes"] img:nth-child(4) {
+    left: calc(var(--S) * -0.015);
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item .stats-name,
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item .stats-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(var(--S) * 0.04);
+    border-radius: calc(var(--S) * 0.006);
+    font-size: calc(var(--S) * 0.018);
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item .stats-name {
+    width: calc(var(--S) * 0.16);
+    font-weight: 500;
+    letter-spacing: calc(var(--S) * 0.003);
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-stats .stats-item .stats-data {
+    width: calc(var(--S) * 0.135);
+    font-weight: 600;
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(var(--S) * 0.06);
+    padding: calc(var(--S) * 0.01) 0;
+}
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-actions .player-view,
+.app-body-block.lol-match-detail .match-player .match-player-stats .player-actions .player-report {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--S) * 0.16);
+    height: 100%;
+    border-radius: calc(var(--S) * 0.006);
+    font-weight: 500;
+    font-size: calc(var(--S) * 0.018);
+    letter-spacing: calc(var(--S) * 0.003);
+}

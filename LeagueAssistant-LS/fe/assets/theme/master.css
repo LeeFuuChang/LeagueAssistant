@@ -1,0 +1,275 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+:root {
+    --white-100: #f0f0f0;
+    --white-100-rgb: 240, 240, 240;
+    --white-200: #ebebeb;
+    --white-200-rgb: 235, 235, 235;
+    --white-300: #e6e6e6;
+    --white-300-rgb: 230, 230, 230;
+    --white-400: #e1e1e1;
+    --white-400-rgb: 225, 225, 225;
+    --white-500: #dcdcdc;
+    --white-500-rgb: 220, 220, 220;
+    --white-600: #d7d7d7;
+    --white-600-rgb: 215, 215, 215;
+    --white-700: #d2d2d2;
+    --white-700-rgb: 210, 210, 210;
+
+    --black-100: #1a1a1a;
+    --black-100-rgb: 26, 26, 26;
+    --black-200: #242424;
+    --black-200-rgb: 36, 36, 36;
+    --black-300: #2e2e2e;
+    --black-300-rgb: 46, 46, 46;
+    --black-400: #383838;
+    --black-400-rgb: 56, 56, 56;
+    --black-500: #424242;
+    --black-500-rgb: 66, 66, 66;
+    --black-600: #4c4c4c;
+    --black-600-rgb: 76, 76, 76;
+    --black-700: #565656;
+    --black-700-rgb: 86, 86, 86;
+
+    --gray-100: #626262;
+    --gray-100-rgb: 98, 98, 98;
+    --gray-200: #6c6c6c;
+    --gray-200-rgb: 108, 108, 108;
+    --gray-300: #767676;
+    --gray-300-rgb: 118, 118, 118;
+    --gray-400: #808080;
+    --gray-400-rgb: 128, 128, 128;
+    --gray-500: #8a8a8a;
+    --gray-500-rgb: 138, 138, 138;
+    --gray-600: #949494;
+    --gray-600-rgb: 148, 148, 148;
+    --gray-700: #9e9e9e;
+    --gray-700-rgb: 158, 158, 158;
+
+    --team-1-color: #E84057;
+    --team-2-color: #5383E8;
+
+    --color-w: #18BD9B;
+    --color-l: #E84057;
+
+    --challenger-core-color: #3fbfdd;
+    --challenger-core-color-r: 63;
+    --challenger-core-color-g: 191;
+    --challenger-core-color-b: 221;
+    --challenger-wing-color: #f4c874;
+    --challenger-wing-color-r: 244;
+    --challenger-wing-color-g: 200;
+    --challenger-wing-color-b: 116;
+
+    --grandmaster-core-color: #cd4545;
+    --grandmaster-core-color-r: 205;
+    --grandmaster-core-color-g: 69;
+    --grandmaster-core-color-b: 69;
+    --grandmaster-wing-color: #756572;
+    --grandmaster-wing-color-r: 117;
+    --grandmaster-wing-color-g: 101;
+    --grandmaster-wing-color-b: 114;
+
+    --master-core-color: #9d48e0;
+    --master-core-color-r: 157;
+    --master-core-color-g: 72;
+    --master-core-color-b: 224;
+    --master-wing-color: #a4584e;
+    --master-wing-color-r: 164;
+    --master-wing-color-g: 88;
+    --master-wing-color-b: 78;
+
+    --diamond-core-color: #8141eb;
+    --diamond-core-color-r: 129;
+    --diamond-core-color-g: 65;
+    --diamond-core-color-b: 235;
+    --diamond-wing-color: #8141eb;
+    --diamond-wing-color-r: 129;
+    --diamond-wing-color-g: 65;
+    --diamond-wing-color-b: 235;
+
+    --emerald-core-color: #149c3a;
+    --emerald-core-color-r: 20;
+    --emerald-core-color-g: 156;
+    --emerald-core-color-b: 58;
+    --emerald-wing-color: #149c3a;
+    --emerald-wing-color-r: 20;
+    --emerald-wing-color-g: 156;
+    --emerald-wing-color-b: 58;
+
+    --platinum-core-color: #25acd6;
+    --platinum-core-color-r: 37;
+    --platinum-core-color-g: 172;
+    --platinum-core-color-b: 214;
+    --platinum-wing-color: #25acd6;
+    --platinum-wing-color-r: 37;
+    --platinum-wing-color-g: 172;
+    --platinum-wing-color-b: 214;
+
+    --gold-core-color: #cd8837;
+    --gold-core-color-r: 205;
+    --gold-core-color-g: 136;
+    --gold-core-color-b: 55;
+    --gold-wing-color: #cd8837;
+    --gold-wing-color-r: 205;
+    --gold-wing-color-g: 136;
+    --gold-wing-color-b: 55;
+
+    --silver-core-color: #80989d;
+    --silver-core-color-r: 128;
+    --silver-core-color-g: 152;
+    --silver-core-color-b: 157;
+    --silver-wing-color: #80989d;
+    --silver-wing-color-r: 128;
+    --silver-wing-color-g: 152;
+    --silver-wing-color-b: 157;
+
+    --bronze-core-color: #8c513a;
+    --bronze-core-color-r: 140;
+    --bronze-core-color-g: 81;
+    --bronze-core-color-b: 58;
+    --bronze-wing-color: #8c513a;
+    --bronze-wing-color-r: 140;
+    --bronze-wing-color-g: 81;
+    --bronze-wing-color-b: 58;
+
+    --iron-core-color: #51484a;
+    --iron-core-color-r: 81;
+    --iron-core-color-g: 72;
+    --iron-core-color-b: 74;
+    --iron-wing-color: #51484a;
+    --iron-wing-color-r: 81;
+    --iron-wing-color-g: 72;
+    --iron-wing-color-b: 74;
+
+    --unranked-core-color: #6b6963;
+    --unranked-core-color-r: 107;
+    --unranked-core-color-g: 105;
+    --unranked-core-color-b: 99;
+    --unranked-wing-color: #6b6963;
+    --unranked-wing-color-r: 107;
+    --unranked-wing-color-g: 105;
+    --unranked-wing-color-b: 99;
+}
+
+*[data-rank="challenger"],
+*[data-rank="CHALLENGER"] {
+    --rank-core-color: var(--challenger-core-color);
+    --rank-core-color-r: var(--challenger-core-color-r);
+    --rank-core-color-g: var(--challenger-core-color-g);
+    --rank-core-color-b: var(--challenger-core-color-b);
+    --rank-wing-color: var(--challenger-wing-color);
+    --rank-wing-color-r: var(--challenger-wing-color-r);
+    --rank-wing-color-g: var(--challenger-wing-color-g);
+    --rank-wing-color-b: var(--challenger-wing-color-b);
+}
+*[data-rank="grandmaster"],
+*[data-rank="GRANDMASTER"] {
+    --rank-core-color: var(--grandmaster-core-color);
+    --rank-core-color-r: var(--grandmaster-core-color-r);
+    --rank-core-color-g: var(--grandmaster-core-color-g);
+    --rank-core-color-b: var(--grandmaster-core-color-b);
+    --rank-wing-color: var(--grandmaster-wing-color);
+    --rank-wing-color-r: var(--grandmaster-wing-color-r);
+    --rank-wing-color-g: var(--grandmaster-wing-color-g);
+    --rank-wing-color-b: var(--grandmaster-wing-color-b);
+}
+*[data-rank="master"],
+*[data-rank="MASTER"] {
+    --rank-core-color: var(--master-core-color);
+    --rank-core-color-r: var(--master-core-color-r);
+    --rank-core-color-g: var(--master-core-color-g);
+    --rank-core-color-b: var(--master-core-color-b);
+    --rank-wing-color: var(--master-wing-color);
+    --rank-wing-color-r: var(--master-wing-color-r);
+    --rank-wing-color-g: var(--master-wing-color-g);
+    --rank-wing-color-b: var(--master-wing-color-b);
+}
+*[data-rank="diamond"],
+*[data-rank="DIAMOND"] {
+    --rank-core-color: var(--diamond-core-color);
+    --rank-core-color-r: var(--diamond-core-color-r);
+    --rank-core-color-g: var(--diamond-core-color-g);
+    --rank-core-color-b: var(--diamond-core-color-b);
+    --rank-wing-color: var(--diamond-wing-color);
+    --rank-wing-color-r: var(--diamond-wing-color-r);
+    --rank-wing-color-g: var(--diamond-wing-color-g);
+    --rank-wing-color-b: var(--diamond-wing-color-b);
+}
+*[data-rank="emerald"],
+*[data-rank="EMERALD"] {
+    --rank-core-color: var(--emerald-core-color);
+    --rank-core-color-r: var(--emerald-core-color-r);
+    --rank-core-color-g: var(--emerald-core-color-g);
+    --rank-core-color-b: var(--emerald-core-color-b);
+    --rank-wing-color: var(--emerald-wing-color);
+    --rank-wing-color-r: var(--emerald-wing-color-r);
+    --rank-wing-color-g: var(--emerald-wing-color-g);
+    --rank-wing-color-b: var(--emerald-wing-color-b);
+}
+*[data-rank="platinum"],
+*[data-rank="PLATINUM"] {
+    --rank-core-color: var(--platinum-core-color);
+    --rank-core-color-r: var(--platinum-core-color-r);
+    --rank-core-color-g: var(--platinum-core-color-g);
+    --rank-core-color-b: var(--platinum-core-color-b);
+    --rank-wing-color: var(--platinum-wing-color);
+    --rank-wing-color-r: var(--platinum-wing-color-r);
+    --rank-wing-color-g: var(--platinum-wing-color-g);
+    --rank-wing-color-b: var(--platinum-wing-color-b);
+}
+*[data-rank="gold"],
+*[data-rank="GOLD"] {
+    --rank-core-color: var(--gold-core-color);
+    --rank-core-color-r: var(--gold-core-color-r);
+    --rank-core-color-g: var(--gold-core-color-g);
+    --rank-core-color-b: var(--gold-core-color-b);
+    --rank-wing-color: var(--gold-wing-color);
+    --rank-wing-color-r: var(--gold-wing-color-r);
+    --rank-wing-color-g: var(--gold-wing-color-g);
+    --rank-wing-color-b: var(--gold-wing-color-b);
+}
+*[data-rank="silver"],
+*[data-rank="SILVER"] {
+    --rank-core-color: var(--silver-core-color);
+    --rank-core-color-r: var(--silver-core-color-r);
+    --rank-core-color-g: var(--silver-core-color-g);
+    --rank-core-color-b: var(--silver-core-color-b);
+    --rank-wing-color: var(--silver-wing-color);
+    --rank-wing-color-r: var(--silver-wing-color-r);
+    --rank-wing-color-g: var(--silver-wing-color-g);
+    --rank-wing-color-b: var(--silver-wing-color-b);
+}
+*[data-rank="bronze"],
+*[data-rank="BRONZE"] {
+    --rank-core-color: var(--bronze-core-color);
+    --rank-core-color-r: var(--bronze-core-color-r);
+    --rank-core-color-g: var(--bronze-core-color-g);
+    --rank-core-color-b: var(--bronze-core-color-b);
+    --rank-wing-color: var(--bronze-wing-color);
+    --rank-wing-color-r: var(--bronze-wing-color-r);
+    --rank-wing-color-g: var(--bronze-wing-color-g);
+    --rank-wing-color-b: var(--bronze-wing-color-b);
+}
+*[data-rank="iron"],
+*[data-rank="IRON"] {
+    --rank-core-color: var(--iron-core-color);
+    --rank-core-color-r: var(--iron-core-color-r);
+    --rank-core-color-g: var(--iron-core-color-g);
+    --rank-core-color-b: var(--iron-core-color-b);
+    --rank-wing-color: var(--iron-wing-color);
+    --rank-wing-color-r: var(--iron-wing-color-r);
+    --rank-wing-color-g: var(--iron-wing-color-g);
+    --rank-wing-color-b: var(--iron-wing-color-b);
+}
+*[data-rank="unranked"] {
+    --rank-core-color: var(--unranked-core-color);
+    --rank-core-color-r: var(--unranked-core-color-r);
+    --rank-core-color-g: var(--unranked-core-color-g);
+    --rank-core-color-b: var(--unranked-core-color-b);
+    --rank-wing-color: var(--unranked-wing-color);
+    --rank-wing-color-r: var(--unranked-wing-color-r);
+    --rank-wing-color-g: var(--unranked-wing-color-g);
+    --rank-wing-color-b: var(--unranked-wing-color-b);
+}

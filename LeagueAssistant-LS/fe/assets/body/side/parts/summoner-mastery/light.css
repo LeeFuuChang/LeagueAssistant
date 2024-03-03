@@ -1,0 +1,3 @@
+#app[theme="light"] .body-side-block.summoner-mastery .mastery-champion-detail .mastery-champion-points {
+    color: var(--black-200) !important;
+}

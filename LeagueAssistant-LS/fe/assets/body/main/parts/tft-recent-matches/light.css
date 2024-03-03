@@ -1,0 +1,25 @@
+#app[theme="light"] .app-body-block.tft-recent-matches .recent-matches-item[win="1"] {
+    background-color: #ECF2FF !important;
+    border-left-color: #5383E8 !important;
+}
+#app[theme="light"] .app-body-block.tft-recent-matches .recent-matches-item[win="0"] {
+    background-color: #FFF1F3 !important;
+    border-left-color: #E84057 !important;
+}
+#app[theme="light"] .app-body-block.tft-recent-matches .recent-matches-item .game-champion span {
+    color: var(--white-300) !important;
+    background-color: var(--black-500) !important;
+}
+#app[theme="light"] .app-body-block.tft-recent-matches .recent-matches-item .game-detail .detail-kda {
+    color: #9AA4AF !important;
+}
+#app[theme="light"] .app-body-block.tft-recent-matches .recent-matches-item .game-detail .detail-kda .detail-kda-k,
+#app[theme="light"] .app-body-block.tft-recent-matches .recent-matches-item .game-detail .detail-kda .detail-kda-a {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] .app-body-block.tft-recent-matches .recent-matches-item .game-detail .detail-kda .detail-kda-d {
+    color: #D31A45 !important;
+}
+#app[theme="light"] .app-body-block.tft-recent-matches .recent-matches-item .stats-item span {
+    color: var(--black-200) !important;
+}

@@ -1,0 +1,11 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.circle-progress {
+    --progress-start: 0deg;
+    --progress: 45deg;
+    border-radius: 50%;
+    background: 
+    radial-gradient(closest-side, var(--foreground) 80%, transparent 80% 100%),
+    conic-gradient(from var(--progress-start), var(--progress-color) var(--progress), var(--background) 0);
+}

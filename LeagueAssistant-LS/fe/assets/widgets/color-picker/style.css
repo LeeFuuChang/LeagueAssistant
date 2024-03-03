@@ -1,0 +1,21 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.color-picker[type="color"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: var(--picker-width);
+    height: var(--picker-height);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.color-picker[type="color"]::-webkit-color-swatch {
+    -webkit-appearance: none;
+    width: calc(var(--picker-height) * 0.6);
+    height: calc(var(--picker-height) * 0.6);
+    border-radius: calc(var(--picker-height) * 0.3);
+    cursor: pointer;
+    border-width: calc(var(--slider-height) * 0.1);
+    border-style: solid;
+}

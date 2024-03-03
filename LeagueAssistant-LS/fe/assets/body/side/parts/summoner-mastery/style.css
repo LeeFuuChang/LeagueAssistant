@@ -1,0 +1,56 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.body-side-block.summoner-mastery {
+    height: max-content;
+}
+.body-side-block.summoner-mastery .mastery-inner {
+    height: calc(var(--S) * 0.08);
+    min-height: calc(var(--S) * 0.08);
+    max-height: calc(var(--S) * 0.08);
+}
+.body-side-block.summoner-mastery .mastery-champion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 100%;
+}
+.body-side-block.summoner-mastery .mastery-champion-icon {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto calc(var(--S) * 0.01);
+    padding: calc(var(--S) * 0.01);
+    width: auto;
+    height: 100%;
+}
+.body-side-block.summoner-mastery .mastery-champion-icon img {
+    aspect-ratio: 1 / 1;
+    pointer-events: auto;
+    width: auto;
+    height: 100%;
+    border-radius: 50%;
+}
+.body-side-block.summoner-mastery .mastery-champion-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: calc(var(--S) * 0.01);
+    border-radius: 10% / 50%;
+}
+.body-side-block.summoner-mastery .mastery-champion-detail img {
+    width: auto;
+    flex: 1;
+}
+.body-side-block.summoner-mastery .mastery-champion-detail span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(var(--S) * 0.02);
+    font-size: calc(var(--S) * 0.016);
+    font-weight: 600;
+}

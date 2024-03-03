@@ -1,0 +1,44 @@
+#app[theme="dark"] {
+    background-color: var(--black-100) !important;
+}
+#app[theme="dark"] .app-control-button {
+    background-color: #cdbe91 !important;
+}
+#app[theme="dark"] .app-control-button:hover {
+    background-color: var(--white-100) !important;
+}
+#app[theme="dark"] .app-control-button.disabled {
+    background-color: #876e0f !important;
+}
+#app[theme="dark"] .action-button {
+    background-color: #cdbe91 !important;
+}
+#app[theme="dark"] .action-button:hover {
+    background-color: var(--white-100) !important;
+}
+#app[theme="dark"] .action-button.disabled {
+    background-color: #876e0f !important;
+}
+
+#app[theme="dark"] .app-body-block,
+#app[theme="dark"] .body-sub-block,
+#app[theme="dark"] .app-overlay-block {
+    color: var(--white-100) !important;
+    background-color: var(--black-200) !important;
+}
+#app[theme="dark"] .app-body-block .block-title,
+#app[theme="dark"] .body-sub-block .block-title,
+#app[theme="dark"] .app-overlay-block .block-title {
+    color: #f0e6d2 !important;
+}
+#app[theme="dark"] .app-body-block .body-sub-block,
+#app[theme="dark"] .app-overlay-block {
+    background-color: var(--black-300) !important;
+}
+
+#app[theme="dark"] .vertical-stretched-border {
+    border-image-source: linear-gradient(to bottom, transparent 0%, #ddd 50%, transparent 100%) !important;
+}
+#app[theme="dark"] .horizontal-stretched-border {
+    border-image-source: linear-gradient(to right, transparent 0%, #ddd 50%, transparent 100%) !important;
+}

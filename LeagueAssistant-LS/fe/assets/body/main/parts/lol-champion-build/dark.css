@@ -1,0 +1,59 @@
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-banner .champion-icon img {
+    background-color: var(--black-700) !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-banner .champion-info {
+    border-bottom-color: #007566 !important;
+    background-color: var(--black-700) !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-banner .champion-info .champion-name {
+    color: #F0E6D2 !important;
+    text-shadow: 0 0 calc(var(--S) * 0.04) #F0E6D2 !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-banner .champion-info .navigation .nav-item {
+    background-color: #589A8D !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-banner .champion-info .navigation .nav-item:hover {
+    background-color: #8FC1B5 !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-banner .champion-info .navigation .nav-item.active {
+    background-color: #007566 !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-banner .champion-info .navigation .nav-item .name {
+    color: #F0E6D2 !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build>.cell .title {
+    color: #F0E6D2 !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build>.cell .icon-container .icon,
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build>.cell .other-champion .icon {
+    background-color: var(--black-700) !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build>.cell .other-champion .stat .winrate {
+    color: #f0e6d2 !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build>.cell .other-champion .stat .games {
+    color: #cdbe91 !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build .champion-runes .container .row[data-step="statsmod"] {
+    background-color: var(--black-100) !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build .champion-skill .container .column .skill {
+    background-color: var(--black-700) !important;
+    color: var(--black-700) !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build .champion-skill .container .column[data-level="0"] .skill {
+    color: var(--gray-700) !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build .champion-skill .container .column[data-skill="Q"] .skill[data-skill="Q"],
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build .champion-skill .container .column[data-skill="W"] .skill[data-skill="W"],
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build .champion-skill .container .column[data-skill="E"] .skill[data-skill="E"],
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build .champion-skill .container .column[data-skill="R"] .skill[data-skill="R"] {
+    color: #F0E6D2 !important;
+    background-color: #007566 !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build .champion-match .match-group[data-difficulty="easy"] .other-champion .stat .winrate {
+    color: #5383E8 !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-build>.block-inner .champion-build .champion-match .match-group[data-difficulty="hard"] .other-champion .stat .winrate {
+    color: #E84057 !important;
+}

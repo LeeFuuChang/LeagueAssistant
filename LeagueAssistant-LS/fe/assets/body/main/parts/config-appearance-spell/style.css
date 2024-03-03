@@ -1,0 +1,103 @@
+@import url("./dark.css");
+@import url("./light.css");
+@import url("../../type-styles/config/style.css");
+
+.app-body-block.config-appearance-spell .config-group[data-name="preview"] {
+    flex: 1;
+}
+.app-body-block.config-appearance-spell .config-group[data-name="preview"] .group-inner {
+    align-items: center;
+    justify-content: center;
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"] {
+    --scale: 1;
+    --default-size: calc(var(--S) * 0.065);
+    --background-color: var(--gray-700);
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"] .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-color);
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"] .item .spells {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"] .item .spells .spell {
+    width: calc(var(--default-size) * 0.5);
+    height: calc(var(--default-size) * 0.5);
+    position: relative;
+    overflow: hidden;
+    border-radius: calc(var(--default-size) * 0.05);
+    border: calc(var(--default-size) * 0.03) solid transparent;
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"] .item .spells .spell .icon {
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"] .item .spells .spell.cd::before {
+    content: "142";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(var(--default-size) * 0.2);
+    width: 100%;
+    height: 100%;
+    color: var(--counter-color, rgba(255, 255, 255, 1));
+    background-color: var(--notify-color, rgba(0, 0, 0, 0.5));
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"] .item .champion {
+    width: var(--default-size);
+    height: var(--default-size);
+    border-radius: calc(var(--default-size) * 0.1);
+    border: calc(var(--default-size) * 0.03) solid transparent;
+}
+
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-u"],
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-d"] {
+    flex-direction: row;
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-u"] .item,
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-d"] .item {
+    width: var(--default-size);
+    height: calc(var(--default-size) * 1.5);
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-u"] .item {
+    flex-direction: column;
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-d"] .item {
+    flex-direction: column-reverse;
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-u"] .item .spells,
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-d"] .item .spells {
+    flex-direction: row;
+    width: var(--default-size);
+    height: calc(var(--default-size) * 0.5);
+}
+
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-l"],
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-r"] {
+    flex-direction: column;
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-l"] .item,
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-r"] .item {
+    width: calc(var(--default-size) * 1.5);
+    height: var(--default-size);
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-l"] .item {
+    flex-direction: row;
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-r"] .item {
+    flex-direction: row-reverse;
+}
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-l"] .item .spells,
+.app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"][data-type="format-r"] .item .spells {
+    flex-direction: column;
+    width: calc(var(--default-size) * 0.5);
+    height: var(--default-size);
+}

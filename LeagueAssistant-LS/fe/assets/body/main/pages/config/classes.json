@@ -1,0 +1,13 @@
+[
+    "assets/body/main/pages/config/class.js",
+    "assets/body/main/parts/lol-champion-list/class.js",
+    "assets/body/main/parts/select-rune-page/class.js",
+    "assets/body/main/parts/summoner-spell-list/class.js",
+    "assets/body/main/parts/config-description/class.js",
+
+    "assets/body/main/parts/config-settings-game/class.js",
+    "assets/body/main/parts/config-settings-stats/class.js",
+    "assets/body/main/parts/config-settings-spell/class.js",
+
+    "assets/body/main/parts/config-appearance-spell/class.js"
+]

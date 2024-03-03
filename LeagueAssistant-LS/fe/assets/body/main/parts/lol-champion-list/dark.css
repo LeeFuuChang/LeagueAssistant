@@ -1,0 +1,13 @@
+#app[theme="dark"] .app-body-block.lol-champion-list .champion-list-filter .filter-by-text {
+    border-color: #cdbe91 !important;
+    background-color: var(--black-200) !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-list .champion-list-filter .filter-by-text .mask {
+    background-color: #cdbe91 !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-list .champion-list-filter .filter-by-text input {
+    color: var(--white-100) !important;
+}
+#app[theme="dark"] .app-body-block.lol-champion-list .champion-container .champion-wrapper .champion span {
+    color: var(--white-100) !important;
+}

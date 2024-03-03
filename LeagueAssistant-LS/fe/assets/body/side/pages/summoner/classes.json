@@ -1,0 +1,8 @@
+[
+    "assets/body/side/parts/summoner-basic/class.js",
+    "assets/body/side/parts/summoner-position-preference/class.js",
+    "assets/body/side/parts/summoner-rank/class.js",
+    "assets/body/side/parts/summoner-mastery/class.js",
+    "assets/body/side/parts/summoner-recent-champion/class.js",
+    "assets/body/side/pages/summoner/class.js"
+]

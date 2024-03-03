@@ -1,0 +1,4158 @@
+{
+    "AgentResourceEvent": {
+        "fields": [
+            {
+                "uri": {
+                    "description": "",
+                    "offset": 0,
+                    "optional": false,
+                    "type": "string"
+                }
+            },
+            {
+                "eventType": {
+                    "description": "",
+                    "offset": 24,
+                    "optional": false,
+                    "type": {
+                        "AgentResourceEventType": {
+                            "values": [
+                                {
+                                    "name": "Create",
+                                    "value": 0
+                                },
+                                {
+                                    "name": "Update",
+                                    "value": 1
+                                },
+                                {
+                                    "name": "Delete",
+                                    "value": 2
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            {
+                "data": {
+                    "description": "",
+                    "offset": 32,
+                    "optional": false,
+                    "type": "object"
+                }
+            }
+        ]
+    },
+    "OnClientFlash": {
+        "description": "Fired when we need to flash riot client",
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnClientFocus": {
+        "description": "Fired when we need focus on mac riot client",
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnClientMinimize": {
+        "description": "Fired when we need to minimize riot client",
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent": {
+        "description": "Fired when a resource is changed.",
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_agent_v1_requests": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_agent_v1_session": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_chat_v1_session": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_chat_v1_settings": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_chat_v3_blocked": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_chat_v3_errors": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_chat_v3_friends": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_chat_v3_groups": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_chat_v4_friendrequests": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_chat_v4_presences": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_chat_v5_messages": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_chat_v5_participants": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_chat_v6_conversations": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_client-config_v1_status": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_client-config_v2_config": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_client-config_v2_namespace": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_entitlements_v1_token": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_external-message-handler_v1_patch-request": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_ga-restriction_v1_penalty-notifications": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_patch-proxy_v1_active-updates": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_patch-proxy_v1_patch-states": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_player-reporting_v1_reporter-feedback": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_plugin-manager_v1_status": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_process-control_v1_process": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_product-launcher_v1_launching_from_xbgp": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_product-metadata_v2_products": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_product-session_v1_external-sessions": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_publishing-content_v1_news-feed": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_publishing-content_v1_promo": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rc-auth_v1_xbgp": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_restriction_v1_launchRestrictedProducts": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_restriction_v1_launchRestrictions": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_restriction_v1_ready": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_riot-client-app-command_v1_uri-handler": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_riot-client-lifecycle-state_v1_state": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_riot-client-lifecycle_v1_league-region-election": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_riot-client-lifecycle_v1_product-context": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_riot-client-lifecycle_v1_ux-command": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_riot-messaging-service_v1_message": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_riot-messaging-service_v1_out-of-sync": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_riot-messaging-service_v1_session": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_riot-messaging-service_v1_state": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_riot-messaging-service_v1_user": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_riotclient_affinity": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_riotclient_zoom-scale": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_riotclientapp_v1_new-args": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-lifecycle_v1_league-region-election": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-lifecycle_v1_product-context": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-lifecycle_v1_product-context-phase": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-lifecycle_v2_ux-command": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-pft_v1_surveys": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-product-registry_v1_background-patching": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-product-registry_v1_install-states": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-product-registry_v1_move-install-states": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-product-registry_v4_active-updates": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-product-registry_v4_available-product-locales": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-product-registry_v4_install-settings": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-product-registry_v4_patch-states": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-product-registry_v4_player-products-state": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-product-registry_v4_priority-patch-requests": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-product-registry_v4_products": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-product-registry_v4_public-products-state": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rnet-self-update_v1_status": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rso-auth_configuration_v3": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rso-auth_v1_auth-hints": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rso-auth_v1_session": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_rso-auth_v2_authorizations": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_scd_v1_cookies": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_startup-config_v1_registry-config": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_vanguard_v1_status": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_voice-chat_v1_audio-properties": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_voice-chat_v2_devices": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_voice-chat_v2_state": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_voice-chat_v3_sessions": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnJsonApiEvent_voice-chat_v3_settings": {
+        "type": {
+            "PluginResourceEvent": {
+                "fields": [
+                    {
+                        "uri": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "eventType": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": {
+                                "PluginResourceEventType": {
+                                    "values": [
+                                        {
+                                            "name": "Create",
+                                            "value": 0
+                                        },
+                                        {
+                                            "name": "Update",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "Delete",
+                                            "value": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "data": {
+                            "description": "",
+                            "offset": 32,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnLcdsEvent": {
+        "description": "Fired when a message is received over the LCDS connection.",
+        "type": {
+            "PluginLcdsEvent": {
+                "fields": [
+                    {
+                        "clientId": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "subtopic": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "typeName": {
+                            "description": "",
+                            "offset": 48,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "body": {
+                            "description": "",
+                            "offset": 72,
+                            "optional": false,
+                            "type": "object"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnRegionLocaleChanged": {
+        "type": {
+            "PluginRegionLocaleChangedEvent": {
+                "fields": [
+                    {
+                        "region": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "locale": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnServiceProxyAsyncEvent": {
+        "description": "Fired when an async service proxy message is received.",
+        "type": {
+            "PluginServiceProxyResponse": {
+                "fields": [
+                    {
+                        "uuid": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "serviceName": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "methodName": {
+                            "description": "",
+                            "offset": 48,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "payload": {
+                            "description": "",
+                            "offset": 72,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "status": {
+                            "description": "",
+                            "offset": 96,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "error": {
+                            "description": "",
+                            "offset": 120,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnServiceProxyMethodEvent": {
+        "description": "Fired when a method-based service proxy message is received.",
+        "type": {
+            "PluginServiceProxyResponse": {
+                "fields": [
+                    {
+                        "uuid": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "serviceName": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "methodName": {
+                            "description": "",
+                            "offset": 48,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "payload": {
+                            "description": "",
+                            "offset": 72,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "status": {
+                            "description": "",
+                            "offset": 96,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "error": {
+                            "description": "",
+                            "offset": 120,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "OnServiceProxyUuidEvent": {
+        "description": "Fired when a uuid-based service proxy message is received.",
+        "type": {
+            "PluginServiceProxyResponse": {
+                "fields": [
+                    {
+                        "uuid": {
+                            "description": "",
+                            "offset": 0,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "serviceName": {
+                            "description": "",
+                            "offset": 24,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "methodName": {
+                            "description": "",
+                            "offset": 48,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "payload": {
+                            "description": "",
+                            "offset": 72,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "status": {
+                            "description": "",
+                            "offset": 96,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "error": {
+                            "description": "",
+                            "offset": 120,
+                            "optional": false,
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

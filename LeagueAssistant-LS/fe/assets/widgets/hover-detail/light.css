@@ -1,0 +1,3 @@
+#app[theme="light"] .hover-detail-parent {
+    --hover-detail-background-color: var(--white-100);
+}

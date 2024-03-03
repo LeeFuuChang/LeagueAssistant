@@ -1,0 +1,49 @@
+#app[theme="light"] .app-body-block.lol-recent-matches .matches-options .options-result .option-result-item[data-hide-result="2"] {
+    background-color: var(--gray-400) !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .matches-options .options-result .option-result-item[data-hide-result="2"] .mask {
+    background-color: var(--white-100) !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .matches-options .options-result .option-result-item[data-hide-result="0"] {
+    background-color: #5383E8 !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .matches-options .options-result .option-result-item[data-hide-result="0"] .mask {
+    background-color: var(--white-100) !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .matches-options .options-result .option-result-item[data-hide-result="1"] {
+    background-color: #E84057 !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .matches-options .options-result .option-result-item[data-hide-result="1"] .mask {
+    background-color: var(--white-100) !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .matches-container .matches-wrapper .recent-matches-item[win="1"] {
+    background-color: #ECF2FF !important;
+    border-left-color: #5383E8 !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .matches-container .matches-wrapper .recent-matches-item[win="0"] {
+    background-color: #FFF1F3 !important;
+    border-left-color: #E84057 !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .recent-matches-item .champion span {
+    color: var(--white-300) !important;
+    background-color: var(--black-500) !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .recent-matches-item .detail .detail-kda {
+    color: #9AA4AF !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .recent-matches-item .detail .detail-kda .detail-kda-k,
+#app[theme="light"] .app-body-block.lol-recent-matches .recent-matches-item .detail .detail-kda .detail-kda-a {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .recent-matches-item .detail .detail-kda .detail-kda-d {
+    color: #D31A45 !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .recent-matches-item .detail .detail-queue {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .recent-matches-item .stats-item .mask {
+    background-color: var(--black-700) !important;
+}
+#app[theme="light"] .app-body-block.lol-recent-matches .recent-matches-item .stats-item span {
+    color: var(--black-200) !important;
+}

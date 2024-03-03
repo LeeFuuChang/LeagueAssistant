@@ -1,0 +1,40 @@
+@import url("./dark.css");
+@import url("./light.css");
+@import url("../../type-styles/tft/style.css");
+
+.app-body-block.tft-comp-tiers>.block-inner {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    padding: 0 calc(var(--S) * 0.01);
+}
+.app-body-block.tft-comp-tiers>.block-inner .tier-list-options {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(var(--S) * 0.05);
+    margin-bottom: calc(var(--S) * 0.01);
+}
+.app-body-block.tft-comp-tiers .tier-list-options .list-options-group {
+    position: relative;
+    display: flex;
+    width: auto;
+    height: 100%;
+    font-size: calc(var(--S) * 0.02);
+}
+.app-body-block.tft-comp-tiers .tier-list-options .list-options-group .option {
+    margin-right: calc(var(--S) * 0.01);
+}
+.app-body-block.tft-comp-tiers .tier-list-options .options-rank {
+    width: calc(var(--S) * 0.16);
+}
+.app-body-block.tft-comp-tiers .tier-list-options .options-tier {
+    width: calc(var(--S) * 0.16);
+}
+.app-body-block.tft-comp-tiers>.block-inner .tier-list {
+    width: 100%;
+    flex: 1;
+}

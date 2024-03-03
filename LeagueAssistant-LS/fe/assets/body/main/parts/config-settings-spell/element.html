@@ -1,0 +1,279 @@
+<section class="body-part-container body-part-size-2" data-id="" data-type="settings" data-name="spell" style="display:none">
+    <link rel="stylesheet" href="assets/body/main/parts/config-settings-spell/style.css">
+    <div class="app-body-block body-main-block config-settings-spell">
+        <div class="block-title horizontal-stretched-border">
+            <h1 class="block-title-text">技能助手</h1>
+        </div>
+        <ul class="block-inner config-inner y-scrollable">
+            <li class="body-sub-block config-group" data-name="overall">
+                <div class="block-title horizontal-stretched-border">
+                    <h2 class="block-title-text">技能助手設定</h2>
+                </div>
+                <div class="block-inner group-inner overall-inner">
+                    <div class="config-item" data-name="options">
+                        <h3 class="item-name">助手選項</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="switch">
+                                    <input tabindex="-1" class="switch" type="checkbox">
+                                    <h4 class="text">啟用助手</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="lane-nickname" data-pair-name="lane-nickname">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="nickname-set">
+                                    <h4 class="text">以路線作為稱號</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="number-nickname" data-pair-name="number-nickname">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="nickname-set">
+                                    <h4 class="text">以編號作為稱號</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="custom-nickname" data-pair-name="custom-nickname">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="nickname-set">
+                                    <h4 class="text">自訂稱號</h4>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">技能助手設定－助手選項</h1>
+                            <div class="option">
+                                <h2 class="name">啟用助手</h2>
+                                <p class="detail">如果開啟，在進入遊戲後會自動開啟技能助手</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">以路線作為稱號</h2>
+                                <p class="detail">由左至右對應遊戲內記分板由上到下</p>
+                                <p class="detail">分別為：TOP、JG、MID、AD、SUP</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">以編號作為稱號</h2>
+                                <p class="detail">由左至右對應遊戲內記分板由上到下</p>
+                                <p class="detail">分別為：P1、P2、P3、P4、P5</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">自訂稱號</h2>
+                                <p class="detail">由左至右對應遊戲內記分板由上到下</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="nickname">
+                        <h3 class="item-name">敵方稱號</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="player1" data-group="spell-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                                <label class="option hover-pointer" data-name="player2" data-group="spell-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                                <label class="option hover-pointer" data-name="player3" data-group="spell-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                                <label class="option hover-pointer" data-name="player4" data-group="spell-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                                <label class="option hover-pointer" data-name="player5" data-group="spell-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">技能助手設定－敵方稱號</h1>
+                            <p class="block">由左至右對應遊戲內記分板由上到下</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="body-sub-block config-group" data-name="send">
+                <div class="block-title horizontal-stretched-border">
+                    <h2 class="block-title-text">技能發送設定</h2>
+                </div>
+                <div class="block-inner group-inner send-inner">
+                    <div class="config-item" data-name="options">
+                        <h3 class="item-name">發送選項</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="champion-name">
+                                    <input tabindex="-1" class="checkbox" type="checkbox" name="select-send-order">
+                                    <h4 class="text">用英雄名稱代替稱號</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="only-incooldown">
+                                    <input tabindex="-1" class="checkbox" type="checkbox" name="select-send-order">
+                                    <h4 class="text">只發送冷卻中的技能</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="only-flash">
+                                    <input tabindex="-1" class="checkbox" type="checkbox" name="select-send-order">
+                                    <h4 class="text">只發送閃現冷卻時間</h4>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">技能發送設定－發送選項</h1>
+                            <div class="option">
+                                <h2 class="name">用英雄名稱代替稱號</h2>
+                                <p class="detail">將敵方稱號替換為該玩家所使用的英雄名稱</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">只發送冷卻中的技能</h2>
+                                <p class="detail">只發送冷卻中的召喚師技能冷卻時間</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">只發送閃現冷卻時間</h2>
+                                <p class="detail">只發送「閃現」召喚師技能冷卻時間</p>
+                                <p class="detail">如果該玩家並無「閃現」則完全不會發送冷卻</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="format">
+                        <h3 class="item-name">發送格式</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="cooldown-s">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="format-type">
+                                    <h4 class="text">剩餘冷卻 (秒)</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="cooldown-m">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="format-type">
+                                    <h4 class="text">剩餘冷卻 (分)</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="game-time">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="format-type">
+                                    <h4 class="text">冷卻轉好的遊戲時間</h4>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">技能發送設定－發送格式</h1>
+                            <p class="block">選擇發送技能冷卻時，冷卻時間的發送格式</p>
+                            <div class="option">
+                                <h2 class="name">剩餘冷卻 (秒)</h2>
+                                <p class="detail">發送剩餘的冷卻時間，以秒為最大單位</p>
+                                <p class="detail">例如：「123s （123秒）」</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">剩餘冷卻 (分)</h2>
+                                <p class="detail">發送剩餘的冷卻時間，以分為最大單位</p>
+                                <p class="detail">例如：「3m04s （3分04秒）」</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">冷卻轉好的遊戲時間</h2>
+                                <p class="detail">發送冷卻轉好時的遊戲時間</p>
+                                <p class="detail">例如：「0832 （8分32秒）」</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="nickname">
+                        <h3 class="item-name">技能稱號</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="tw">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="spell-name-type">
+                                    <h4 class="text">召喚師技能名稱 (中)</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="en">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="spell-name-type">
+                                    <h4 class="text">召喚師技能名稱 (英)</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="key">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="spell-name-type">
+                                    <h4 class="text">召喚師技能熱鍵名稱</h4>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">技能發送設定－技能稱號</h1>
+                            <p class="block">選擇發送技能冷卻時，召喚師技能的稱號</p>
+                            <div class="option">
+                                <h2 class="name">召喚師技能名稱 (中)</h2>
+                                <p class="detail">例如：「閃現」</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">召喚師技能名稱 (英)</h2>
+                                <p class="detail">例如：「Flash」</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">召喚師技能熱鍵名稱</h2>
+                                <p class="detail">例如：「D」、「F」</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="body-sub-block config-group" data-name="preview">
+                <div class="block-title horizontal-stretched-border">
+                    <h2 class="block-title-text">技能發送預覽</h2>
+                </div>
+                <div class="block-inner group-inner preview-inner">
+                    <div class="config-item" data-name="player1">
+                        <h3 class="item-name">敵方玩家 1</h3>
+                        <div class="options-container">
+                            <form class="item-options" readonly>
+                                <label class="option hover-pointer" data-name="message" style="width:100%">
+                                    <input tabindex="-1" class="text-preview" type="text" readonly>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">技能發送預覽－敵方玩家 1</h1>
+                            <p class="block">發送「敵方玩家 1」的召喚師技能冷卻時會發送出去的訊息預覽</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="player2">
+                        <h3 class="item-name">敵方玩家 2</h3>
+                        <div class="options-container">
+                            <form class="item-options" readonly>
+                                <label class="option hover-pointer" data-name="message" style="width:100%">
+                                    <input tabindex="-1" class="text-preview" type="text" readonly>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">技能發送預覽－敵方玩家 2</h1>
+                            <p class="block">發送「敵方玩家 2」的召喚師技能冷卻時會發送出去的訊息預覽</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="player3">
+                        <h3 class="item-name">敵方玩家 3</h3>
+                        <div class="options-container">
+                            <form class="item-options" readonly>
+                                <label class="option hover-pointer" data-name="message" style="width:100%">
+                                    <input tabindex="-1" class="text-preview" type="text" readonly>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">技能發送預覽－敵方玩家 3</h1>
+                            <p class="block">發送「敵方玩家 3」的召喚師技能冷卻時會發送出去的訊息預覽</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="player4">
+                        <h3 class="item-name">敵方玩家 4</h3>
+                        <div class="options-container">
+                            <form class="item-options" readonly>
+                                <label class="option hover-pointer" data-name="message" style="width:100%">
+                                    <input tabindex="-1" class="text-preview" type="text" readonly>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">技能發送預覽－敵方玩家 4</h1>
+                            <p class="block">發送「敵方玩家 4」的召喚師技能冷卻時會發送出去的訊息預覽</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="player5">
+                        <h3 class="item-name">敵方玩家 5</h3>
+                        <div class="options-container">
+                            <form class="item-options" readonly>
+                                <label class="option hover-pointer" data-name="message" style="width:100%">
+                                    <input tabindex="-1" class="text-preview" type="text" readonly>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">技能發送預覽－敵方玩家 5</h1>
+                            <p class="block">發送「敵方玩家 5」的召喚師技能冷卻時會發送出去的訊息預覽</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>

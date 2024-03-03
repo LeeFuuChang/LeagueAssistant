@@ -1,0 +1,88 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.drop-down-menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: calc(var(--S) * 0.14);
+    width: max-content;
+}
+.drop-down-menu .drop-down-menu-select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(var(--S) * 0.05);
+}
+.drop-down-menu .drop-down-menu-selected {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: calc(var(--S) * 0.05);
+}
+.drop-down-menu .drop-down-menu-select > .mask {
+    padding: calc(var(--S) * 0.01);
+    width: auto;
+    height: 100%;
+    mask-image: url("/ui/assets/media/actions/down2.png");
+    -webkit-mask-image: url("/ui/assets/media/actions/down2.png");
+    background: #000000;
+    -webkit-transition: transform 0.3s;
+    transition: transform 0.3s;
+}
+.drop-down-menu.active .drop-down-menu-select > .mask {
+    transform: rotate(180deg);
+}
+.drop-down-menu .drop-down-menu-ul {
+    position: absolute;
+    z-index: calc(var(--layer-overlay) - 1);
+    display: none;
+    list-style: none;
+    flex-direction: column;
+    top: 100%;
+    width: 100%;
+    border-radius: 0 0 calc(var(--S) * 0.01) calc(var(--S) * 0.01);
+    box-shadow:
+    0 calc(var(--S)*0.0025) calc(var(--S)*0.0025) calc(var(--S)*-0.0025) rgba(0, 0, 0, 0.08),
+    0 calc(var(--S)*0.003) calc(var(--S)*0.008) 0 rgba(0, 0, 0, 0.06),
+    0 calc(var(--S)*0.008) calc(var(--S)*0.016) calc(var(--S)*0.005) rgba(0, 0, 0, 0.04);
+}
+.drop-down-menu.active .drop-down-menu-ul {
+    display: flex;
+}
+.drop-down-menu .drop-down-menu-li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: calc(var(--S) * 0.05);
+}
+.drop-down-menu .drop-down-menu-li:not(:last-child) {
+    border-bottom: calc(var(--S) * 0.0025) solid transparent;
+}
+.drop-down-menu .drop-down-menu-li img,
+.drop-down-menu .drop-down-menu-li .mask {
+    margin: calc(var(--S) * 0.01);
+    width: calc(var(--S) * 0.03);
+    height: calc(var(--S) * 0.03);
+}
+.drop-down-menu .drop-down-menu-li span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: auto;
+    height: 100%;
+    line-height: 100%;
+    white-space: nowrap;
+    font-size: calc(var(--S) * 0.018);
+}
+
+
+
+
+
+

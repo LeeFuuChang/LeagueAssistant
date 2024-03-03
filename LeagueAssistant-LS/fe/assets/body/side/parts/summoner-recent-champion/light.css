@@ -1,0 +1,3 @@
+#app[theme="light"] .body-side-block.summoner-recent-champion .recent-champion-detail .champion-detail-item {
+    color: var(--black-200) !important;
+}

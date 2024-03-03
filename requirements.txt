@@ -1,0 +1,14 @@
+setuptools
+pyinstaller
+tinyaes
+pywin32
+requests
+keyboard
+psutil
+flask
+waitress
+pillow
+pyqt5
+PyQtWebEngine
+screeninfo
+bs4

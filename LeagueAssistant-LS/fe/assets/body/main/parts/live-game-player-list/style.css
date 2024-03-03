@@ -1,0 +1,394 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.app-body-block.live-game-player-list {
+    height: 100%;
+}
+.app-body-block.live-game-player-list>.block-inner {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.live-game-player-list>.block-inner .sub-player-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: calc(var(--S) * 0.01);
+}
+.app-body-block.live-game-player-list .sub-player-list .team-indicator {
+    border-radius: calc(var(--S) * 0.03);
+    margin-bottom: calc(var(--S) * 0.005);
+    width: 100%;
+    height: calc(var(--S) * 0.015);
+}
+.app-body-block.live-game-player-list .sub-player-list[data-is-ally="0"] .team-indicator {
+    background-color: var(--team-1-color) !important;
+}
+.app-body-block.live-game-player-list .sub-player-list[data-is-ally="1"] .team-indicator {
+    background-color: var(--team-2-color) !important;
+}
+.app-body-block.live-game-player-list .sub-player-list .team-players {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-flow: column;
+    column-gap: calc(var(--S) * 0.02);
+    width: 100%;
+    flex: 1;
+}
+.app-body-block.live-game-player-list .sub-player-list .team-players .group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.live-game-player-list .sub-player-list .team-players .group:last-child {
+    margin-right: 0;
+}
+.app-body-block.live-game-player-list .sub-player-list .group .group-indicator {
+    pointer-events: auto;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(var(--S) * 0.03);
+    margin-bottom: calc(var(--S) * 0.01);
+    width: 100%;
+    height: calc(var(--S) * 0.01);
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    -webkit-transition: opacity 0.3s;
+}
+.app-body-block.live-game-player-list .sub-player-list .group .group-indicator:hover {
+    opacity: 1;
+}
+.app-body-block.live-game-player-list .sub-player-list[data-is-ally="0"] .group .group-indicator {
+    background-color: var(--team-1-color) !important;
+}
+.app-body-block.live-game-player-list .sub-player-list[data-is-ally="1"] .group .group-indicator {
+    background-color: var(--team-2-color) !important;
+}
+.app-body-block.live-game-player-list .sub-player-list .group .group-indicator .group-detail {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    font-size: calc(var(--S) * 0.02);
+    font-weight: 500;
+    transform: translateY(105%);
+}
+.app-body-block.live-game-player-list .sub-player-list .group .group-indicator .group-detail span {
+    margin: 0 calc(var(--S) * 0.005);
+}
+.app-body-block.live-game-player-list .sub-player-list .group .group-players {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    column-gap: calc(var(--S) * 0.02);
+    width: 100%;
+    flex: 1;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: calc(var(--S) * 0.33);
+    max-height: calc(var(--S) * 0.33);
+}
+.app-body-block.live-game-player-list .sub-player-list:first-child:nth-last-child(1) .group-players .player {
+    max-height: calc(var(--S) * 0.72);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player>.info:not(:last-child) {
+    margin-bottom: calc(var(--S) * 0.01);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.basic {
+    display: grid;
+    grid-template-columns: auto 1fr calc(var(--S) * 0.04);
+    grid-template-rows: repeat(3, calc(var(--S) * 0.02));
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(var(--S) * 0.06);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.basic .player-icon {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+    width: calc(var(--S) * 0.06);
+    margin-right: calc(var(--S) * 0.01);
+    border-radius: calc(var(--S) * 0.01);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.basic .name {
+    padding-right: calc(var(--S) * 0.01);
+    grid-row: 1 / 3;
+    grid-column: 2 / 3;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    width: 100%;
+    font-size: calc(var(--S) * 0.022);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.basic .rank-icon {
+    grid-row: 1 / 3;
+    grid-column: 3 / 4;
+    width: 100%;
+    height: auto;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.basic .rank {
+    grid-row: 3 / 4;
+    grid-column: 2 / 4;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: calc(var(--S) * 0.025);
+    width: 100%;
+    height: calc(var(--S) * 0.02);
+    font-size: calc(var(--S) * 0.018);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.basic .rank::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    margin: calc(var(--S) * 0.002);
+    width: calc(var(--S) * 0.016);
+    height: calc(var(--S) * 0.016);
+    background: var(--rank-core-color);
+    border: calc(var(--S) * 0.004) solid var(--rank-wing-color);
+    border-radius: 50%;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.basic .rank span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: calc(var(--S) * 0.005);
+    height: calc(var(--S) * 0.02);
+    font-size: calc(var(--S) * 0.018);
+    font-weight: 500;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.basic .rank .tier {
+    justify-content: center;
+    width: calc(var(--S) * 0.04);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.basic .rank .division {
+    justify-content: center;
+    width: calc(var(--S) * 0.025);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.basic .rank .points {
+    justify-content: flex-end;
+    padding-right: calc(var(--S) * 0.025);
+    width: calc(var(--S) * 0.07);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.basic .rank .points::before {
+    content: "LP";
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    right: 0;
+    width: calc(var(--S) * 0.02);
+    font-size: calc(var(--S) * 0.018);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.rank {
+    display: grid;
+    width: 100%;
+    height: calc(var(--S) * 0.025);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.rank .rank-marquee {
+    --marquee-gap: calc(var(--S) * 0.005);
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.rank .rank-marquee .queue {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.rank .rank-marquee .queue .name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(var(--S) * 0.06);
+    height: 100%;
+    font-size: calc(var(--S) * 0.018);
+    font-weight: 500;
+    margin-right: calc(var(--S) * 0.01);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.rank .rank-marquee .queue .data {
+    grid-column: 2 / 3;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: calc(var(--S) * 0.025);
+    width: 100%;
+    height: calc(var(--S) * 0.02);
+    font-size: calc(var(--S) * 0.018);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.rank .rank-marquee .queue .data::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    margin: calc(var(--S) * 0.002);
+    width: calc(var(--S) * 0.016);
+    height: calc(var(--S) * 0.016);
+    background: var(--rank-core-color);
+    border: calc(var(--S) * 0.004) solid var(--rank-wing-color);
+    border-radius: 50%;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.rank .rank-marquee .queue .data span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: calc(var(--S) * 0.005);
+    height: calc(var(--S) * 0.02);
+    font-size: calc(var(--S) * 0.018);
+    font-weight: 500;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.rank .rank-marquee .queue .data .tier {
+    justify-content: center;
+    width: calc(var(--S) * 0.04);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.rank .rank-marquee .queue .data .division {
+    justify-content: center;
+    width: calc(var(--S) * 0.025);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.rank .rank-marquee .queue .data .points {
+    justify-content: flex-end;
+    padding-right: calc(var(--S) * 0.025);
+    width: calc(var(--S) * 0.07);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.rank .rank-marquee .queue .data .points::before {
+    content: "LP";
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    right: 0;
+    width: calc(var(--S) * 0.02);
+    font-size: calc(var(--S) * 0.018);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history {
+    display: grid;
+    grid-auto-rows: calc(var(--S) * 0.06);
+    grid-auto-flow: row;
+    row-gap: calc(var(--S) * 0.005);
+    width: 100%;
+    flex: 1;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: grid;
+    grid-template-rows: 55% 45%;
+    grid-template-columns: min-content calc(var(--S) * 0.024) calc(var(--S) * 0.018) 1fr;
+    column-gap: calc(var(--S) * 0.005);
+    width: 100%;
+    padding: calc(var(--S) * 0.005);
+    border-left-width: calc(var(--S) * 0.01);
+    border-left-style: solid;
+    background-color: #ECF2FF !important;
+    background-color: #FFF1F3 !important;
+    border-left-color: #5383E8 !important;
+    border-left-color: #E84057 !important;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match .champion {
+    grid-row: 1 / 3;
+    grid-column: 1 / 2;
+    border-radius: calc(var(--S) * 0.005);
+    width: calc(var(--S) * 0.05);
+    height: calc(var(--S) * 0.05);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match .spell,
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match .runes {
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match .spell {
+    grid-column: 2 / 3;
+    justify-content: space-between;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match .spell img {
+    width: 100%;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match .runes {
+    grid-column: 3 / 4;
+    justify-content: space-around;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match .runes img:nth-child(1) {
+    height: 50%;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match .runes img:nth-child(2) {
+    height: 35%;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match .kda {
+    grid-row: 1 / 2;
+    grid-column: 4 / 5;
+    border-radius: calc(var(--S) * 0.005);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 calc(var(--S) * 0.005);
+    font-size: calc(var(--S) * 0.018);
+    font-weight: 600;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match .kda span {
+    display: grid;
+    place-items: center;
+    flex: 1;
+    height: 100%;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match .queue {
+    grid-row: 2 / 3;
+    grid-column: 4 / 5;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: calc(var(--S) * 0.016);
+    font-weight: 500;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.actions {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    column-gap: calc(var(--S) * 0.01);
+    width: 100%;
+    height: calc(var(--S) * 0.04);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.actions .view,
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.actions .report {
+    display: grid;
+    place-items: center;
+    border-radius: calc(var(--S) * 0.006);
+    font-weight: 500;
+    font-size: calc(var(--S) * 0.018);
+    letter-spacing: calc(var(--S) * 0.006);
+    text-indent: calc(var(--S) * 0.006);
+    color: var(--white-100);
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.actions .view {
+    background: #3CBC8D;
+}
+.app-body-block.live-game-player-list .sub-player-list .group-players .player .info.actions .report {
+    background: #E84057;
+}

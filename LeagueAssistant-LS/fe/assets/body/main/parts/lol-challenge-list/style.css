@@ -1,0 +1,202 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.app-body-block.lol-challenge-list {
+    height: 100%;
+}
+.app-body-block.lol-challenge-list>.block-inner {
+    position: relative;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 calc(var(--S) * 0.01);
+}
+.app-body-block.lol-challenge-list>.block-inner .challenge-list-filter {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(var(--S) * 0.05);
+    margin-bottom: calc(var(--S) * 0.01);
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-text {
+    padding: 0 calc(var(--S) * 0.01);
+    border-radius: calc(var(--S) * 0.0125);
+    border-width: calc(var(--S) * 0.0025);
+    border-style: solid;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: calc(var(--S) * 0.27);
+    height: 100%;
+    overflow: hidden;
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-text .mask {
+    margin: calc(var(--S) * 0.01) 0;
+    min-width: calc(var(--S) * 0.03);
+    min-height: calc(var(--S) * 0.03);
+    mask-image: url("/ui/assets/media/actions/search2.png");
+    -webkit-mask-image: url("/ui/assets/media/actions/search2.png");
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-text input {
+    width: calc(var(--S) * 0.18);
+    margin-left: calc(var(--S) * 0.01);
+    height: 100%;
+    font-size: calc(var(--S) * 0.02);
+    background: transparent;
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category {
+    margin-left: calc(var(--S) * 0.01);
+    width: calc(var(--S) * 0.14);
+    height: calc(var(--S) * 0.05);
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-label="0"] .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-fill-hover.png");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-fill-hover.png");
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-label="1"] .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/innovation.png");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/innovation.png");
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-label="2"] .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/expertise.png");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/expertise.png");
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-label="3"] .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/veterancy.png");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/veterancy.png");
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-label="4"] .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/teamwork.png");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/teamwork.png");
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-label="5"] .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/collection.png");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/collection.png");
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-category-rank="IRON"] .mask {
+    background-color: var(--iron-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-category-rank="BRONZE"] .mask {
+    background-color: var(--bronze-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-category-rank="SILVER"] .mask {
+    background-color: var(--silver-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-category-rank="GOLD"] .mask {
+    background-color: var(--gold-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-category-rank="PLATINUM"] .mask {
+    background-color: var(--platinum-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-category-rank="DIAMOND"] .mask {
+    background-color: var(--diamond-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-category-rank="MASTER"] .mask {
+    background-color: var(--master-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-category-rank="GRANDMASTER"] .mask {
+    background-color: var(--grandmaster-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-list-filter .filter-by-category .drop-down-menu-li[data-category-rank="CHALLENGER"] .mask {
+    background-color: var(--challenger-core-color);
+}
+.app-body-block.lol-challenge-list>.block-inner .challenge-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: calc(var(--S) * 0.06);
+    width: 100%;
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge {
+    position: relative;
+    pointer-events: auto;
+    width: 100%;
+    height: calc(var(--S) * 0.06);
+    border-radius: calc(var(--S) * 0.01);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge div {
+    padding: 0 calc(var(--S) * 0.01);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(var(--S) * 0.06);
+    font-size: calc(var(--S) * 0.018);
+    font-weight: 400;
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge div img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge div:nth-child(1) {
+    width: calc(var(--S) * 0.04);
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge div:nth-child(2) {
+    padding: 0 calc(var(--S) * 0.005);
+    width: calc(var(--S) * 0.06);
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge div:nth-child(3) {
+    flex: 1;
+    justify-content: flex-start;
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-id="0"] div:nth-child(1) .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-fill-hover.png");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-fill-hover.png");
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-id="1"] div:nth-child(1) .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/innovation.png");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/innovation.png");
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-id="2"] div:nth-child(1) .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/expertise.png");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/expertise.png");
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-id="3"] div:nth-child(1) .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/veterancy.png");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/veterancy.png");
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-id="4"] div:nth-child(1) .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/teamwork.png");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/teamwork.png");
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-id="5"] div:nth-child(1) .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/collection.png");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/challenges-shared/categories/collection.png");
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-rank="IRON"] div:nth-child(1) .mask {
+    background-color: var(--iron-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-rank="BRONZE"] div:nth-child(1) .mask {
+    background-color: var(--bronze-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-rank="SILVER"] div:nth-child(1) .mask {
+    background-color: var(--silver-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-rank="GOLD"] div:nth-child(1) .mask {
+    background-color: var(--gold-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-rank="PLATINUM"] div:nth-child(1) .mask {
+    background-color: var(--platinum-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-rank="DIAMOND"] div:nth-child(1) .mask {
+    background-color: var(--diamond-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-rank="MASTER"] div:nth-child(1) .mask {
+    background-color: var(--master-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-rank="GRANDMASTER"] div:nth-child(1) .mask {
+    background-color: var(--grandmaster-core-color);
+}
+.app-body-block.lol-challenge-list .challenge-container .challenge-wrapper .challenge[data-category-rank="CHALLENGER"] div:nth-child(1) .mask {
+    background-color: var(--challenger-core-color);
+}

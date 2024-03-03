@@ -1,0 +1,35 @@
+@import url("./dark.css");
+@import url("./light.css");
+@import url("../../type-styles/tft/style.css");
+
+.app-body-block.tft-recent-matches {
+    height: 100%;
+}
+.app-body-block.tft-recent-matches .recent-matches-inner {
+    position: relative;
+    flex-direction: column;
+    height: 100%;
+}
+.app-body-block.tft-recent-matches .recent-matches-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.tft-recent-matches .recent-matches-holder img {
+    width: calc(var(--S) * 0.15);
+    height: calc(var(--S) * 0.15);
+}
+.app-body-block.tft-recent-matches .recent-matches-item {
+    width: 100%;
+    height: calc(var(--S) * 0.15);
+    margin-top: calc(var(--S) * 0.004);
+    border-left-width: calc(var(--S) * 0.01);
+    border-left-style: solid;
+    -webkit-transition: border 0.2s;
+    transition: border 0.2s;
+}
+.app-body-block.tft-recent-matches .recent-matches-item.active {
+    border-left-width: calc(var(--S) * 0.02);
+}

@@ -1,0 +1,26 @@
+#app #app-overlay {
+    z-index: var(--layer-overlay);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+}
+#app[size="contract"] #app-overlay {
+    display: none;
+}
+#app #app-overlay .app-overlay-block {
+    pointer-events: auto;
+}
+#app #app-overlay .app-overlay-block .block-inner {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    padding: calc(var(--S) * 0.01);
+}

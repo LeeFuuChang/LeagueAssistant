@@ -1,0 +1,20 @@
+#app #app-body .app-body-side {
+    border-right: calc(var(--S) * 0.0025) solid transparent;
+}
+#app[size="contract"] #app-body .app-body-side {
+    border: 0;
+}
+
+#app #app-body .app-body-side .body-part-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#app #app-body .app-body-side .body-part-container .body-side-block {
+    top: 100%;
+    width: 100%;
+    height: min-content;
+    min-height: calc(var(--S) * 0.1);
+}

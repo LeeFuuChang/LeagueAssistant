@@ -1,0 +1,17 @@
+#app[theme="light"] .app-body-block.summoner-season-overview .career-stats-inner .item::after {
+    border-color: var(--white-200) !important;
+}
+#app[theme="light"] .app-body-block.summoner-season-overview .primary-champions-inner .table-head li,
+#app[theme="light"] .app-body-block.summoner-season-overview .primary-champions-inner .table-body li {
+    color: var(--black-400) !important;
+}
+#app[theme="light"] .app-body-block.summoner-season-overview .primary-champions-inner .table-body li:hover {
+    background-color: var(--white-700) !important;
+}
+#app[theme="light"] .app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-chart {
+    border-color: var(--white-700) !important;
+}
+#app[theme="light"] .app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item li,
+#app[theme="light"] .app-body-block.summoner-season-overview .role-distribution-inner .role-distribution-label .item span {
+    color: var(--black-700) !important;
+}

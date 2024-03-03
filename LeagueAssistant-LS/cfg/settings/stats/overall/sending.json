@@ -1,0 +1,10 @@
+{
+    "avg-kda": true,
+    "avg-winrate": true,
+    "current-highest": true,
+    "season-highest": false,
+    "match-stats": true,
+    "match-kda": true,
+    "match-win": true,
+    "match-ignore-early": true
+}

@@ -1,0 +1,1473 @@
+<section class="body-part-container body-part-size-2" data-id="" data-type="settings" data-name="game" style="display:none">
+    <link rel="stylesheet" href="assets/body/main/parts/config-settings-game/style.css">
+    <div class="app-body-block body-main-block config-settings-game">
+        <div class="block-title horizontal-stretched-border">
+            <h1 class="block-title-text">自動對局</h1>
+        </div>
+        <ul class="block-inner config-inner y-scrollable">
+            <li class="body-sub-block config-group" data-name="overall">
+                <div class="block-title horizontal-stretched-border">
+                    <h2 class="block-title-text">對局通用設定</h2>
+                </div>
+                <div class="block-inner group-inner overall-inner">
+                    <div class="config-item" data-name="options">
+                        <h3 class="item-name">自動對局</h3>
+                        <div class="options-container">
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="auto-accept">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">匹配到對局時自動接受</h4>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="auto-requeue">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">自動跳過點讚重新匹配</h4>
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">對局通用設定－自動對局</h1>
+                            <div class="option">
+                                <h2 class="name">匹配到對局時自動接受</h2>
+                                <p class="detail">如果開啟：在匹配到對局後，會自動接受對戰</p>
+                                <p class="detail">如果關閉：在匹配到對局後，不會進行任何動作</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">自動跳過點讚重新匹配</h2>
+                                <p class="detail">如果開啟：遊戲結束後，會自動匹配下一場對戰</p>
+                                <p class="detail">如果關閉：遊戲結束後，不會進行任何動作</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="body-sub-block config-group" data-name="auto-pick">
+                <div class="block-title horizontal-stretched-border">
+                    <h2 class="block-title-text">自動選角設定</h2>
+                </div>
+                <div class="block-inner group-inner auto-pick-inner">
+                    <div class="config-item" data-name="top">
+                        <h3 class="item-name">上路</h3>
+                        <div class="options-container">
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="a-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">主要</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-lock">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">鎖定</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-c" data-group="auto-pick-top-champion">
+                                        <h4 class="text">英雄</h4>
+                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-d" data-group="auto-pick-top-a-spell">
+                                        <h4 class="text">D</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-f" data-group="auto-pick-top-a-spell">
+                                        <h4 class="text">F</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="a-rune-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">自動符文</h4>
+                                    </label>
+                                    <div class="runepage hover-pointer">
+                                        <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
+                                        <label class="option" data-name="a-rune-0-0" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-1" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-2" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-3" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-4" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-0" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-1" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-2" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-1" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-2" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-3" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="b-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">次要</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-lock">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">鎖定</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-c" data-group="auto-pick-top-champion">
+                                        <h4 class="text">英雄</h4>
+                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-d" data-group="auto-pick-top-b-spell">
+                                        <h4 class="text">D</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-f" data-group="auto-pick-top-b-spell">
+                                        <h4 class="text">F</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="b-rune-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">自動符文</h4>
+                                    </label>
+                                    <div class="runepage hover-pointer">
+                                        <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
+                                        <label class="option" data-name="b-rune-0-0" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-1" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-2" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-3" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-4" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-0" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-1" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-2" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-1" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-2" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-3" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">自動選角設定－上路</h1>
+                            <p class="block">被分配到上路路線時才會啟用</p>
+                            <div class="option">
+                                <h2 class="name">主要/次要</h2>
+                                <p class="detail">如果關閉則不會進行任何動作</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">鎖定</h2>
+                                <p class="detail">是否要鎖定選角</p>
+                                <p class="detail"><strong>注意</strong>：如果在積分場未鎖角會跳場扣分</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">英雄</h2>
+                                <p class="detail">欲選用的英雄</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">D</h2>
+                                <p class="detail">自動更換 D 技能（若選擇「無」則不會更換）</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">F</h2>
+                                <p class="detail">自動更換 F 技能（若選擇「無」則不會更換）</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">自動符文</h2>
+                                <p class="detail">是否自動更換符文（如未設定符文則不會更換）</p>
+                            </div>
+                            <p class="block"><strong>注意：</strong>如果主要和次要英雄皆無法使用則不會進行任何選角動作</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="jg">
+                        <h3 class="item-name">打野</h3>
+                        <div class="options-container">
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="a-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">主要</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-lock">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">鎖定</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-c" data-group="auto-pick-jg-champion">
+                                        <h4 class="text">英雄</h4>
+                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-d" data-group="auto-pick-jg-a-spell">
+                                        <h4 class="text">D</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-f" data-group="auto-pick-jg-a-spell">
+                                        <h4 class="text">F</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="a-rune-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">自動符文</h4>
+                                    </label>
+                                    <div class="runepage hover-pointer">
+                                        <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
+                                        <label class="option" data-name="a-rune-0-0" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-1" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-2" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-3" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-4" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-0" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-1" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-2" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-1" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-2" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-3" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="b-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">次要</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-lock">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">鎖定</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-c" data-group="auto-pick-jg-champion">
+                                        <h4 class="text">英雄</h4>
+                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-d" data-group="auto-pick-jg-b-spell">
+                                        <h4 class="text">D</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-f" data-group="auto-pick-jg-b-spell">
+                                        <h4 class="text">F</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="b-rune-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">自動符文</h4>
+                                    </label>
+                                    <div class="runepage hover-pointer">
+                                        <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
+                                        <label class="option" data-name="b-rune-0-0" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-1" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-2" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-3" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-4" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-0" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-1" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-2" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-1" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-2" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-3" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">自動選角設定－打野</h1>
+                            <p class="block">被分配到打野路線時才會啟用</p>
+                            <div class="option">
+                                <h2 class="name">主要/次要</h2>
+                                <p class="detail">如果關閉則不會進行任何動作</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">鎖定</h2>
+                                <p class="detail">是否要鎖定選角</p>
+                                <p class="detail"><strong>注意</strong>：如果在積分場未鎖角會跳場扣分</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">英雄</h2>
+                                <p class="detail">欲選用的英雄</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">D</h2>
+                                <p class="detail">自動更換 D 技能（若選擇「無」則不會更換）</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">F</h2>
+                                <p class="detail">自動更換 F 技能（若選擇「無」則不會更換）</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">自動符文</h2>
+                                <p class="detail">是否自動更換符文（如未設定符文則不會更換）</p>
+                            </div>
+                            <p class="block"><strong>注意：</strong>如果主要和次要英雄皆無法使用則不會進行任何選角動作</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="mid">
+                        <h3 class="item-name">中路</h3>
+                        <div class="options-container">
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="a-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">主要</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-lock">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">鎖定</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-c" data-group="auto-pick-mid-champion">
+                                        <h4 class="text">英雄</h4>
+                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-d" data-group="auto-pick-mid-a-spell">
+                                        <h4 class="text">D</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-f" data-group="auto-pick-mid-a-spell">
+                                        <h4 class="text">F</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="a-rune-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">自動符文</h4>
+                                    </label>
+                                    <div class="runepage hover-pointer">
+                                        <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
+                                        <label class="option" data-name="a-rune-0-0" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-1" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-2" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-3" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-4" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-0" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-1" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-2" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-1" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-2" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-3" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="b-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">次要</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-lock">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">鎖定</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-c" data-group="auto-pick-mid-champion">
+                                        <h4 class="text">英雄</h4>
+                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-d" data-group="auto-pick-mid-b-spell">
+                                        <h4 class="text">D</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-f" data-group="auto-pick-mid-b-spell">
+                                        <h4 class="text">F</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="b-rune-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">自動符文</h4>
+                                    </label>
+                                    <div class="runepage hover-pointer">
+                                        <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
+                                        <label class="option" data-name="b-rune-0-0" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-1" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-2" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-3" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-4" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-0" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-1" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-2" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-1" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-2" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-3" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">自動選角設定－中路</h1>
+                            <p class="block">被分配到中路路線時才會啟用</p>
+                            <div class="option">
+                                <h2 class="name">主要/次要</h2>
+                                <p class="detail">如果關閉則不會進行任何動作</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">鎖定</h2>
+                                <p class="detail">是否要鎖定選角</p>
+                                <p class="detail"><strong>注意</strong>：如果在積分場未鎖角會跳場扣分</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">英雄</h2>
+                                <p class="detail">欲選用的英雄</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">D</h2>
+                                <p class="detail">自動更換 D 技能（若選擇「無」則不會更換）</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">F</h2>
+                                <p class="detail">自動更換 F 技能（若選擇「無」則不會更換）</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">自動符文</h2>
+                                <p class="detail">是否自動更換符文（如未設定符文則不會更換）</p>
+                            </div>
+                            <p class="block"><strong>注意：</strong>如果主要和次要英雄皆無法使用則不會進行任何選角動作</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="ad">
+                        <h3 class="item-name">下路</h3>
+                        <div class="options-container">
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="a-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">主要</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-lock">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">鎖定</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-c" data-group="auto-pick-ad-champion">
+                                        <h4 class="text">英雄</h4>
+                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-d" data-group="auto-pick-ad-a-spell">
+                                        <h4 class="text">D</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-f" data-group="auto-pick-ad-a-spell">
+                                        <h4 class="text">F</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="a-rune-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">自動符文</h4>
+                                    </label>
+                                    <div class="runepage hover-pointer">
+                                        <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
+                                        <label class="option" data-name="a-rune-0-0" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-1" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-2" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-3" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-4" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-0" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-1" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-2" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-1" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-2" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-3" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="b-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">次要</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-lock">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">鎖定</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-c" data-group="auto-pick-ad-champion">
+                                        <h4 class="text">英雄</h4>
+                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-d" data-group="auto-pick-ad-b-spell">
+                                        <h4 class="text">D</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-f" data-group="auto-pick-ad-b-spell">
+                                        <h4 class="text">F</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="b-rune-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">自動符文</h4>
+                                    </label>
+                                    <div class="runepage hover-pointer">
+                                        <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
+                                        <label class="option" data-name="b-rune-0-0" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-1" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-2" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-3" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-4" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-0" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-1" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-2" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-1" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-2" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-3" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">自動選角設定－下路</h1>
+                            <p class="block">被分配到下路路線時才會啟用</p>
+                            <div class="option">
+                                <h2 class="name">主要/次要</h2>
+                                <p class="detail">如果關閉則不會進行任何動作</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">鎖定</h2>
+                                <p class="detail">是否要鎖定選角</p>
+                                <p class="detail"><strong>注意</strong>：如果在積分場未鎖角會跳場扣分</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">英雄</h2>
+                                <p class="detail">欲選用的英雄</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">D</h2>
+                                <p class="detail">自動更換 D 技能（若選擇「無」則不會更換）</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">F</h2>
+                                <p class="detail">自動更換 F 技能（若選擇「無」則不會更換）</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">自動符文</h2>
+                                <p class="detail">是否自動更換符文（如未設定符文則不會更換）</p>
+                            </div>
+                            <p class="block"><strong>注意：</strong>如果主要和次要英雄皆無法使用則不會進行任何選角動作</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="sup">
+                        <h3 class="item-name">輔助</h3>
+                        <div class="options-container">
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="a-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">主要</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-lock">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">鎖定</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-c" data-group="auto-pick-sup-champion">
+                                        <h4 class="text">英雄</h4>
+                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-d" data-group="auto-pick-sup-a-spell">
+                                        <h4 class="text">D</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-f" data-group="auto-pick-sup-a-spell">
+                                        <h4 class="text">F</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="a-rune-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">自動符文</h4>
+                                    </label>
+                                    <div class="runepage hover-pointer">
+                                        <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
+                                        <label class="option" data-name="a-rune-0-0" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-1" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-2" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-3" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-4" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-0" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-1" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-2" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-1" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-2" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-3" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="b-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">次要</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-lock">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">鎖定</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-c" data-group="auto-pick-sup-champion">
+                                        <h4 class="text">英雄</h4>
+                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-d" data-group="auto-pick-sup-b-spell">
+                                        <h4 class="text">D</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-f" data-group="auto-pick-sup-b-spell">
+                                        <h4 class="text">F</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="b-rune-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">自動符文</h4>
+                                    </label>
+                                    <div class="runepage hover-pointer">
+                                        <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
+                                        <label class="option" data-name="b-rune-0-0" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-1" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-2" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-3" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-4" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-0" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-1" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-2" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-1" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-2" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-3" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">自動選角設定－輔助</h1>
+                            <p class="block">被分配到輔助路線時才會啟用</p>
+                            <div class="option">
+                                <h2 class="name">主要/次要</h2>
+                                <p class="detail">如果關閉則不會進行任何動作</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">鎖定</h2>
+                                <p class="detail">是否要鎖定選角</p>
+                                <p class="detail"><strong>注意</strong>：如果在積分場未鎖角會跳場扣分</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">英雄</h2>
+                                <p class="detail">欲選用的英雄</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">D</h2>
+                                <p class="detail">自動更換 D 技能（若選擇「無」則不會更換）</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">F</h2>
+                                <p class="detail">自動更換 F 技能（若選擇「無」則不會更換）</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">自動符文</h2>
+                                <p class="detail">是否自動更換符文（如未設定符文則不會更換）</p>
+                            </div>
+                            <p class="block"><strong>注意：</strong>如果主要和次要英雄皆無法使用則不會進行任何選角動作</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="none">
+                        <h3 class="item-name">未分配路線</h3>
+                        <div class="options-container">
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="a-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">主要</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-lock">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">鎖定</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-c" data-group="auto-pick-none-champion">
+                                        <h4 class="text">英雄</h4>
+                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-d" data-group="auto-pick-none-a-spell">
+                                        <h4 class="text">D</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="a-f" data-group="auto-pick-none-a-spell">
+                                        <h4 class="text">F</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="a-rune-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">自動符文</h4>
+                                    </label>
+                                    <div class="runepage hover-pointer">
+                                        <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
+                                        <label class="option" data-name="a-rune-0-0" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-1" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-2" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-3" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-0-4" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-0" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-1" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-1-2" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-1" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-2" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="a-rune-2-3" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="b-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">次要</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-lock">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">鎖定</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-c" data-group="auto-pick-none-champion">
+                                        <h4 class="text">英雄</h4>
+                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-d" data-group="auto-pick-none-b-spell">
+                                        <h4 class="text">D</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="b-f" data-group="auto-pick-none-b-spell">
+                                        <h4 class="text">F</h4>
+                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="b-rune-switch">
+                                        <input tabindex="-1" class="switch" type="checkbox">
+                                        <h4 class="text">自動符文</h4>
+                                    </label>
+                                    <div class="runepage hover-pointer">
+                                        <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
+                                        <label class="option" data-name="b-rune-0-0" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-1" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-2" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-3" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-0-4" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-0" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-1" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-1-2" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-1" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-2" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                        <label class="option" data-name="b-rune-2-3" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                            <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">自動選角設定－未分配路線</h1>
+                            <p class="block">選角時沒有分配路線時才會啟用</p>
+                            <div class="option">
+                                <h2 class="name">主要/次要</h2>
+                                <p class="detail">如果關閉則不會進行任何動作</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">鎖定</h2>
+                                <p class="detail">是否要鎖定選角</p>
+                                <p class="detail"><strong>注意</strong>：如果在積分場未鎖角會跳場扣分</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">英雄</h2>
+                                <p class="detail">欲選用的英雄</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">D</h2>
+                                <p class="detail">自動更換 D 技能（若選擇「無」則不會更換）</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">F</h2>
+                                <p class="detail">自動更換 F 技能（若選擇「無」則不會更換）</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">自動符文</h2>
+                                <p class="detail">是否自動更換符文（如未設定符文則不會更換）</p>
+                            </div>
+                            <p class="block"><strong>注意：</strong>如果主要和次要英雄皆無法使用則不會進行任何選角動作</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="body-sub-block config-group" data-name="auto-ban">
+                <div class="block-title horizontal-stretched-border">
+                    <h2 class="block-title-text">自動禁角設定</h2>
+                </div>
+                <div class="block-inner group-inner auto-ban-inner">
+                    <div class="config-item" data-name="top">
+                        <h3 class="item-name">上路</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="switch">
+                                    <input tabindex="-1" class="switch" type="checkbox">
+                                    <h4 class="text">啟用</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="lock">
+                                    <input tabindex="-1" class="switch" type="checkbox">
+                                    <h4 class="text">鎖定</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="a-c" data-group="auto-ban-top">
+                                    <h4 class="text">主要</h4>
+                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                </label>
+                                <label class="option hover-pointer" data-name="b-c" data-group="auto-ban-top">
+                                    <h4 class="text">備用</h4>
+                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">自動禁角設定－上路</h1>
+                            <p class="block">被分配到上路路線時才會啟用</p>
+                            <div class="option">
+                                <h2 class="name">啟用</h2>
+                                <p class="detail">如果關閉則不會啟用以下任何選項</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">鎖定</h2>
+                                <p class="detail">是否要鎖定禁用</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">主要</h2>
+                                <p class="detail">第一優先禁用的英雄</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">備用</h2>
+                                <p class="detail">第二優先禁用的英雄</p>
+                                <p class="detail">（當第一優先禁用的英雄無法禁用時</p>
+                                <p class="detail">（則會改為禁用第二優先禁用的英雄</p>
+                            </div>
+                            <p class="block"><strong>注意：</strong>如果主要和備用英雄皆無法禁用則不會進行任何禁角動作</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="jg">
+                        <h3 class="item-name">打野</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="switch">
+                                    <input tabindex="-1" class="switch" type="checkbox">
+                                    <h4 class="text">啟用</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="lock">
+                                    <input tabindex="-1" class="switch" type="checkbox">
+                                    <h4 class="text">鎖定</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="a-c" data-group="auto-ban-jg">
+                                    <h4 class="text">主要</h4>
+                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                </label>
+                                <label class="option hover-pointer" data-name="b-c" data-group="auto-ban-jg">
+                                    <h4 class="text">備用</h4>
+                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">自動禁角設定－打野</h1>
+                            <p class="block">被分配到打野路線時才會啟用</p>
+                            <div class="option">
+                                <h2 class="name">啟用</h2>
+                                <p class="detail">如果關閉則不會啟用以下任何選項</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">鎖定</h2>
+                                <p class="detail">是否要鎖定禁用</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">主要</h2>
+                                <p class="detail">第一優先禁用的英雄</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">備用</h2>
+                                <p class="detail">第二優先禁用的英雄</p>
+                                <p class="detail">（當第一優先禁用的英雄無法禁用時</p>
+                                <p class="detail">（則會改為禁用第二優先禁用的英雄</p>
+                            </div>
+                            <p class="block"><strong>注意：</strong>如果主要和備用英雄皆無法禁用則不會進行任何禁角動作</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="mid">
+                        <h3 class="item-name">中路</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="switch">
+                                    <input tabindex="-1" class="switch" type="checkbox">
+                                    <h4 class="text">啟用</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="lock">
+                                    <input tabindex="-1" class="switch" type="checkbox">
+                                    <h4 class="text">鎖定</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="a-c" data-group="auto-ban-mid">
+                                    <h4 class="text">主要</h4>
+                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                </label>
+                                <label class="option hover-pointer" data-name="b-c" data-group="auto-ban-mid">
+                                    <h4 class="text">備用</h4>
+                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">自動禁角設定－中路</h1>
+                            <p class="block">被分配到中路路線時才會啟用</p>
+                            <div class="option">
+                                <h2 class="name">啟用</h2>
+                                <p class="detail">如果關閉則不會啟用以下任何選項</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">鎖定</h2>
+                                <p class="detail">是否要鎖定禁用</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">主要</h2>
+                                <p class="detail">第一優先禁用的英雄</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">備用</h2>
+                                <p class="detail">第二優先禁用的英雄</p>
+                                <p class="detail">（當第一優先禁用的英雄無法禁用時</p>
+                                <p class="detail">（則會改為禁用第二優先禁用的英雄</p>
+                            </div>
+                            <p class="block"><strong>注意：</strong>如果主要和備用英雄皆無法禁用則不會進行任何禁角動作</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="ad">
+                        <h3 class="item-name">下路</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="switch">
+                                    <input tabindex="-1" class="switch" type="checkbox">
+                                    <h4 class="text">啟用</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="lock">
+                                    <input tabindex="-1" class="switch" type="checkbox">
+                                    <h4 class="text">鎖定</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="a-c" data-group="auto-ban-ad">
+                                    <h4 class="text">主要</h4>
+                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                </label>
+                                <label class="option hover-pointer" data-name="b-c" data-group="auto-ban-ad">
+                                    <h4 class="text">備用</h4>
+                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">自動禁角設定－下路</h1>
+                            <p class="block">被分配到下路路線時才會啟用</p>
+                            <div class="option">
+                                <h2 class="name">啟用</h2>
+                                <p class="detail">如果關閉則不會啟用以下任何選項</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">鎖定</h2>
+                                <p class="detail">是否要鎖定禁用</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">主要</h2>
+                                <p class="detail">第一優先禁用的英雄</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">備用</h2>
+                                <p class="detail">第二優先禁用的英雄</p>
+                                <p class="detail">（當第一優先禁用的英雄無法禁用時</p>
+                                <p class="detail">（則會改為禁用第二優先禁用的英雄</p>
+                            </div>
+                            <p class="block"><strong>注意：</strong>如果主要和備用英雄皆無法禁用則不會進行任何禁角動作</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="sup">
+                        <h3 class="item-name">輔助</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="switch">
+                                    <input tabindex="-1" class="switch" type="checkbox">
+                                    <h4 class="text">啟用</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="lock">
+                                    <input tabindex="-1" class="switch" type="checkbox">
+                                    <h4 class="text">鎖定</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="a-c" data-group="auto-ban-sup">
+                                    <h4 class="text">主要</h4>
+                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                </label>
+                                <label class="option hover-pointer" data-name="b-c" data-group="auto-ban-sup">
+                                    <h4 class="text">備用</h4>
+                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">自動禁角設定－輔助</h1>
+                            <p class="block">被分配到輔助路線時才會啟用</p>
+                            <div class="option">
+                                <h2 class="name">啟用</h2>
+                                <p class="detail">如果關閉則不會啟用以下任何選項</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">鎖定</h2>
+                                <p class="detail">是否要鎖定禁用</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">主要</h2>
+                                <p class="detail">第一優先禁用的英雄</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">備用</h2>
+                                <p class="detail">第二優先禁用的英雄</p>
+                                <p class="detail">（當第一優先禁用的英雄無法禁用時</p>
+                                <p class="detail">（則會改為禁用第二優先禁用的英雄</p>
+                            </div>
+                            <p class="block"><strong>注意：</strong>如果主要和備用英雄皆無法禁用則不會進行任何禁角動作</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="none">
+                        <h3 class="item-name">未分配路線</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="switch">
+                                    <input tabindex="-1" class="switch" type="checkbox">
+                                    <h4 class="text">啟用</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="lock">
+                                    <input tabindex="-1" class="switch" type="checkbox">
+                                    <h4 class="text">鎖定</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="a-c" data-group="auto-ban-none">
+                                    <h4 class="text">主要</h4>
+                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                </label>
+                                <label class="option hover-pointer" data-name="b-c" data-group="auto-ban-none">
+                                    <h4 class="text">備用</h4>
+                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">自動禁角設定－未分配路線</h1>
+                            <p class="block">選角時沒有分配路線時才會啟用</p>
+                            <div class="option">
+                                <h2 class="name">啟用</h2>
+                                <p class="detail">如果關閉則不會啟用以下任何選項</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">鎖定</h2>
+                                <p class="detail">是否要鎖定禁用</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">主要</h2>
+                                <p class="detail">第一優先禁用的英雄</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">備用</h2>
+                                <p class="detail">第二優先禁用的英雄</p>
+                                <p class="detail">（當第一優先禁用的英雄無法禁用時</p>
+                                <p class="detail">（則會改為禁用第二優先禁用的英雄</p>
+                            </div>
+                            <p class="block"><strong>注意：</strong>如果主要和備用英雄皆無法禁用則不會進行任何禁角動作</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>

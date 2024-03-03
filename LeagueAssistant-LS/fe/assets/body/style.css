@@ -1,0 +1,44 @@
+@import url("./main/style.css");
+@import url("./side/style.css");
+
+#app #app-body {
+    position: relative;
+    display: flex;
+    padding-top: calc(var(--S) * 0.1);
+    padding-bottom: calc(var(--S) * 0.04);
+    width: 100%;
+    height: 100%;
+}
+#app #app-body .body-part-container {
+    transition: width 0.5s, min-width 0.5s, max-width 0.5s;
+    -webkit-transition: width 0.5s, min-width 0.5s, max-width 0.5s;
+    position: relative;
+    padding: 0 calc(var(--S) * 0.02);
+    max-width: calc(var(--S) * 1.5);
+    height: calc(var(--S) * 0.86);
+    min-height: calc(var(--S) * 0.86);
+    max-height: calc(var(--S) * 0.86);
+    z-index: var(--layer-body-block);
+}
+#app #app-body .body-part-size-1,
+#app #app-body .body-part-size-2,
+#app #app-body .body-part-size-3 {
+    height: calc(var(--S) * 0.86);
+    min-height: calc(var(--S) * 0.86);
+    max-height: calc(var(--S) * 0.86);
+}
+#app #app-body .body-part-size-1 {
+    width: calc(var(--S) * 0.5);
+    min-width: calc(var(--S) * 0.5);
+    max-width: calc(var(--S) * 0.5);
+}
+#app #app-body .body-part-size-2 {
+    width: calc(var(--S) * 1.0);
+    min-width: calc(var(--S) * 1.0);
+    max-width: calc(var(--S) * 1.0);
+}
+#app #app-body .body-part-size-3 {
+    width: calc(var(--S) * 1.5);
+    min-width: calc(var(--S) * 1.5);
+    max-width: calc(var(--S) * 1.5);
+}

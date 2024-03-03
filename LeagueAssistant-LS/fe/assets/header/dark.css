@@ -1,0 +1,50 @@
+#app[theme="dark"] .search-bar .search-input {
+    color: var(--white-100) !important;
+    border-color: #cdbe91 !important;
+    background-color: var(--black-200) !important;
+}
+#app[theme="dark"] .search-bar .search-input:focus {
+    border-color: var(--white-100) !important;
+}
+#app[theme="dark"] .search-bar .search-input:disabled {
+    border-color: #876e0f !important;
+}
+#app[theme="dark"] .search-bar .search-button {
+    background-color: #06987b !important;
+}
+#app[theme="dark"] .search-bar .search-button:hover {
+    background-color: #39d2b8 !important;
+}
+#app[theme="dark"] .search-bar .search-button:disabled {
+    background-color: #876e0f !important;
+}
+#app[theme="dark"] .app-nav .app-navigation .navigation-item .mask {
+    background-color: #cdbe91 !important;
+}
+#app[theme="dark"] .app-nav .app-navigation .navigation-item:hover .mask {
+    background-color: var(--white-100) !important;
+}
+#app[theme="dark"] .app-nav .app-navigation .navigation-item.disabled .mask {
+    background-color: #876e0f !important;
+}
+#app[theme="dark"] .app-nav .app-navigation .navigation-item .text {
+    color: #cdbe91 !important;
+}
+#app[theme="dark"] .app-nav .app-navigation .navigation-item:hover .text {
+    color: var(--white-100) !important;
+}
+#app[theme="dark"] .app-nav .app-navigation .navigation-item.disabled .text {
+    color: #876e0f !important;
+}
+#app[theme="dark"] .app-nav .app-navigation .navigation-item .nav-item-detail {
+    background-color: var(--black-300) !important;
+}
+#app[theme="dark"] .app-nav .app-navigation .navigation-item .nav-item-detail::before {
+    border-bottom-color: var(--black-300) !important;
+}
+#app[theme="dark"] .app-nav .app-navigation .navigation-item .nav-item-detail .nav-detail-item {
+    color: var(--white-100) !important;
+}
+#app[theme="dark"] .app-nav .app-navigation .navigation-item .nav-item-detail .nav-detail-item:hover {
+    background-color: var(--black-200) !important;
+}

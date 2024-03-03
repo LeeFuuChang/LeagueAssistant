@@ -1,0 +1,12 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+#app #app-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: calc(var(--S) * 0.032);
+    font-size: calc(var(--S) * 0.016);
+    z-index: var(--layer-overlay);
+}

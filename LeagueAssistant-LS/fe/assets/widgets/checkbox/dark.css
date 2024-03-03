@@ -1,0 +1,9 @@
+#app[theme="dark"] .checkbox[type="radio"]::before,
+#app[theme="dark"] .checkbox[type="checkbox"]::before {
+    border-color: var(--gray-100);
+    background-color: var(--black-600);
+}
+#app[theme="dark"] .checkbox[type="radio"]:checked::after,
+#app[theme="dark"] .checkbox[type="checkbox"]:checked::after {
+    background-color: #44cc66;
+}

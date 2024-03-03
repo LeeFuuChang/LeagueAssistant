@@ -1,0 +1,12 @@
+#app[theme="dark"] .body-side-block.summoner-basic .summoner-icon .level span {
+    color: var(--white-300) !important;
+}
+#app[theme="dark"] .body-side-block.summoner-basic .summoner-info .name {
+    color: #f0e6d2 !important;
+}
+#app[theme="dark"] .body-side-block.summoner-basic .summoner-info .title {
+    color: #cdbe91 !important;
+}
+#app[theme="dark"] .body-side-block.summoner-basic .summoner-info .mmr {
+    color: var(--gray-700) !important;
+}

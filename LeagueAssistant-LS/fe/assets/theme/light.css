@@ -1,0 +1,45 @@
+#app[theme="light"] {
+    background-color: var(--white-100) !important;
+}
+
+#app[theme="light"] .app-control-button {
+    background-color: #666666 !important;
+}
+#app[theme="light"] .app-control-button:hover {
+    background-color: #222222 !important;
+}
+#app[theme="light"] .app-control-button.disabled {
+    background-color: #cccccc !important;
+}
+#app[theme="light"] .action-button {
+    background-color: #666666 !important;
+}
+#app[theme="light"] .action-button:hover {
+    background-color: #222222 !important;
+}
+#app[theme="light"] .action-button.disabled {
+    background-color: #cccccc !important;
+}
+
+#app[theme="light"] .app-body-block,
+#app[theme="light"] .body-sub-block,
+#app[theme="light"] .app-overlay-block {
+    color: var(--black-200) !important;
+    background-color: var(--white-100) !important;
+}
+#app[theme="light"] .app-body-block .block-title,
+#app[theme="light"] .body-sub-block .block-title,
+#app[theme="light"] .app-overlay-block .block-title {
+    color: var(--black-400) !important;
+}
+#app[theme="light"] .app-body-block .body-sub-block,
+#app[theme="light"] .app-overlay-block {
+    background-color: var(--white-200) !important;
+}
+
+#app[theme="light"] .vertical-stretched-border {
+    border-image-source: linear-gradient(to bottom, transparent 0%, #ddd 50%, transparent 100%) !important;
+}
+#app[theme="light"] .horizontal-stretched-border {
+    border-image-source: linear-gradient(to right, transparent 0%, #ddd 50%, transparent 100%) !important;
+}

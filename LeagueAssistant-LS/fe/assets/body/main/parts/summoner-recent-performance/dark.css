@@ -1,0 +1,12 @@
+#app[theme="dark"] .body-main-block.summoner-recent-performance .recent-performance-options .drop-down-menu-li .mask {
+    background-color: var(--white-100) !important;
+}
+#app[theme="dark"] .body-main-block.summoner-recent-performance .recent-performance-options .options-champion .option-champion-item {
+    border-color: #589A8D !important;
+}
+#app[theme="dark"] .body-main-block.summoner-recent-performance .recent-performance-options .options-champion .option-champion-item:hover {
+    border-color: #8FC1B5 !important;
+}
+#app[theme="dark"] .body-main-block.summoner-recent-performance .recent-performance-options .options-champion .option-champion-item.active {
+    border-color: #007566 !important;
+}

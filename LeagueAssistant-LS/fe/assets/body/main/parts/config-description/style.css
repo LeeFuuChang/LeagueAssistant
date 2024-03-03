@@ -1,0 +1,45 @@
+@import url("./dark.css");
+@import url("./light.css");
+@import url("../../type-styles/config/style.css");
+
+.app-body-block.config-description>.block-inner {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    padding: 0 calc(var(--S) * 0.01);
+}
+.app-body-block.config-description>.block-inner .title {
+    display: flex;
+    align-items: center;
+    margin: calc(var(--S) * 0.01) 0;
+    width: 100%;
+    height: calc(var(--S) * 0.03);
+    font-size: calc(var(--S) * 0.024);
+    font-weight: 500;
+}
+.app-body-block.config-description>.block-inner .block {
+    margin-bottom: calc(var(--S) * 0.02);
+    width: 100%;
+    font-size: calc(var(--S) * 0.018);
+    font-weight: 400;
+}
+.app-body-block.config-description>.block-inner .option {
+    margin-bottom: calc(var(--S) * 0.02);
+    width: 100%;
+}
+.app-body-block.config-description>.block-inner .option .name {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: calc(var(--S) * 0.024);
+    font-size: calc(var(--S) * 0.02);
+    font-weight: 500;
+}
+.app-body-block.config-description>.block-inner .option .detail {
+    padding-left: calc(var(--S) * 0.02);
+    width: 100%;
+    min-height: calc(var(--S) * 0.024);
+    font-size: calc(var(--S) * 0.018);
+    font-weight: 400;
+}

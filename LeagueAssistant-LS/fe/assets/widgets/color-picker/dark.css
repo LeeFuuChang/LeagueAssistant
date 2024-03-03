@@ -1,0 +1,4 @@
+#app[theme="dark"] .color-picker[type="color"]::-webkit-color-swatch {
+    border-color: var(--gray-100);
+    background-color: var(--black-600);
+}

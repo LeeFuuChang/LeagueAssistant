@@ -1,0 +1,73 @@
+<div class="app-overlay-block app-config" style="top: 100%; display: none;">
+    <link rel="stylesheet" href="assets/overlay/app-config/style.css">
+    <div class="block-title horizontal-stretched-border">
+        <h1 class="block-title-text">助手設定</h1>
+    </div>
+    <div class="block-inner app-config-inner">
+        <div class="config-item" data-name="options">
+            <h3 class="item-name">助手選項</h3>
+            <div class="options-container">
+                <form class="item-options">
+                    <label class="option hover-pointer" data-name="dark-theme">
+                        <input tabindex="-1" class="switch" type="checkbox">
+                        <h4 class="text">深色模式</h4>
+                    </label>
+                </form>
+                <form class="item-options">
+                    <label class="option hover-pointer" data-name="no-animation">
+                        <input tabindex="-1" class="switch" type="checkbox">
+                        <h4 class="text">關閉過場動畫</h4>
+                    </label>
+                </form>
+                <form class="item-options">
+                    <label class="option hover-pointer" data-name="crash-report">
+                        <input tabindex="-1" class="switch" type="checkbox">
+                        <h4 class="text">自動送出崩潰報告</h4>
+                    </label>
+                </form>
+                <form class="item-options">
+                    <label class="option hover-pointer" data-name="allow-publicity">
+                        <input tabindex="-1" class="switch" type="checkbox">
+                        <h4 class="text">允許助手發送訊息時自我宣傳</h4>
+                    </label>
+                </form>
+            </div>
+        </div>
+        <div class="config-item" data-name="window-zoom">
+            <h3 class="item-name">視窗縮放</h3>
+            <div class="options-container">
+                <form class="item-options">
+                    <label class="option hover-pointer" data-name="auto">
+                        <input tabindex="-1" class="switch" type="checkbox">
+                        <h4 class="text">自動縮放</h4>
+                    </label>
+                    <label class="option hover-pointer" data-name="zoom">
+                        <h4 class="text">自訂倍數</h4>
+                        <div class="stepper">
+                            <div class="mask button hover-pointer" data-action="-"></div>
+                            <input type="text" value="1" min="0.8" max="1.6" step="0.1" decimal="1">
+                            <div class="mask button hover-pointer" data-action="+"></div>
+                        </div>
+                    </label>
+                </form>
+            </div>
+        </div>
+        <div class="config-item" data-name="live-inspect">
+            <h3 class="item-name">稽查彈窗</h3>
+            <div class="options-container">
+                <form class="item-options">
+                    <label class="option hover-pointer" data-name="auto-select-inspect">
+                        <input tabindex="-1" class="switch" type="checkbox">
+                        <h4 class="text">選角階段彈出實時稽查頁面</h4>
+                    </label>
+                </form>
+                <form class="item-options">
+                    <label class="option hover-pointer" data-name="auto-ingame-inspect">
+                        <input tabindex="-1" class="switch" type="checkbox">
+                        <h4 class="text">進入遊戲彈出實時稽查頁面</h4>
+                    </label>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

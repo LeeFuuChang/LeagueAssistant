@@ -1,0 +1,30 @@
+#app[theme="light"] *[type="tft"] .tft-build-overview {
+    background-color: var(--white-100) !important;
+}
+#app[theme="light"] *[type="tft"] .tft-build-overview .overview-info .info-basic .basic-name {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] *[type="tft"] .tft-build-overview .overview-info .info-basic .basic-cost .mask {
+    background-color: var(--black-700) !important;
+}
+#app[theme="light"] *[type="tft"] .tft-build-overview .overview-info .info-basic .basic-cost span {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] *[type="tft"] .tft-build-overview .overview-info .info-stats .stats-item .stats-title span {
+    color: var(--black-700) !important;
+}
+#app[theme="light"] *[type="tft"] .tft-build-overview .overview-info .info-stats .stats-item .stats-detail span {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] *[type="tft"] .tft-build-overview .overview-comp .comp-stats .stats-item {
+    background: var(--white-400) !important;
+}
+#app[theme="light"] *[type="tft"] .tft-build-overview .overview-comp .comp-stats .stats-item span {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] *[type="tft"] .tft-build-overview .overview-comp .comp-units .unit-item .comp-unit-name {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] *[type="tft"] .tft-build-overview .overview-comp .comp-units .unit-item .clip-path-hexagon .clip-path-hexagon {
+    background-color: var(--white-100) !important;
+}

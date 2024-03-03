@@ -1,0 +1,7 @@
+#app[theme="dark"] .slider[type="range"]::-webkit-slider-thumb {
+    background-color: #5bc0de;
+}
+#app[theme="dark"] .slider[type=range]::-webkit-slider-runnable-track {
+    border-color: var(--gray-100);
+    background-color: var(--black-600);
+}

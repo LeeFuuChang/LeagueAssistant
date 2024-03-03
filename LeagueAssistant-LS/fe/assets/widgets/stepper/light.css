@@ -1,0 +1,12 @@
+#app[theme="light"] .stepper {
+    border-color: #666666 !important;
+    background-color: var(--white-500) !important;
+}
+#app[theme="light"] .stepper .button {
+    background-color: #666666 !important;
+}
+#app[theme="light"] .stepper input[type="text"] {
+    color: var(--black-400) !important;
+    border-color: #666666 !important;
+    background-color: var(--white-500) !important;
+}

@@ -1,0 +1,30 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.x-scrollable, 
+.y-scrollable {
+    pointer-events: auto;
+}
+
+.x-scrollable {
+    overflow-x: scroll;
+    padding-bottom: calc(var(--S) * 0.0125);
+}
+.y-scrollable {
+    overflow-y: scroll;
+    padding-right: calc(var(--S) * 0.0125);
+}
+.x-scrollable::-webkit-scrollbar {
+    height: calc(var(--S) * 0.0125);
+}
+.y-scrollable::-webkit-scrollbar {
+    width: calc(var(--S) * 0.0125);
+}
+.x-scrollable::-webkit-scrollbar-track,
+.y-scrollable::-webkit-scrollbar-track {
+    border-radius: calc(var(--S) * 0.0125);
+}
+.x-scrollable::-webkit-scrollbar-thumb,
+.y-scrollable::-webkit-scrollbar-thumb {
+    border-radius: calc(var(--S) * 0.0125);
+}

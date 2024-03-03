@@ -1,0 +1,35 @@
+#app[theme="light"] .app-body-block.live-game-player-list .sub-player-list .group .group-indicator .group-detail {
+    color: var(--black-200) !important;
+    background-color: var(--white-400) !important;
+}
+#app[theme="light"] .app-body-block.live-game-player-list .sub-player-list .group .group-indicator .group-detail::before {
+    border-bottom-color: var(--white-400) !important;
+}
+#app[theme="light"] .app-body-block.live-game-player-list .sub-player-list .group-players .player .info.basic .name {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] .app-body-block.live-game-player-list .sub-player-list .group-players .player .info.basic .rank span,
+#app[theme="light"] .app-body-block.live-game-player-list .sub-player-list .group-players .player .info.rank .queue .name,
+#app[theme="light"] .app-body-block.live-game-player-list .sub-player-list .group-players .player .info.rank .queue .data span {
+    color: var(--black-700) !important;
+}
+#app[theme="light"] .app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match[win="1"] {
+    background-color: #ECF2FF !important;
+    border-left-color: #5383E8 !important;
+}
+#app[theme="light"] .app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match[win="0"] {
+    background-color: #FFF1F3 !important;
+    border-left-color: #E84057 !important;
+}
+#app[theme="light"] .app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match .kda {
+    color: var(--white-100) !important;
+}
+#app[theme="light"] .app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match[win="1"] .kda {
+    background-color: #5383E8 !important;
+}
+#app[theme="light"] .app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match[win="0"] .kda {
+    background-color: #E84057 !important;
+}
+#app[theme="light"] .app-body-block.live-game-player-list .sub-player-list .group-players .player .info.history .match .queue {
+    color: var(--black-400) !important;
+}

@@ -1,0 +1,3 @@
+#app[theme="light"] .body-side-block.summoner-position-preference .position-detail .position-detail-item {
+    color: var(--black-200) !important;
+}

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeagueAssistant</title>
+    <link rel="icon" href="data:," />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swaps" />
+    <link rel="stylesheet" href="assets/fonts/zh_tw/master.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.2.1/chartjs-plugin-annotation.min.js"></script>
+
+    <!-- header script&style -->
+    <link rel="stylesheet" href="assets/header/style.css" />
+    <script defer src="assets/header/script.js"></script>
+
+    <!-- body script&style -->
+    <link rel="stylesheet" href="assets/body/style.css" />
+    <script defer src="assets/body/script.js"></script>
+
+    <!-- footer script&style -->
+    <link rel="stylesheet" href="assets/footer/style.css" />
+    <script defer src="assets/footer/script.js"></script>
+
+    <!-- preload stylesheet -->
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/theme/master.css" />
+    <link rel="stylesheet" href="assets/widgets/master.css" />
+
+    <!-- preload scripts -->
+    <script src="assets/algorithm.js"></script>
+    <script src="assets/index.js"></script>
+    <script src="assets/widgets/script.js"></script>
+
+    <!-- update loop script -->
+    <script defer src="assets/update.js"></script>
+</head>
+
+<body>
+    <div id="app" theme="light" size="expanded">
+        <header id="app-header" class="app-header">
+            <div class="app-basic vertical-stretched-border">
+                <div class="app-logo"></div>
+            </div>
+            <div class="app-nav">
+                <div class="app-page-controls">
+                    <div class="mask action-button hover-pointer disabled" id="page-controls-previous"></div>
+                    <div class="mask action-button hover-pointer disabled" id="page-controls-next"></div>
+                    <div class="mask action-button hover-pointer" id="page-controls-reload"></div>
+                    <div class="mask action-button hover-pointer" id="page-controls-home"></div>
+                    <form action="javascript:void(0);" class="search-bar" id="search-player">
+                        <input tabindex="-1" type="text" class="search-input" />
+                        <input tabindex="-1" type="submit" class="mask hover-pointer search-button" value="" />
+                    </form>
+                </div>
+                <ul class="app-navigation">
+                    <li class="hover-pointer navigation-item vertical-stretched-border" id="app-nav-profile">
+                        <div class="nav-item-title">
+                            <div class="mask"></div>
+                            <span class="text">玩家查詢</span>
+                        </div>
+                        <ul class="nav-item-detail">
+                            <li class="nav-detail-item" id="app-nav-profile-lol-history">
+                                對戰紀錄
+                            </li>
+                            <li class="nav-detail-item" id="app-nav-profile-tft-history">
+                                戰棋紀錄
+                            </li>
+                            <li class="nav-detail-item" id="app-nav-profile-chart">
+                                數據圖表
+                            </li>
+                            <li class="nav-detail-item" id="app-nav-profile-season-overview">
+                                賽季概覽
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="hover-pointer navigation-item vertical-stretched-border" id="app-nav-stats">
+                        <div class="nav-item-title">
+                            <div class="mask"></div>
+                            <span class="text">遊戲數據</span>
+                        </div>
+                        <ul class="nav-item-detail">
+                            <li class="nav-detail-item" id="app-nav-stats-lol">
+                                英雄分析
+                            </li>
+                            <li class="nav-detail-item" id="app-nav-stats-tft">
+                                戰棋陣容
+                            </li>
+                            <li class="nav-detail-item" id="app-nav-stats-challenges">
+                                挑戰階級
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="hover-pointer navigation-item vertical-stretched-border" id="app-nav-settings">
+                        <div class="nav-item-title">
+                            <div class="mask"></div>
+                            <span class="text">功能設定</span>
+                        </div>
+                        <ul class="nav-item-detail">
+                            <li class="nav-detail-item" id="app-nav-settings-game">
+                                自動對局
+                            </li>
+                            <li class="nav-detail-item" id="app-nav-settings-stats">
+                                戰績查詢
+                            </li>
+                            <li class="nav-detail-item" id="app-nav-settings-spell">
+                                技能助手
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="hover-pointer navigation-item vertical-stretched-border" id="app-nav-appearance">
+                        <div class="nav-item-title">
+                            <div class="mask"></div>
+                            <span class="text">外觀設定</span>
+                        </div>
+                        <ul class="nav-item-detail">
+                            <li class="nav-detail-item" id="app-nav-appearance-spell">
+                                技能助手
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="hover-pointer navigation-item vertical-stretched-border" id="app-nav-fast">
+                        <div class="nav-item-title">
+                            <div class="mask"></div>
+                            <span class="text">快捷功能</span>
+                        </div>
+                        <ul class="nav-item-detail">
+                            <li class="nav-detail-item" id="app-nav-fast-reload">
+                                重新載入
+                            </li>
+                            <li class="nav-detail-item" id="app-nav-fast-dodge">
+                                一鍵跳場
+                            </li>
+                            <li class="nav-detail-item" id="app-nav-fast-live">
+                                實時稽查
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="app-control">
+                <div class="mask hover-pointer app-control-button" style="grid-row:1/2" id="app-control-close"></div>
+                <div class="mask hover-pointer app-control-button" style="grid-row:1/2" id="app-control-settings"></div>
+                <div class="mask hover-pointer app-control-button" style="grid-row:1/2" id="app-control-hide"></div>
+                <div class="mask hover-pointer app-control-button" style="grid-row:1/2" id="app-control-support"></div>
+                <div class="mask hover-pointer app-control-button" style="grid-row:2/3" id="app-control-size"></div>
+                <div class="mask hover-pointer app-control-button" style="grid-row:2/3" id="app-control-discord"></div>
+            </div>
+        </header>
+        <section id="app-body" class="app-body">
+            <div class="body-part-size-1 app-body-side vertical-stretched-border">
+                <div class="body-part-container body-part-size-1" id="" type=""></div>
+            </div>
+            <div class="body-part-size-3 app-body-main" id="" type=""></div>
+        </section>
+        <footer id="app-footer" class="marquee-right-left"></footer>
+        <section id="app-overlay" class="app-overlay"></section>
+        <section id="app-cover" class="cover loading__LCU">
+            <section id="loader">
+                <img src="assets/media/app-logo/Animated.gif"></img>
+                <div class="spinner">
+                    <span style="--i:0;"></span>
+                    <span style="--i:1;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:3;"></span>
+                    <span style="--i:4;"></span>
+                    <span style="--i:5;"></span>
+                    <span style="--i:6;"></span>
+                    <span style="--i:7;"></span>
+                    <span style="--i:8;"></span>
+                    <span style="--i:9;"></span>
+                    <span style="--i:10;"></span>
+                    <span style="--i:11;"></span>
+                    <span style="--i:12;"></span>
+                    <span style="--i:13;"></span>
+                    <span style="--i:14;"></span>
+                    <span style="--i:15;"></span>
+                    <span style="--i:16;"></span>
+                    <span style="--i:17;"></span>
+                    <span style="--i:18;"></span>
+                    <span style="--i:19;"></span>
+                </div>
+            </section>
+            <section id="ad">
+                <div class="container">
+                    <h1 class="title">快要吃土了x_x</h1>
+                    <img class="link hover-pointer" src="https://source.unsplash.com/random" alt="">
+                </div>
+                <a class="close hover-pointer">close</a>
+            </section>
+        </section>
+    </div>
+    <div id="image-preloads" style="display: none"></div>
+</body>
+
+</html>

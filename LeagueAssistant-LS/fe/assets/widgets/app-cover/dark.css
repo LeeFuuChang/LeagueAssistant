@@ -1,0 +1,16 @@
+#app[theme="dark"] #app-cover #ad .container .title {
+    color: var(--gray-400) !important;
+}
+#app[theme="dark"] #app-cover #ad .close {
+    color: var(--gray-100) !important;
+    border-color: var(--gray-100) !important;
+}
+#app[theme="dark"] #app-cover #ad .close:hover {
+    color: var(--gray-400) !important;
+    border-color: var(--gray-400) !important;
+    box-shadow: 
+    0 0 1px var(--gray-400),
+    0 0 2px var(--gray-400),
+    0 0 4px var(--gray-400)
+    !important;
+}

@@ -1,0 +1,447 @@
+<section class="body-part-container body-part-size-2" data-id="" data-type="settings" data-name="stats" style="display:none">
+    <link rel="stylesheet" href="assets/body/main/parts/config-settings-stats/style.css">
+    <div class="app-body-block body-main-block config-settings-stats">
+        <div class="block-title horizontal-stretched-border">
+            <h1 class="block-title-text">戰績查詢</h1>
+        </div>
+        <ul class="block-inner config-inner y-scrollable">
+            <li class="body-sub-block config-group" data-name="overall">
+                <div class="block-title horizontal-stretched-border">
+                    <h2 class="block-title-text">戰績通用設定</h2>
+                </div>
+                <div class="block-inner group-inner overall-inner">
+                    <div class="config-item" data-name="options">
+                        <h3 class="item-name">查詢局數</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="games">
+                                    <div class="stepper">
+                                        <div class="mask button hover-pointer" data-action="-"></div>
+                                        <input type="text" value="1" min="1" max="5" step="1" decimal="0">
+                                        <div class="mask button hover-pointer" data-action="+"></div>
+                                    </div>
+                                    <h4 class="text">局</h4>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">戰績通用設定－查詢局數</h1>
+                            <p class="block">設定要查詢最近多少局對戰以及<br>發送戰績時要發送近期多少局的數據</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="queues">
+                        <h3 class="item-name">查詢模式</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="blind5" data-id="430">
+                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <h4 class="text">一般盲選</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="draft5" data-id="400">
+                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <h4 class="text">一般競技</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="rank5solo" data-id="420">
+                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <h4 class="text">單雙積分</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="rank5flex" data-id="440">
+                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <h4 class="text">彈性積分</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="aram" data-id="450">
+                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <h4 class="text">隨機單中</h4>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">戰績通用設定－查詢模式</h1>
+                            <p class="block">選擇查詢近期對戰數據時要採納哪些模式</p>
+                            <div class="option">
+                                <h2 class="name">一般對戰</h2>
+                                <p class="detail">查詢近期對戰數據時採納「一般對戰」</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">一般競技</h2>
+                                <p class="detail">查詢近期對戰數據時採納「一般競技」</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">單雙積分</h2>
+                                <p class="detail">查詢近期對戰數據時採納「單雙積分」</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">彈性積分</h2>
+                                <p class="detail">查詢近期對戰數據時採納「彈性積分」</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">隨機單中</h2>
+                                <p class="detail">查詢近期對戰數據時採納「隨機單中」</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="sending">
+                        <h3 class="item-name">發送數據選項</h3>
+                        <div class="options-container">
+                            <div class="item-group">
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="avg-kda" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                        <h4 class="text">近期平均KDA</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="avg-winrate" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                        <h4 class="text">近期平均勝率</h4>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="current-highest" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                        <h4 class="text">目前最高排位</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="season-highest" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                        <h4 class="text">本季最高排位</h4>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="match-stats" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                        <h4 class="text">各對局戰績</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="match-kda" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                        <h4 class="text">各對局KDA</h4>
+                                    </label>
+                                </form>
+                                <form class="item-options">
+                                    <label class="option hover-pointer" data-name="match-win" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                        <h4 class="text">各對局勝負</h4>
+                                    </label>
+                                    <label class="option hover-pointer" data-name="match-ignore-early" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                        <h4 class="text">忽略提早結束的對局</h4>
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">戰績通用設定－發送數據選項</h1>
+                            <p class="block">選擇發送玩家近期表現時要包含哪些數據資訊</p>
+                            <div class="option">
+                                <h2 class="name">近期平均KDA</h2>
+                                <p class="detail">查詢的近期這幾場對戰的</p>
+                                <p class="detail">（總擊殺+總助攻）/ 總死亡</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">近期平均勝率</h2>
+                                <p class="detail">查詢的近期這幾場對戰的綜合勝率</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">目前最高排位</h2>
+                                <p class="detail">玩家單雙與彈性兩者中較高的排位</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">本季最高排位</h2>
+                                <p class="detail">玩家本季達到過的最高排位</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">各對局戰績</h2>
+                                <p class="detail">發送查詢的近期這幾場對戰每一場的</p>
+                                <p class="detail">擊殺、助攻、死亡</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">各對局KDA</h2>
+                                <p class="detail">發送查詢的近期這幾場對戰每一場的</p>
+                                <p class="detail">（總擊殺+總助攻）/ 總死亡</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">各對局勝負</h2>
+                                <p class="detail">發送查詢的近期這幾場對戰每一場的勝負結果</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">忽略提早結束的對局</h2>
+                                <p class="detail">忽略對局時長短於五分鐘的對局（提早結束）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="body-sub-block config-group" data-name="select-send">
+                <div class="block-title horizontal-stretched-border">
+                    <h2 class="block-title-text">選角時發送戰績</h2>
+                </div>
+                <div class="block-inner group-inner select-send-inner">
+                    <div class="config-item" data-name="options">
+                        <h3 class="item-name">發送選項</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="winrate-default" data-pair-name="winrate-default">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                    <h4 class="text">勝率+預設稱號</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="winrate-custom" data-pair-name="winrate-custom">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                    <h4 class="text">勝率+自訂稱號</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="kda-default" data-pair-name="kda-default">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                    <h4 class="text">KDA+預設稱號</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="kda-custom" data-pair-name="kda-custom">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                    <h4 class="text">KDA+自訂稱號</h4>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">選角時發送戰績－發送選項</h1>
+                            <p class="block">選擇發送戰績的排序方式以及玩家稱號</p>
+                            <div class="option">
+                                <h2 class="name">勝率+預設稱號</h2>
+                                <p class="detail">按照玩家近期勝率排序發送順序</p>
+                                <p class="detail">預設稱號：</p>
+                                <p class="detail">超級雞馬、上等馬、中等馬、下等馬、沒有馬</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">勝率+自訂稱號</h2>
+                                <p class="detail">按照玩家近期勝率排序發送順序</p>
+                                <p class="detail">自訂稱號可在「玩家暱稱」處設定</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">編號+預設稱號</h2>
+                                <p class="detail">按照玩家編號順序排序發送順序</p>
+                                <p class="detail">（選角時選角介面，由上到下的順序</p>
+                                <p class="detail">預設稱號：</p>
+                                <p class="detail">P1、P2、P3、P4、P5</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">編號+自訂稱號</h2>
+                                <p class="detail">按照玩家編號順序排序發送順序</p>
+                                <p class="detail">（選角時選角介面，由上到下的順序</p>
+                                <p class="detail">自訂稱號可在「玩家暱稱」處設定</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="nickname">
+                        <h3 class="item-name">玩家暱稱</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="player1" data-group="select-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                                <label class="option hover-pointer" data-name="player2" data-group="select-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                                <label class="option hover-pointer" data-name="player3" data-group="select-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                                <label class="option hover-pointer" data-name="player4" data-group="select-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                                <label class="option hover-pointer" data-name="player5" data-group="select-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">選角時發送戰績－玩家暱稱</h1>
+                            <p class="block">發送時所用的玩家稱號<br>由左至右分別依次對應發送順序先後的玩家</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="fast-self">
+                        <h3 class="item-name">快捷發送自己</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="keybind" data-group="select-send-keybind">
+                                    <input tabindex="-1" class="keybind" data-key="-1" type="text" readonly>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">選角時發送戰績－快捷發送自己</h1>
+                            <p class="block">綁定一個快捷鍵，用來在選角時一鍵發送自己的近期數據</p>
+                            <div class="option">
+                                <h2 class="name">快捷鍵綁定</h2>
+                                <p class="detail">點擊後再按下鍵盤上的按鍵即可綁定</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="fast-team">
+                        <h3 class="item-name">快捷發送友方</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="keybind" data-group="select-send-keybind">
+                                    <input tabindex="-1" class="keybind" data-key="-1" type="text" readonly>
+                                </label>
+                                <label class="option hover-pointer" data-name="no-self">
+                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <h4 class="text">不要發送自己的戰績</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="no-friend">
+                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <h4 class="text">不要發送一起排的人的戰績</h4>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">選角時發送戰績－快捷發送友方</h1>
+                            <p class="block">綁定一個快捷鍵，用來在選角時一鍵發送友方的近期數據</p>
+                            <div class="option">
+                                <h2 class="name">快捷鍵綁定</h2>
+                                <p class="detail">點擊後再按下鍵盤上的按鍵即可綁定</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">不要發送自己的戰績</h2>
+                                <p class="detail">在發送友方近期數據時是否要包含自己的數據</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">不要發送一起排的人的戰績</h2>
+                                <p class="detail">在發送友方近期數據時是否要包含多排的數據</p>
+                                <p class="detail">（不包含自己</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="body-sub-block config-group" data-name="progress-send">
+                <div class="block-title horizontal-stretched-border">
+                    <h2 class="block-title-text">遊戲中發送戰績</h2>
+                </div>
+                <div class="block-inner group-inner progress-send-inner">
+                    <div class="config-item" data-name="options">
+                        <h3 class="item-name">發送選項</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="winrate-default" data-pair-name="winrate-default">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                    <h4 class="text">勝率+預設稱號</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="winrate-custom" data-pair-name="winrate-custom">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                    <h4 class="text">勝率+自訂稱號</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="kda-default" data-pair-name="kda-default">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                    <h4 class="text">KDA+預設稱號</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="kda-custom" data-pair-name="kda-custom">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                    <h4 class="text">KDA+自訂稱號</h4>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">遊戲中發送戰績－發送選項</h1>
+                            <p class="block">選擇發送戰績的排序方式以及玩家稱號</p>
+                            <div class="option">
+                                <h2 class="name">勝率+預設稱號</h2>
+                                <p class="detail">按照玩家近期勝率排序發送順序</p>
+                                <p class="detail">預設稱號：</p>
+                                <p class="detail">超級雞馬、上等馬、中等馬、下等馬、沒有馬</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">勝率+自訂稱號</h2>
+                                <p class="detail">按照玩家近期勝率排序發送順序</p>
+                                <p class="detail">自訂稱號可在「玩家暱稱」處設定</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">編號+預設稱號</h2>
+                                <p class="detail">按照玩家編號順序排序發送順序</p>
+                                <p class="detail">（遊戲內記分板中，由上到下的順序</p>
+                                <p class="detail">預設稱號：</p>
+                                <p class="detail">P1、P2、P3、P4、P5</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">編號+自訂稱號</h2>
+                                <p class="detail">按照玩家編號順序排序發送順序</p>
+                                <p class="detail">（遊戲內記分板中，由上到下的順序</p>
+                                <p class="detail">自訂稱號可在「玩家暱稱」處設定</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="nickname">
+                        <h3 class="item-name">玩家暱稱</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="player1" data-group="progress-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                                <label class="option hover-pointer" data-name="player2" data-group="progress-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                                <label class="option hover-pointer" data-name="player3" data-group="progress-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                                <label class="option hover-pointer" data-name="player4" data-group="progress-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                                <label class="option hover-pointer" data-name="player5" data-group="progress-send-nickname">
+                                    <input tabindex="-1" class="nickname" type="text">
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">遊戲中發送戰績－玩家暱稱</h1>
+                            <p class="block">發送時所用的玩家稱號<br>由左至右分別依次對應發送順序先後的玩家</p>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="fast-team">
+                        <h3 class="item-name">快捷發送友方</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="keybind" data-group="progress-send-keybind">
+                                    <input tabindex="-1" class="keybind" data-key="-1" type="text" readonly>
+                                </label>
+                                <label class="option hover-pointer" data-name="no-self">
+                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <h4 class="text">不要發送自己的戰績</h4>
+                                </label>
+                                <label class="option hover-pointer" data-name="no-friend">
+                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <h4 class="text">不要發送一起排的人的戰績</h4>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">遊戲中發送戰績－快捷發送友方</h1>
+                            <p class="block">綁定一個快捷鍵，用來在遊戲中一鍵發送友方的近期數據</p>
+                            <div class="option">
+                                <h2 class="name">快捷鍵綁定</h2>
+                                <p class="detail">點擊後再按下鍵盤上的按鍵即可綁定</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">不要發送自己的戰績</h2>
+                                <p class="detail">在發送友方近期數據時是否要包含自己的數據</p>
+                            </div>
+                            <div class="option">
+                                <h2 class="name">不要發送一起排的人的戰績</h2>
+                                <p class="detail">在發送友方近期數據時是否要包含多排的數據</p>
+                                <p class="detail">（不包含自己</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="config-item" data-name="fast-enemy">
+                        <h3 class="item-name">快捷發送敵方</h3>
+                        <div class="options-container">
+                            <form class="item-options">
+                                <label class="option hover-pointer" data-name="keybind" data-group="progress-send-keybind">
+                                    <input tabindex="-1" class="keybind" data-key="-1" type="text" readonly>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="item-description">
+                            <h1 class="title">遊戲中發送戰績－快捷發送敵方</h1>
+                            <p class="block">綁定一個快捷鍵，用來在遊戲中一鍵發送敵方的近期數據</p>
+                            <div class="option">
+                                <h2 class="name">快捷鍵綁定</h2>
+                                <p class="detail">點擊後再按下鍵盤上的按鍵即可綁定</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>

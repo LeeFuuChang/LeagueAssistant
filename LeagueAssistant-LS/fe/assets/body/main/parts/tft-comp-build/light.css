@@ -1,0 +1,25 @@
+#app[theme="light"] .app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item {
+    background: var(--white-200) !important;
+    border-color: var(--white-400) !important;
+}
+#app[theme="light"] .app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-icon {
+    background: var(--white-100) !important;
+}
+#app[theme="light"] .app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-level {
+    color: var(--white-100) !important;
+}
+#app[theme="light"] .app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-detail .detail-name {
+    color: var(--black-200) !important;
+}
+#app[theme="light"] .app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-detail .detail-level {
+    color: var(--gray-600) !important;
+}
+#app[theme="light"] .app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-items {
+    border-color: var(--white-400) !important;
+}
+#app[theme="light"] .app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-items .item {
+    --hover-detail-background-color: var(--white-300) !important;
+}
+#app[theme="light"] .app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-items .item .item-craft span {
+    color: var(--gray-600) !important;
+}

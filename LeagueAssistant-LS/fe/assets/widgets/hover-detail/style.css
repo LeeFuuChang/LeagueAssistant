@@ -1,0 +1,99 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.hover-detail-parent {
+    position: relative;
+    cursor: pointer;
+    pointer-events: auto;
+}
+.hover-detail-parent .hover-detail-top,
+.hover-detail-parent .hover-detail-bottom,
+.hover-detail-parent .hover-detail-left,
+.hover-detail-parent .hover-detail-right {
+    --pointer-size: calc(var(--S) * 0.02);
+    z-index: calc(var(--layer-overlay) - 1);
+    position: absolute;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+    opacity: 0;
+    min-width: calc(var(--S) * 0.08);
+    min-height: calc(var(--S) * 0.08);
+    box-shadow: 0 calc(var(--S)*0.0025) calc(var(--S)*0.0025) calc(var(--S)*-0.0025) rgba(0, 0, 0, 0.08),
+    0 calc(var(--S)*0.003) calc(var(--S)*0.008) 0 rgba(0, 0, 0, 0.06),
+    0 calc(var(--S)*0.008) calc(var(--S)*0.016) calc(var(--S)*0.005) rgba(0, 0, 0, 0.04);
+    background-color: var(--hover-detail-background-color);
+}
+.hover-detail-parent:hover .hover-detail-top,
+.hover-detail-parent:hover .hover-detail-bottom,
+.hover-detail-parent:hover .hover-detail-left,
+.hover-detail-parent:hover .hover-detail-right {
+    opacity: 1;
+}
+.hover-detail-parent .hover-detail-top,
+.hover-detail-parent .hover-detail-bottom {
+    padding: calc(var(--S) * 0.01) calc(var(--S) * 0.015);
+    width: max-content;
+    height: min-content;
+    border-radius: calc(var(--S) * 0.015);
+}
+.hover-detail-parent .hover-detail-top {
+    top: 0;
+    transform: translateY(-100%);
+}
+.hover-detail-parent .hover-detail-bottom {
+    bottom: 0;
+    transform: translateY(100%);
+}
+.hover-detail-parent .hover-detail-left,
+.hover-detail-parent .hover-detail-right {
+    padding: calc(var(--S) * 0.015) calc(var(--S) * 0.01);
+    width: min-content;
+    height: max-content;
+    border-radius: calc(var(--S) * 0.015);
+}
+.hover-detail-parent .hover-detail-left {
+    left: 0;
+    transform: translateX(-100%);
+}
+.hover-detail-parent .hover-detail-right {
+    right: 0;
+    transform: translateX(100%);
+}
+
+.hover-detail-parent .hover-detail-top::before,
+.hover-detail-parent .hover-detail-bottom::before,
+.hover-detail-parent .hover-detail-left::before,
+.hover-detail-parent .hover-detail-right::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: var(--pointer-size) solid transparent;
+    border-bottom: var(--pointer-size) solid transparent;
+    border-left: var(--pointer-size) solid transparent;
+    border-right: var(--pointer-size) solid transparent;
+}
+.hover-detail-parent .hover-detail-top::before {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, calc(var(--pointer-size) * 1.5));
+    border-top: var(--pointer-size) solid var(--hover-detail-background-color);
+}
+.hover-detail-parent .hover-detail-bottom::before {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, calc(var(--pointer-size) * -1.5));
+    border-bottom: var(--pointer-size) solid var(--hover-detail-background-color);
+}
+.hover-detail-parent .hover-detail-left::before {
+    top: 50%;
+    right: 0;
+    transform: translate(calc(var(--pointer-size) * 1.5), -50%);
+    border-left: var(--pointer-size) solid var(--hover-detail-background-color);
+}
+.hover-detail-parent .hover-detail-right::before {
+    top: 50%;
+    left: 0;
+    transform: translate(calc(var(--pointer-size) * -1.5), -50%);
+    border-right: var(--pointer-size) solid var(--hover-detail-background-color);
+}

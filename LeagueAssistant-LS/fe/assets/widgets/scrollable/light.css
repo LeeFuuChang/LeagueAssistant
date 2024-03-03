@@ -1,0 +1,12 @@
+#app[theme="light"] .x-scrollable::-webkit-scrollbar-track,
+#app[theme="light"] .y-scrollable::-webkit-scrollbar-track {
+    background: #DBE0E4 !important;
+}
+#app[theme="light"] .x-scrollable::-webkit-scrollbar-thumb,
+#app[theme="light"] .y-scrollable::-webkit-scrollbar-thumb {
+    background: #9AA4AF !important;
+}
+#app[theme="light"] .x-scrollable::-webkit-scrollbar-thumb:hover,
+#app[theme="light"] .y-scrollable::-webkit-scrollbar-thumb:hover {
+    background: #758592 !important;
+}

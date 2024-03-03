@@ -1,0 +1,333 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+*[type="tft"] .app-body-block {
+    height: 100%;
+}
+
+
+*[type="tft"] .tft-build-overview {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: calc(var(--S) * 0.15);
+    pointer-events: auto;
+}
+*[type="tft"] .tft-build-overview .overview-part {
+    margin-right: calc(var(--S) * 0.025);
+}
+*[type="tft"] .tft-build-overview .overview-part:last-child {
+    margin-right: 0;
+}
+
+
+*[type="tft"] .tft-build-overview .overview-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--S) * 0.125);
+    height: 100%;
+}
+*[type="tft"] .tft-build-overview .overview-icon .wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--S) * 0.1);
+    height: calc(var(--S) * 0.1);
+}
+*[type="tft"] .tft-build-overview .overview-icon .wrapper .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+*[type="tft"] .tft-build-overview .overview-icon .wrapper .icon img {
+    width: auto;
+    height: 100%;
+}
+*[type="tft"] .tft-build-overview .overview-icon .wrapper span {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    right: 0;
+    bottom: 0;
+    font-size: calc(var(--S) * 0.02);
+    width: 35%;
+    height: 35%;
+    transform: translateX(10%);
+    font-weight: 600;
+    background: #000;
+    color: #fff;
+}
+
+
+*[type="tft"] .tft-build-overview .overview-tier {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--S) * 0.05);
+    height: 100%;
+    border-right: calc(var(--S) * 0.0025) solid transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: calc(var(--S) * 0.03) calc(var(--S) * 0.03);
+}
+*[type="tft"] .tft-build-overview .overview-tier[data-tier="OP"] {
+    background-image: url("/ui/assets/media/trends/T0.svg");
+}
+*[type="tft"] .tft-build-overview .overview-tier[data-tier="S"] {
+    background-image: url("/ui/assets/media/trends/T1.svg");
+}
+*[type="tft"] .tft-build-overview .overview-tier[data-tier="A"] {
+    background-image: url("/ui/assets/media/trends/T2.svg");
+}
+*[type="tft"] .tft-build-overview .overview-tier[data-tier="B"] {
+    background-image: url("/ui/assets/media/trends/T3.svg");
+}
+*[type="tft"] .tft-build-overview .overview-tier[data-tier="C"] {
+    background-image: url("/ui/assets/media/trends/T4.svg");
+}
+*[type="tft"] .tft-build-overview .overview-tier[data-tier="D"] {
+    background-image: url("/ui/assets/media/trends/T5.svg");
+}
+
+
+*[type="tft"] .tft-build-overview .overview-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: auto;
+    height: calc(var(--S) * 0.15);
+    padding: calc(var(--S) * 0.025) 0;
+}
+*[type="tft"] .tft-build-overview .overview-info .info-basic {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(var(--S) * 0.05);
+}
+*[type="tft"] .tft-build-overview .overview-info .info-basic .basic-name {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: calc(var(--S) * 0.05);
+    font-size: calc(var(--S) * 0.025);
+    font-weight: 500;
+}
+*[type="tft"] .tft-build-overview .overview-info .info-basic .basic-name span {
+    margin: 0 calc(var(--S) * 0.01);
+}
+*[type="tft"] .tft-build-overview .overview-info .info-basic .basic-cost {
+    display: flex;
+    align-items: center;
+    padding-left: calc(var(--S) * 0.015);
+    width: calc(var(--S) * 0.08);
+    height: calc(var(--S) * 0.05);
+}
+*[type="tft"] .tft-build-overview .overview-info .info-basic .basic-cost .mask {
+    width: calc(var(--S) * 0.02);
+    height: calc(var(--S) * 0.02);
+    margin-right: calc(var(--S) * 0.01);
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-postgame/global/default/scoreboard-coins-icon.svg");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-postgame/global/default/scoreboard-coins-icon.svg");
+}
+*[type="tft"] .tft-build-overview .overview-info .info-basic .basic-cost span {
+    font-size: calc(var(--S) * 0.02);
+}
+*[type="tft"] .tft-build-overview .overview-info .info-stats {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: calc(var(--S) * 0.05);
+}
+*[type="tft"] .tft-build-overview .overview-info .info-stats .stats-item {
+    width: calc(var(--S) * 0.095);
+    margin-right: calc(var(--S) * 0.015);
+    border-right: calc(var(--S) * 0.0025) solid transparent;
+}
+*[type="tft"] .tft-build-overview .overview-info .info-stats .stats-item:last-child {
+    margin-right: 0;
+}
+*[type="tft"] .tft-build-overview .overview-info .info-stats .stats-item .stats-title {
+    width: 100%;
+    height: calc(var(--S) * 0.025);
+}
+*[type="tft"] .tft-build-overview .overview-info .info-stats .stats-item .stats-title span {
+    font-size: calc(var(--S) * 0.018);
+}
+*[type="tft"] .tft-build-overview .overview-info .info-stats .stats-item .stats-detail {
+    width: 100%;
+    height: calc(var(--S) * 0.025);
+}
+*[type="tft"] .tft-build-overview .overview-info .info-stats .stats-item .stats-detail span {
+    font-size: calc(var(--S) * 0.02);
+    margin-right: calc(var(--S) * 0.005);
+}
+
+
+*[type="tft"] .tft-build-overview .overview-comp {
+    flex: 1;
+}
+*[type="tft"] .tft-build-overview .overview-comp .comp-stats {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: calc(var(--S) * 0.04);
+}
+*[type="tft"] .tft-build-overview .overview-comp .comp-stats .stats-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(var(--S) * 0.065);
+    height: calc(var(--S) * 0.03);
+    border-radius: calc(var(--S) * 0.01);
+    padding-left: calc(var(--S) * 0.005);
+    padding-right: calc(var(--S) * 0.015);
+    margin-right: calc(var(--S) * 0.01);
+}
+*[type="tft"] .stats-item[data-level="1"] {
+    --comp-stat-color: #907659;
+}
+*[type="tft"] .stats-item[data-level="2"] {
+    --comp-stat-color: #907659;
+}
+*[type="tft"] .stats-item[data-level="3"] {
+    --comp-stat-color: #9AA4AF;
+}
+*[type="tft"] .stats-item[data-level="4"] {
+    --comp-stat-color: #EB9C00;
+}
+*[type="tft"] .stats-item[data-level="5"] {
+    --comp-stat-color: #7D59EA;
+}
+*[type="tft"] .tft-build-overview .overview-comp .comp-stats .stats-item .mask {
+    width: calc(var(--S) * 0.02);
+    height: calc(var(--S) * 0.02);
+    margin: calc(var(--S) * 0.005);
+    mask-image: var(--mask-image);
+    -webkit-mask-image: var(--mask-image);
+    background-color: var(--comp-stat-color);
+}
+
+*[type="tft"] .tft-build-overview .overview-comp .comp-units {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    flex: 1;
+}
+*[type="tft"] .unit-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--S) * 0.085);
+    height: calc(var(--S) * 0.085);
+}
+*[type="tft"] .unit-item[data-cost="0"] {
+    --unit-cost-r: 200;
+    --unit-cost-g: 200;
+    --unit-cost-b: 200;
+}
+*[type="tft"] .unit-item[data-cost="1"] {
+    --unit-cost-r: 154;
+    --unit-cost-g: 164;
+    --unit-cost-b: 175;
+}
+*[type="tft"] .unit-item[data-cost="2"] {
+    --unit-cost-r: 0;
+    --unit-cost-g: 174;
+    --unit-cost-b: 10;
+}
+*[type="tft"] .unit-item[data-cost="3"] {
+    --unit-cost-r: 0;
+    --unit-cost-g: 147;
+    --unit-cost-b: 255;
+}
+*[type="tft"] .unit-item[data-cost="4"] {
+    --unit-cost-r: 229;
+    --unit-cost-g: 55;
+    --unit-cost-b: 162;
+}
+*[type="tft"] .unit-item[data-cost="5"] {
+    --unit-cost-r: 235;
+    --unit-cost-g: 156;
+    --unit-cost-b: 0;
+}
+*[type="tft"] .unit-item .clip-path-hexagon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(var(--unit-cost-r), var(--unit-cost-g), var(--unit-cost-b), 1);
+}
+*[type="tft"] .unit-item .clip-path-hexagon .clip-path-hexagon {
+    width: 95%;
+    height: 95%;
+}
+*[type="tft"] .unit-item .clip-path-hexagon .clip-path-hexagon img {
+    width: 100%;
+    height: 100%;
+}
+*[type="tft"] .unit-item .unit-stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    transform: translateY(10%);
+    width: 100%;
+    height: 30%;
+}
+*[type="tft"] .unit-item .unit-stars .mask {
+    mask-image: url("/ui/assets/media/trends/star.png");
+    -webkit-mask-image: url("/ui/assets/media/trends/star.png");
+    background: rgba(var(--unit-cost-r), var(--unit-cost-g), var(--unit-cost-b), 1);
+    width: 30%;
+    height: 100%;
+}
+*[type="tft"] .unit-item .unit-build {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+}
+*[type="tft"] .unit-item .unit-build img {
+    margin: 0 calc(var(--S) * 0.002);
+    width: calc(var(--S) * 0.02);
+    height: calc(var(--S) * 0.02);
+    border-radius: calc(var(--S) * 0.005);
+}
+*[type="tft"] .unit-item .unit-name {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background-color: rgba(var(--unit-cost-r), var(--unit-cost-g), var(--unit-cost-b), 0.5);
+    font-weight: 700;
+    bottom: calc(var(--S) * 0.022);
+    width: calc(var(--S) * 0.065);
+    height: calc(var(--S) * 0.02);
+    border-radius: calc(var(--S) * 0.01);
+    line-height: calc(var(--S) * 0.02);
+    font-size: calc(var(--S) * 0.016);
+}

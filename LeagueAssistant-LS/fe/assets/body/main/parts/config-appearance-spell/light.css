@@ -1,0 +1,3 @@
+#app[theme="light"] .app-body-block.config-appearance-spell .group-inner .preview-item[data-name="spell-single"] .item {
+    --background-color: var(--gray-700);
+}

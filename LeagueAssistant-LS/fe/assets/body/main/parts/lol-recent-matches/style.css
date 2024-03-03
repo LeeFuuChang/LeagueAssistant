@@ -1,0 +1,244 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.app-body-block.lol-recent-matches {
+    height: 100%;
+}
+.app-body-block.lol-recent-matches>.block-inner {
+    position: relative;
+    padding: 0 calc(var(--S) * 0.01);
+    flex-direction: column;
+    height: 100%;
+}
+
+.app-body-block.lol-recent-matches .matches-options {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(var(--S) * 0.05);
+    margin-bottom: calc(var(--S) * 0.01);
+}
+.app-body-block.lol-recent-matches .matches-options .options-group {
+    position: relative;
+    display: flex;
+    width: auto;
+    height: 100%;
+    font-size: calc(var(--S) * 0.02);
+}
+.app-body-block.lol-recent-matches .matches-options .options-queue {
+    width: calc(var(--S) * 0.2);
+}
+.app-body-block.lol-recent-matches .matches-options .options-result {
+    position: relative;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    column-gap: calc(var(--S) * 0.01);
+    width: auto;
+    height: 100%;
+    font-size: calc(var(--S) * 0.02);
+}
+.app-body-block.lol-recent-matches .matches-options .options-result .option-result-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--S) * 0.04);
+    height: calc(var(--S) * 0.04);
+    border-radius: calc(var(--S) * 0.005);
+    opacity: 0.5;
+    filter: brightness(1) blur(calc(var(--S) * 0.001));
+    -webkit-transition: opacity 0.3s, filter 0.3s;
+    transition: opacity 0.3s, filter 0.3s;
+}
+.app-body-block.lol-recent-matches .matches-options .options-result .option-result-item.active,
+.app-body-block.lol-recent-matches .matches-options .options-result .option-result-item:hover {
+    opacity: 1;
+    filter: brightness(1.2) blur(0);
+}
+.app-body-block.lol-recent-matches .matches-options .options-result .option-result-item .mask {
+    width: 60%;
+    height: 60%;
+}
+.app-body-block.lol-recent-matches .matches-options .options-result .option-result-item[data-hide-result="2"] .mask {
+    mask-image: url("/ui/assets/media/actions/flat.png");
+    -webkit-mask-image: url("/ui/assets/media/actions/flat.png");
+}
+.app-body-block.lol-recent-matches .matches-options .options-result .option-result-item[data-hide-result="0"] .mask {
+    mask-image: url("/ui/assets/media/actions/up2.png");
+    -webkit-mask-image: url("/ui/assets/media/actions/up2.png");
+}
+.app-body-block.lol-recent-matches .matches-options .options-result .option-result-item[data-hide-result="1"] .mask {
+    mask-image: url("/ui/assets/media/actions/down2.png");
+    -webkit-mask-image: url("/ui/assets/media/actions/down2.png");
+}
+
+.app-body-block.lol-recent-matches .matches-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.lol-recent-matches .matches-container .matches-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 100%;
+}
+.app-body-block.lol-recent-matches .matches-container .matches-wrapper .recent-matches-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex: 1;
+}
+.app-body-block.lol-recent-matches .matches-container .matches-wrapper .recent-matches-holder img {
+    width: calc(var(--S) * 0.15);
+    height: calc(var(--S) * 0.15);
+}
+.app-body-block.lol-recent-matches .matches-container .matches-wrapper .recent-matches-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: calc(var(--S) * 0.075);
+    padding: calc(var(--S) * 0.01);
+    padding-left: calc(var(--S) * 0.015);
+    border-left-width: calc(var(--S) * 0.01);
+    border-left-style: solid;
+    -webkit-transition: border 0.2s, padding 0.2s;
+    transition: border 0.2s, padding 0.2s;
+}
+.app-body-block.lol-recent-matches .matches-container .matches-wrapper .recent-matches-item:not(:last-child) {
+    margin-bottom: calc(var(--S) * 0.005);
+}
+.app-body-block.lol-recent-matches .matches-container .matches-wrapper .recent-matches-item.active {
+    padding-left: calc(var(--S) * 0.01);
+    border-left-width: calc(var(--S) * 0.015);
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-right: calc(var(--S) * 0.01);
+    width: calc(var(--S) * 0.24);
+    height: 100%;
+    border-right: calc(var(--S) * 0.0025) solid transparent;
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .info:not(:last-child) {
+    margin-right: calc(var(--S) * 0.005);
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .champion {
+    width: calc(var(--S) * 0.06);
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .champion img {
+    width: calc(var(--S) * 0.055);
+    height: calc(var(--S) * 0.055);
+    border-radius: 50%;
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .champion span {
+    position: absolute;
+    padding-right: 5%;
+    left: 0;
+    bottom: 0;
+    transform: translate(-10%, 10%);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--S) * 0.025);
+    height: calc(var(--S) * 0.025);
+    border-radius: 50%;
+    font-size: calc(var(--S) * 0.015);
+    line-height: calc(var(--S) * 0.025);
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .spells {
+    width: calc(var(--S) * 0.025);
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .spells img {
+    width: 100%;
+    border-radius: calc(var(--S) * 0.004);
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .runes {
+    width: calc(var(--S) * 0.028);
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .runes img:nth-child(1) {
+    height: 48%;
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .runes img:nth-child(2) {
+    height: 32%;
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .detail {
+    flex: 1;
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .detail .detail-kda,
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .detail .detail-queue {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .detail .detail-kda {
+    height: 60%;
+    font-size: calc(var(--S) * 0.02);
+    font-weight: 600;
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .detail .detail-kda span {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-game .detail .detail-queue {
+    height: 40%;
+    font-size: calc(var(--S) * 0.015);
+    font-weight: 500;
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-stats {
+    width: calc(var(--S) * 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-left: calc(var(--S) * 0.02);
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-stats .stats-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: calc(var(--S) * 0.015);
+    height: 50%;
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-stats .stats-item .mask {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(var(--S) * 0.02);
+    height: 100%;
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-stats .stats-item[data-name="totalMinionsKilled"] .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-postgame/global/default/scoreboard-stat-switcher-minions-slain.svg");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-postgame/global/default/scoreboard-stat-switcher-minions-slain.svg");
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-stats .stats-item[data-name="goldEarned"] .mask {
+    mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-postgame/global/default/scoreboard-coins-icon.svg");
+    -webkit-mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-postgame/global/default/scoreboard-coins-icon.svg");
+}
+.app-body-block.lol-recent-matches .recent-matches-item .matches-item-stats .stats-item span {
+    font-size: calc(var(--S) * 0.018);
+    height: 100%;
+}

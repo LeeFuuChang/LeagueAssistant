@@ -1,0 +1,220 @@
+@import url("./dark.css");
+@import url("./light.css");
+@import url("../../type-styles/tft/style.css");
+
+.app-body-block.tft-comp-build>.block-inner {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    padding: 0 calc(var(--S) * 0.01);
+}
+
+.app-body-block.tft-comp-build .comp-guide {
+    width: 100%;
+    flex: 1;
+}
+.app-body-block.tft-comp-build .comp-guide .block-inner {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.app-body-block.tft-comp-build .comp-guide .block-inner .comp-guide-pages {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: calc(var(--S) * 1.36);
+    min-width: calc(var(--S) * 1.36);
+    max-width: calc(var(--S) * 1.36);
+    height: 100%;
+    -webkit-transition: left 0.3s;
+    transition: left 0.3s;
+}
+.app-body-block.tft-comp-build .comp-guide .block-inner .comp-guide-pages .comp-guide-page {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(var(--S) * 0.01) 0;
+    width: calc(var(--S) * 1.36);
+    min-width: calc(var(--S) * 1.36);
+    max-width: calc(var(--S) * 1.36);
+    height: 100%;
+}
+
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 calc(var(--S) * 0.01);
+    width: calc(var(--S) * 0.3);
+    height: 100%;
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: calc(var(--S) * 0.005) calc(var(--S) * 0.015);
+    margin-bottom: calc(var(--S) * 0.01);
+    border-radius: calc(var(--S) * 0.01);
+    width: 100%;
+    height: calc(var(--S) * 0.06);
+    border-width: calc(var(--S) * 0.0025);
+    border-style: solid;
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: calc(var(--S) * 0.01);
+    width: calc(var(--S) * 0.04);
+    height: calc(var(--S) * 0.04);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-icon .mask {
+    width: calc(var(--S) * 0.03);
+    height: calc(var(--S) * 0.03);
+    --mask-image: url("https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/ux/traiticons/trait_icon_8_oxforce.png");
+    mask-image: var(--mask-image);
+    -webkit-mask-image: var(--mask-image);
+    background-color: var(--comp-stat-color);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-level {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(var(--S) * 0.01);
+    margin-right: calc(var(--S) * 0.01);
+    width: calc(var(--S) * 0.024);
+    height: calc(var(--S) * 0.024);
+    line-height: calc(var(--S) * 0.024);
+    text-align: center;
+    font-size: calc(var(--S) * 0.018);
+    font-weight: 500;
+    background-color: var(--comp-stat-color);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+    font-size: calc(var(--S) * 0.018);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-detail .detail-name,
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-detail .detail-level {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: calc(var(--S) * 0.03);
+    line-height: calc(var(--S) * 0.02);
+    text-align: center;
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-detail .detail-name {
+    font-size: calc(var(--S) * 0.02);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-detail .detail-level {
+    font-size: calc(var(--S) * 0.018);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-detail .detail-level span {
+    margin-right: calc(var(--S) * 0.005);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-detail .detail-level span.active {
+    color: var(--comp-stat-color);
+    font-weight: 600;
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-stats .stats-item .stats-detail .detail-level span:not(:first-child) {
+    margin-left: calc(var(--S) * 0.005);
+}
+
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 calc(var(--S) * 0.01);
+    width: var(--S);
+    height: 100%;
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-board .comp-board-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(var(--S) * 0.125);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-board .comp-board-row:nth-child(even) {
+    padding-left: calc(var(--S) * 0.062);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-board .comp-board-row:nth-child(odd) {
+    padding-right: calc(var(--S) * 0.062);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-board .comp-board-row .unit-item {
+    width: calc(var(--S) * 0.124);
+    height: calc(var(--S) * 0.124);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-board .comp-board-row .unit-item .unit-stars .mask {
+    width: calc(var(--S) * 0.024);
+    height: calc(var(--S) * 0.024);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-board .comp-board-row .unit-item .unit-build img {
+    margin: 0 calc(var(--S) * 0.0025);
+    width: calc(var(--S) * 0.03);
+    height: calc(var(--S) * 0.03);
+    border-radius: calc(var(--S) * 0.006);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-board .comp-board-row .unit-item .unit-name {
+    bottom: calc(var(--S) * 0.036);
+    width: calc(var(--S) * 0.1);
+    height: calc(var(--S) * 0.02);
+    border-radius: calc(var(--S) * 0.01);
+    line-height: calc(var(--S) * 0.02);
+    font-size: calc(var(--S) * 0.018);
+}
+
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: calc(var(--S) * 0.01);
+    padding: calc(var(--S) * 0.01);
+    border-width: calc(var(--S) * 0.0025);
+    border-style: solid;
+    width: calc(var(--S) * 0.06);
+    height: 100%;
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-items .item {
+    position: relative;
+    width: calc(var(--S) * 0.04);
+    height: calc(var(--S) * 0.04);
+    margin-bottom: calc(var(--S) * 0.01);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-items .item .item-icon {
+    border-radius: calc(var(--S) * 0.01);
+    width: 100%;
+    height: 100%;
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-items .item .item-craft {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    transform: translate(-100%, -50%);
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-items .item .item-craft span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--S) * 0.02);
+    font-weight: 600;
+}
+.app-body-block.tft-comp-build .comp-guide .comp-guide-page .comp-items .item .item-craft .item-craft-sub {
+    border-radius: calc(var(--S) * 0.01);
+    width: calc(var(--S) * 0.03);
+    height: calc(var(--S) * 0.03);
+}

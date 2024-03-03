@@ -1,0 +1,56 @@
+@import url("./dark.css");
+@import url("./light.css");
+
+.body-side-block.summoner-recent-champion {
+    height: max-content;
+}
+.body-side-block.summoner-recent-champion .recent-champion-inner {
+    height: calc(var(--S) * 0.08);
+    min-height: calc(var(--S) * 0.08);
+    max-height: calc(var(--S) * 0.08);
+}
+.body-side-block.summoner-recent-champion .recent-champion-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 100%;
+}
+.body-side-block.summoner-recent-champion .recent-champion-icon {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto calc(var(--S) * 0.01);
+    padding: calc(var(--S) * 0.01);
+    width: auto;
+    height: 100%;
+}
+.body-side-block.summoner-recent-champion .recent-champion-icon img {
+    aspect-ratio: 1 / 1;
+    pointer-events: auto;
+    width: auto;
+    height: 100%;
+    border-radius: 50%;
+}
+.body-side-block.summoner-recent-champion .recent-champion-item .recent-champion-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: calc(var(--S) * 0.01);
+}
+.body-side-block.summoner-recent-champion .recent-champion-item .recent-champion-detail .champion-detail-item {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    width: 100%;
+    height: calc(var(--S) * 0.025);
+    font-size: calc(var(--S) * 0.0175);
+}
+.body-side-block.summoner-recent-champion .recent-champion-item .recent-champion-detail .champion-detail-item span {
+    display: block;
+    margin-left: calc(var(--S) * 0.01);
+    min-width: calc(var(--S) * 0.035);
+    flex: 1;
+    text-align: right;
+}
