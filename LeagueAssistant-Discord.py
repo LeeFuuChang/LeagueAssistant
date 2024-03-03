@@ -52,4 +52,4 @@ async def on_raw_reaction_remove(payload):
                         await member.remove_roles(role)
                         print(f"Removed {role.name} role from {member.display_name}.")
 
-client.run("MTA3MTM0MjYyMjg0MjU2ODcyNg.Gcrb8Y.tNBwGB61RyQHcx44nIc_ilrQSFPVxlMr5qR7c8")
+client.run("")
