@@ -1,0 +1,8 @@
+# Logs
+*.log
+
+# Changes
+changes.json
+
+# Discord bot
+LeagueAssistant-Discord.py
