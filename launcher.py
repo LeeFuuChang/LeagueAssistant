@@ -1,41 +1,79 @@
-from PyQt5.QtWidgets import QApplication
+from LoadingWindow import AbstractLoadingWindow
 
-import time, sys, os
+import urllib3
+urllib3.disable_warnings()
+
+import requests as rq
+import time, sys, os, re
 setattr(sys, "kwargs", {k:v for k,v in [arg.split("=") for arg in sys.argv if "=" in arg]})
 sys.kwargs["--mode"] = sys.kwargs.get("--mode", "RELEASE").upper()
 
-from AbstractLoadingRenderer import AbstractLoadingWindow
-from ProjectUtility import PROJECT_NAME, CLOUD_SERVER, STORAGE_SERVER, runAdmin, ensureAdmin, getDLL
-MainUpdater = getattr(getDLL("VersionManager"), "MainUpdater")
+from ProjectUtility import PROJECT_NAME, CLOUD_SERVER, STORAGE_SERVER
+from ProjectUtility import getExecutableRoot, getPackage, downloadFileByStep, ensureAdmin, runAdmin
+LocalStorage = getattr(getPackage("StorageManager"), "LocalStorage")(STORAGE_SERVER, PROJECT_NAME)
 
 
-class LauncherWindow(AbstractLoadingWindow):
-    def __init__(self):
-        super(self.__class__, self).__init__()
-        self.loadingFunctions = [self.setupLocalStorage, self.checkUpdate]
 
-    def setupLocalStorage(self):
-        StorageManager = getDLL("StorageManager")
-        LocalStorage = getattr(StorageManager, "LocalStorage")
-        self.updateLoadingStatus(status="正在更新本地檔案 . . .", progress=0)
-        return LocalStorage(STORAGE_SERVER, PROJECT_NAME).setup(progressCallback=self.updateLoadingStatus)
+def updateMainProgram(progressCallback):
+    version = rq.get(f"{CLOUD_SERVER}/Version", verify=False).json().get("latest", "")
+    if(not version): return ""
 
-    def checkUpdate(self):
-        try:
-            self.updateLoadingStatus(status="正在檢查版本更新 . . .", progress=0)
-            path = MainUpdater(PROJECT_NAME, CLOUD_SERVER).checkForUpdate(progressCallback=self.updateLoadingStatus)
-            if(not os.path.exists(path)): return False
-            self.updateLoadingStatus(status="已更新至最新版本 . . .", progress=100)
-            time.sleep(3)
-            runAdmin(path, " ".join([f"{k}={v}" for k,v in sys.kwargs.items()]))
-            return True
-        except Exception as e: return False
+    targetFolder = getExecutableRoot()
+    tempFilePath = os.path.join(targetFolder, f"{PROJECT_NAME}-{int(time.time())}.tmp")
+    realFilePath = os.path.join(targetFolder, f"{PROJECT_NAME}-{version}.exe")
+    if(os.path.exists(realFilePath)): return realFilePath
+
+    for file in os.listdir(targetFolder):
+        if not os.path.isfile(file): continue
+        if not re.match(fr"^{PROJECT_NAME}-([0-9]+\.)+exe$", file): continue
+        os.remove(os.path.join(targetFolder, file))
+
+    fileStream = rq.get(f"{CLOUD_SERVER}/Download/Latest", verify=False, stream=True)
+    for completed, ready_size, total_size, time_passed in downloadFileByStep(tempFilePath, realFilePath, fileStream):
+        if(not total_size): return ""
+        if(completed): return realFilePath
+
+        estimation = time_passed / (ready_size+1) * (total_size-ready_size)
+        timeString = f"Updating . . . [ Estimated time remaining: {int(estimation/60):>2}m {int(estimation%60):>2}s ]"
+        progressCallback(timeString, round((ready_size/total_size)*100))
+
+    return ""
+
+
+
+def runMainProgram():
+    targetFolder = getExecutableRoot()
+
+    matchedFiles = []
+
+    for file in os.listdir(targetFolder):
+        if not os.path.isfile(file): continue
+        if not re.match(fr"^{PROJECT_NAME}-([0-9]+\.)+exe$", file): continue
+        matchedFiles.append(file)
+        os.remove(os.path.join(targetFolder, file))
+
+    matchedFiles.sort(key=lambda f:[int(n) for n in f.replace(f"ABC-", "").split(".")[:-1]], reverse=True)
+
+    runAdmin(os.path.join(targetFolder, matchedFiles[0]), [f"{k}={v}" for k,v in sys.kwargs.items()])
+
+
+
+def updateLoaderStatus(loader:AbstractLoadingWindow, text, progress):
+    loader.text = text
+    loader.progress = progress
+
 
 
 def main():
-    app = QApplication([*sys.argv, "--ignore-gpu-blacklist"])
-    launcherWindow = LauncherWindow()
-    launcherWindow.show()
-    launcherWindow.startLoading()
-    sys.exit(app.exec_())
+    loader = AbstractLoadingWindow()
+    loader.setIconPath("./default-loading-icon.png")
+    loader.setSplashArtPath("./default-loading-splash.png")
+    loader.setTasks([
+        lambda : updateLoaderStatus("", 0),
+        lambda : LocalStorage.setup(lambda t,p : updateLoaderStatus(loader, t, p)),
+        lambda : updateLoaderStatus("", 0),
+        lambda : updateMainProgram(lambda t,p : updateLoaderStatus(loader, t, p)),
+        runMainProgram,
+    ])
+    loader.exec_()
 if __name__ == "__main__" and ensureAdmin(): main()
