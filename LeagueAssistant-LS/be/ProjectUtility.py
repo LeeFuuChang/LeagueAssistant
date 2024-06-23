@@ -20,15 +20,33 @@ CLOUD_SERVER = f"https://www.leefuuchang.in/projects/{PROJECT_NAME}"
 STORAGE_SERVER = f"https://www.leefuuchang.in/projects/{PROJECT_NAME}/Storage"
 
 
-def runAdmin(path, argstring):
-    return ctypes.windll.shell32.ShellExecuteW(None, "runas", path, argstring, None, 1)
+def isAdmin():
+    if(sys.argv[0].endswith(".py")): return True
+
+    checkingMethods = [
+        lambda : not os.getuid(),
+        lambda : ctypes.windll.shell32.IsUserAnAdmin(),
+    ]
+
+    isAdmin = False
+    for method in checkingMethods:
+        try:
+            isAdmin = method()
+        except:
+            isAdmin = False
+        if(isAdmin): return True
+
+    return False
+
+
+def runAdmin(path, args):
+    return ctypes.windll.shell32.ShellExecuteW(None, "runas", path, " ".join(args), None, 1)
 
 
 def ensureAdmin():
-    try: isAdmin = ctypes.windll.shell32.IsUserAnAdmin()
-    except: isAdmin = False
-    if isAdmin or sys.argv[0].endswith(".py"): return True
-    return sys.exit(runAdmin(sys.executable, " ".join(sys.argv)))
+    if isAdmin(): return True
+    runAdmin(sys.executable, sys.argv)
+    return sys.exit(0)
 
 
 def getExecutableRoot():
