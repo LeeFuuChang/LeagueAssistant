@@ -66,8 +66,6 @@ def updateLoaderStatus(loader:AbstractLoadingWindow, text, progress):
 
 def main():
     loader = AbstractLoadingWindow()
-    loader.setIconPath("./default-loading-icon.png")
-    loader.setSplashArtPath("./default-loading-splash.png")
     loader.setTasks([
         lambda : updateLoaderStatus("", 0),
         lambda : LocalStorage.setup(lambda t,p : updateLoaderStatus(loader, t, p)),
