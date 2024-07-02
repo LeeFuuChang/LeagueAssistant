@@ -22,23 +22,6 @@ def App_External():
     webbrowser.open(str(data["url"]))
     return Response(status=202)
 
-@App.route("/validation/<string:category>", methods=["POST"])
-def App_Validation(**kwargs):
-    category = kwargs["category"]
-    result = False
-    try: args = request.get_json(force=True)
-    except: args = {}
-    if(category == "path"):
-        target = args.get("target", "")
-        exists = os.path.exists(target)
-        filtering = [exists, ]
-        for method in args.get("methods", "").split(args.get("sep", "|")):
-            if(not hasattr(os.path, method)): continue
-            filtering.append(getattr(os.path, method)(target))
-        result = all(filtering)
-    logger.info(f"validating: {category} | result: {result}")
-    return json.dumps(result)
-
 @App.route("/config/<string:name>", methods=["GET", "POST"])
 def App_Config(**kwargs):
     name = kwargs["name"]
