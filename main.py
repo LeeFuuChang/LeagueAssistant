@@ -1,12 +1,35 @@
-import importlib, sys
-setattr(sys, "kwargs", {k:v for k,v in [arg.split("=") for arg in sys.argv if "=" in arg]})
-sys.kwargs["--mode"] = sys.kwargs.get("--mode", "RELEASE").upper()
+import environment
+environment.RemoteImport("StorageManager")
 
-from ProjectUtility import PROJECT_NAME, STORAGE_SERVER, ensureAdmin, getDLL
+import importlib
+import sys
+import os
+
+import urllib3
+urllib3.disable_warnings()
+
+from LoadingWindow import LoadingWindow
+
+LocalStorage = sys.modules["StorageManager"].LocalStorage
+
+def init():
+    loader = LoadingWindow()
+    def statusCallback(text, progress):
+        nonlocal loader
+        loader.text = text
+        loader.progress = progress
+    loader.setTasks([ lambda : LocalStorage.setup(
+        os.environ["STORAGE_URL"],
+        os.environ["EXECUTABLE_ROOT"],
+        progressCallback=statusCallback,
+    ) ])
+    loader.exec_()
 
 def main():
-    LocalStorage = getattr(getDLL("StorageManager"), "LocalStorage", None)
-    sys.path.append(LocalStorage(STORAGE_SERVER, PROJECT_NAME).path("be"))
+    sys.path.append(LocalStorage.path("be"))
     sys.modules["app"] = importlib.import_module("app")
-    sys.modules["app"].run()
-if __name__ == "__main__" and ensureAdmin(): main()
+    sys.exit(sys.modules["app"].run())
+
+if __name__ == "__main__": 
+    init()
+    main()

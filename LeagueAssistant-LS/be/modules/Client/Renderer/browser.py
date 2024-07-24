@@ -1,13 +1,10 @@
-from ProjectUtility import PROJECT_NAME, STORAGE_SERVER, getDLL
-StorageManager = getDLL("StorageManager")
-LocalStorage = getattr(StorageManager, "LocalStorage")
-
 from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
 from PyQt5.QtWidgets import QApplication, QDesktopWidget
 from PyQt5 import QtCore, QtGui
 
 import logging
 logger = logging.getLogger()
+import sys
 import os
 
 
@@ -35,9 +32,9 @@ class BrowserWindow(QWebEngineView):
 
         super(self.__class__, self).__init__(*args, **kwargs)
 
-        self.icon = QtGui.QIcon(LocalStorage(STORAGE_SERVER, PROJECT_NAME).path(os.path.join("logo", "Filled.png")))
+        self.icon = QtGui.QIcon(getattr(sys.modules["StorageManager"], "LocalStorage").path(os.path.join("logo", "Filled.png")))
 
-        self.setWindowTitle(PROJECT_NAME)
+        self.setWindowTitle(os.environ["PROJECT_NAME"])
         self.setWindowIcon(self.icon)
         self.setWindowFlags(QtCore.Qt.Window|QtCore.Qt.FramelessWindowHint|QtCore.Qt.WindowMinMaxButtonsHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)

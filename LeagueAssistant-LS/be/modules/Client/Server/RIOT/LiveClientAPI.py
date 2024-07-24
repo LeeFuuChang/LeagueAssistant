@@ -1,22 +1,20 @@
-from ProjectUtility import PROJECT_NAME, HTTPS, LOCAL_HOST, STORAGE_SERVER, getDLL
-
 import requests.packages.urllib3
 requests.packages.urllib3.disable_warnings()
 
 import requests as rq
+import sys
 import os
 
 class LiveClientAPI:
-    url = f"{HTTPS}{LOCAL_HOST}:2999/liveclientdata/"
+    url = f"https://127.0.0.1:2999/liveclientdata/"
 
     @classmethod
     def get(cls, endpoint, payload={}):
-        StorageManager = getDLL("StorageManager")
-        LocalStorage = getattr(StorageManager, "LocalStorage")
+        LocalStorage = getattr(sys.modules["StorageManager"], "LocalStorage")
         data = {"success": False}
         response = ""
         try:
-            path = LocalStorage(STORAGE_SERVER, PROJECT_NAME).path(os.path.join("auth", "riot.pem"))
+            path = LocalStorage.path(os.path.join("auth", "riot.pem"))
             response = rq.get(cls.url+endpoint, params=payload, verify=path).json()
             if("errorCode" in response): 
                 data = {

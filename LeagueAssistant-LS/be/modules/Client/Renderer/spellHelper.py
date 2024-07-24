@@ -1,18 +1,17 @@
-from ProjectUtility import PROJECT_NAME, STORAGE_SERVER, getDLL
-StorageManager = getDLL("StorageManager")
-LocalStorage = getattr(StorageManager, "LocalStorage")
-
 from ...thread import TaskThread
 
 from ..utility import sendInProgressChat
 
 from .utility import setLeftClickable, setRightClickable
 
-from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QGraphicsOpacityEffect, QMenu, QAction
+from PyQt5.QtWidgets import QWidget, QDesktopWidget, QGridLayout, QLabel, QGraphicsOpacityEffect, QMenu, QAction
 from PyQt5 import QtCore, QtGui
 
-import screeninfo, difflib, logging, time, os
-logger = logging.getLogger()
+import difflib
+import logging
+import time
+import sys
+import os
 
 
 
@@ -195,7 +194,7 @@ class SpellHelperPlayer(QWidget):
             hasteList = [getAbilityHaste(self._parent.itemsData.get(i["itemID"], "")) for i in playerItems]
             abilityHaste = sum(hasteList)
             self.data[key]["cooldown"] = self.calculateCooldown(self.data[key]["fullCooldown"], abilityHaste)
-            logger.info(f"[SpellHelper] recorded {key} cast time (abilityHaste: {abilityHaste:>2}) ( {self.data['championName']} )")
+            logging.info(f"[SpellHelper] recorded {key} cast time (abilityHaste: {abilityHaste:>2}) ( {self.data['championName']} )")
             return True
 
     def endSetSpellCastTime(self, key):
@@ -458,8 +457,8 @@ class SpellHelperUI(QWidget):
         cls._instance = QWidget.__new__(cls)
         self = cls._instance
         super(self.__class__, self).__init__()
-        self.setWindowTitle(PROJECT_NAME)
-        self.setWindowIcon(QtGui.QIcon(LocalStorage(STORAGE_SERVER, PROJECT_NAME).path(os.path.join("logo", "Filled.png"))))
+        self.setWindowTitle(os.environ["PROJECT_NAME"])
+        self.setWindowIcon(QtGui.QIcon(getattr(sys.modules["StorageManager"], "LocalStorage").path(os.path.join("logo", "Filled.png"))))
         self.setToolTip("按住滑鼠滾輪可以移動")
         self.layout = QGridLayout()
         self.setLayout(self.layout)
@@ -564,7 +563,7 @@ class SpellHelperUI(QWidget):
         self.setFixedSize(self.layout.sizeHint())
 
     def update(self):
-        if(not self.setupCompleted): return logger.error("[SpellHelper] Setup Incomplete")
+        if(not self.setupCompleted): return logging.error("[SpellHelper] Setup Incomplete")
         with self.server.test_client() as client:
             playerList = []
             try: playerListRequest = client.get("/riot/ingame/playerlist").get_json(force=True)
@@ -598,10 +597,9 @@ class SpellHelperUI(QWidget):
         if(self.dragStartPosition):
             delta = e.globalPos() - self.dragStartPosition
             self.dragStartPosition = e.globalPos()
-            monitors = screeninfo.get_monitors()
-            primary = sorted(monitors, key=lambda m:m.is_primary, reverse=True)[0]
+            sg = QDesktopWidget().availableGeometry()
             self.move(
-                max(0, min(self.x()+delta.x(), primary.width-self.width())),
-                max(0, min(self.y()+delta.y(), primary.height-self.height()))
+                max(0, min(self.x()+delta.x(), sg.width()-self.width())),
+                max(0, min(self.y()+delta.y(), sg.height()-self.height()))
             )
         super().mouseMoveEvent(e)

@@ -5,8 +5,8 @@ from ..utility import sendInProgressChat
 
 from .utility import AbstractPhase, StatsDataCollector
 
-import win32api, logging
-logger = logging.getLogger()
+import win32api
+import logging
 
 
 
@@ -60,12 +60,12 @@ class InProgress(AbstractPhase):
     def startInGameSpellHelper(self, localTeam, gameStats):
         self.InGameSpellHelperUI = SpellHelperUI(self.parent.server, localTeam, gameStats)
         self.InGameSpellHelperUI.show()
-        logger.info(f"[{self.__class__.__name__}] Starting InGameSpellHelper")
+        logging.info(f"[{self.__class__.__name__}] Starting InGameSpellHelper")
 
     def endInGameSpellHelper(self):
         if(self.InGameSpellHelperUI and self.InGameSpellHelperUI.isVisible()):
             self.InGameSpellHelperUI.close()
-            logger.info(f"[{self.__class__.__name__}] Closing InGameSpellHelper")
+            logging.info(f"[{self.__class__.__name__}] Closing InGameSpellHelper")
 
     def update_InGameSpellHelper(self, localTeam, gameStats):
         with self.parent.server.test_client() as client:
@@ -116,7 +116,7 @@ class InProgress(AbstractPhase):
             except: fastTeamData = {}
             if(fastTeamData and win32api.GetAsyncKeyState(fastTeamData["keybind"])):
                 if(self.isSendingStatsData()): return True
-                logger.info(f"[Phase InProgress] fastTeamData: {fastTeamData}")
+                logging.info(f"[Phase InProgress] fastTeamData: {fastTeamData}")
                 collector = StatsDataCollector(self.parent.server)
                 playerNames = [n for n,p in playerListByTeamByName[localTeam].items() if not p["isBot"]]
                 self.collectStatsDataThread = TaskThread(
@@ -133,7 +133,7 @@ class InProgress(AbstractPhase):
             except: fastEnemyData = {}
             if(fastEnemyData and win32api.GetAsyncKeyState(fastEnemyData["keybind"])):
                 if(self.isSendingStatsData()): return True
-                logger.info(f"[Phase InProgress] fastEnemyData: {fastEnemyData}")
+                logging.info(f"[Phase InProgress] fastEnemyData: {fastEnemyData}")
                 collector = StatsDataCollector(self.parent.server)
                 playerNames = [n for n,p in playerListByTeamByName[enemyOf[localTeam]].items() if not p["isBot"]]
                 self.collectStatsDataThread = TaskThread(

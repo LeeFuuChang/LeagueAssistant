@@ -1,8 +1,6 @@
 from flask import Flask
 import socket
 
-from ProjectUtility import LOCAL_HOST
-
 # for app
 from .AD import Ad
 from .APP import App
@@ -24,13 +22,16 @@ from .QQ import Qq
 
 def getRandomPort():
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.bind((LOCAL_HOST, 0))
+    sock.bind(("localhost", 0))
     port = sock.getsockname()[1]
     sock.close()
     return port
 
 
 class Server(Flask):
+    host = "localhost"
+    port = getRandomPort()
+
     def __init__(self):
         super(self.__class__, self).__init__(__name__)
         self.config["SECRET_KEY"] = "ThisIsNotSnakeCaseWhichShouldBeUsedInPython"

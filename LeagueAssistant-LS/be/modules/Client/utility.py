@@ -1,4 +1,3 @@
-from ProjectUtility import user32, LOL_GAME_PROCESS_NAME, STORAGE_SERVER
 import requests as rq
 import win32process
 import win32gui
@@ -8,10 +7,13 @@ import win32gui
 import win32con
 import logging
 import psutil
+import ctypes
 import time
-logger = logging.getLogger()
+import os
 
 def getCurrentKeyboardLanguageID():
+    user32 = ctypes.WinDLL("user32", use_last_error=True)
+    user32.SetProcessDPIAware()
     hwnd = user32.GetForegroundWindow()
     tpid = user32.GetWindowThreadProcessId(hwnd, 0)
     klid = user32.GetKeyboardLayout(tpid)
@@ -39,7 +41,7 @@ def getHwndByProcess(proc):
 
 def sendChampSelectChat(server, cid, message):
     if(not message): return True
-    logger.info(f"[LolChatChampSelect] send: {repr(message)}")
+    logging.info(f"[LolChatChampSelect] send: {repr(message)}")
     with server.test_client() as client:
         response = client.post(
             f"/riot/lcu/0/lol-chat/v1/conversations/{cid}/messages",
@@ -52,9 +54,9 @@ def sendChampSelectChat(server, cid, message):
 def sendInProgressChat(messages):
     messages = filter(lambda m:m, messages)
     if not messages: return True
-    gameProcesses = getProcessesByNames([LOL_GAME_PROCESS_NAME])
+    gameProcesses = getProcessesByNames([os.environ["LOL_GAME_PROCESS_NAME"],])
     hwnds = [h for proc in gameProcesses for h in getHwndByProcess(proc)]
-    if(not hwnds): return logger.error("can't fint LoL game window, cancel sendInProgressChat")
+    if(not hwnds): return logging.error("can't fint LoL game window, cancel sendInProgressChat")
     win32gui.SetWindowPos(hwnds[0], win32con.HWND_TOPMOST, 0,0,0,0, win32con.SWP_NOMOVE | win32con.SWP_NOSIZE)
     originalKeyboardLanguageID = getCurrentKeyboardLanguageID()
     win32api.SendMessage(hwnds[0], win32con.WM_INPUTLANGCHANGEREQUEST, 0, 0x409)
@@ -63,7 +65,7 @@ def sendInProgressChat(messages):
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
     time.sleep(0.05)
     for message in messages:
-        logger.info(f"[LolChatInProgress] send: {repr(message)}")
+        logging.info(f"[LolChatInProgress] send: {repr(message)}")
         keyboard.press_and_release("enter")
         time.sleep(0.05)
         keyboard.write(message)
@@ -75,8 +77,8 @@ def sendInProgressChat(messages):
     return True
 
 def sendPublicity(server, cid):
-    try: message = rq.get(f"{STORAGE_SERVER}/PublicitySlogan.txt", verify=False).text
+    try: message = rq.get(f"{os.environ['STORAGE_URL']}/PublicitySlogan.txt", verify=False).text
     except: message = ""
     if(not message): return True
-    logger.info(f"[Publicity] send: {repr(message)}")
+    logging.info(f"[Publicity] send: {repr(message)}")
     return sendChampSelectChat(server, cid, message)

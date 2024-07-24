@@ -1,11 +1,8 @@
-# environment
+.DS_Store
+__pycache__
 env
-
-# Logs
+*.pyd
+*.pyc
+*.xml
 *.log
-
-# Changes
-changes.json
-
-# Discord bot
-LeagueAssistant-Discord.py
+system.json

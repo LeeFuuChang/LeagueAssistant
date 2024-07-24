@@ -3,7 +3,6 @@ from ...thread import TaskThread
 from .utility import AbstractPhase
 
 import logging
-logger = logging.getLogger()
 
 
 
@@ -28,7 +27,7 @@ class ReadyCheck(AbstractPhase):
         return (self.autoAcceptThread is not None and not self.autoAccepted)
 
     def postAutoAccept(self):
-        logger.info(f"[{self.__class__.__name__}] Posting AutoAccept")
+        logging.info(f"[{self.__class__.__name__}] Posting AutoAccept")
         with self.parent.server.test_client() as client:
             response = client.post("/riot/lcu/0/lol-matchmaking/v1/ready-check/accept")
             if(not response): return False

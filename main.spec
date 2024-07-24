@@ -1,7 +1,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 
-block_cipher = pyi_crypto.PyiBlockCipher(key='helloworldishard')
+block_cipher = pyi_crypto.PyiBlockCipher(key="helloworldishard")
 
 
 target = "main.py"
@@ -17,7 +17,6 @@ excludes = set([
     "compile.py", 
     "manipulate.py", 
     "server.py", 
-    "LeagueAssistant-Discord.py", 
 ])
 
 datas = set()
@@ -57,7 +56,7 @@ for root, dirs, files in os.walk("."):
 
 a = Analysis(
     [target],
-    pathex=['.\\env\\Lib\\site-packages'],
+    pathex=[".\\env\\Lib\\site-packages"],
     binaries=[],
     datas=list(datas),
     hiddenimports=list(hiddenimports),
@@ -72,9 +71,9 @@ a = Analysis(
 )
 
 for d in list(a.datas):
-    if 'pyconfig' in d[0]:
+    if "pyconfig" in d[0]:
         a.datas.remove(d)
-    if '_C.cp38-win_amd64.pyd' in d[0]:
+    if "_C.cp38-win_amd64.pyd" in d[0]:
         a.datas.remove(d)
 
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
@@ -86,7 +85,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='LeagueAssistant-4.3.0',
+    name="LeagueAssistant-4.3.0",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -100,5 +99,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['.\\LeagueAssistant-LS\\logo\\Filled.ico'],
+    icon=["filled.ico"],
 )

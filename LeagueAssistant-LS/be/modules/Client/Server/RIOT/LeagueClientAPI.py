@@ -1,4 +1,3 @@
-from ProjectUtility import HTTPS, LOCAL_HOST
 from ...utility import getProcessesByNames
 
 import requests.packages.urllib3
@@ -7,7 +6,6 @@ requests.packages.urllib3.disable_warnings()
 import requests as rq
 import json as JSON
 import logging
-logger = logging.getLogger()
 import socket
 import os
 
@@ -46,11 +44,11 @@ class LeagueClientAPI:
                         os.environ["RIOT_AUTH_TOKEN_1"] = segment.split("=")[1]
                     if "--install-directory" in segment:
                         os.environ["LOL_INSTALL_DIRECTORY"] = segment.split("=")[1]
-                logger.info(f"API_AUTH_0: {os.environ['RIOT_AUTH_PORT_0']} {os.environ['RIOT_AUTH_TOKEN_0']}")
-                logger.info(f"API_AUTH_1: {os.environ['RIOT_AUTH_PORT_1']} {os.environ['RIOT_AUTH_TOKEN_1']}")
-                logger.info(f"LOL_FOLDER: {os.environ['LOL_INSTALL_DIRECTORY']}")
+                logging.info(f"API_AUTH_0: {os.environ['RIOT_AUTH_PORT_0']} {os.environ['RIOT_AUTH_TOKEN_0']}")
+                logging.info(f"API_AUTH_1: {os.environ['RIOT_AUTH_PORT_1']} {os.environ['RIOT_AUTH_TOKEN_1']}")
+                logging.info(f"LOL_FOLDER: {os.environ['LOL_INSTALL_DIRECTORY']}")
         except Exception as e:
-            logger.error(f"Error updateRiotAuth: {e}")
+            logging.error(f"Error updateRiotAuth: {e}")
         finally:
             if(not (
                 os.environ["RIOT_AUTH_PORT_0"] and
@@ -71,7 +69,7 @@ class LeagueClientAPI:
         )
         AuthPort = os.environ.get(f"RIOT_AUTH_PORT_{authId}", None)
         AuthToken = os.environ.get(f"RIOT_AUTH_TOKEN_{authId}", None)
-        if not (AuthPort and AuthToken and cls.ping(LOCAL_HOST, int(AuthPort), 2)):
+        if not (AuthPort and AuthToken and cls.ping("127.0.0.1", int(AuthPort), 2)):
             cls.updateRiotAuth()
             return cls.isRiotAuthValid(authId, retry+1, maxRetries)
         return True
@@ -88,7 +86,7 @@ class LeagueClientAPI:
         response = ""
         try:
             res = method(
-                f"{HTTPS}{LOCAL_HOST}:{AuthPort}/{route}", 
+                f"https://127.0.0.1:{AuthPort}/{route}", 
                 params=params, 
                 data=data,
                 json=json,

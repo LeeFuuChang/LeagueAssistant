@@ -4,8 +4,8 @@ from ..utility import sendPublicity, sendChampSelectChat
 
 from .utility import AbstractPhase, StatsDataCollector
 
-import win32api, logging
-logger = logging.getLogger()
+import win32api
+import logging
 
 
 
@@ -157,7 +157,7 @@ class ChampSelect(AbstractPhase):
         with self.parent.server.test_client() as client:
             response = client.patch("/riot/lcu/0/lol-champ-select/v1/session/my-selection", json=payload)
             self.autoSpellCompleted = (response and getattr(response, "json", {}).get("success", False))
-            logger.info(f"[{self.__class__.__name__}] Auto Spell: {+self.autoSpellCompleted} {payload} {response}")
+            logging.info(f"[{self.__class__.__name__}] Auto Spell: {+self.autoSpellCompleted} {payload} {response}")
 
     def update_AutoRunes(self, pickedChampionData):
         autoRuneData = pickedChampionData.get("r", {})
@@ -185,7 +185,7 @@ class ChampSelect(AbstractPhase):
             if(not readyToBuildPage): return
             response = client.post("/riot/lcu/0/lol-perks/v1/pages", json=payload)
             self.autoRunesCompleted = (response and getattr(response, "json", {}).get("success", False))
-            logger.info(f"[{self.__class__.__name__}] Auto Runes: {+self.autoRunesCompleted} {payload} {response}")
+            logging.info(f"[{self.__class__.__name__}] Auto Runes: {+self.autoRunesCompleted} {payload} {response}")
 
     def processChampSelectActions(self, session, banningData, pickingData):
         self.hasIncompleteBanPick = False
@@ -227,7 +227,7 @@ class ChampSelect(AbstractPhase):
                     for champId in banningAvailable:
                         payload = {"completed":banningData["champions"][champId]["lock"], "championId":champId}
                         response = client.patch(actionRequestURL, json=payload)
-                        logger.info(f"[{self.__class__.__name__}] Auto Banning: {payload} {response}")
+                        logging.info(f"[{self.__class__.__name__}] Auto Banning: {payload} {response}")
                         self.autoBanCompleted = (response and getattr(response, "json", {}).get("success", False))
                         if(self.autoBanCompleted): break
 
@@ -242,7 +242,7 @@ class ChampSelect(AbstractPhase):
                     for champId in pickingAvailable:
                         payload = {"completed":pickingData["champions"][champId]["lock"], "championId":champId}
                         response = client.patch(actionRequestURL, json=payload)
-                        logger.info(f"[{self.__class__.__name__}] Auto Picking: {payload} {response}")
+                        logging.info(f"[{self.__class__.__name__}] Auto Picking: {payload} {response}")
                         self.autoPickCompleted = (response and getattr(response, "json", {}).get("success", False))
                         if(self.autoPickCompleted): break
 
@@ -304,7 +304,7 @@ class ChampSelect(AbstractPhase):
             except: fastSelfData = {}
             if(fastSelfData and win32api.GetAsyncKeyState(fastSelfData["keybind"])):
                 if(self.isSendingStatsData()): return True
-                logger.info(f"[{self.__class__.__name__}] Sending SelfData: {fastSelfData}")
+                logging.info(f"[{self.__class__.__name__}] Sending SelfData: {fastSelfData}")
                 collector = StatsDataCollector(self.parent.server)
                 self.collectStatsDataThread = TaskThread(
                     target=collector.sendStatsData, 
@@ -321,7 +321,7 @@ class ChampSelect(AbstractPhase):
             except: fastTeamData = {}
             if(fastTeamData and win32api.GetAsyncKeyState(fastTeamData["keybind"])):
                 if(self.isSendingStatsData()): return True
-                logger.info(f"[{self.__class__.__name__}] Sending TeamData: {fastTeamData}")
+                logging.info(f"[{self.__class__.__name__}] Sending TeamData: {fastTeamData}")
                 collector = StatsDataCollector(self.parent.server)
                 self.collectStatsDataThread = TaskThread(
                     target=collector.sendStatsData, 

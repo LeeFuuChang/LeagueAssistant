@@ -7,7 +7,6 @@ from .InProgress import InProgress
 
 from PyQt5 import QtCore
 import logging
-logger = logging.getLogger()
 import time
 
 
@@ -50,7 +49,7 @@ class PhaseHandler(QtCore.QObject):
         if(matchData is None or len(matchData) < 1): return
 
         latestMatchGapTime = int(time.time() - matchData[0]["gameCreation"]/1000 - matchData[0]["gameDuration"])
-        if(latestMatchGapTime > 5*60): return logger.info(f"[Auto Requeue] Cancelled duo to previous match was way too long ago [{latestMatchGapTime}s ago]")
+        if(latestMatchGapTime > 5*60): return logging.info(f"[Auto Requeue] Cancelled duo to previous match was way too long ago [{latestMatchGapTime}s ago]")
 
         requests = {
             PHASE._None: [
@@ -86,7 +85,7 @@ class PhaseHandler(QtCore.QObject):
             else: phase = str(phaseRequest["response"])
             if(not isinstance(phase, str)): return
             if(phase != self.currentPhase):
-                logger.info(f"[Phase Handler] Phase changed {self.currentPhase} to {phase}")
+                logging.info(f"[Phase Handler] Phase changed {self.currentPhase} to {phase}")
                 for handler in self.handlers.values(): handler.reset()
             if(phase in self.handlers): self.handlers[phase].update()
             if(phase not in {self.currentPhase, *PHASE.range(PHASE._Matchmaking, PHASE._WaitingForStats)}): self.autoRequeue(client)
