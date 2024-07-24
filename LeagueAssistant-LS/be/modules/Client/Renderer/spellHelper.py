@@ -458,7 +458,7 @@ class SpellHelperUI(QWidget):
         self = cls._instance
         super(self.__class__, self).__init__()
         self.setWindowTitle(os.environ["PROJECT_NAME"])
-        self.setWindowIcon(QtGui.QIcon(getattr(sys.modules["StorageManager"], "LocalStorage").path(os.path.join("logo", "Filled.png"))))
+        self.setWindowIcon(QtGui.QIcon(getattr(sys.modules["StorageManager"], "LocalStorage").path(os.path.join("fe", "assets", "logo", "filled.png"))))
         self.setToolTip("按住滑鼠滾輪可以移動")
         self.layout = QGridLayout()
         self.setLayout(self.layout)

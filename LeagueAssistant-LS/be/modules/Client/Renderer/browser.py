@@ -32,7 +32,7 @@ class BrowserWindow(QWebEngineView):
 
         super(self.__class__, self).__init__(*args, **kwargs)
 
-        self.icon = QtGui.QIcon(getattr(sys.modules["StorageManager"], "LocalStorage").path(os.path.join("logo", "Filled.png")))
+        self.icon = QtGui.QIcon(getattr(sys.modules["StorageManager"], "LocalStorage").path(os.path.join("fe", "assets", "logo", "filled.png")))
 
         self.setWindowTitle(os.environ["PROJECT_NAME"])
         self.setWindowIcon(self.icon)
