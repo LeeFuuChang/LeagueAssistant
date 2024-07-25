@@ -117,10 +117,9 @@ class InProgress(AbstractPhase):
             if(fastTeamData and win32api.GetAsyncKeyState(fastTeamData["keybind"])):
                 if(self.isSendingStatsData()): return True
                 logging.info(f"[Phase InProgress] fastTeamData: {fastTeamData}")
-                collector = StatsDataCollector(self.parent.server)
                 playerNames = [n for n,p in playerListByTeamByName[localTeam].items() if not p["isBot"]]
                 self.collectStatsDataThread = TaskThread(
-                    target=collector.sendStatsData, 
+                    target=StatsDataCollector.sendStatsData, 
                     delay=0, tries=30, fargs=(
                         self.sendStatsDataStrings, playerNames, 
                         not fastTeamData["no-self"], not fastTeamData["no-friend"], True, True,
@@ -134,10 +133,9 @@ class InProgress(AbstractPhase):
             if(fastEnemyData and win32api.GetAsyncKeyState(fastEnemyData["keybind"])):
                 if(self.isSendingStatsData()): return True
                 logging.info(f"[Phase InProgress] fastEnemyData: {fastEnemyData}")
-                collector = StatsDataCollector(self.parent.server)
                 playerNames = [n for n,p in playerListByTeamByName[enemyOf[localTeam]].items() if not p["isBot"]]
                 self.collectStatsDataThread = TaskThread(
-                    target=collector.sendStatsData, 
+                    target=StatsDataCollector.sendStatsData, 
                     delay=0, tries=30, fargs=(
                         self.sendStatsDataStrings, playerNames, 
                         False, False, True, False,
@@ -158,13 +156,12 @@ class InProgress(AbstractPhase):
                 except: fastData = {}
                 if(not fastData): continue
                 if(win32api.GetAsyncKeyState(fastData["keybind"])):
-                    collector = StatsDataCollector(self.parent.server)
                     playerNames = [n for n,p in playerListByTeamByName.get(fastTeam,{}).items() if not p["isBot"]]
                     sendSelf = (not fastData.get("no-self", True))
                     sendFriends = (not fastData.get("no-friend", True))
                     isAlly = (fastTeam == localTeam)
                     self.collectStatsDataThread = TaskThread(
-                        target=collector.sendStatsData, 
+                        target=StatsDataCollector.sendStatsData, 
                         delay=0, tries=30, fargs=(
                             self.sendStatsDataStrings, playerNames, 
                             sendSelf, sendFriends, True, isAlly,

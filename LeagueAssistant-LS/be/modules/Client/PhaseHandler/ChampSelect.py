@@ -305,9 +305,8 @@ class ChampSelect(AbstractPhase):
             if(fastSelfData and win32api.GetAsyncKeyState(fastSelfData["keybind"])):
                 if(self.isSendingStatsData()): return True
                 logging.info(f"[{self.__class__.__name__}] Sending SelfData: {fastSelfData}")
-                collector = StatsDataCollector(self.parent.server)
                 self.collectStatsDataThread = TaskThread(
-                    target=collector.sendStatsData, 
+                    target=StatsDataCollector.sendStatsData, 
                     delay=0, tries=30, fargs=(
                         lambda strings: self.sendStatsDataStrings(champSelectCID, strings), 
                         [p["name"] for p in champSelectParticipants], 
@@ -322,9 +321,8 @@ class ChampSelect(AbstractPhase):
             if(fastTeamData and win32api.GetAsyncKeyState(fastTeamData["keybind"])):
                 if(self.isSendingStatsData()): return True
                 logging.info(f"[{self.__class__.__name__}] Sending TeamData: {fastTeamData}")
-                collector = StatsDataCollector(self.parent.server)
                 self.collectStatsDataThread = TaskThread(
-                    target=collector.sendStatsData, 
+                    target=StatsDataCollector.sendStatsData, 
                     delay=0, tries=30, fargs=(
                         lambda strings: self.sendStatsDataStrings(champSelectCID, strings), 
                         [p["name"] for p in champSelectParticipants], 

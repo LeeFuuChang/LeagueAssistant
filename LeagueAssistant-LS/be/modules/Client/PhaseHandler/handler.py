@@ -1,5 +1,5 @@
 from ..utility import getProcessesByNames
-from .utility import PHASE
+from .utility import Phase
 
 from .ReadyCheck import ReadyCheck
 from .ChampSelect import ChampSelect
@@ -52,19 +52,19 @@ class PhaseHandler(QtCore.QObject):
         if(latestMatchGapTime > 5*60): return logging.info(f"[Auto Requeue] Cancelled duo to previous match was way too long ago [{latestMatchGapTime}s ago]")
 
         requests = {
-            PHASE._None: [
+            Phase._None: [
                 ["/riot/lcu/0/lol-lobby/v2/lobby", {"queueId": matchData[0]["queueId"]}],
                 ["/riot/lcu/0/lol-lobby/v2/lobby/matchmaking/search", {}],
             ],
-            PHASE._Lobby: [
+            Phase._Lobby: [
                 ["/riot/lcu/0/lol-lobby/v2/lobby/matchmaking/search", {}],
             ],
-            PHASE._PreEndOfGame: [
+            Phase._PreEndOfGame: [
                 ["/riot/lcu/0/riotclient/kill-and-restart-ux", {}],
                 ["/riot/lcu/0/lol-lobby/v2/play-again", {}],
                 ["/riot/lcu/0/lol-lobby/v2/lobby/matchmaking/search", {}],
             ],
-            PHASE._EndOfGame: [
+            Phase._EndOfGame: [
                 ["/riot/lcu/0/lol-lobby/v2/play-again", {}],
                 ["/riot/lcu/0/lol-lobby/v2/lobby/matchmaking/search", {}],
             ],
@@ -88,7 +88,7 @@ class PhaseHandler(QtCore.QObject):
                 logging.info(f"[Phase Handler] Phase changed {self.currentPhase} to {phase}")
                 for handler in self.handlers.values(): handler.reset()
             if(phase in self.handlers): self.handlers[phase].update()
-            if(phase not in {self.currentPhase, *PHASE.range(PHASE._Matchmaking, PHASE._WaitingForStats)}): self.autoRequeue(client)
+            if(phase not in {self.currentPhase, *Phase.range(Phase._Matchmaking, Phase._WaitingForStats)}): self.autoRequeue(client)
             self.currentPhase = phase
 
 

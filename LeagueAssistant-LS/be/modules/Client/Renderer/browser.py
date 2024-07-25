@@ -8,7 +8,7 @@ import sys
 import os
 
 
-class BrowserWindow(QWebEngineView):
+class WebRenderer(QWebEngineView):
     closeSignal = QtCore.pyqtSignal()
 
     minimizeSignal = QtCore.pyqtSignal()

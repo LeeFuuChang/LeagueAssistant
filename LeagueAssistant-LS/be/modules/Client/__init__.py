@@ -1,3 +1,3 @@
 from . import Server
-from . import Renderer
-from . import PhaseHandler
+from .Renderer.browser import WebRenderer
+from .PhaseHandler.handler import PhaseHandler

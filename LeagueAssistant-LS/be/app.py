@@ -29,11 +29,11 @@ def run():
         "threads": int(sys.kwargs.get("--threads", 8)), 
     }).start()
 
-    browserWindow = Client.Renderer.BrowserWindow()
+    browserWindow = Client.WebRenderer()
     browserWindow.show()
     browserWindow.connect(server, server.host, server.port)
 
-    phaseHandler = Client.PhaseHandler.PhaseHandler(server)
+    phaseHandler = Client.PhaseHandler(server)
     def loop():
         while not time.sleep(1): 
             phaseHandler.update()

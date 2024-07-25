@@ -1,8 +1,8 @@
-from ..constants import RANK_TIER_DIVISION_TRANSLATION
+from flask import current_app
 
 
 
-class __Phase():
+class Phase():
     _phases = [
         {
             "name": "None",
@@ -104,14 +104,14 @@ class __Phase():
     _TerminatedInError = "TerminatedInError"
     _TerminatedInError_Id = 13
 
-    def range(self, a, b):
+    @classmethod
+    def range(cls, a, b):
         aid = 0
         bid = 0
-        while(self._phases[aid]["name"] != a): aid += 1
-        while(self._phases[bid]["name"] != b): bid += 1
-        return [_["name"] for _ in self._phases[aid:bid+1]]
+        while(cls._phases[aid]["name"] != a): aid += 1
+        while(cls._phases[bid]["name"] != b): bid += 1
+        return [_["name"] for _ in cls._phases[aid:bid+1]]
 
-PHASE = __Phase()
 
 
 class AbstractPhase:
@@ -131,11 +131,62 @@ class AbstractPhase:
 
 
 class StatsDataCollector:
-    def __init__(self, server):
-        self.server = server
+    RankTranslate = {
+        "NONE-NA"        : "無牌位",
 
-    def getSendingConfig(self, currentPhase):
-        with self.server.test_client() as client:
+        "IRON-IV"        : "鐵牌 IV",
+        "IRON-III"       : "鐵牌 III",
+        "IRON-II"        : "鐵牌 II",
+        "IRON-I"         : "鐵牌 I",
+
+        "BRONZE-IV"      : "銅牌 IV",
+        "BRONZE-III"     : "銅牌 III",
+        "BRONZE-II"      : "銅牌 II",
+        "BRONZE-I"       : "銅牌 I",
+
+        "SILVER-IV"      : "銀牌 IV",
+        "SILVER-III"     : "銀牌 III",
+        "SILVER-II"      : "銀牌 II",
+        "SILVER-I"       : "銀牌 I",
+
+        "GOLD-IV"        : "金牌 IV",
+        "GOLD-III"       : "金牌 III",
+        "GOLD-II"        : "金牌 II",
+        "GOLD-I"         : "金牌 I",
+
+        "PLATINUM-IV"    : "白金 IV",
+        "PLATINUM-III"   : "白金 III",
+        "PLATINUM-II"    : "白金 II",
+        "PLATINUM-I"     : "白金 I",
+
+        "DIAMOND-IV"     : "鑽石 IV",
+        "DIAMOND-III"    : "鑽石 III",
+        "DIAMOND-II"     : "鑽石 II",
+        "DIAMOND-I"      : "鑽石 I",
+
+        "MASTER-IV"      : "大師",
+        "MASTER-III"     : "大師",
+        "MASTER-II"      : "大師",
+        "MASTER-I"       : "大師",
+        "MASTER-NA"      : "大師",
+
+        "GRANDMASTER-IV" : "宗師",
+        "GRANDMASTER-III": "宗師",
+        "GRANDMASTER-II" : "宗師",
+        "GRANDMASTER-I"  : "宗師",
+        "GRANDMASTER-NA" : "宗師",
+
+        "CHALLENGER-IV"  : "菁英",
+        "CHALLENGER-III" : "菁英",
+        "CHALLENGER-II"  : "菁英",
+        "CHALLENGER-I"   : "菁英",
+        "CHALLENGER-NA"  : "菁英"
+    }
+
+
+    @staticmethod
+    def getSendingConfig(currentPhase):
+        with current_app.test_client() as client:
             statsOverallOptions = None
             try: statsOverallOptions = client.get("/config/settings/stats/overall/options").get_json(force=True)
             except: statsOverallOptions = None
@@ -159,8 +210,10 @@ class StatsDataCollector:
             except: statsSendNickname = None
         return statsOverallOptions, statsOverallQueues, statsOverallSending, statsSendOptions, statsSendNickname
 
-    def getSendingStatsData(self, name):
-        with self.server.test_client() as client:
+
+    @staticmethod
+    def fetchPlayer(name):
+        with current_app.test_client() as client:
             summonerData = None
             try: 
                 summonerData = client.get(
@@ -194,7 +247,9 @@ class StatsDataCollector:
             if(matchData is None): return None
         return summonerData, rankData, matchData        
 
-    def collectSendingStatsData(self, name, gameCount, queueIds, ignoreEarly):
+
+    @classmethod
+    def collectSendingStatsData(cls, name, gameCount, queueIds, ignoreEarly):
         collectedData = {
             "name": "",
             "games": [],
@@ -210,7 +265,7 @@ class StatsDataCollector:
             "highestDivision": "",
         }
 
-        sendingData = self.getSendingStatsData(name)
+        sendingData = cls.fetchPlayer(name)
         if(sendingData is None): return None
         summonerData, rankData, matchData = sendingData
 
@@ -239,22 +294,24 @@ class StatsDataCollector:
         collectedData["kda"] = round((collectedData["kills"]+collectedData["assists"])/max(collectedData["deaths"], 1), 1)
         return collectedData
 
-    def constructSendingString(self, nickname, collectedData, sendingConfig, isAlly):
+
+    @classmethod
+    def constructSendingString(cls, nickname, collectedData, sendingConfig, isAlly):
         if(not sendingConfig): return ""
         playerName = f"{'友方' if(isAlly)else '敵方'} {nickname}: {collectedData['name']}"
 
         playerCurrentHighest = ""
         if(sendingConfig["current-highest"]):
             nowRankKey = f"{collectedData['tier']}-{collectedData['division']}"
-            if(nowRankKey in RANK_TIER_DIVISION_TRANSLATION):
-                playerCurrentHighest = f"當前排位:{RANK_TIER_DIVISION_TRANSLATION[nowRankKey]}"
+            if(nowRankKey in cls.RankTranslate):
+                playerCurrentHighest = f"當前排位:{cls.RankTranslate[nowRankKey]}"
             else: playerCurrentHighest = f"當前排位:無"
 
         playerSeasonHighest = ""
         if(sendingConfig["season-highest"]):
             highestRankKey = f"{collectedData['highestTier']}-{collectedData['highestDivision']}"
-            if(highestRankKey in RANK_TIER_DIVISION_TRANSLATION):
-                playerSeasonHighest = f"本季最高:{RANK_TIER_DIVISION_TRANSLATION[highestRankKey]}"
+            if(highestRankKey in cls.RankTranslate):
+                playerSeasonHighest = f"本季最高:{cls.RankTranslate[highestRankKey]}"
             else: playerSeasonHighest = f"本季最高:無"
 
         playerWinrate = ""
@@ -290,7 +347,9 @@ class StatsDataCollector:
         ]
         return " | ".join(filter(lambda s:s, playerResult))
 
-    def collectSendingStrings(self, names, isAlly, currentPhase):
+
+    @classmethod
+    def collectSendingStrings(cls, names, isAlly, currentPhase):
         queueIdReference = {
             "blind5": 430,
             "draft5": 400,
@@ -298,7 +357,7 @@ class StatsDataCollector:
             "rank5flex": 440,
             "aram": 450
         }
-        statsConfig = self.getSendingConfig(currentPhase)
+        statsConfig = cls.getSendingConfig(currentPhase)
         if(statsConfig is None): return None
         statsOverallOptions, statsOverallQueues, statsOverallSending, statsSendOptions, statsSendNickname = statsConfig
         sorting = [key for key, v in statsSendOptions.items() if v]
@@ -308,16 +367,18 @@ class StatsDataCollector:
         queueIds = {queueIdReference[qid] for qid, v in statsOverallQueues.items() if v}
         ignoreEarly = statsOverallSending["match-ignore-early"]
 
-        collectedData = [self.collectSendingStatsData(name, gameCount, queueIds, ignoreEarly) for name in names]
+        collectedData = [cls.collectSendingStatsData(name, gameCount, queueIds, ignoreEarly) for name in names]
         if(None in collectedData): return None
         collectedData.sort(key=lambda p:p.get(sorting, 0), reverse=True)
         return [
-            self.constructSendingString(statsSendNickname[f"player{idx+1}"], data, statsOverallSending, isAlly) 
+            cls.constructSendingString(statsSendNickname[f"player{idx+1}"], data, statsOverallSending, isAlly) 
             for idx, data in enumerate(collectedData)
         ]
 
-    def sendStatsData(self, sendingFunction, names, sendSelf, sendFriends, sendOthers, isAlly, currentPhase):
-        with self.server.test_client() as client:
+
+    @classmethod
+    def sendStatsData(cls, sendingFunction, names, sendSelf, sendFriends, sendOthers, isAlly, currentPhase):
+        with current_app.test_client() as client:
             selfName = None
             try: selfData = client.get(f"/riot/lcu/0/lol-summoner/v1/current-summoner").get_json(force=True)
             except: selfData = {"success": False}
@@ -342,7 +403,7 @@ class StatsDataCollector:
             if(sendFriends): sendingNames.update(friendNames)
             if(sendOthers): sendingNames.update(otherNames)
 
-            statsStrings = self.collectSendingStrings(sendingNames, isAlly, currentPhase)
+            statsStrings = cls.collectSendingStrings(sendingNames, isAlly, currentPhase)
             if(None in statsStrings): return False
 
             sendingFunction(statsStrings)

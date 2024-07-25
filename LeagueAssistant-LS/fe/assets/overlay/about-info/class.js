@@ -15,16 +15,18 @@ class AppOverlay_AboutInfo extends AppOverlay {
             $.get("/storage/local/storage.version", {}, (data)=>{
                 let feV = parseInt(data, 16);
                 $(this.element)
-                .find(".content[data-name='version'] .group[data-name='current'] p")
-                .text(`${appVdata["current"]}.${feV}`);
+                    .find(".content[data-name='version'] .group[data-name='current'] p")
+                    .text(`${appVdata["current-version"]}.${feV}`);
             });
             $.get("/storage/cloud/struct.xml", {}, (data)=>{
                 let feV = parseInt(data.documentElement.getAttribute("version"), 16);
                 $(this.element)
-                .find(".content[data-name='version'] .group[data-name='latest'] p")
-                .text(`${appVdata["latest"]}.${feV}`);
+                    .find(".content[data-name='version'] .group[data-name='latest'] p")
+                    .text(`${appVdata["latest-version"]}.${feV}`);
             });
-            $(this.element).find(".content[data-name='version'] .group[data-name='update'] p").text(appVdata["update"]);
+            $(this.element)
+                .find(".content[data-name='version'] .group[data-name='update'] p")
+                .text(appVdata["release-date"]);
         });
     }
 }
