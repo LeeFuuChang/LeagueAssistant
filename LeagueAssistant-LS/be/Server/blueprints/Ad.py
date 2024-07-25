@@ -1,4 +1,4 @@
-from flask import Blueprint, request, Response
+from flask import Blueprint, Response, request
 import webbrowser
 import requests
 import random
@@ -14,8 +14,6 @@ def Ad_Random():
 
 @Ad.route("/visit", methods=["POST"])
 def Ad_Visit():
-    try: data = request.get_json(force=True)
-    except: data = {}
-    if("href" not in data): return Response(status=400)
-    webbrowser.open(data["href"])
+    if("href" not in request.form): return Response(status=400)
+    webbrowser.open(request.form["href"])
     return Response(status=200)

@@ -368,10 +368,10 @@ window.showAd = (()=>{
             if(--duration<=0) cover.find("#ad .close").text("close").on("click", ()=>cover.removeClass("loading__Ad"));
             else Promise.resolve(cover.find("#ad .close").text(duration)).then(()=>setTimeout(count, 1000));
         });
-        let visit = (()=>$.post("/ad/visit",JSON.stringify(data)));
-        if(!(data["href"]&&data["image"])) return;
+        let visit = (()=>$.post("/ad/visit",data));
+        if(!(data["href"]&&data["banner"])) return;
         cover.addClass("loading__Ad");
-        cover.find("#ad .link").attr("src", data["image"]).off("click").on("click", visit);
+        cover.find("#ad .link").attr("src", data["banner"]).off("click").on("click", visit);
         cover.find("#ad .close").text(duration).off("click");
         setTimeout(count, 1000);
     });

@@ -24,29 +24,24 @@ def App_Version():
 
 @App.route("/external", methods=["POST"])
 def App_External():
-    try: data = request.get_json(force=True)
-    except: data = {}
-    if("url" not in data): return Response(status=404)
-    webbrowser.open(str(data["url"]))
+    if("url" not in request.form): return Response(status=404)
+    webbrowser.open(str(request.form["url"]))
     return Response(status=202)
 
 @App.route("/config/<string:name>", methods=["GET", "POST"])
 def App_Config(**kwargs):
-    name = kwargs["name"]
     LocalStorage = getattr(sys.modules["StorageManager"], "LocalStorage")
+    configPath = LocalStorage.path(os.path.join("cfg", "app", f"{kwargs['name']}.json"))
+    if(not configPath): return Response(status=404)
+
     if(request.method == "GET"):
-        configPath = LocalStorage.path(os.path.join("cfg", "app", name+".json"))
-        if(not configPath): return Response(status=404)
         return send_from_directory(*os.path.split(configPath))
-    elif(request.method == "POST"):
-        try: data = request.get_json(force=True)
-        except: data = {}
-        configPath = LocalStorage.path(os.path.join("cfg", "app", name+".json"))
-        if(not configPath): return Response(status=404)
+
+    if(request.method == "POST"):
         with open(configPath, "a+") as f:
             f.seek(0)
             config = json.load(f)
-            config.update(data)
+            config.update(request.form)
             f.truncate(0)
             json.dump(config, f, indent=4, ensure_ascii=False)
         return Response(status=202)

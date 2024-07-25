@@ -24,7 +24,7 @@ $(document).ready(()=>{
         }));
     });
     $("#app-control-discord").on("click", ()=>{
-        $.post("/app/external", JSON.stringify({"url":"https://discord.gg/k7wpKMnbY5"}));
+        $.post("/app/external", {"url":"https://discord.gg/k7wpKMnbY5"});
     });
 
 

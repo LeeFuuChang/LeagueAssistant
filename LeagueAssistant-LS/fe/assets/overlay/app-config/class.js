@@ -32,15 +32,15 @@ class AppOverlay_AppConfig extends AppOverlay {
             });
             resolve([item.attr("data-name"), data]);
         }).then(([name, data])=>{
-            let requestURL = `/app/config/${name}`;
-            $.post(requestURL, JSON.stringify(data), function(){console.log("Updated app-config:", requestURL, data)});
+            $.post(`/app/config/${name}`, data, function(){
+                console.log("Updated app-config:", requestURL, data)
+            });
         });
     }
 
     ReloadContent = ()=>{
         $(this.element).find(".config-item").each(function(){
-            let requestURL = `/app/config/${$(this).attr("data-name")}`;
-            $.get(requestURL, {}, (data)=>{
+            $.get(`/app/config/${$(this).attr("data-name")}`, {}, (data)=>{
                 Object.keys(data).forEach((dataName)=>{
                     let input = $(this).find(`label[data-name="${dataName}"] input`);
                     if(input.is(".switch")){

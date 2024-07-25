@@ -347,7 +347,7 @@ class Main_Config extends AppBodyMain {
                 )));
             }))).then((pairs)=>resolve([path, Object.fromEntries(pairs.filter((p)=>(p&&p.length===2)))]));
         }).then(([path, data])=>Promise.resolve(
-            $.post(`/config/${path}`, JSON.stringify(data), ()=>{console.log("Config updated:", path, data)})
+            $.post(`/config/${path}`, data, ()=>{console.log("Config updated:", path, data)})
         )).then(()=>Promise.all(
             Object.values(this.components).map((c)=>Promise.resolve((c.ReloadContent?c.ReloadContent():0)))
         ));
