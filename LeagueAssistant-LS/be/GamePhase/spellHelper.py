@@ -1,6 +1,6 @@
-from ...thread import TaskThread
+from ..thread import TaskThread
 
-from ..utility import sendInProgressChat
+from .utility import sendInProgressChat
 
 from PyQt5.QtWidgets import QWidget, QDesktopWidget, QGridLayout, QLabel, QGraphicsOpacityEffect, QMenu, QAction
 from PyQt5 import QtCore, QtGui

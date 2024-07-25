@@ -22,8 +22,8 @@ os.environ["LOL_GAME_PROCESS_NAME"] = "League of Legends.exe"
 os.environ["SERVER_URL"] = f"https://www.leefuuchang.in/projects/{os.environ['PROJECT_NAME']}"
 os.environ["STORAGE_URL"] = f"https://www.leefuuchang.in/projects/{os.environ['PROJECT_NAME']}/Storage"
 
-os.environ["APP_USER_MODEL_ID"] = f"{os.environ['PROJECT_NAME']}.App.User.Model.Id"
-ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(os.environ["APP_USER_MODEL_ID"])
+# os.environ["APP_USER_MODEL_ID"] = f"{os.environ['PROJECT_NAME']}.App.User.Model.Id"
+# ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(os.environ["APP_USER_MODEL_ID"])
 
 if getattr(sys, "frozen", False):
     os.environ["EXECUTABLE_ROOT"] = os.path.dirname(sys.executable)

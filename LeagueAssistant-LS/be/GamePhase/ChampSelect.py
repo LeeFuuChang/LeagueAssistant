@@ -1,8 +1,6 @@
-from ...thread import TaskThread, SteppedTaskThread
+from ..thread import TaskThread, SteppedTaskThread
 
-from ..utility import sendPublicity, sendChampSelectChat
-
-from .utility import AbstractPhase, StatsDataCollector
+from .utility import AbstractPhase, StatsDataCollector, sendPublicity, sendChampSelectChat
 
 import win32api
 import logging

@@ -1,9 +1,8 @@
-from ...thread import TaskThread
+from ..thread import TaskThread
 
-from ..Renderer.spellHelper import SpellHelperUI
-from ..utility import sendInProgressChat
+from .spellHelper import SpellHelperUI
 
-from .utility import AbstractPhase, StatsDataCollector
+from .utility import AbstractPhase, StatsDataCollector, sendInProgressChat
 
 import win32api
 import logging
