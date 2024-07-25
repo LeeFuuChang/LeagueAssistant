@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect
 import logging
 import socket
 
@@ -41,21 +41,10 @@ class WebServer(Flask):
 
         self.appControls = {}
 
-        self.appBlueprints = {bp.name.lower():bp for bp in [
-            # for app
-            Ad, App, Config, Storage, Ui, 
-
-            # for api
-            Riot, 
-
-            # for static
-            CDragon, DDragon, 
-
-            # for statistics
-            Opgg, Qq, 
-        ]}
-        for name in self.appBlueprints:
-            self.blueprints[name] = self.appBlueprints[name]
-            self.register_blueprint(self.appBlueprints[name], url_prefix=f"/{name}")
+        self.add_url_rule("/", endpoint="ui", view_func=lambda:redirect("/ui"))
+        for bp in [Ad, App, Config, Storage, Ui, Riot, CDragon, DDragon, Opgg, Qq]:
+            name = bp.name.lower() 
+            self.blueprints[name] = bp
+            self.register_blueprint(bp, url_prefix=f"/{name}")
 
         logging.info(f"Server Initlized on ({self.host}, {self.port})")

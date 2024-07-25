@@ -4,12 +4,11 @@ from PyQt5 import QtCore, QtGui
 
 import threading
 import waitress
-import logging
 import time
 import sys
 import os
 
-from .utility import getProcessesByNames
+from utility import getProcessesByNames
 
 from Server.Flask import WebServer
 from GamePhase.handler import PhaseHandler
@@ -123,10 +122,6 @@ class WebRenderer(QWebEngineView):
 
 
 def run():
-    logging.info("kwargs:", sys.kwargs)
-
-    app = QApplication([*sys.argv, "--ignore-gpu-blacklist"])
-
     server = WebServer()
 
     if("--server" in sys.argv):
@@ -142,6 +137,8 @@ def run():
         "port": server.port, 
         "threads": int(sys.kwargs.get("--threads", 8)), 
     }).start()
+
+    app = QApplication([*sys.argv, "--ignore-gpu-blacklist"])
 
     browserWindow = WebRenderer()
     browserWindow.show()
