@@ -33,7 +33,7 @@ class Side_Part_SummonerMastery extends AppBodySide_Part {
                         <img src="https://cdn.communitydragon.org/latest/champion/${m["championId"]}/square" alt="">
                     </div>
                     <div class="mastery-champion-detail hover-detail-top">
-                        <img src="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-profiles/global/default/images/mastery_level${m["championLevel"]}.png" alt="">
+                        <img src="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-shared-components/global/default/mastery-${m["championLevel"]}.png" alt="">
                         <span class="mastery-champion-points">${m["championPoints"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                     </div>
                 </div>`).join("");
