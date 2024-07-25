@@ -1,4 +1,5 @@
 from flask import Flask
+import logging
 import socket
 
 # for app
@@ -32,9 +33,11 @@ class Server(Flask):
     host = "localhost"
     port = getRandomPort()
 
+    def registerAppControl(self, name, func):
+        self.blueprints["app"].control_functions[name] = func
+
     def __init__(self):
         super(self.__class__, self).__init__(__name__)
-        self.config["SECRET_KEY"] = "ThisIsNotSnakeCaseWhichShouldBeUsedInPython"
 
         self.appControls = {}
 
@@ -55,8 +58,4 @@ class Server(Flask):
             self.blueprints[name] = self.appBlueprints[name]
             self.register_blueprint(self.appBlueprints[name], url_prefix=f"/{name}")
 
-
-    def registerAppControl(self, name, func):
-        if(name in self.blueprints["app"].control_functions):
-            self.blueprints["app"].control_functions[name].append(func)
-        else: self.blueprints["app"].control_functions[name] = [func, ]
+        logging.info(f"Server Initlized on ({self.host}, {self.port})")

@@ -11,14 +11,6 @@ import ctypes
 import time
 import os
 
-def getCurrentKeyboardLanguageID():
-    user32 = ctypes.WinDLL("user32", use_last_error=True)
-    user32.SetProcessDPIAware()
-    hwnd = user32.GetForegroundWindow()
-    tpid = user32.GetWindowThreadProcessId(hwnd, 0)
-    klid = user32.GetKeyboardLayout(tpid)
-    return klid & (2**16 - 1)
-
 def getProcessesByNames(names):
     result = []
     for proc in psutil.process_iter():
@@ -39,6 +31,14 @@ def getHwndByProcess(proc):
     win32gui.EnumWindows(callback, hwnds)
     return hwnds
 
+def getCurrentKeyboardLanguageID():
+    user32 = ctypes.WinDLL("user32", use_last_error=True)
+    user32.SetProcessDPIAware()
+    hwnd = user32.GetForegroundWindow()
+    tpid = user32.GetWindowThreadProcessId(hwnd, 0)
+    klid = user32.GetKeyboardLayout(tpid)
+    return klid & (2**16 - 1)
+
 def sendChampSelectChat(server, cid, message):
     if(not message): return True
     logging.info(f"[LolChatChampSelect] send: {repr(message)}")
@@ -50,6 +50,13 @@ def sendChampSelectChat(server, cid, message):
         time.sleep(0.1)
         if(not response): return False
         return (response.status_code//100) == 2
+
+def sendPublicity(server, cid):
+    try: message = rq.get(f"{os.environ['STORAGE_URL']}/PublicitySlogan.txt", verify=False).text
+    except: message = ""
+    if(not message): return True
+    logging.info(f"[Publicity] send: {repr(message)}")
+    return sendChampSelectChat(server, cid, message)
 
 def sendInProgressChat(messages):
     messages = filter(lambda m:m, messages)
@@ -75,10 +82,3 @@ def sendInProgressChat(messages):
     win32api.SendMessage(hwnds[0], win32con.WM_INPUTLANGCHANGEREQUEST, 0, originalKeyboardLanguageID)
     win32gui.SetWindowPos(hwnds[0], win32con.HWND_NOTOPMOST, 0,0,0,0, win32con.SWP_NOMOVE | win32con.SWP_NOSIZE)
     return True
-
-def sendPublicity(server, cid):
-    try: message = rq.get(f"{os.environ['STORAGE_URL']}/PublicitySlogan.txt", verify=False).text
-    except: message = ""
-    if(not message): return True
-    logging.info(f"[Publicity] send: {repr(message)}")
-    return sendChampSelectChat(server, cid, message)

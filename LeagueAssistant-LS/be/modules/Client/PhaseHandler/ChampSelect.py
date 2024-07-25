@@ -1,4 +1,4 @@
-from ...thread import TaskThread, SteppedTaskThread, TimedTaskThread
+from ...thread import TaskThread, SteppedTaskThread
 
 from ..utility import sendPublicity, sendChampSelectChat
 

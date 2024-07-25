@@ -50,5 +50,5 @@ def App_Controls(**kwargs):
     if(name not in App.control_functions): return Response(status=404)
     try: data = request.get_json(force=True)
     except: data = []
-    for func in App.control_functions[name]: func(*data)
-    return Response(status=202)
+    App.control_functions[name](*data)
+    return Response(status=200)
