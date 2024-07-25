@@ -3,22 +3,22 @@ import logging
 import socket
 
 # for app
-from .AD import Ad
-from .APP import App
-from .CONFIG import Config
-from .STORAGE import Storage
-from .UI import Ui
+from .blueprints.Ad import Ad
+from .blueprints.App import App
+from .blueprints.Config import Config
+from .blueprints.Storage import Storage
+from .blueprints.Ui import Ui
 
 # for api
-from .RIOT import Riot
+from .blueprints.Riot import Riot
 
 # for static
-from .CDRAGON import Cdragon
-from .DDRAGON import Ddragon
+from .blueprints.CDragon import CDragon
+from .blueprints.DDragon import DDragon
 
 # for statistics
-from .OPGG import Opgg
-from .QQ import Qq
+from .blueprints.Opgg import Opgg
+from .blueprints.Qq import Qq
 
 
 def getRandomPort():
@@ -49,7 +49,7 @@ class WebServer(Flask):
             Riot, 
 
             # for static
-            Cdragon, Ddragon, 
+            CDragon, DDragon, 
 
             # for statistics
             Opgg, Qq, 

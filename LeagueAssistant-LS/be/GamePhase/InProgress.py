@@ -1,8 +1,10 @@
 from ..thread import TaskThread
 
-from .spellHelper import SpellHelperUI
+from .utils.SpellHelper import SpellHelperUI
+from .utils.Collector import StatsDataCollector
+from .utils import Chat
 
-from .utility import AbstractPhase, StatsDataCollector, sendInProgressChat
+from .abstract import AbstractPhase
 
 import win32api
 import logging
@@ -101,7 +103,7 @@ class InProgress(AbstractPhase):
     def sendStatsDataStrings(self, dataStrings):
         if(self.sendStatsDataThread is not None): self.sendStatsDataThread.event.set()
         self.sendStatsDataThread = TaskThread(
-            target=sendInProgressChat,
+            target=Chat.sendInProgress,
             delay=0, tries=30, fargs=(dataStrings, ),
             onFinished=self.endSendStatsDataThread
         ).start()

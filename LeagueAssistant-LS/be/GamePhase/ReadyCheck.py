@@ -1,6 +1,6 @@
 from ..thread import TaskThread
 
-from .utility import AbstractPhase
+from .abstract import AbstractPhase
 
 import logging
 

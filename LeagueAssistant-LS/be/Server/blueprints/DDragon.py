@@ -1,10 +1,10 @@
 from flask import Blueprint, jsonify
 import requests as rq
 
-Ddragon = Blueprint("Ddragon", __name__)
+DDragon = Blueprint("Ddragon", __name__)
 
-@Ddragon.route("/<path:subpath>", methods=["GET"])
-def Ddragon_Content(**kwargs):
+@DDragon.route("/<path:subpath>", methods=["GET"])
+def DDragon_Content(**kwargs):
     subpath = kwargs["subpath"]
     ddragonVersionURL = "https://ddragon.leagueoflegends.com/api/versions.json"
     ddragonVersionRes = rq.get(ddragonVersionURL).json()

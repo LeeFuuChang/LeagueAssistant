@@ -10,13 +10,7 @@ target = "main.py"
 import os
 excludes = set([
     "env", 
-    "compiled", 
-    "launcher.py", 
     "main.py", 
-    "check.py", 
-    "compile.py", 
-    "manipulate.py", 
-    "server.py", 
 ])
 
 datas = set()

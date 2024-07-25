@@ -1,6 +1,9 @@
 from ..thread import TaskThread, SteppedTaskThread
 
-from .utility import AbstractPhase, StatsDataCollector, sendPublicity, sendChampSelectChat
+from .abstract import AbstractPhase
+
+from .utils.Collector import StatsDataCollector
+from .utils import Chat
 
 import win32api
 import logging
@@ -70,7 +73,7 @@ class ChampSelect(AbstractPhase):
             except: return False
             if(not appOptions.get("allow-publicity", False)): return True
             self.autoPublicityThread = TaskThread(
-                target=sendPublicity,
+                target=Chat.sendPublicity,
                 delay=1,
                 tries=10,
                 fargs=(self.parent.server, champSelectCID),
@@ -290,7 +293,7 @@ class ChampSelect(AbstractPhase):
     def sendStatsDataStrings(self, champSelectCID, dataStrings):
         if(self.sendStatsDataThread is not None): self.sendStatsDataThread.event.set()
         self.sendStatsDataThread = SteppedTaskThread(
-            targets=[(lambda cid,_s=s:sendChampSelectChat(self.parent.server, cid, _s)) for s in dataStrings],
+            targets=[(lambda cid,_s=s:Chat.sendChampSelect(self.parent.server, cid, _s)) for s in dataStrings],
             delay=0, tries=30, fargs=(champSelectCID, ), onFinished=self.endSendStatsDataThread
         ).start()
 

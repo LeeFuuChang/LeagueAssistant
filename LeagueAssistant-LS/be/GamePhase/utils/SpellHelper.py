@@ -1,6 +1,6 @@
 from ..thread import TaskThread
 
-from .utility import sendInProgressChat
+from .utils import Chat
 
 from PyQt5.QtWidgets import QWidget, QDesktopWidget, QGridLayout, QLabel, QGraphicsOpacityEffect, QMenu, QAction
 from PyQt5 import QtCore, QtGui
@@ -295,10 +295,6 @@ class SpellHelperPlayer(QWidget):
     def broadcastSpellCooldown(self):
         nowTime = time.time()
         with self._parent.server.test_client() as client:
-            # try: spellOverallOptions = client.get("/config/settings/game/auto-lane/message").get_json(force=True)
-            # except: spellOverallOptions = {}
-            # if(not spellOverallOptions): return False
-
             try: spellOverallNickname = client.get("/config/settings/spell/overall/nickname").get_json(force=True)
             except: spellOverallNickname = {}
             if(not spellOverallNickname): return False
@@ -350,7 +346,7 @@ class SpellHelperPlayer(QWidget):
 
         res =  " | ".join(filter(lambda x:x, [playerNick, spell1str, spell2str]))*bool(spell1str or spell2str)
 
-        return sendInProgressChat([res, ])
+        return Chat.sendInProgress([res, ])
 
     def endBroadcastSpellCooldown(self):
         if(self.data["thread"] is not None):

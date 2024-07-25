@@ -1,4 +1,4 @@
-from ...utility import getProcessesByNames
+from utility import getProcessesByNames
 
 import requests.packages.urllib3
 requests.packages.urllib3.disable_warnings()

@@ -9,6 +9,8 @@ import time
 import sys
 import os
 
+from .utility import getProcessesByNames
+
 from Server.Flask import WebServer
 from GamePhase.handler import PhaseHandler
 
@@ -148,7 +150,11 @@ def run():
     phaseHandler = PhaseHandler(server)
     def loop():
         while not time.sleep(1): 
-            phaseHandler.update()
+            if not getProcessesByNames([
+                os.environ["LOL_GAME_PROCESS_NAME"],
+                os.environ["LOL_CLIENT_PROCESS_NAME"],
+            ]): continue 
+            phaseHandler.updateSignal.emit()
     threading.Thread(target=loop, daemon=True).start()
 
     sys.exit(app.exec_())

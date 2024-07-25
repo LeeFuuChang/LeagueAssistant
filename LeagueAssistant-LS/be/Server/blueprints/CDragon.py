@@ -1,9 +1,9 @@
 from flask import Blueprint, jsonify
 import requests as rq
 
-Cdragon = Blueprint("Cdragon", __name__)
+CDragon = Blueprint("Cdragon", __name__)
 
-@Cdragon.route("/<string:subdomain>/<path:subpath>", methods=["GET"])
+@CDragon.route("/<string:subdomain>/<path:subpath>", methods=["GET"])
 def Cdragon_Content(**kwargs):
     subdomain = kwargs["subdomain"]
     subpath = kwargs["subpath"]

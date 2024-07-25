@@ -1,13 +1,16 @@
 from flask import Blueprint, request
+import requests as rq
 import json
-
-from .. import scraper
+import os
 
 Qq = Blueprint("Qq", __name__)
 @Qq.route("/native/<path:subUrl>", methods=["GET"])
 def QqNative(**kwargs):
-    subUrl = kwargs["subUrl"]
-    response = scraper.get(f"https://faas-6831.native.qq.com/faas/6831/1371/{subUrl}", request.args.to_dict())
+    response = rq.get(
+        f"https://faas-6831.native.qq.com/faas/6831/1371/{kwargs['subUrl']}",
+        params=request.args.to_dict(),
+        headers={"User-Agent": os.environ["USER_AGENT"]}
+    )
     try: return response.json()
     except: return {}
 
@@ -20,8 +23,11 @@ def QqCommon(**kwargs):
     /champDetail_trend.js?ts=${Date.now() / 600000 >> 0}
     /gicpTagChan.js?ts=${Date.now() / 600000 >> 0}
     """
-    subUrl = kwargs["subUrl"]
-    response = scraper.get(f"https://lol.qq.com/act/lbp/common/guides/{subUrl}", request.args.to_dict())
+    response = rq.get(
+        f"https://lol.qq.com/act/lbp/common/guides/{kwargs['subUrl']}",
+        params=request.args.to_dict(),
+        headers={"User-Agent": os.environ["USER_AGENT"]}
+    )
     try: return json.loads(response.text[response.text.find("{"):response.text.rfind("}")+1])
     except: return {}
 
@@ -38,7 +44,10 @@ def QqGtimg(**kwargs):
     /js/items_ext/items_ext.js
     /js/summonerskillList/summonerskill_list.js
     """
-    subUrl = kwargs["subUrl"]
-    response = scraper.get(f"https://game.gtimg.cn/images/lol/act/img/{subUrl}", request.args.to_dict())
+    response = rq.get(
+        f"https://game.gtimg.cn/images/lol/act/img/{kwargs['subUrl']}",
+        params=request.args.to_dict(),
+        headers={"User-Agent": os.environ["USER_AGENT"]}
+    )
     try: return response.json()
     except: return {}

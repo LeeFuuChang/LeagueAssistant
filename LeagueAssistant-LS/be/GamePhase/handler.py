@@ -1,5 +1,4 @@
-from ..utility import getProcessesByNames
-from .utility import Phase
+from .abstract import Phase
 
 from .ReadyCheck import ReadyCheck
 from .ChampSelect import ChampSelect
@@ -8,9 +7,6 @@ from .InProgress import InProgress
 from PyQt5 import QtCore
 import logging
 import time
-
-
-
 
 
 class PhaseHandler(QtCore.QObject):
@@ -31,8 +27,7 @@ class PhaseHandler(QtCore.QObject):
         self.handlers = {cls.__name__:cls(self) for cls in self.handlingPhases}
 
         self.loopThread = None
-        self.updateSignal.connect(self._update)
-
+        self.updateSignal.connect(self.update)
 
 
     def autoRequeue(self, client):
@@ -75,8 +70,7 @@ class PhaseHandler(QtCore.QObject):
         return all([(res and (res.status_code//100) == 2) for res in responses])
 
 
-
-    def _update(self):
+    def update(self):
         with self.server.test_client() as client:
             phase = None
             try: phaseRequest = client.get("/riot/lcu/0/lol-gameflow/v1/gameflow-phase").get_json(force=True)
@@ -91,12 +85,4 @@ class PhaseHandler(QtCore.QObject):
             if(phase not in {self.currentPhase, *Phase.range(Phase._Matchmaking, Phase._WaitingForStats)}): self.autoRequeue(client)
             self.currentPhase = phase
 
-
-
-    def update(self):
-        if not getProcessesByNames([
-            "LeagueClientUx.exe", 
-            "League of Legends.exe"
-        ]): return 
-        self.updateSignal.emit()
 
