@@ -12,10 +12,6 @@ from .blueprints.Ui import Ui
 # for api
 from .blueprints.Riot import Riot
 
-# for static
-from .blueprints.CDragon import CDragon
-from .blueprints.DDragon import DDragon
-
 # for statistics
 from .blueprints.Opgg import Opgg
 from .blueprints.Qq import Qq
@@ -42,7 +38,7 @@ class WebServer(Flask):
         self.appControls = {}
 
         self.add_url_rule("/", endpoint="ui", view_func=lambda:redirect("/ui"))
-        for bp in [Ad, App, Config, Storage, Ui, Riot, CDragon, DDragon, Opgg, Qq]:
+        for bp in [Ad, App, Config, Storage, Ui, Riot, Opgg, Qq]:
             name = bp.name.lower() 
             self.blueprints[name] = bp
             self.register_blueprint(bp, url_prefix=f"/{name}")

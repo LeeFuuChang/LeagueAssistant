@@ -1,6 +1,6 @@
 from ..thread import TaskThread
 
-from .utils import Chat
+import Chat
 
 from PyQt5.QtWidgets import QWidget, QDesktopWidget, QGridLayout, QLabel, QGraphicsOpacityEffect, QMenu, QAction
 from PyQt5 import QtCore, QtGui
@@ -383,73 +383,73 @@ class SpellHelperUI(QWidget):
     spellsData = {
         "SummonerBarrier": {
             "cooldown": 180,
-            "icon": "/cdragon/raw/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summonerbarrier.png",
+            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summonerbarrier.png",
             "tw": "光盾",
             "en": "Barrier",
         },
         "SummonerBoost": {
             "cooldown": 210,
-            "icon": "/cdragon/raw/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_boost.png",
+            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_boost.png",
             "tw": "淨化",
             "en": "Cleanse",
         },
         "SummonerDot": {
             "cooldown": 180,
-            "icon": "/cdragon/raw/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summonerignite.png",
+            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summonerignite.png",
             "tw": "點燃",
             "en": "Ignite",
         },
         "SummonerExhaust": {
             "cooldown": 210,
-            "icon": "/cdragon/raw/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_exhaust.png",
+            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_exhaust.png",
             "tw": "虛弱",
             "en": "Exhaust",
         },
         "SummonerFlash": {
             "cooldown": 300,
-            "icon": "/cdragon/raw/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_flash.png",
+            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_flash.png",
             "tw": "閃現",
             "en": "Flash",
         },
         "SummonerHaste": {
             "cooldown": 210,
-            "icon": "/cdragon/raw/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_haste.png",
+            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_haste.png",
             "tw": "鬼步",
             "en": "Ghost",
         },
         "SummonerHeal": {
             "cooldown": 240,
-            "icon": "/cdragon/raw/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_heal.png",
+            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_heal.png",
             "tw": "治癒",
             "en": "Heal",
         },
         "SummonerMana": {
             "cooldown": 240,
-            "icon": "/cdragon/raw/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summonermana.png",
+            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summonermana.png",
             "tw": "清晰",
             "en": "Mana",
         },
         "SummonerSmite": {
             "cooldown": 15,
-            "icon": "/cdragon/raw/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_smite.png",
+            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_smite.png",
             "tw": "重擊",
             "en": "Smite",
         },
         "SummonerSnowURFSnowball_Mark": {
             "cooldown": 80,
-            "icon": "/cdragon/raw/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_mark.png",
+            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_mark.png",
             "tw": "雪球",
             "en": "Snowball",
         },
         "SummonerSnowball": {
             "cooldown": 80,
-            "icon": "/cdragon/raw/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_mark.png",
+            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_mark.png",
             "tw": "雪球",
             "en": "Snowball",
         },
         "SummonerTeleport": {
             "cooldown": 360,
-            "icon": "/cdragon/raw/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_teleport.png",
+            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_teleport.png",
             "tw": "傳送",
             "en": "Teleport",
         },
@@ -516,7 +516,7 @@ class SpellHelperUI(QWidget):
         helper.data["summonerName"] = playerData["summonerName"]
         helper.data["championName"] = playerData["championName"]
         helper.data["rawChampionName"] = playerData["rawChampionName"]
-        helper.data["championImageURL"] = f"/cdragon/cdn/champion/{playerData['rawChampionName'].split('_')[3]}/square"
+        helper.data["championImageURL"] = f"https://cdn.communitydragon.org/latest/champion/{playerData['rawChampionName'].split('_')[3]}/square"
 
         spell1key = self.getSpellKey("".join(playerData["summonerSpells"]["summonerSpellOne"]["rawDisplayName"].split("_")[2:-1]))
         helper.data["spell1"]["tw"] = self.spellsData[spell1key]["tw"]
@@ -551,7 +551,7 @@ class SpellHelperUI(QWidget):
         if(not self.server): return False
         with self.server.test_client() as client:
             itemsData = None
-            try: itemsData = client.get(f"/cdragon/raw/plugins/rcp-be-lol-game-data/global/default/v1/items.json").get_json(force=True)
+            try: itemsData = client.get(f"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json").get_json(force=True)
             except: itemsData = None
             if(itemsData is None): return False
             self.itemsData = {i["id"]:i["description"] for i in itemsData}
