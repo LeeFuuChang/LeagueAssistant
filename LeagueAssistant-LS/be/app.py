@@ -4,6 +4,7 @@ from PyQt5 import QtCore, QtGui
 
 import threading
 import waitress
+import ctypes
 import time
 import sys
 import os
@@ -39,10 +40,8 @@ class WebRenderer(QWebEngineView):
 
         super(self.__class__, self).__init__(*args, **kwargs)
 
-        self.icon = QtGui.QIcon(getattr(sys.modules["StorageManager"], "LocalStorage").path(os.path.join("fe", "assets", "logo", "filled.png")))
-
         self.setWindowTitle(os.environ["PROJECT_NAME"])
-        self.setWindowIcon(self.icon)
+        self.setWindowIcon(QtGui.QIcon(os.environ["ICON_PATH"]))
         self.setWindowFlags(QtCore.Qt.Window|QtCore.Qt.FramelessWindowHint|QtCore.Qt.WindowMinMaxButtonsHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
         self.page().setBackgroundColor(QtCore.Qt.transparent)
@@ -122,6 +121,8 @@ class WebRenderer(QWebEngineView):
 
 
 def run():
+    os.environ["ICON_PATH"] = sys.modules["StorageManager"].LocalStorage.path(os.path.join("fe", "assets", "logo", "filled.png"))
+
     server = WebServer()
 
     if("--server" in sys.argv):
@@ -139,6 +140,8 @@ def run():
     }).start()
 
     app = QApplication([*sys.argv, "--ignore-gpu-blacklist"])
+
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(os.environ["APP_USER_MODEL_ID"])
 
     browserWindow = WebRenderer()
     browserWindow.show()

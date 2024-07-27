@@ -1,4 +1,4 @@
-from ..thread import TaskThread
+from ...thread import TaskThread
 
 import Chat
 
@@ -484,7 +484,7 @@ class SpellHelperUI(QWidget):
         self = cls._instance
         super(self.__class__, self).__init__()
         self.setWindowTitle(os.environ["PROJECT_NAME"])
-        self.setWindowIcon(QtGui.QIcon(getattr(sys.modules["StorageManager"], "LocalStorage").path(os.path.join("fe", "assets", "logo", "filled.png"))))
+        self.setWindowIcon(QtGui.QIcon(os.environ["ICON_PATH"]))
         self.setToolTip("按住滑鼠滾輪可以移動")
         self.layout = QGridLayout()
         self.setLayout(self.layout)

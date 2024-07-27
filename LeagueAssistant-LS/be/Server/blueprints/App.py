@@ -1,4 +1,4 @@
-from flask import Blueprint, send_from_directory, request, Response
+from flask import Blueprint, Response, send_from_directory, request
 import requests as rq
 import webbrowser
 import json

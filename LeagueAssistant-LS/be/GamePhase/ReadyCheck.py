@@ -1,4 +1,4 @@
-from ..thread import TaskThread
+from thread import TaskThread
 
 from .abstract import AbstractPhase
 

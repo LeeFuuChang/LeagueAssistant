@@ -5,7 +5,6 @@ import platform
 import logging
 import random
 import atexit
-import ctypes
 import types
 import json
 import sys
@@ -25,7 +24,6 @@ os.environ["SERVER_URL"] = f"https://www.leefuuchang.in/projects/{os.environ['PR
 os.environ["STORAGE_URL"] = f"https://www.leefuuchang.in/projects/{os.environ['PROJECT_NAME']}/Storage"
 
 os.environ["APP_USER_MODEL_ID"] = f"{os.environ['PROJECT_NAME']}.App.User.Model.Id"
-ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(os.environ["APP_USER_MODEL_ID"])
 
 os.environ["USER_AGENT"] = random.choice([
     "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36",

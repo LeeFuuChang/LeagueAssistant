@@ -1,4 +1,4 @@
-from ..thread import TaskThread
+from thread import TaskThread
 
 from .utils.SpellHelper import SpellHelperUI
 from .utils.Collector import StatsDataCollector
