@@ -4,13 +4,13 @@ from .ReadyCheck import ReadyCheck
 from .ChampSelect import ChampSelect
 from .InProgress import InProgress
 
-from PyQt5 import QtCore
+from PyQt5.QtCore import QObject, pyqtSignal
 import logging
 import time
 
 
-class PhaseHandler(QtCore.QObject):
-    updateSignal = QtCore.pyqtSignal()
+class PhaseHandler(QObject):
+    updateSignal = pyqtSignal()
 
     def __init__(self, server):
         super(self.__class__, self).__init__()

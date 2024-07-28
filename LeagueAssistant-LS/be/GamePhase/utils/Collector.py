@@ -30,6 +30,11 @@ class StatsDataCollector:
         "PLATINUM-II"    : "白金 II",
         "PLATINUM-I"     : "白金 I",
 
+        "EMERALD-IV"    : "翡翠 IV",
+        "EMERALD-III"   : "翡翠 III",
+        "EMERALD-II"    : "翡翠 II",
+        "EMERALD-I"     : "翡翠 I",
+
         "DIAMOND-IV"     : "鑽石 IV",
         "DIAMOND-III"    : "鑽石 III",
         "DIAMOND-II"     : "鑽石 II",

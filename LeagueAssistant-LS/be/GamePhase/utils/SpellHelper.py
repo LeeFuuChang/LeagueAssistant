@@ -3,23 +3,23 @@ from ...thread import TaskThread
 import Chat
 
 from PyQt5.QtWidgets import QWidget, QDesktopWidget, QGridLayout, QLabel, QGraphicsOpacityEffect, QMenu, QAction
-from PyQt5 import QtCore, QtGui
+from PyQt5.QtCore import QObject, QEvent, Qt, pyqtSignal
+from PyQt5.QtGui import QCursor, QPixmap, QIcon
 
 import difflib
 import logging
 import time
-import sys
 import os
 
 
 
 def setLeftClickable(widget):
-    class Filter(QtCore.QObject):
-        clicked = QtCore.pyqtSignal()
+    class Filter(QObject):
+        clicked = pyqtSignal()
         def eventFilter(self, obj, event):
             if obj == widget:
-                if event.type() == QtCore.QEvent.MouseButtonRelease:
-                    if event.button() == QtCore.Qt.LeftButton:
+                if event.type() == QEvent.MouseButtonRelease:
+                    if event.button() == Qt.LeftButton:
                         if obj.rect().contains(event.pos()):
                             self.clicked.emit()
                             return True
@@ -29,12 +29,12 @@ def setLeftClickable(widget):
     return filter.clicked
 
 def setRightClickable(widget):
-    class Filter(QtCore.QObject):
-        clicked = QtCore.pyqtSignal()
+    class Filter(QObject):
+        clicked = pyqtSignal()
         def eventFilter(self, obj, event):
             if obj == widget:
-                if event.type() == QtCore.QEvent.MouseButtonRelease:
-                    if event.button() == QtCore.Qt.RightButton:
+                if event.type() == QEvent.MouseButtonRelease:
+                    if event.button() == Qt.RightButton:
                         if obj.rect().contains(event.pos()):
                             self.clicked.emit()
                             return True
@@ -64,7 +64,7 @@ class SpellHelperPlayer(QWidget):
             "championName": "",
             "rawChampionName": "",
             "championLabel": QLabel(),
-            "championPixmap": QtGui.QPixmap(),
+            "championPixmap": QPixmap(),
             "championImageURL": "",
             "spell1": {
                 "hotkey": "D",
@@ -77,7 +77,7 @@ class SpellHelperPlayer(QWidget):
                     "opacity": QGraphicsOpacityEffect(),
                 },
                 "label": QLabel(),
-                "pixmap": QtGui.QPixmap(),
+                "pixmap": QPixmap(),
                 "thread": None,
                 "tw": "",
                 "en": "",
@@ -99,7 +99,7 @@ class SpellHelperPlayer(QWidget):
                     "opacity": QGraphicsOpacityEffect(),
                 },
                 "label": QLabel(),
-                "pixmap": QtGui.QPixmap(),
+                "pixmap": QPixmap(),
                 "thread": None,
                 "tw": "",
                 "en": "",
@@ -130,12 +130,12 @@ class SpellHelperPlayer(QWidget):
 
         setLeftClickable(self.data["championLabel"]).connect(self.startBroadcastSpellCooldown)
 
-        self.data["championLabel"].setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.data["championLabel"].setContextMenuPolicy(Qt.CustomContextMenu)
         self.data["championLabel"].customContextMenuRequested.connect(self.emptySpaceMenu)
 
 
     def emptySpaceMenu(self):
-        clickPos = QtGui.QCursor.pos()
+        clickPos = QCursor.pos()
         contents = [
             ["重新載入玩家", lambda:(self.reloadPixmap(), self.updateLayout(), self.updateSize()), True],
             ["重新載入圖片", lambda:(self.reloadPixmap(), self.updateSize()), True],
@@ -189,13 +189,13 @@ class SpellHelperPlayer(QWidget):
             self.layout.removeWidget(self.data[key]["counter"]["label"])
             self.layout.removeWidget(self.data[key]["notify"]["label"])
             self.layout.removeWidget(self.data[key]["label"])
-            self.layout.addWidget(self.data[key]["counter"]["label"], *p, 1, 1, QtCore.Qt.AlignCenter)
-            self.layout.addWidget(self.data[key]["notify"]["label"], *p, 1, 1, QtCore.Qt.AlignCenter)
-            self.layout.addWidget(self.data[key]["label"], *p, 1, 1, QtCore.Qt.AlignCenter)
+            self.layout.addWidget(self.data[key]["counter"]["label"], *p, 1, 1, Qt.AlignCenter)
+            self.layout.addWidget(self.data[key]["notify"]["label"], *p, 1, 1, Qt.AlignCenter)
+            self.layout.addWidget(self.data[key]["label"], *p, 1, 1, Qt.AlignCenter)
         replaceSpell("spell1", pos[0])
         replaceSpell("spell2", pos[1])
         self.layout.removeWidget(self.data["championLabel"])
-        self.layout.addWidget(self.data["championLabel"], *pos[2], 2, 2, QtCore.Qt.AlignCenter)
+        self.layout.addWidget(self.data["championLabel"], *pos[2], 2, 2, Qt.AlignCenter)
 
 
     def calculateCooldown(self, baseCooldown, abilityHaste):
@@ -272,7 +272,7 @@ class SpellHelperPlayer(QWidget):
         cnt_O.setOpacity((self.data["styles"]["counter-color"]["a"]/10) * cover)
         cnt_L.setStyleSheet(f"color:{self.data['styles']['counter-color']['c']}")
         cnt_L.setGraphicsEffect(cnt_O)
-        cnt_L.setAlignment(QtCore.Qt.AlignCenter)
+        cnt_L.setAlignment(Qt.AlignCenter)
 
         not_O.setOpacity((self.data["styles"]["notify-color"]["a"]/10) * cover)
         not_L.setStyleSheet(f"background:{self.data['styles']['notify-color']['c']}")
@@ -458,8 +458,16 @@ class SpellHelperUI(QWidget):
 
     def __init__(self, server, localTeam, gameStats):
         self.setContentsMargins(0, 0, 0, 0)
-        self.setWindowFlags(QtCore.Qt.Window | QtCore.Qt.CustomizeWindowHint | QtCore.Qt.WindowStaysOnTopHint | QtCore.Qt.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
+        self.setWindowFlags(Qt.Window | Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground, True)
+        self.setAutoFillBackground(True)
+
+        self.setWindowTitle(os.environ["PROJECT_NAME"])
+        self.setWindowIcon(QIcon(os.environ["ICON_PATH"]))
+        self.setWindowFlags(Qt.Window|Qt.WindowStaysOnTopHint|Qt.FramelessWindowHint|Qt.WindowMinMaxButtonsHint)
+        self.setAttribute(Qt.WA_NoSystemBackground, True)
+        self.setAttribute(Qt.WA_TranslucentBackground, True)
+        self.setAttribute(Qt.WA_TransparentForMouseEvents, True)
         self.setAutoFillBackground(True)
 
         self.layout.setSpacing(0)
@@ -484,7 +492,7 @@ class SpellHelperUI(QWidget):
         self = cls._instance
         super(self.__class__, self).__init__()
         self.setWindowTitle(os.environ["PROJECT_NAME"])
-        self.setWindowIcon(QtGui.QIcon(os.environ["ICON_PATH"]))
+        self.setWindowIcon(QIcon(os.environ["ICON_PATH"]))
         self.setToolTip("按住滑鼠滾輪可以移動")
         self.layout = QGridLayout()
         self.setLayout(self.layout)
@@ -582,9 +590,9 @@ class SpellHelperUI(QWidget):
             helper.updateLayout(self.format)
             self.layout.removeWidget(helper)
             if(self.format in ["format-u","format-d"]):
-                self.layout.addWidget(helper, 0, helper.data["index"], QtCore.Qt.AlignCenter)
+                self.layout.addWidget(helper, 0, helper.data["index"], Qt.AlignCenter)
             if(self.format in ["format-l","format-r"]):
-                self.layout.addWidget(helper, helper.data["index"], 0, QtCore.Qt.AlignCenter)
+                self.layout.addWidget(helper, helper.data["index"], 0, Qt.AlignCenter)
             helper.updateSize(self.size)
         self.setFixedSize(self.layout.sizeHint())
 
@@ -610,7 +618,7 @@ class SpellHelperUI(QWidget):
 
 
     def mousePressEvent(self, e):
-        if(e.buttons() == QtCore.Qt.MiddleButton):
+        if(e.buttons() == Qt.MiddleButton):
             self.dragStartPosition = e.globalPos()
         else: self.dragStartPosition = None
         super().mousePressEvent(e)
