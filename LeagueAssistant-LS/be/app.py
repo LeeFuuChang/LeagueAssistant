@@ -141,8 +141,6 @@ def run():
 
     app = QApplication([*sys.argv, "--ignore-gpu-blacklist"])
 
-    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(os.environ["APP_USER_MODEL_ID"])
-
     browserWindow = WebRenderer()
     browserWindow.show()
     browserWindow.connect(server, server.host, server.port)

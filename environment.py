@@ -23,8 +23,6 @@ os.environ["LOL_CLIENT_PROCESS_NAME"] = "LeagueClientUx.exe"
 os.environ["SERVER_URL"] = f"https://www.leefuuchang.in/projects/{os.environ['PROJECT_NAME']}"
 os.environ["STORAGE_URL"] = f"https://www.leefuuchang.in/projects/{os.environ['PROJECT_NAME']}/Storage"
 
-os.environ["APP_USER_MODEL_ID"] = f"{os.environ['PROJECT_NAME']}.App.User.Model.Id"
-
 os.environ["USER_AGENT"] = random.choice([
     "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36",
     "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
@@ -37,6 +35,7 @@ os.environ["USER_AGENT"] = random.choice([
 ])
 
 if getattr(sys, "frozen", False):
+    sys.argv = [arg for arg in sys.argv if not arg.startswith("-")]
     os.environ["EXECUTABLE_ROOT"] = os.path.dirname(sys.executable)
 else:
     os.environ["EXECUTABLE_ROOT"] = os.path.dirname(os.path.abspath(sys.modules["__main__"].__file__))
