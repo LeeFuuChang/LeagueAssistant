@@ -1,63 +1,22 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+import sys
+import os
+
+working = os.path.dirname(os.path.abspath(sys.modules["__main__"].__file__))
 
 block_cipher = pyi_crypto.PyiBlockCipher(key="helloworldishard")
 
-
-target = "main.py"
-
-
-import os
-excludes = set([
-    "env", 
-    "main.py", 
-])
-
-datas = set()
-for root, dirs, files in os.walk(".\\modules", topdown=False):
-    if(any([((os.sep+d) in root) for d in excludes])): continue
-    for name in files:
-        if name.split(".")[-1].startswith("py"): continue
-        datas.add((os.path.join(root, name), root))
-
-hiddenimports = set(["ProjectUtility"])
-def collectHiddenImports(filepath):
-    with open(filepath, "r") as f: 
-        lines = f.readlines()
-    fileImportations = [line for line in lines if "import" in line]
-    for importLine in fileImportations:
-        if(importLine.startswith("from ")):
-            names = importLine[:importLine.find(" import")].replace("from ", "")
-        elif(importLine.startswith("import ")):
-            names = importLine[:importLine.find(" as")].replace("import ", "")
-        else: names = ""
-        for name in names.split(", "):
-            if(not name): continue
-            if(name.startswith(".")): continue
-            if(name.startswith("modules")): continue
-            if(name in hiddenimports): continue
-            hiddenimports.add(name)
-collectHiddenImports(target)
-collectHiddenImports("ProjectUtility.py")
-for root, dirs, files in os.walk("."):
-    if(any([((os.sep+d) in root) for d in excludes])): continue
-    for file in files:
-        if(file in excludes): continue
-        if(not file.endswith(".py")): continue
-        if(file == target or not file.endswith(".py")): continue
-        collectHiddenImports(os.path.join(root, file))
-
-
 a = Analysis(
-    [target],
-    pathex=[".\\env\\Lib\\site-packages"],
+    ["main.py"],
+    pathex=[p for p in sys.path if working in p and p.endswith("site-packages")],
     binaries=[],
-    datas=list(datas),
-    hiddenimports=list(hiddenimports),
+    datas=[(".\\extensions\\*.*", "."), ],
+    hiddenimports=["environment.py"],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=[],
+    excludes=["StorageManager.py"],
     win_no_prefer_redirects=False,
     win_private_assemblies=False,
     cipher=block_cipher,
@@ -79,11 +38,11 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name="LeagueAssistant-4.3.0",
+    name="LeagueAssistant",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
-    upx=False,
+    upx=True,
     upx_exclude=[],
     uac_admin=True,
     runtime_tmpdir=None,
