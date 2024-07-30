@@ -1,11 +1,14 @@
 from flask import Blueprint, Response, send_from_directory, request
 import requests as rq
 import webbrowser
+import random
 import json
 import sys
 import os
 
+
 App = Blueprint("App", __name__)
+
 
 @App.route("/version", methods=["GET"])
 def App_Version():
@@ -21,6 +24,14 @@ def App_Version():
         "latest-version": latest["version"],
         "release-date": latest["last-edit"],
     }
+
+
+@App.route("/ad", methods=["GET"])
+def App_Ad():
+    try: data = rq.get(f"{os.environ['SERVER_URL']}/Ads").json()
+    except: data = []
+    return {} if(not data)else random.choice(data)
+
 
 @App.route("/external", methods=["POST"])
 def App_External():
@@ -45,6 +56,7 @@ def App_Config(**kwargs):
             f.truncate(0)
             json.dump(config, f, indent=4, ensure_ascii=False)
         return Response(status=202)
+
 
 App.control_functions = {}
 @App.route("/controls/<string:name>", methods=["POST"])

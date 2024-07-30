@@ -361,15 +361,15 @@ window.LoadHomePage = (()=>Promise.all([
 
 
 window.showAd = (()=>{
-    $.get("/ad/random", {}, (data)=>{
+    $.get("/app/ad", {}, (data)=>{
         let cover = $("#app-cover").removeClass("loading__Ad");
+        if(!(data["href"]&&data["banner"])) return;
         let duration = 5;
         let count = (()=>{
             if(--duration<=0) cover.find("#ad .close").text("close").on("click", ()=>cover.removeClass("loading__Ad"));
             else Promise.resolve(cover.find("#ad .close").text(duration)).then(()=>setTimeout(count, 1000));
         });
-        let visit = (()=>$.post("/ad/visit",data));
-        if(!(data["href"]&&data["banner"])) return;
+        let visit = (()=>$.post("/app/external",{"url":data["href"]}));
         cover.addClass("loading__Ad");
         cover.find("#ad .link").attr("src", data["banner"]).off("click").on("click", visit);
         cover.find("#ad .close").text(duration).off("click");
