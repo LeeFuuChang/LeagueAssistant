@@ -1,7 +1,6 @@
-from thread import TaskThread
-
 from .utils.SpellHelper import SpellHelperUI
 from .utils.Collector import StatsDataCollector
+from .utils.thread import TaskThread
 from .utils import Chat
 
 from .abstract import AbstractPhase

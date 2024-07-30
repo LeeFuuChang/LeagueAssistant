@@ -1,5 +1,4 @@
-from ...thread import TaskThread
-
+from thread import TaskThread
 import Chat
 
 from PyQt5.QtWidgets import QWidget, QDesktopWidget, QGridLayout, QLabel, QGraphicsOpacityEffect, QMenu, QAction

@@ -1,8 +1,7 @@
-from thread import TaskThread, SteppedTaskThread
-
 from .abstract import AbstractPhase
 
 from .utils.Collector import StatsDataCollector
+from .utils.thread import TaskThread, SteppedTaskThread
 from .utils import Chat
 
 import win32api
