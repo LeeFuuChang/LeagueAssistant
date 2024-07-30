@@ -68,9 +68,9 @@
 #app[size="contract"] #app-header .app-control #app-control-settings {
     display: none;
 }
-#app #app-header .app-control #app-control-hide {
-    mask-image: url("/ui/assets/media/app-control/hide.png");
-    -webkit-mask-image: url("/ui/assets/media/app-control/hide.png");
+#app #app-header .app-control #app-control-minimize {
+    mask-image: url("/ui/assets/media/app-control/minimize.png");
+    -webkit-mask-image: url("/ui/assets/media/app-control/minimize.png");
 }
 #app #app-header .app-control #app-control-support {
     mask-image: url("/ui/assets/media/app-control/support.png");

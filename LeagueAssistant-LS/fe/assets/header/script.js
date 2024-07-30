@@ -7,8 +7,8 @@ $(document).ready(()=>{
             window.LoadOverlay(AppOverlay_AppConfig, window.MakeData());
         });
     });
-    $("#app-control-hide").on("click", ()=>{
-        $.post("/app/controls/app-control-hide");
+    $("#app-control-minimize").on("click", ()=>{
+        $.post("/app/controls/app-control-minimize");
     });
     $("#app-control-support").on("click", (e)=>{
         window.LoadClasses("assets/overlay/classes.json").then(()=>{

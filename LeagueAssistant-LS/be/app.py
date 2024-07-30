@@ -21,9 +21,8 @@ class WebRenderer(QWebEngineView):
 
     showSignal = pyqtSignal()
 
-    eventCounter = {}
-
     dragging = False
+    draggableTop = 0.08
     mouseLastPosition = None
 
     def __init__(self, *args, **kwargs):
@@ -54,8 +53,6 @@ class WebRenderer(QWebEngineView):
         self.resizeSignal.connect(self.resize)
         self.showSignal.connect(self.show)
 
-        self.centralize()
-
 
     def eventFilter(self, object, event):
         if(object.parent() == self and event.type() == QEvent.MouseMove):
@@ -68,7 +65,7 @@ class WebRenderer(QWebEngineView):
 
 
     def mousePressEvent(self, event):
-        self.dragging = ((event.buttons() == Qt.LeftButton) and (event.y() < self.height()*0.08))
+        self.dragging = ((event.buttons() == Qt.LeftButton) and (event.y() < self.height()*self.draggableTop))
         return super().mousePressEvent(event)
 
 
@@ -84,9 +81,21 @@ class WebRenderer(QWebEngineView):
         return super().mouseMoveEvent(event)
 
 
+    def moveEvent(self, event):
+        wg = self.geometry()
+        sg = QDesktopWidget().screenGeometry()
+        self.setGeometry(
+            max(0, min(wg.x(), sg.width()-wg.width())),
+            max(0, min(wg.y(), sg.height()-wg.height())),
+            wg.width(),
+            wg.height(),
+        )
+        return super().moveEvent(event)
+
+
     def centralize(self):
         wg = self.geometry()
-        sg = QDesktopWidget().availableGeometry()
+        sg = QDesktopWidget().screenGeometry()
         self.move(int((sg.width()-wg.width())/2), int((sg.height()-wg.height())/2))
 
 
@@ -94,6 +103,7 @@ class WebRenderer(QWebEngineView):
         if((self.width(), self.height()) == (w, h)): return
         super().resize(w, h)
         self.centralize()
+        self.show()
 
 
     def show(self):
@@ -108,7 +118,7 @@ class WebRenderer(QWebEngineView):
     def connect(self, server, host, port):
         self.server = server
         self.server.registerAppControl("app-control-close", self.closeSignal.emit)
-        self.server.registerAppControl("app-control-hide", self.minimizeSignal.emit)
+        self.server.registerAppControl("app-control-minimize", self.minimizeSignal.emit)
         self.server.registerAppControl("app-control-resize", self.resizeSignal.emit)
         self.server.registerAppControl("app-control-show", self.showSignal.emit)
         self.load(QUrl(f"http://{host}:{port}/ui"))
@@ -128,21 +138,24 @@ def run():
             threaded=True,
         )
 
-    threading.Thread(target=waitress.serve, daemon=True, kwargs={
-        "app": server,
-        "host": server.host, 
-        "port": server.port, 
-        "threads": 8, 
-    }).start()
+    threading.Thread(
+        target=waitress.serve,
+        daemon=True,
+        kwargs={
+            "app": server,
+            "host": server.host,
+            "port": server.port,
+            "threads": 8,
+        }
+    ).start()
 
-    app = QApplication([*sys.argv, "--ignore-gpu-blacklist"])
+    qapp = QApplication([*sys.argv, "--ignore-gpu-blacklist"])
 
     browserWindow = WebRenderer()
-    browserWindow.show()
     browserWindow.connect(server, server.host, server.port)
 
     from GamePhase.handler import PhaseHandler
     phaseHandler = PhaseHandler(server)
     phaseHandler.run()
 
-    sys.exit(app.exec_())
+    sys.exit(qapp.exec_())
