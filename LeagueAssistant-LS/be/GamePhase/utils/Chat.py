@@ -8,10 +8,18 @@ import win32gui
 import win32con
 import logging
 import ctypes
+import psutil
 import time
 import os
 
-from utility import getProcessesByNames
+def getProcessesByNames(names):
+    result = []
+    for proc in psutil.process_iter():
+        try:
+            if(proc.name().strip() not in names): continue
+            result.append(proc)
+        except: continue
+    return result
 
 def getHwndByProcess(proc):
     def callback(hwnd, hwnds):

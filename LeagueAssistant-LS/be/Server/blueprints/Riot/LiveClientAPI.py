@@ -1,6 +1,3 @@
-import requests.packages.urllib3
-requests.packages.urllib3.disable_warnings()
-
 import requests as rq
 import sys
 import os

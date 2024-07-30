@@ -5,15 +5,14 @@ import importlib
 import sys
 import os
 
-import urllib3
-urllib3.disable_warnings()
-
 from LoadingWindow import LoadingWindow
 
 LocalStorage = sys.modules["StorageManager"].LocalStorage
 
 def init():
     loader = LoadingWindow()
+    loader.setIconURL(f"{os.environ['STORAGE_URL']}/Icon.png")
+    loader.setSplashArtURL(f"{os.environ['STORAGE_URL']}/Splash.jpg")
     def statusCallback(text, progress):
         nonlocal loader
         loader.text = text

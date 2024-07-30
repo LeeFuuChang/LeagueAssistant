@@ -5,14 +5,10 @@ from PyQt5.QtGui import QIcon
 
 import threading
 import waitress
-import time
 import sys
 import os
 
-from utility import getProcessesByNames
-
 from Server.Flask import WebServer
-from GamePhase.handler import PhaseHandler
 
 
 
@@ -145,14 +141,8 @@ def run():
     browserWindow.show()
     browserWindow.connect(server, server.host, server.port)
 
+    from GamePhase.handler import PhaseHandler
     phaseHandler = PhaseHandler(server)
-    def loop():
-        while not time.sleep(1): 
-            if not getProcessesByNames([
-                os.environ["LOL_GAME_PROCESS_NAME"],
-                os.environ["LOL_CLIENT_PROCESS_NAME"],
-            ]): continue 
-            phaseHandler.updateSignal.emit()
-    threading.Thread(target=loop, daemon=True).start()
+    phaseHandler.run()
 
     sys.exit(app.exec_())

@@ -5,11 +5,18 @@ from .ChampSelect import ChampSelect
 from .InProgress import InProgress
 
 from PyQt5.QtCore import QObject, pyqtSignal
+import win32process
+import threading
+import win32gui
 import logging
+import psutil
 import time
+import os
 
 
 class PhaseHandler(QObject):
+    thread: threading.Thread = None
+
     updateSignal = pyqtSignal()
 
     def __init__(self, server):
@@ -86,3 +93,20 @@ class PhaseHandler(QObject):
             self.currentPhase = phase
 
 
+    def run(self):
+        if(self.thread is not None): return
+        def loop(self):
+            while not time.sleep(1): 
+                try:
+                    focus = win32gui.GetForegroundWindow()
+                    focusPID = win32process.GetWindowThreadProcessId(focus)[1]
+                    focusProc = psutil.Process(focusPID)
+                    focusName = focusProc.name().strip().lower()
+                    if(focusName in {
+                        os.environ["LOL_GAME_PROCESS_NAME"],
+                        os.environ["LOL_CLIENT_PROCESS_NAME"],
+                    } or focusPID == os.getpid()): self.updateSignal.emit()
+                except:
+                    pass
+        self.thread = threading.Thread(target=loop, args=(self, ), daemon=True)
+        self.thread.start()

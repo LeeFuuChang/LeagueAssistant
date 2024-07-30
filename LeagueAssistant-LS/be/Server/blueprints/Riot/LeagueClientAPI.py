@@ -1,12 +1,8 @@
-from utility import getProcessesByNames
-
-import requests.packages.urllib3
-requests.packages.urllib3.disable_warnings()
-
 import requests as rq
 import json as JSON
 import logging
 import socket
+import psutil
 import os
 
 os.environ["RIOT_AUTH_PORT_0"] = ""
@@ -32,7 +28,10 @@ class LeagueClientAPI:
         os.environ["RIOT_AUTH_TOKEN_1"] = ""
         os.environ["LOL_INSTALL_DIRECTORY"] = ""
         try:
-            for proc in getProcessesByNames(["LeagueClientUx.exe"]):
+            for proc in psutil.process_iter():
+                try:
+                    if(proc.name().strip() == os.environ["LOL_CLIENT_PROCESS_NAME"]): continue
+                except: continue
                 for segment in proc.cmdline():
                     if "--app-port" in segment:
                         os.environ["RIOT_AUTH_PORT_0"] = segment.split("=")[1]
