@@ -154,7 +154,7 @@ def run():
     browserWindow = WebRenderer()
     browserWindow.connect(server, server.host, server.port)
 
-    from GamePhase.handler import PhaseHandler
+    from Script.handler import PhaseHandler
     phaseHandler = PhaseHandler(server)
     phaseHandler.run()
 
