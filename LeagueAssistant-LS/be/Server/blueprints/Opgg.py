@@ -4,7 +4,10 @@ import json
 import bs4
 import os
 
+
 Opgg = Blueprint("Opgg", __name__)
+
+
 @Opgg.route("/api/<path:subUrl>")
 def OpggApi(**kwargs):
     """
@@ -18,6 +21,7 @@ def OpggApi(**kwargs):
     try: return response.json()
     except: return {}
 
+
 @Opgg.route("/lol/<path:subUrl>")
 def OpggLol(**kwargs):
     response = rq.get(
@@ -29,6 +33,7 @@ def OpggLol(**kwargs):
     data = soup.find("script", {"id": "__NEXT_DATA__", "type": "application/json"})
     data = json.loads(data.decode_contents()).get("props", {}).get("pageProps", {})
     return data
+
 
 @Opgg.route("/tft/<path:subUrl>")
 def OpggTft(**kwargs):
@@ -44,6 +49,7 @@ def OpggTft(**kwargs):
     fallback = data.get("fallback", {})
     pageProp["fallback"] = {key.split("\",\"")[1]:val for key, val in fallback.items() if("\",\"" in key)}
     return pageProp
+
 
 @Opgg.route("/tft-api/<path:subUrl>")
 def OpggTftApi(**kwargs):

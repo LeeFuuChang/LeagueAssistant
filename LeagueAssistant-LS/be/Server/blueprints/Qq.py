@@ -3,7 +3,10 @@ import requests as rq
 import json
 import os
 
+
 Qq = Blueprint("Qq", __name__)
+
+
 @Qq.route("/native/<path:subUrl>", methods=["GET"])
 def QqNative(**kwargs):
     response = rq.get(
@@ -13,6 +16,7 @@ def QqNative(**kwargs):
     )
     try: return response.json()
     except: return {}
+
 
 @Qq.route("/common/<path:subUrl>", methods=["GET"])
 def QqCommon(**kwargs):
@@ -30,6 +34,7 @@ def QqCommon(**kwargs):
     )
     try: return json.loads(response.text[response.text.find("{"):response.text.rfind("}")+1])
     except: return {}
+
 
 @Qq.route("/gtimg/<path:subUrl>", methods=["GET"])
 def QqGtimg(**kwargs):

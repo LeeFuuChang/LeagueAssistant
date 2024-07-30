@@ -39,11 +39,16 @@ def App_External():
     webbrowser.open(str(request.form["url"]))
     return Response(status=202)
 
-@App.route("/config/<string:name>", methods=["GET", "POST"])
+
+@App.route("/config/<path:filepath>", methods=["GET", "POST"])
 def App_Config(**kwargs):
-    LocalStorage = getattr(sys.modules["StorageManager"], "LocalStorage")
-    configPath = LocalStorage.path(os.path.join("cfg", "app", f"{kwargs['name']}.json"))
+    kwargs["filepath"] = os.path.join("app", f"{kwargs['filepath'] or 'app'}.json")
+
+    configPath = sys.modules["StorageManager"].LocalStorage.path(os.path.join("cfg", kwargs["filepath"]))
+
     if(not configPath): return Response(status=404)
+
+    if(os.path.isdir(configPath)): return os.listdir(configPath)
 
     if(request.method == "GET"):
         return send_from_directory(*os.path.split(configPath))
