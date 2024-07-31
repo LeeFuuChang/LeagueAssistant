@@ -2,7 +2,7 @@ LoadingWindow
 
 requests
 
-pyqt5
+PyQt5
 PyQtWebEngine
 
 flask
