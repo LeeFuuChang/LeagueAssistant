@@ -100,7 +100,7 @@ class ChampSelect(AbstractPhase):
         print(shortenedPosition)
         banningData = {"enabled":False, "champions":{}}
         with self.parent.server.test_client() as client:
-            try: autoBanCfg = client.get(f"/config/settings/game/auto-ban/{shortenedPosition}").get_json(force=True)
+            try: autoBanCfg = client.get(f"/app/config/settings/game/auto-ban/{shortenedPosition}.json").get_json(force=True)
             except: autoBanCfg = {}
             if(not autoBanCfg): return False
             filterFunc = (lambda i:(autoBanCfg.get("switch", False) and autoBanCfg.get(f"{chr(i)}-c", -1)>0))
@@ -119,7 +119,7 @@ class ChampSelect(AbstractPhase):
     def getAutoPickData(self, shortenedPosition):
         pickingData = {"enabled":False, "champions":{}}
         with self.parent.server.test_client() as client:
-            try: autoPickCfg = client.get(f"/config/settings/game/auto-pick/{shortenedPosition}").get_json(force=True)
+            try: autoPickCfg = client.get(f"/app/config/settings/game/auto-pick/{shortenedPosition}.json").get_json(force=True)
             except: autoPickCfg = {}
             if(not autoPickCfg): return False
             filterFunc = (lambda i:(autoPickCfg.get(f"{chr(i)}-switch", False) and autoPickCfg.get(f"{chr(i)}-c", -1)>0))
@@ -300,7 +300,7 @@ class ChampSelect(AbstractPhase):
         if(self.isSendingStatsData()): return True
         with self.parent.server.test_client() as client:
             if(self.isSendingStatsData()): return True
-            try: fastSelfData = client.get(f"/config/settings/stats/select-send/fast-self").get_json(force=True)
+            try: fastSelfData = client.get(f"/app/config/settings/stats/select-send/fast-self.json").get_json(force=True)
             except: fastSelfData = {}
             if(fastSelfData and win32api.GetAsyncKeyState(fastSelfData["keybind"])):
                 if(self.isSendingStatsData()): return True
@@ -316,7 +316,7 @@ class ChampSelect(AbstractPhase):
                 ).start()
                 return True
             if(self.isSendingStatsData()): return True
-            try: fastTeamData = client.get(f"/config/settings/stats/select-send/fast-team").get_json(force=True)
+            try: fastTeamData = client.get(f"/app/config/settings/stats/select-send/fast-team.json").get_json(force=True)
             except: fastTeamData = {}
             if(fastTeamData and win32api.GetAsyncKeyState(fastTeamData["keybind"])):
                 if(self.isSendingStatsData()): return True
