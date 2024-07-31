@@ -64,19 +64,6 @@ window.Updater = (function(){
 
         ];
         let sufPromises = [
-            // update footer marquee announcements
-            // (()=>new Promise((resolve, reject)=>{
-            //     $.get("/storage/cloud/FooterMarquee.json", {}, (data)=>{
-            //         if(!Array.isArray(data)) return resolve();
-            //         if(
-            //             Array.isArray(window.Footer.marqueeLines) && 
-            //             window.Footer.marqueeLines.length === data.length &&
-            //             window.Footer.marqueeLines.every((v,i)=>(v===data[i]))
-            //         ) return resolve(console.log("Marquee equal"));
-            //         resolve(window.Footer.updateMarquee(data));
-            //     });
-            // })),
-
             // resize window base on league client
             (()=>new Promise((resolve, reject)=>{
                 $.get("/app/config/app.json", {}, (data)=>{
