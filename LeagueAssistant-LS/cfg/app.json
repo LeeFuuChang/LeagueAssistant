@@ -1,0 +1,10 @@
+{
+    "dark-theme": false,
+    "no-animation": false,
+    "crash-report": true,
+    "allow-publicity": true,
+    "auto-scale": false,
+    "window-scale": 1,
+    "auto-select-inspect": true,
+    "auto-ingame-inspect": false
+}

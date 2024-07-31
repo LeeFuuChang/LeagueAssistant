@@ -4,54 +4,37 @@ class AppOverlay_AppConfig extends AppOverlay {
     Setup = ()=>{
         window.Widgets.Setup_Stepper($(this.element).find(".config-item .option .stepper"));
 
-        $(this.element).find(".config-item .option input").on("change", this.OnConfigChange);
+        $(this.element).find("input[name='dark-theme']").on("change", function(){
+            window.switchTheme(($(this).is(":checked"))?"dark":"light")
+        });
 
-        $(this.element).find(".config-item[data-name='options'] .option[data-name='dark-theme'] input")
-        .on("change", function(){window.switchTheme(($(this).is(":checked"))?"dark":"light")});
+        $(this.element).find("input").on("change", this.SaveAppConfig);
 
         this.ReloadContent();
     }
 
-    GetInputValue = (input)=>{
-        let value;
-        if($(input).is(".switch")){
-            value = $(input).is(":checked")
-        }else{
-            value = $(input).val();
-        }
-        return value;
-    }
-
-    OnConfigChange = (event, upload=true)=>{
-        if(!upload) return Promise.resolve();
+    SaveAppConfig = ()=>{
         return new Promise((resolve, reject)=>{
-            let item = $(event.currentTarget).closest(".config-item");
-            let data = {};
-            item.find(".option").get().forEach((option)=>{
-                data[$(option).attr("data-name")] = this.GetInputValue($(option).find("input"));
-            });
-            resolve([item.attr("data-name"), data]);
-        }).then(([name, data])=>{
-            $.post(`/app/config/${name}`, data, function(){
-                console.log("Updated app-config:", requestURL, data)
-            });
+            let data = { "window-scale": parseFloat($(this.element).find("input[name='window-scale']").val())||1 };
+            for(let inp of $(this.element).find("input[type='checkbox']")) {
+                data[$(inp).attr("name")] = $(inp).prop("checked");
+            }
+            return resolve(data);
+        }).then((data)=>{
+            return $.post("/app/config/app.json", JSON.stringify(data));
         });
     }
 
     ReloadContent = ()=>{
-        $(this.element).find(".config-item").each(function(){
-            $.get(`/app/config/${$(this).attr("data-name")}`, {}, (data)=>{
-                Object.keys(data).forEach((dataName)=>{
-                    let input = $(this).find(`label[data-name="${dataName}"] input`);
-                    if(input.is(".switch")){
-                        input.prop("checked", data[dataName]);
-                    }else if($(input).is(".checkbox")){
-                        input.prop("checked", data[dataName]);
-                    }else{
-                        input.val(data[dataName]);
-                    }
-                    input.trigger("change", [false,]);
-                })
+        $.get(`/app/config/app.json`, {}, (data)=>{
+            Object.entries(data).forEach(([name, value])=>{
+                let inp = $(this.element).find(`input[name="${name}"]`);
+                if($(inp).is("[type='checkbox']")) {
+                    $(inp).prop("checked", value);
+                }
+                else {
+                    $(inp).val(value);
+                }
             });
         });
     }

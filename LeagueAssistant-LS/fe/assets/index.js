@@ -391,7 +391,7 @@ $(document).ready(function(){
 
     $(".no-transition-load").ready(function(){$(this).removeClass("no-transition-load")});
 
-    $.get("/app/config/options", {}, (data)=>$("#app").attr("theme", data["dark-theme"]?"dark":"light"));
+    $.get("/app/config/app.json", {}, (data)=>$("#app").attr("theme", data["dark-theme"]?"dark":"light"));
 
     // window.showAd();
     window.resizeDisplay();

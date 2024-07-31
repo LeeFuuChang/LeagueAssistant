@@ -68,7 +68,7 @@ class ChampSelect(AbstractPhase):
     def update_AutoPublicity(self, champSelectCID):
         if(self.autoPublicityCompleted or self.autoPublicityThread is not None): return True
         with self.parent.server.test_client() as client:
-            try: appOptions = client.get("/app/config/options").get_json(force=True)
+            try: appOptions = client.get("/app/config/app.json").get_json(force=True)
             except: return False
             if(not appOptions.get("allow-publicity", False)): return True
             self.autoPublicityThread = TaskThread(
