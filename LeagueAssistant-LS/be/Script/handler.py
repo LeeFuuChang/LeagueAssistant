@@ -38,7 +38,7 @@ class PhaseHandler(QObject):
 
 
     def autoRequeue(self, client):
-        try: gameOverallOptions = client.get(f"/config/settings/game/overall/options").get_json(force=True)
+        try: gameOverallOptions = client.get(f"/app/config/settings/game/overall/options.json").get_json(force=True)
         except: gameOverallOptions = {}
         if(not gameOverallOptions or not gameOverallOptions["auto-requeue"]): return
 

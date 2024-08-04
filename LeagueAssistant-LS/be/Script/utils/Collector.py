@@ -64,25 +64,25 @@ class StatsDataCollector:
     def getSendingConfig(currentPhase):
         with current_app.test_client() as client:
             statsOverallOptions = None
-            try: statsOverallOptions = client.get("/config/settings/stats/overall/options").get_json(force=True)
+            try: statsOverallOptions = client.get("/app/config/settings/stats/overall/options.json").get_json(force=True)
             except: statsOverallOptions = None
 
             statsOverallQueues = None
-            try: statsOverallQueues = client.get("/config/settings/stats/overall/queues").get_json(force=True)
+            try: statsOverallQueues = client.get("/app/config/settings/stats/overall/queues.json").get_json(force=True)
             except: statsOverallQueues = None
 
             statsOverallSending = None
-            try: statsOverallSending = client.get("/config/settings/stats/overall/sending").get_json(force=True)
+            try: statsOverallSending = client.get("/app/config/settings/stats/overall/sending.json").get_json(force=True)
             except: statsOverallSending = None
 
             phase = {"ChampSelect":"select", "InProgress":"progress"}[currentPhase]
 
             statsSendOptions = None
-            try: statsSendOptions = client.get(f"/config/settings/stats/{phase}-send/options").get_json(force=True)
+            try: statsSendOptions = client.get(f"/app/config/settings/stats/{phase}-send/options.json").get_json(force=True)
             except: statsSendOptions = None
 
             statsSendNickname = None
-            try: statsSendNickname = client.get(f"/config/settings/stats/{phase}-send/nickname").get_json(force=True)
+            try: statsSendNickname = client.get(f"/app/config/settings/stats/{phase}-send/nickname.json").get_json(force=True)
             except: statsSendNickname = None
         return statsOverallOptions, statsOverallQueues, statsOverallSending, statsSendOptions, statsSendNickname
 

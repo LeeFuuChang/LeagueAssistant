@@ -1,6 +1,6 @@
 # LeagueAssistant
 
-<img src="screenshots/banner.png" /> 
+<img src="screenshots/Banner.jpg" /> 
 
 > 🫰 [提供建議](https://discord.com/channels/1062726976370126968/1064135225787035648)
 > 🚨 [錯誤回報](https://discord.com/channels/1062726976370126968/1064135225787035648)

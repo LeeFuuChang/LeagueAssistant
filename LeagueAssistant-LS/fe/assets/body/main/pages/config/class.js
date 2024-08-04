@@ -58,7 +58,7 @@ class Main_Part_Config_Abstract extends AppBodyMain_Part {
             let itemGroups = $(this.element).find(".config-item .item-options").get();
             return Promise.all(itemGroups.reverse().map((item)=>new Promise((resolve, reject)=>{
                 if($(item).is("[readonly]")) return resolve();
-                $.get(`/config/${GetConfigPath($(item))}`, {}, (data)=>{
+                $.get(`/app/config/${GetConfigPath($(item))}.json`, {}, (data)=>{
                     Promise.all(Object.keys(data).map((dataName)=>new Promise((res, rej)=>{
                         let option = $(item).find(`.option[data-name="${dataName}"]`);
                         let input = option.find("input");
@@ -347,7 +347,7 @@ class Main_Config extends AppBodyMain {
                 )));
             }))).then((pairs)=>resolve([path, Object.fromEntries(pairs.filter((p)=>(p&&p.length===2)))]));
         }).then(([path, data])=>Promise.resolve(
-            $.post(`/config/${path}`, data, ()=>{console.log("Config updated:", path, data)})
+            $.post(`/app/config/${path}.json`, JSON.stringify(data), ()=>{console.log("Config updated:", path, data)})
         )).then(()=>Promise.all(
             Object.values(this.components).map((c)=>Promise.resolve((c.ReloadContent?c.ReloadContent():0)))
         ));

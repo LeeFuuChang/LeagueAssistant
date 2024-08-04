@@ -294,19 +294,19 @@ class SpellHelperPlayer(QWidget):
     def broadcastSpellCooldown(self):
         nowTime = time.time()
         with self._parent.server.test_client() as client:
-            try: spellOverallNickname = client.get("/config/settings/spell/overall/nickname").get_json(force=True)
+            try: spellOverallNickname = client.get("/app/config/settings/spell/overall/nickname.json").get_json(force=True)
             except: spellOverallNickname = {}
             if(not spellOverallNickname): return False
 
-            try: spellSendOptions = client.get("/config/settings/spell/send/options").get_json(force=True)
+            try: spellSendOptions = client.get("/app/config/settings/spell/send/options.json").get_json(force=True)
             except: spellSendOptions = {}
             if(not spellSendOptions): return False
 
-            try: spellSendFormat = client.get("/config/settings/spell/send/format").get_json(force=True)
+            try: spellSendFormat = client.get("/app/config/settings/spell/send/format.json").get_json(force=True)
             except: spellSendFormat = {}
             if(not spellSendFormat): return False
 
-            try: spellSendNickname = client.get("/config/settings/spell/send/nickname").get_json(force=True)
+            try: spellSendNickname = client.get("/app/config/settings/spell/send/nickname.json").get_json(force=True)
             except: spellSendNickname = {}
             if(not spellSendNickname): return False
 
@@ -567,11 +567,11 @@ class SpellHelperUI(QWidget):
 
     def reloadStyle(self):
         with self.server.test_client() as client:
-            try: overallOptions = client.get(f"/config/appearance/spell/overall/options").get_json(force=True)
+            try: overallOptions = client.get(f"/app/config/appearance/spell/overall/options.json").get_json(force=True)
             except: overallOptions = {}
-            try: overallNotify = client.get(f"/config/appearance/spell/overall/notify-color").get_json(force=True)
+            try: overallNotify = client.get(f"/app/config/appearance/spell/overall/notify-color.json").get_json(force=True)
             except: overallNotify = {}
-            try: overallCounter = client.get(f"/config/appearance/spell/overall/counter-color").get_json(force=True)
+            try: overallCounter = client.get(f"/app/config/appearance/spell/overall/counter-color.json").get_json(force=True)
             except: overallCounter = {}
         for helper in self.players.values():
             helper.data["styles"]["notify-color"] = overallNotify

@@ -19,7 +19,7 @@ window.PhaseHandler = (function(){
     this.GetPhaseHandler = ((phase)=>{
         switch(phase){
             case "ChampSelect": return (()=>new Promise((resolve, reject)=>{
-                $.get("/app/config/live-inspect", {}, (data)=>{
+                $.get("/app/config/app.json", {}, (data)=>{
                     if(!data["auto-select-inspect"]) return resolve();
                     resolve(setTimeout(()=>{
                         Promise.all([
@@ -31,7 +31,7 @@ window.PhaseHandler = (function(){
                 });
             }));
             case "InProgress": return (()=>new Promise((resolve, reject)=>{
-                $.get("/app/config/live-inspect", {}, (data)=>{
+                $.get("/app/config/app.json", {}, (data)=>{
                     if(!data["auto-ingame-inspect"]) return resolve();
                     resolve(setTimeout(()=>{
                         Promise.all([
@@ -64,30 +64,17 @@ window.Updater = (function(){
 
         ];
         let sufPromises = [
-            // update footer marquee announcements
-            // (()=>new Promise((resolve, reject)=>{
-            //     $.get("/storage/cloud/FooterMarquee.json", {}, (data)=>{
-            //         if(!Array.isArray(data)) return resolve();
-            //         if(
-            //             Array.isArray(window.Footer.marqueeLines) && 
-            //             window.Footer.marqueeLines.length === data.length &&
-            //             window.Footer.marqueeLines.every((v,i)=>(v===data[i]))
-            //         ) return resolve(console.log("Marquee equal"));
-            //         resolve(window.Footer.updateMarquee(data));
-            //     });
-            // })),
-
             // resize window base on league client
             (()=>new Promise((resolve, reject)=>{
-                $.get("/app/config/window-zoom", {}, (request)=>{
-                    if(request["auto"]){
-                        $.get("/riot/lcu/0/lol-settings/v2/local/video", {}, (request)=>{
-                            let zoom = parseFloat(((request["response"]||{})["data"]||{})["ZoomScale"]);
-                            if(!request["success"] || !zoom || isNaN(zoom)) return resolve();
+                $.get("/app/config/app.json", {}, (data)=>{
+                    if(data["auto-scale"]){
+                        $.get("/riot/lcu/0/lol-settings/v2/local/video", {}, (res)=>{
+                            let zoom = parseFloat(((res["response"]||{})["data"]||{})["ZoomScale"]);
+                            if(!res["success"] || !zoom || isNaN(zoom)) return resolve();
                             return window.resizeDisplay({"zoom":zoom}).then(()=>resolve());
                         });
                     }else{
-                        let zoom = parseFloat(request["zoom"]);
+                        let zoom = parseFloat(data["window-scale"]);
                         if(!zoom || isNaN(zoom)) return resolve();
                         return window.resizeDisplay({"zoom":zoom}).then(()=>resolve());
                     }

@@ -70,7 +70,7 @@ class InProgress(AbstractPhase):
     def update_InGameSpellHelper(self, localTeam, gameStats):
         with self.parent.server.test_client() as client:
             spellOverallOptions = None
-            try: spellOverallOptions = client.get("/config/settings/spell/overall/options").get_json(force=True)
+            try: spellOverallOptions = client.get("/app/config/settings/spell/overall/options.json").get_json(force=True)
             except: spellOverallOptions = None
             if(spellOverallOptions is None): return
             if(not spellOverallOptions["switch"]):
@@ -112,7 +112,7 @@ class InProgress(AbstractPhase):
         enemyOf = {"ORDER":"CHAOS", "CHAOS":"ORDER"}
         with self.parent.server.test_client() as client:
             if(self.isSendingStatsData()): return True
-            try: fastTeamData = client.get(f"/config/settings/stats/progress-send/fast-team").get_json(force=True)
+            try: fastTeamData = client.get(f"/app/config/settings/stats/progress-send/fast-team.json").get_json(force=True)
             except: fastTeamData = {}
             if(fastTeamData and win32api.GetAsyncKeyState(fastTeamData["keybind"])):
                 if(self.isSendingStatsData()): return True
@@ -128,7 +128,7 @@ class InProgress(AbstractPhase):
                 ).start()
                 return True
             if(self.isSendingStatsData()): return True
-            try: fastEnemyData = client.get(f"/config/settings/stats/progress-send/fast-enemy").get_json(force=True)
+            try: fastEnemyData = client.get(f"/app/config/settings/stats/progress-send/fast-enemy.json").get_json(force=True)
             except: fastEnemyData = {}
             if(fastEnemyData and win32api.GetAsyncKeyState(fastEnemyData["keybind"])):
                 if(self.isSendingStatsData()): return True
@@ -152,7 +152,7 @@ class InProgress(AbstractPhase):
         with self.parent.server.test_client() as client:
             for fastType, fastTeam in fastRef.items():
                 if(self.isSendingStatsData()): return True
-                try: fastData = client.get(f"/config/settings/stats/progress-send/{fastType}").get_json(force=True)
+                try: fastData = client.get(f"/app/config/settings/stats/progress-send/{fastType}.json").get_json(force=True)
                 except: fastData = {}
                 if(not fastData): continue
                 if(win32api.GetAsyncKeyState(fastData["keybind"])):

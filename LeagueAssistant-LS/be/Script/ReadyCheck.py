@@ -37,7 +37,7 @@ class ReadyCheck(AbstractPhase):
 
     def update(self):
         with self.parent.server.test_client() as client:
-            try: gameOverallOptions = client.get(f"/config/settings/game/overall/options").get_json(force=True)
+            try: gameOverallOptions = client.get(f"/app/config/settings/game/overall/options.json").get_json(force=True)
             except: gameOverallOptions = {}
             if(gameOverallOptions and gameOverallOptions["auto-accept"] and not self.isAutoAccepting()):
                 self.autoAcceptThread = TaskThread(
