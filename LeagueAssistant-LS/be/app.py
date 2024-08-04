@@ -5,6 +5,7 @@ from PyQt5.QtGui import QIcon
 
 import threading
 import waitress
+import ctypes
 import sys
 import os
 
@@ -129,6 +130,9 @@ class WebRenderer(QWebEngineView):
 def run():
     os.environ["ICON_PATH"] = sys.modules["StorageManager"].LocalStorage.path(os.path.join("fe", "assets", "logo", "filled.png"))
 
+    os.environ["LOL_GAME_PROCESS_NAME"] = "League of Legends.exe"
+    os.environ["LOL_CLIENT_PROCESS_NAME"] = "LeagueClientUx.exe"
+
     server = WebServer()
 
     if("--server" in sys.argv):
@@ -149,7 +153,9 @@ def run():
         }
     ).start()
 
-    qapp = QApplication([*sys.argv, "--ignore-gpu-blacklist"])
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(os.environ["APP_USER_MODEL_ID"])
+
+    qapp = QApplication([*sys.argv, "--ignore-gpu-blocklist"])
 
     browserWindow = WebRenderer()
     browserWindow.connect(server, server.host, server.port)
