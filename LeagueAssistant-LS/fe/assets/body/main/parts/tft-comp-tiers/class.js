@@ -118,10 +118,7 @@ class Main_Part_TftCompTiers extends AppBodyMain_Part {
 
                         ele.attr("data-id", deck["id"])
                         ele.on("click", ()=>{this.data["functions"]["LoadCompBuild"](
-                            window.MakeData({identifier:{
-                                "id":deck["id"], 
-                                "fallback":pageProps["fallback"]
-                            }})
+                            window.MakeData({identifier:{"id":deck["id"]}})
                         )});
     
                         ele.find(".overview-tier").attr("data-tier", deck["opTier"]);
