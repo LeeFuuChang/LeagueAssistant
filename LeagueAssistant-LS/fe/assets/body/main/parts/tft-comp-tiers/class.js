@@ -115,71 +115,71 @@ class Main_Part_TftCompTiers extends AppBodyMain_Part {
                     return new Promise((resolve, reject)=>{
                         let deck = sorted[deckIndex];
                         let ele = this.CreateInnerItem(container).hide(0);
+
+                        ele.attr("data-id", deck["id"])
+                        ele.on("click", ()=>{this.data["functions"]["LoadCompBuild"](
+                            window.MakeData({identifier:{
+                                "id":deck["id"], 
+                                "fallback":pageProps["fallback"]
+                            }})
+                        )});
+    
+                        ele.find(".overview-tier").attr("data-tier", deck["opTier"]);
+
+                        ele.find(".info-basic .basic-name").text(deck["name"]);
                         $.get(`/opgg/tft-api/api/v1/decks/${deck["id"]}`, (compData)=>{
-                            ele.attr("data-id", compData["data"]["id"])
-                            ele.on("click", ()=>{this.data["functions"]["LoadCompBuild"](
-                                window.MakeData({identifier:{
-                                    "id":compData["data"]["id"], 
-                                    "fallback":pageProps["fallback"]
-                                }})
-                            )});
-        
-                            ele.find(".overview-tier").attr("data-tier", deck["opTier"]);
-
                             ele.find(".info-basic .basic-name").text(compData["data"]["name"]["zh_TW"]);
-                            ele.find(".info-basic .basic-cost span").text(compData["data"]["cost"]);
-
-                            ele.find(".info-stats .stats-item[data-name='average-placement'] .stats-detail").html(
-                                `<span>${compData["data"]["stat"]["avgPlacement"].toFixed(2)}</span>%`
-                            );
-                            ele.find(".info-stats .stats-item[data-name='first-rate'] .stats-detail").html(
-                                `<span>${(compData["data"]["stat"]["winRate"]*100).toFixed(2)}</span>%`
-                            );
-                            ele.find(".info-stats .stats-item[data-name='top4-rate'] .stats-detail").html(
-                                `<span>${(compData["data"]["stat"]["top4Rate"]*100).toFixed(2)}</span>%`
-                            );
-                            ele.find(".info-stats .stats-item[data-name='pick-rate'] .stats-detail").html(
-                                `<span>${((compData["data"]["stat"]["compsCount"]/compData["data"]["stat"]["totalCount"])*100).toFixed(2)}</span>%`
-                            );
-    
-                            let statIdx = 0;
-                            compData["data"]["traits"].forEach((trait)=>{
-                                if(!trait["style"] || statIdx >= 9) return;
-                                let statElement = ele.find(".comp-stats .stats-item").eq(statIdx);
-                                statElement.show(0);
-                                statElement.attr("data-level", trait["style"]);
-                                try{statElement.find(".mask").css("--mask-image", `url(${
-                                    window.ToCDragonPath(tftTraits[trait["key"]]["icon_path"])
-                                })`)}catch(e){console.log(e)}
-                                statElement.find("span").text(trait["numUnits"]);
-                                statIdx++;
-                            });
-    
-                            let unitIdx = 0;
-                            compData["data"]["units"].forEach((unit)=>{
-                                if(!pageProps["fallback"]["CHAMPIONS"][unit["key"]]["cost"] || unitIdx >= 9) return;
-                                let unitElement = ele.find(".comp-units .unit-item").eq(unitIdx);
-                                unitElement.show(0);
-                                unitElement.attr("data-cost", pageProps["fallback"]["CHAMPIONS"][unit["key"]]["cost"]);
-                                try{unitElement.find(".unit-icon img").attr("src", 
-                                    window.ToCDragonPath(tftChampions[unit["key"]]["squareIconPath"])
-                                )}catch(e){console.log(e)}
-                                if(unit["isThreeStar"]) unitElement.find(".unit-stars").show(0);
-                                unitElement.find(".unit-build img").each(function(i){
-                                    if(i >= unit["items"].length) return;
-                                    try{$(this).attr("src", window.ToCDragonPath(
-                                        tftItems[unit["items"][i]]["loadoutsIcon"]
-                                    ))}catch(e){console.log(e)}
-                                    $(this).show(0);
-                                });
-                                try{unitElement.find(".unit-name").text(
-                                    tftChampions[unit["key"]]["display_name"]
-                                )}catch(e){console.log(e)}
-                                unitIdx++;
-                            });
-
-                            resolve(ele.show(0));
                         });
+                        ele.find(".info-basic .basic-cost span").text(deck["cost"]);
+
+                        ele.find(".info-stats .stats-item[data-name='average-placement'] .stats-detail").html(
+                            `<span>${deck["stat"]["avgPlacement"].toFixed(2)}</span>%`
+                        );
+                        ele.find(".info-stats .stats-item[data-name='first-rate'] .stats-detail").html(
+                            `<span>${(deck["stat"]["winRate"]*100).toFixed(2)}</span>%`
+                        );
+                        ele.find(".info-stats .stats-item[data-name='top4-rate'] .stats-detail").html(
+                            `<span>${(deck["stat"]["top4Rate"]*100).toFixed(2)}</span>%`
+                        );
+                        ele.find(".info-stats .stats-item[data-name='pick-rate'] .stats-detail").html(
+                            `<span>${((deck["stat"]["compsCount"]/deck["stat"]["totalCount"])*100).toFixed(2)}</span>%`
+                        );
+
+                        let statIdx = 0;
+                        deck["traits"].forEach((trait)=>{
+                            if(!trait["style"] || statIdx >= 9) return;
+                            let statElement = ele.find(".comp-stats .stats-item").eq(statIdx);
+                            statElement.show(0);
+                            statElement.attr("data-level", trait["style"]);
+                            try{statElement.find(".mask").css("--mask-image", `url(${
+                                window.ToCDragonPath(tftTraits[trait["key"]]["icon_path"])
+                            })`)}catch(e){console.log(e)}
+                            statElement.find("span").text(trait["numUnits"]);
+                            statIdx++;
+                        });
+
+                        deck["units"].forEach((unit, unitIdx)=>{
+                            if(!unit["champion"]["cost"] || unitIdx >= 9) return;
+                            let unitElement = ele.find(".comp-units .unit-item").eq(unitIdx);
+                            unitElement.show(0);
+                            unitElement.attr("data-cost", unit["champion"]["cost"]);
+                            try{unitElement.find(".unit-icon img").attr("src", 
+                                window.ToCDragonPath(tftChampions[unit["key"]]["squareIconPath"])
+                            )}catch(e){console.log(e)}
+                            if(unit["isThreeStar"]) unitElement.find(".unit-stars").show(0);
+                            unitElement.find(".unit-build img").each(function(i){
+                                if(i >= unit["items"].length) return;
+                                try{$(this).attr("src", window.ToCDragonPath(
+                                    tftItems[unit["items"][i]]["loadoutsIcon"]
+                                ))}catch(e){console.log(e)}
+                                $(this).show(0);
+                            });
+                            try{unitElement.find(".unit-name").text(
+                                tftChampions[unit["key"]]["display_name"]
+                            )}catch(e){console.log(e)}
+                        });
+
+                        resolve(ele.show(0));
                     }).then(()=>(deckIndex+1<sorted.length)?displayDeck(deckIndex+1):Promise.resolve());
                 };
                 displayDeck(0);
