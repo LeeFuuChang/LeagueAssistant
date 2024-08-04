@@ -354,9 +354,9 @@ window.switchTheme = (theme)=>{
 
 window.LoadHomePage = (()=>Promise.all([
     window.LoadClasses("assets/body/side/pages/summoner/classes.json"),
-    window.LoadClasses("assets/body/main/pages/summoner-season-overview/classes.json"),
+    window.LoadClasses("assets/body/main/pages/lol-match-history/classes.json"),
 ]).then(()=>SummonerIdentifier.CurrentSummoner().then((identifier)=>{
-    window.LoadPage(Side_Summoner, Main_SummonerSeasonOverview, window.MakeData({summoner:identifier}));
+    window.LoadPage(Side_Summoner, Main_LolMatchHistory, window.MakeData({summoner:identifier}));
 })));
 
 
