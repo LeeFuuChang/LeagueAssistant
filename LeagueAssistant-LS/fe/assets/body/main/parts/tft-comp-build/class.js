@@ -85,7 +85,7 @@ class Main_Part_TftCompBuild extends AppBodyMain_Part {
                     )}catch(e){console.log(e)}
                     if(unit["isThreeStar"]) unitElement.find(".unit-stars").show(0);
                     unitElement.find(".unit-build img").each(function(i){
-                        if(i >= unit["items"].length) return;
+                        if(!unit["items"][i]) return;
                         try{$(this).attr("src", window.ToCDragonPath(
                             tftItems[unit["items"][i]]["squareIconPath"]
                         ))}catch(e){console.log(e)}
@@ -97,7 +97,6 @@ class Main_Part_TftCompBuild extends AppBodyMain_Part {
                 });
 
                 let setupCompBoard = (data, ele)=>{
-                    console.log(data)
                     data["traits"].forEach((trait, traitIdx)=>{
                         if(!trait["style"] || traitIdx >= 9) return;
                         let statElement = ele.find(".comp-stats .stats-item").eq(traitIdx);
@@ -117,20 +116,25 @@ class Main_Part_TftCompBuild extends AppBodyMain_Part {
                             )?"active":""}>${s["min_units"]}</span>`).join(" > ")
                         );
                     });
+
+                    let champCosts = Object.fromEntries(
+                        pageProps["deck"]["units"]
+                            .map(c=>[c["key"], c["champion"]["cost"]])
+                    );
         
                     ele.find(".comp-board .unit-icon img").hide(0);
                     data["units"].forEach((unit, unitIdx)=>{
-                        if(!unit["champion"]["cost"] || unitIdx >= 9) return;
+                        if(!champCosts[unit["key"]] || unitIdx >= 9) return;
                         let boardElement = ele.find(".comp-board");
                         let boardRowElement = boardElement.find(".comp-board-row").eq(4-unit["cell"]["y"]);
                         let unitElement = boardRowElement.find(".unit-item").eq(unit["cell"]["x"]-1);
-                        unitElement.attr("data-cost", unit["champion"]["cost"]);
+                        unitElement.attr("data-cost", champCosts[unit["key"]]);
                         try{unitElement.find(".unit-icon img").attr("src", 
                             window.ToCDragonPath(tftChampions[unit["key"]]["squareIconPath"])
                         ).show(0)}catch(e){console.log(e)}
                         if(unit["isThreeStar"]) unitElement.find(".unit-stars").show(0);
                         unitElement.find(".unit-build img").each(function(i){
-                            if(i >= unit["items"].length) return;
+                            if(!unit["items"][i]) return;
                             try{$(this).attr("src", window.ToCDragonPath(
                                 tftItems[unit["items"][i]]["squareIconPath"]
                             ))}catch(e){console.log(e)}
