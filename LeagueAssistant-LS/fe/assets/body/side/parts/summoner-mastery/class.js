@@ -23,7 +23,7 @@ class Side_Part_SummonerMastery extends AppBodySide_Part {
             let container = $(this.element).find(".mastery-inner").empty();
             if(this.data["summoner"]["invalid"]) return resolve();
             let summoner = this.data["summoner"];
-            let requestURL = `/riot/lcu/0/lol-collections/v1/inventories/${summoner["summonerId"]}/champion-mastery`;
+            let requestURL = `/riot/lcu/0/lol-champion-mastery/v1/${summoner["puuid"]}/champion-mastery`;
             $.get(requestURL, {}, (data)=>{
                 if(!data["success"]) return resolve();
                 let masteries = data["response"].filter((c)=>(c["championLevel"] >= 5)).sort(pageData.value).slice(0, 5);
@@ -33,7 +33,7 @@ class Side_Part_SummonerMastery extends AppBodySide_Part {
                         <img src="https://cdn.communitydragon.org/latest/champion/${m["championId"]}/square" alt="">
                     </div>
                     <div class="mastery-champion-detail hover-detail-top">
-                        <img src="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-shared-components/global/default/mastery-${m["championLevel"]}.png" alt="">
+                        <img src="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-shared-components/global/default/mastery-${Math.min(Math.max(1, m["championLevel"]), 10)}.png" alt="">
                         <span class="mastery-champion-points">${m["championPoints"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                     </div>
                 </div>`).join("");

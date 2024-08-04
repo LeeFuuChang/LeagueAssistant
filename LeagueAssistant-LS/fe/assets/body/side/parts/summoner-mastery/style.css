@@ -42,8 +42,8 @@
     border-radius: 10% / 50%;
 }
 .body-side-block.summoner-mastery .mastery-champion-detail img {
-    width: auto;
-    flex: 1;
+    margin: calc(var(--S)* 0.01) 0;
+    height: calc(var(--S)* 0.08);
 }
 .body-side-block.summoner-mastery .mastery-champion-detail span {
     display: flex;
