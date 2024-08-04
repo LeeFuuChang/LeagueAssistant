@@ -3,7 +3,6 @@ class Main_LolTrend extends AppBodyMain {
 
     constructor(container, data){
         super(container, data);
-        console.log(data);
         this.AddComponent(
             "lol-champion-list", 
             Main_Part_LolChampionList, 
