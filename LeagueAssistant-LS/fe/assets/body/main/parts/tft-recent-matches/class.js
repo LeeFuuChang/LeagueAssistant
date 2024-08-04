@@ -110,7 +110,7 @@ class Main_Part_TftRecentMatches extends AppBodyMain_Part {
                 if(!tftPlannerRequest["success"]) return;
                 let latestSetTag = tftPlannerRequest["response"]["setName"];
                 let requestURL = `/riot/lcu/0/lol-match-history/v1/products/tft/${puuid}/matches`;
-                $.get(requestURL, {"begin":0, "count":25, "tag":latestSetTag}, (data)=>{
+                $.get(requestURL, {"begin":0, "count":25, "tags":JSON.stringify([latestSetTag, ])}, (data)=>{
                     if(data["success"]){
                         container.empty();
                         let games = data["response"]["games"];
