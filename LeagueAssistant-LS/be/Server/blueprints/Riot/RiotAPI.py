@@ -1,9 +1,11 @@
 import requests as rq
-import json as JSON
 import logging
 import socket
 import psutil
+import json
+import sys
 import os
+
 
 os.environ["RIOT_AUTH_PORT_0"] = ""
 os.environ["RIOT_AUTH_PORT_1"] = ""
@@ -74,7 +76,7 @@ class LeagueClientAPI:
         return True
 
     @classmethod
-    def send(cls, method, authId, route, params=None, data=None, json=None):
+    def send(cls, method, authId, route, params=None, data=None):
         if(not cls.isRiotAuthValid(authId, 0, 3)): return {
             "success": False, 
             "reason": f"RIOT_AUTH_{authId}_INVALID",
@@ -88,7 +90,6 @@ class LeagueClientAPI:
                 f"https://127.0.0.1:{AuthPort}/{route}", 
                 params=params, 
                 data=data,
-                json=json,
                 auth=("riot", AuthToken), 
                 verify=False,
             )
@@ -117,18 +118,51 @@ class LeagueClientAPI:
 
     @classmethod
     def post(cls, authId, route, payload={}):
-        response = cls.send(rq.post, authId, route, data=JSON.dumps(payload))
+        response = cls.send(rq.post, authId, route, data=json.dumps(payload))
         if(response["success"]): return response
         return cls.send(rq.post, authId, route, data=payload)
 
     @classmethod
     def delete(cls, authId, route, payload={}):
-        response = cls.send(rq.delete, authId, route, data=JSON.dumps(payload))
+        response = cls.send(rq.delete, authId, route, data=json.dumps(payload))
         if(response["success"]): return response
         return cls.send(rq.delete, authId, route, data=payload)
 
     @classmethod
     def patch(cls, authId, route, payload={}):
-        response = cls.send(rq.patch, authId, route, data=JSON.dumps(payload))
+        response = cls.send(rq.patch, authId, route, data=json.dumps(payload))
         if(response["success"]): return response
         return cls.send(rq.patch, authId, route, data=payload)
+
+
+class LiveClientAPI:
+    @staticmethod
+    def get(endpoint, payload={}):
+        LocalStorage = getattr(sys.modules["StorageManager"], "LocalStorage")
+        data = {"success": False}
+        response = ""
+        try:
+            response = rq.get(
+                f"https://127.0.0.1:2999/liveclientdata/{endpoint}",
+                params=payload,
+                verify=LocalStorage.path("auth", "riot.pem")
+            ).json()
+            if("errorCode" in response): 
+                data = {
+                    "success": False, 
+                    "reason": "ERROR_CODE_IN_RESPONSE", 
+                    "response": response
+                }
+            else: 
+                data = {
+                    "success":True, 
+                    "reason": "SUCCESS", 
+                    "response": response
+                }
+        except Exception as e:
+            data = {
+                "success": False, 
+                "reason": f"EXCEPTION:{str(e)}", 
+                "response": response
+            }
+        finally: return data

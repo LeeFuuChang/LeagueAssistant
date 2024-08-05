@@ -5,8 +5,7 @@ import bs4
 import re
 import os
 
-from .LeagueClientAPI import LeagueClientAPI
-from .LiveClientAPI import LiveClientAPI
+from .RiotAPI import LeagueClientAPI, LiveClientAPI
 
 
 Riot = Blueprint("Riot", __name__)
