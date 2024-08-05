@@ -313,10 +313,10 @@ class Main_Part_LiveGamePlayerList extends AppBodyMain_Part {
         };
         let collect__InProgress = ()=>{
             return new Promise((resolve, reject)=>{
-                $.get("/storage/riot/Logs/GameLogs", {}, (logDates)=>{
+                $.get("/riot/local/Logs/GameLogs", {}, (logDates)=>{
                     let latest = logDates.sort((a, b)=>b.localeCompare(a))[0];
                     if(!latest) return resolve();
-                    $.get(`/storage/riot/Logs/GameLogs/${latest}/${latest}_r3dlog.txt`, {}, (log)=>{
+                    $.get(`/riot/local/Logs/GameLogs/${latest}/${latest}_r3dlog.txt`, {}, (log)=>{
                         let teams = [
                             "TeamChaos", 
                             "TeamOrder",

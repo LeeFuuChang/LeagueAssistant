@@ -5,14 +5,13 @@ import socket
 
 from .blueprints.Ui import Ui
 from .blueprints.App import App
-from .blueprints.Storage import Storage
 
 from .blueprints.Riot import Riot
 
 from .blueprints.Opgg import Opgg
 from .blueprints.Qq import Qq
 
-BLUEPRINTS = [Ui, App, Storage, Riot, Opgg, Qq]
+BLUEPRINTS = [Ui, App, Riot, Opgg, Qq]
 
 
 def getRandomPort():

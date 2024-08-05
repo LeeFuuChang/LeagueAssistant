@@ -1,4 +1,4 @@
-from flask import Blueprint, Response, send_from_directory, request
+from flask import Blueprint, Response, send_file, request
 import requests as rq
 import webbrowser
 import random
@@ -46,23 +46,25 @@ def App_Config(**kwargs):
 
     configPath = sys.modules["StorageManager"].LocalStorage.path(os.path.join("cfg", kwargs["filepath"]))
 
-    if(not configPath): return Response(status=404)
-
-    if(os.path.isdir(configPath)): return os.listdir(configPath)
+    if(not (configPath and os.path.exists(configPath))): return Response(status=404)
 
     if(request.method == "GET"):
-        return send_from_directory(*os.path.split(configPath))
+        if(os.path.isdir(configPath)): return os.listdir(configPath)
+        return send_file(configPath)
 
     if(request.method == "POST"):
         with open(configPath, "a+") as f:
             f.seek(0)
-            config = json.load(f)
+            try: config = json.load(f)
+            except: config = {}
             try:
                 data = request.get_json(force=True)
                 config.update(data)
                 f.truncate(0)
                 json.dump(config, f, indent=4, ensure_ascii=False)
             except:
+                f.truncate(0)
+                json.dump(config, f, indent=4, ensure_ascii=False)
                 return Response(status=422)
         return Response(status=202)
 

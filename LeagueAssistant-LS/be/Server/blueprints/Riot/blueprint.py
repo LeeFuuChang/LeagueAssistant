@@ -1,14 +1,23 @@
-from flask import Blueprint, request
+from flask import Blueprint, Response, send_file, request
 import requests as rq
 import json
 import bs4
 import re
+import os
 
 from .LeagueClientAPI import LeagueClientAPI
 from .LiveClientAPI import LiveClientAPI
 
 
 Riot = Blueprint("Riot", __name__)
+
+
+@Riot.route("/local/<path:filepath>", methods=["GET"])
+def Riot_Local(**kwargs):
+    fullpath = os.path.join(os.environ["LOL_INSTALL_DIRECTORY"], kwargs["filepath"])
+    if(not os.path.exists(fullpath)): return Response(status=404)
+    if(os.path.isdir(fullpath)): return os.listdir(fullpath)
+    return send_file(fullpath)
 
 
 @Riot.route("/mmr/<string:summonerId>", methods=["GET"])
