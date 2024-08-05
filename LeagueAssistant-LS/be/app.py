@@ -130,7 +130,7 @@ class WebRenderer(QWebEngineView):
 
 
 def run():
-    os.environ["ICON_PATH"] = sys.modules["StorageManager"].LocalStorage.path(os.path.join("fe", "assets", "logo", "filled.png"))
+    os.environ["ICON_PATH"] = sys.modules["StorageManager"].LocalStorage.path("fe", "assets", "logo", "filled.png")
 
     os.environ["LOL_GAME_PROCESS_NAME"] = "League of Legends.exe"
     os.environ["LOL_CLIENT_PROCESS_NAME"] = "LeagueClientUx.exe"

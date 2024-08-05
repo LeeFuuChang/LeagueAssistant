@@ -30,14 +30,14 @@ class LocalStorage:
         return ensureInstance
 
     @singletonmethod
-    def join(cls, *paths):
+    def join(cls, *paths:str) -> str:
         return re.sub(r"[\\\/]", os.sep, os.path.normpath(os.path.join(*paths)))
 
     @singletonmethod
-    def path(cls, path:str) -> str:
-        filepath = cls.join(cls.directory, path)
+    def path(cls, *paths:str) -> str:
+        filepath = cls.join(cls.directory, *paths)
         if(not os.path.exists(filepath)):
-            _path, _file = os.path.split(path)
+            _path, _file = os.path.split(filepath)
             _name, _type = os.path.splitext(_file)
             cls.updateFile(_path=_path,
                            _name=_name,
@@ -45,7 +45,7 @@ class LocalStorage:
         return (filepath if(os.path.exists(filepath))else "")
 
     @singletonmethod
-    def updateFile(cls, _path, _name, _type):
+    def updateFile(cls, _path:str, _name:str, _type:str) -> None:
         relpath = cls.join(_path, f"{_name}.{_type}")
         fulpath = cls.join(cls.directory, relpath)
         urlpath = "/".join([cls.remoteURL, relpath.replace("\\", "/")])
@@ -62,7 +62,7 @@ class LocalStorage:
             if(os.path.exists(fulpath)): os.remove(fulpath)
 
     @singletonmethod
-    def walkUpdate(cls, root, node, dirpath, *, progressCallback=lambda text="",progress=0:0):
+    def walkUpdate(cls, root:ET.Element, node:ET.Element, dirpath:str, *, progressCallback=lambda text="",progress=0:0) -> str:
         if("--debug" in sys.argv): return node.attrib["name"]
 
         cls.walkCount += 1
@@ -113,7 +113,7 @@ class LocalStorage:
         return node.attrib["name"]
 
     @classmethod
-    def setup(cls, remoteURL, executableLOC, *, progressCallback=lambda text="",progress=0:0):
+    def setup(cls, remoteURL:str, executableLOC:str, *, progressCallback=lambda text="",progress=0:0) -> str:
         structure = ET.fromstring(rq.get("/".join([remoteURL, "struct.xml"]), verify=False).text)
 
         cls.directory = cls.join(executableLOC, structure.attrib["name"])

@@ -11,7 +11,7 @@ from .blueprints.Riot import Riot
 from .blueprints.Opgg import Opgg
 from .blueprints.Qq import Qq
 
-BLUEPRINTS = [Ui, App, Riot, Opgg, Qq]
+BLUEPRINTS = [Ui, App, Riot, Opgg, Qq, ]
 
 
 def getRandomPort():
