@@ -3,7 +3,6 @@ import requests as rq
 import logging
 import shutil
 import sys
-import re
 import os
 
 class LocalStorage:
@@ -29,9 +28,9 @@ class LocalStorage:
             )
         return ensureInstance
 
-    @singletonmethod
-    def join(cls, *paths:str) -> str:
-        return re.sub(r"[\\\/]", os.sep, os.path.normpath(os.path.join(*paths)))
+    @staticmethod
+    def join(*paths:str) -> str:
+        return os.path.normpath(os.path.join(*paths)).replace("\/", os.sep).replace("\\", os.sep)
 
     @singletonmethod
     def path(cls, *paths:str) -> str:
@@ -116,6 +115,15 @@ class LocalStorage:
     def setup(cls, remoteURL:str, executableLOC:str, *, progressCallback=lambda text="",progress=0:0) -> str:
         structure = ET.fromstring(rq.get("/".join([remoteURL, "struct.xml"]), verify=False).text)
 
+        try:
+            if(os.path.exists(cls.join(executableLOC, structure.attrib["name"]))):
+                shutil.rmtree(cls.join(executableLOC, "locales"), ignore_errors=True)
+                os.rename(cls.join(executableLOC, structure.attrib["name"]), cls.join(executableLOC, "locales"))
+        except:
+            shutil.rmtree(cls.join(executableLOC, structure.attrib["name"]), ignore_errors=True)
+        finally:
+            structure.attrib["name"] = "locales"
+
         cls.directory = cls.join(executableLOC, structure.attrib["name"])
         cls.remoteURL = remoteURL
         cls.structure = structure
@@ -134,7 +142,7 @@ class LocalStorage:
         cls.walkTotal = len(cls.structure.findall(".//file")) + len(cls.structure.findall(".//folder")) + 1
         cls.walkUpdate(cls.structure, cls.structure, executableLOC, progressCallback=progressCallback)
 
-        with open(versionFile, "w") as f: f.write(hex(cls.latest)[2:])
+        with open(versionFile, "w") as f: f.write(hex(cls.latest)[2:].upper())
 
         if(cls.latest > cls.version): logging.info(f"[{cls.__name__}] Updated: {cls.version} -> {cls.latest}")
 

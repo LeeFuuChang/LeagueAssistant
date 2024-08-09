@@ -25,7 +25,7 @@ class WebRenderer(QWebEngineView):
     showSignal = pyqtSignal()
 
     dragging = False
-    draggableTop = 0.08
+    draggableTop = 0.05
     mouseLastPosition = None
 
     def __init__(self, *args, **kwargs):
