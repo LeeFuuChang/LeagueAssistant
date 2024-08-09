@@ -145,7 +145,7 @@ class LiveClientAPI:
             response = rq.get(
                 f"https://127.0.0.1:2999/liveclientdata/{endpoint}",
                 params=payload,
-                verify=LocalStorage.path("auth", "riot.pem")
+                verify=LocalStorage.path("static", "riot.pem")
             ).json()
             if("errorCode" in response): 
                 data = {
