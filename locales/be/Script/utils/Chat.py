@@ -62,7 +62,7 @@ def sendPublicity(cid):
 def sendInProgress(messages):
     messages = filter(lambda m:m, messages)
     if not messages: return True
-    gameProcesses = getProcessesByNames([os.environ["LOL_GAME_PROCESS_NAME"],])
+    gameProcesses = getProcessesByNames(["League of Legends.exe",])
     hwnds = [h for proc in gameProcesses for h in getHwndByProcess(proc)]
     if(not hwnds): return logging.error("can't fint LoL game window, cancel sendInProgress")
     win32gui.SetWindowPos(hwnds[0], win32con.HWND_TOPMOST, 0,0,0,0, win32con.SWP_NOMOVE | win32con.SWP_NOSIZE)

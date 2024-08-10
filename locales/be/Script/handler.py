@@ -4,18 +4,13 @@ from .ReadyCheck import ReadyCheck
 from .ChampSelect import ChampSelect
 from .InProgress import InProgress
 
-from PyQt5.QtCore import QObject, pyqtSignal
-import win32process
-import threading
-import win32gui
+from PyQt5.QtCore import QObject, QTimer, pyqtSignal
 import logging
-import psutil
 import time
-import os
 
 
 class PhaseHandler(QObject):
-    thread: threading.Thread = None
+    timer: QTimer = None
 
     updateSignal = pyqtSignal()
 
@@ -79,6 +74,7 @@ class PhaseHandler(QObject):
 
     def update(self):
         with self.server.test_client() as client:
+            if(not client.get("/riot/lcu").get_json(force=True)): return
             phase = None
             try: phaseRequest = client.get("/riot/lcu/0/lol-gameflow/v1/gameflow-phase").get_json(force=True)
             except: phaseRequest = {"success": False}
@@ -94,19 +90,7 @@ class PhaseHandler(QObject):
 
 
     def run(self):
-        if(self.thread is not None): return
-        def loop(self):
-            while not time.sleep(1): 
-                try:
-                    focus = win32gui.GetForegroundWindow()
-                    focusPID = win32process.GetWindowThreadProcessId(focus)[1]
-                    focusProc = psutil.Process(focusPID)
-                    focusName = focusProc.name().strip().lower()
-                    if(focusName in {
-                        os.environ["LOL_GAME_PROCESS_NAME"],
-                        os.environ["LOL_CLIENT_PROCESS_NAME"],
-                    } or focusPID == os.getpid()): self.updateSignal.emit()
-                except:
-                    pass
-        self.thread = threading.Thread(target=loop, args=(self, ), daemon=True)
-        self.thread.start()
+        if(self.timer is not None): return
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.updateSignal)
+        self.timer.start(1000)

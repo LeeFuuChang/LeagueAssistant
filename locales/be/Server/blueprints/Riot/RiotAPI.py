@@ -32,7 +32,7 @@ class LeagueClientAPI:
         try:
             for proc in psutil.process_iter():
                 try:
-                    if(proc.name().strip() != os.environ["LOL_CLIENT_PROCESS_NAME"]): continue
+                    if(proc.name().strip() != "LeagueClientUx.exe"): continue
                 except: continue
                 for segment in proc.cmdline():
                     if "--app-port" in segment:
