@@ -47,12 +47,3 @@
 <img src="screenshots/11.png" />  
 <img src="screenshots/12.png" />  
 <img src="screenshots/13.png" />  
-
-## Star History
-<a href="https://star-history.com/#LeeFuuChang/LeagueAssistant&Date">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=LeeFuuChang/LeagueAssistant&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=LeeFuuChang/LeagueAssistant&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=LeeFuuChang/LeagueAssistant&type=Date" />
-  </picture>
-</a>
