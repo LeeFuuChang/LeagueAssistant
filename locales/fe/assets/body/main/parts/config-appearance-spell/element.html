@@ -1,40 +1,40 @@
-<section class="body-part-container body-part-size-2" data-id="" data-type="appearance" data-name="spell" style="display:none">
+<section class="body-part-container body-part-size-2" data-id="" style="display:none">
     <link rel="stylesheet" href="assets/body/main/parts/config-appearance-spell/style.css">
     <div class="app-body-block body-main-block config-appearance-spell">
         <div class="block-title horizontal-stretched-border">
             <h1 class="block-title-text">技能助手</h1>
         </div>
         <ul class="block-inner config-inner y-scrollable">
-            <li class="body-sub-block config-group" data-name="overall">
+            <li class="body-sub-block config-group">
                 <div class="block-title horizontal-stretched-border">
                     <h2 class="block-title-text">助手外觀設定</h2>
                 </div>
-                <div class="block-inner group-inner overall-inner">
-                    <div class="config-item" data-name="options">
+                <div class="block-inner group-inner">
+                    <div class="config-item">
                         <h3 class="item-name">版面配置</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="format-u">
-                                    <input tabindex="-1" class="checkbox" type="radio" name="ui-format">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="ui-format" path="appearance/spell/overall/options.json" key="format-u">
                                     <h4 class="text">橫向+技能靠上</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="format-d">
-                                    <input tabindex="-1" class="checkbox" type="radio" name="ui-format">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="ui-format" path="appearance/spell/overall/options.json" key="format-d">
                                     <h4 class="text">橫向+技能靠下</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="format-l">
-                                    <input tabindex="-1" class="checkbox" type="radio" name="ui-format" checked>
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="ui-format" path="appearance/spell/overall/options.json" key="format-l" checked>
                                     <h4 class="text">直向+技能靠左</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="format-r">
-                                    <input tabindex="-1" class="checkbox" type="radio" name="ui-format">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox" type="radio" name="ui-format" path="appearance/spell/overall/options.json" key="format-r">
                                     <h4 class="text">直向+技能靠右</h4>
                                 </label>
                             </form>
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="size" style="width:100%">
+                                <label class="option hover-pointer" style="width:100%">
                                     <h4 class="text">縮放</h4>
-                                    <input tabindex="-1" class="slider" min="5" max="20" value="10" type="range">
+                                    <input tabindex="-1" class="slider" min="5" max="20" value="10" type="range" path="appearance/spell/overall/options.json" key="size">
                                 </label>
                             </form>
                         </div>
@@ -69,17 +69,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="config-item" data-name="notify-color">
+                    <div class="config-item">
                         <h3 class="item-name">冷卻提示顏色</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="c" style="width:40%">
+                                <label class="option hover-pointer" style="width:40%">
                                     <h4 class="text">底色</h4>
-                                    <input tabindex="-1" class="color-picker"  value="#000000" type="color">
+                                    <input tabindex="-1" class="color-picker" value="#000000" type="color" path="appearance/spell/overall/notify-color.json" key="c">
                                 </label>
-                                <label class="option hover-pointer" data-name="a" style="width:60%">
+                                <label class="option hover-pointer" style="width:60%">
                                     <h4 class="text">透明度</h4>
-                                    <input tabindex="-1" class="slider" min="5" max="10" value="5" type="range">
+                                    <input tabindex="-1" class="slider" min="5" max="10" value="5" type="range" path="appearance/spell/overall/notify-color.json" key="a">
                                 </label>
                             </form>
                         </div>
@@ -97,17 +97,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="config-item" data-name="counter-color">
+                    <div class="config-item">
                         <h3 class="item-name">冷卻倒數顏色</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="c" style="width:40%">
+                                <label class="option hover-pointer" style="width:40%">
                                     <h4 class="text">底色</h4>
-                                    <input tabindex="-1" class="color-picker" value="#FFFFFF" type="color">
+                                    <input tabindex="-1" class="color-picker" value="#FFFFFF" type="color" path="appearance/spell/overall/counter-color.json" key="c">
                                 </label>
-                                <label class="option hover-pointer" data-name="a" style="width:60%">
+                                <label class="option hover-pointer" style="width:60%">
                                     <h4 class="text">透明度</h4>
-                                    <input tabindex="-1" class="slider" min="5" max="10" value="10" type="range">
+                                    <input tabindex="-1" class="slider" min="5" max="10" value="10" type="range" path="appearance/spell/overall/counter-color.json" key="a">
                                 </label>
                             </form>
                         </div>
@@ -131,7 +131,7 @@
                 <div class="block-title horizontal-stretched-border">
                     <h2 class="block-title-text">助手外觀預覽</h2>
                 </div>
-                <div class="block-inner group-inner overall-inner">
+                <div class="block-inner group-inner">
                     <div class="preview-item" data-name="spell-single" data-type="format-l">
                         <div class="item" data-position="top">
                             <div class="spells">

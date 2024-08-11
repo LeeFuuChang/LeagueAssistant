@@ -21,7 +21,7 @@ class Main_Part_SummonerSpellList extends AppBodyMain_Part {
     }
 
     ReloadContent = ()=>{
-        new Promise((resolve, reject)=>{
+        return new Promise((resolve, reject)=>{
             let summonerSpellsRequestURL = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/zh_tw/v1/summoner-spells.json";
             $.get(summonerSpellsRequestURL, {}, (data)=>resolve(data.filter((s)=>(s["gameModes"].includes("CLASSIC")))));
         }).then((summonerSpells)=>{

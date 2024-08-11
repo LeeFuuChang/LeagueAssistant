@@ -11,17 +11,16 @@ class AppOverlay_AboutInfo extends AppOverlay {
         $(this.element).find(".container .content").each(function(){
             $(this).toggle($(this).attr("data-name") === active);
         });
-        $.get("/app/version", {})
-            .then((data)=>{
-                $(this.element)
-                    .find(".content[data-name='version'] .group[data-name='current'] p")
-                    .text(data["current-version"] || "0");
-                $(this.element)
-                    .find(".content[data-name='version'] .group[data-name='latest'] p")
-                    .text(data["latest-version"] || "0");
-                $(this.element)
-                    .find(".content[data-name='version'] .group[data-name='update'] p")
-                    .text(data["release-date"] || "0000-00-00");
-            });
+        return $.get("/app/version", {}).then((data)=>{
+            $(this.element)
+                .find(".content[data-name='version'] .group[data-name='current'] p")
+                .text(data["current-version"] || "0");
+            $(this.element)
+                .find(".content[data-name='version'] .group[data-name='latest'] p")
+                .text(data["latest-version"] || "0");
+            $(this.element)
+                .find(".content[data-name='version'] .group[data-name='update'] p")
+                .text(data["release-date"] || "0000-00-00");
+        });
     }
 }

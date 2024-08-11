@@ -241,7 +241,7 @@ class StatsDataCollector:
         else: sorting = sorting[0].split("-")[0]
         gameCount = int(statsOverallOptions["games"])
         queueIds = {queueIdReference[qid] for qid, v in statsOverallQueues.items() if v}
-        ignoreEarly = statsOverallSending["match-ignore-early"]
+        ignoreEarly = statsOverallSending["ignore-early"]
 
         collectedData = [cls.collectSendingStatsData(name, gameCount, queueIds, ignoreEarly) for name in names]
         if(None in collectedData): return None

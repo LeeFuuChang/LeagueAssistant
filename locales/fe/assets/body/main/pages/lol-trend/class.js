@@ -12,7 +12,7 @@ class Main_LolTrend extends AppBodyMain {
             }), 
             0
         ).then(()=>{
-            if(!this.data["identifier"]["lower-alias"]){
+            if(!this.data["identifier"]["lower-alias"]) {
                 return this.AddComponent(
                     "lol-champion-tiers", 
                     Main_Part_LolChampionTiers, 
@@ -21,7 +21,15 @@ class Main_LolTrend extends AppBodyMain {
                     }), 
                     1
                 )
-            }else return this.OnChampionSelected(this.data["identifier"]["lower-alias"], this.data["identifier"]["position"]);
+            }
+            else {
+                return this.OnChampionSelected(
+                    this.data["identifier"]["lower-alias"],
+                    this.data["identifier"]["position"],
+                    null,
+                    this.data["identifier"]
+                );
+            }
         });
     }
 
@@ -43,7 +51,7 @@ class Main_LolTrend extends AppBodyMain {
         });
     }
 
-    OnChampionSelected = (lowerAlias, position)=>{
+    OnChampionSelected = (lowerAlias, position, championElement, componentIdentifier)=>{
         return Promise.all([
             this.RemoveComponent("lol-champion-tiers"),
             this.RemoveComponent("lol-champion-build"),

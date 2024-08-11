@@ -34,7 +34,7 @@ class Main_Part_LolChampionTiers extends AppBodyMain_Part {
     }
 
     ReloadContent = ()=>{
-        new Promise((resolve, reject)=>{
+        return new Promise((resolve, reject)=>{
             let championSummary = {};
             let championSummaryRequestURL = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/zh_tw/v1/champion-summary.json";
             $.get(championSummaryRequestURL, {}, (data)=>{
@@ -68,10 +68,11 @@ class Main_Part_LolChampionTiers extends AppBodyMain_Part {
                     try{champ.find("span").text(
                         championSummary[c["id"]]["name"]
                     )}catch(e){console.log(e)}
+                    let identifier = this.data["identifier"];
                     let OnChampionSelected = this.data["functions"]["OnChampionSelected"];
                     champ.attr("data-lower-alias", c["key"]);
                     champ.attr("data-position", position);
-                    champ.on("click", function(){OnChampionSelected(c["key"], position)});
+                    champ.on("click", function(){OnChampionSelected(c["key"], position, $(this), identifier)});
 
                     ele.find(".list-item-tier").attr("data-tier", c["positionTier"]);
 

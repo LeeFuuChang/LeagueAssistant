@@ -4,16 +4,12 @@ class Main_Part_ConfigAppearanceSpell extends Main_Part_Config_Abstract {
     ReloadContent = ()=>{
         let previewer = $(this.element).find(".preview-item[data-name='spell-single']");
 
-        previewer.attr("data-type", 
-            $($(this.element).find(".config-item[data-name='options'] .option input[type='radio'][name='ui-format']")
-                .get().sort((a, b)=>($(b).is(":checked")-$(a).is(":checked")))[0]).closest(".option").attr("data-name")
-        );
+        previewer.attr("data-type", $(this.element).find("input[type='radio'][name='ui-format']:checked").attr("key"));
 
         ["notify", "counter"].forEach((colorConfigName)=>{
-            let k = `${colorConfigName}-color`;
-            let c = $(this.element).find(`.config-item[data-name="${k}"] .option[data-name="c"] input`).val();
-            let a = $(this.element).find(`.config-item[data-name="${k}"] .option[data-name="a"] input`).val();
-            previewer.css(`--${k}`, `${c}${parseInt((a/10)*255, 10).toString(16)}`);
+            let c = $(this.element).find(`input[path$="${colorConfigName}-color.json"][key="c"]`).val();
+            let a = $(this.element).find(`input[path$="${colorConfigName}-color.json"][key="a"]`).val();
+            previewer.css(`--${colorConfigName}-color`, `${c}${parseInt((a/10)*255, 10).toString(16)}`);
         });
 
         return Promise.all(previewer.find(".item").get().map((item)=>new Promise((resolve, reject)=>{

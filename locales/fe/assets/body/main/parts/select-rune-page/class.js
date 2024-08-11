@@ -335,9 +335,7 @@ class Main_Part_SelectRunePage extends AppBodyMain_Part {
         .then(([runes, invalidStep])=>{
             this.data["identifier"]["runes"] = runes;
             if(invalidStep) return Promise.resolve(this.ClearStepsBelow(invalidStep));
-            return Promise.resolve(this.data["functions"]["OnSaveRunePage"](runes, this.data["identifier"]));
-        })
+            this.data["functions"]["OnRunePageSelected"](runes, this.data["identifier"]);
+        });
     }
-
-    ReloadContent = ()=>{return Promise.resolve()}
 }

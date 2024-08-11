@@ -20,5 +20,6 @@ class AppOverlay_ReportHistory extends AppOverlay {
     ReloadContent = ()=>{
         $(this.element).find(".basic .icon").attr("src", this.data["identifier"]["icon"]);
         $(this.element).find(".basic .name").text(this.data["identifier"]["offender"]["gameName"]);
+        return Promise.resolve();
     }
 }

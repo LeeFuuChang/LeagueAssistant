@@ -207,6 +207,6 @@ class Main_Part_SummonerRecentPerformance extends AppBodyMain_Part {
                 },
             });
         };
-        fetchMatchHistory(initialSummaries, 0, 100).then(displaySummaries);
+        return fetchMatchHistory(initialSummaries, 0, 100).then(displaySummaries);
     }
 }

@@ -240,8 +240,11 @@ class Main_Part_LolChampionBuild extends AppBodyMain_Part {
                             " alt="">`);
                             duo_champion.find(".stat .winrate strong").text((data["doublewinrate"]*100).toFixed(2));
                             duo_champion.find(".stat .games strong").text(data["itemp1"]);
+                            let identifier = this.data["identifier"];
                             let OnChampionSelected = this.data["functions"]["OnChampionSelected"];
-                            duo_champion.on("click", function(){OnChampionSelected(championSummary[data["championid2"]]["alias"].toLowerCase(), null)});
+                            duo_champion.on("click", function(){
+                                OnChampionSelected(championSummary[data["championid2"]]["alias"].toLowerCase(), null, $(this), identifier);
+                            });
                         });
                     });
                 }catch(e){console.log(e)}
@@ -258,8 +261,11 @@ class Main_Part_LolChampionBuild extends AppBodyMain_Part {
                         hard_champion.find(".icon").html(`<img src="https://cdn.communitydragon.org/latest/champion/${data["id"]}/square" alt="">`);
                         hard_champion.find(".stat .winrate strong").text(((data["win"]/data["play"])*100).toFixed(2));
                         hard_champion.find(".stat .games strong").text(data["play"]);
+                        let identifier = this.data["identifier"];
                         let OnChampionSelected = this.data["functions"]["OnChampionSelected"];
-                        hard_champion.on("click", function(){OnChampionSelected(championSummary[data["id"]]["alias"].toLowerCase(), null)});
+                        hard_champion.on("click", function(){
+                            OnChampionSelected(championSummary[data["id"]]["alias"].toLowerCase(), null, $(this), identifier);
+                        });
                     });
                     let cell_match_easy_champions = cell_match.find(".match-group[data-difficulty='easy'] .other-champion");
                     counters.slice(0-cell_match_easy_champions.length).reverse().forEach((data, idx)=>{
@@ -268,8 +274,11 @@ class Main_Part_LolChampionBuild extends AppBodyMain_Part {
                         easy_champion.find(".icon").html(`<img src="https://cdn.communitydragon.org/latest/champion/${data["id"]}/square" alt="">`);
                         easy_champion.find(".stat .winrate strong").text(((data["win"]/data["play"])*100).toFixed(2));
                         easy_champion.find(".stat .games strong").text(data["play"]);
+                        let identifier = this.data["identifier"];
                         let OnChampionSelected = this.data["functions"]["OnChampionSelected"];
-                        easy_champion.on("click", function(){OnChampionSelected(championSummary[data["id"]]["alias"].toLowerCase(), null)});
+                        easy_champion.on("click", function(){
+                            OnChampionSelected(championSummary[data["id"]]["alias"].toLowerCase(), null, $(this), identifier);
+                        });
                     });
                 }catch(e){console.log(e)}
             });

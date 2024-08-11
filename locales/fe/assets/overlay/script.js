@@ -61,6 +61,8 @@ class AppOverlay {
             });
         });
     }
+
+    ReloadContent = ()=>{return Promise.resolve()}
 }
 
 $(document).ready(()=>{

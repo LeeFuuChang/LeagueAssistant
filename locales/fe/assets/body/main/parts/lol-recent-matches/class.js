@@ -189,6 +189,6 @@ class Main_Part_LolRecentMatches extends AppBodyMain_Part {
                 if(b-1 < v && v < b+1) LoadMatches();
             }, 100));
         });
-        LoadMatches();
+        return LoadMatches();
     }
 }

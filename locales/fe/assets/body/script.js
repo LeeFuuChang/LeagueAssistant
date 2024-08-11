@@ -43,6 +43,8 @@ class AppBodyBlock_Part_Abstract {
         nextButton.on("click", ()=>{this.NextPage()});
         this.SetPage(this.currentPageIndex);
     }
+
+    ReloadContent = ()=>{return Promise.resolve()}
 }
 
 
@@ -165,6 +167,8 @@ class AppBodyBlock_Abstract {
             })
         ));
     }
+
+    ReloadContent = ()=>{return Promise.resolve()}
 }
 
 

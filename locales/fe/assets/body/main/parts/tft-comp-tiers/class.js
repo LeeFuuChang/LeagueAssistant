@@ -87,7 +87,7 @@ class Main_Part_TftCompTiers extends AppBodyMain_Part {
             let requestURL = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/zh_tw/v1/tfttraits.json";
             $.get(requestURL, {}, (data)=>resolve(Object.fromEntries(data.map((t)=>[t["trait_id"], t]))));
         });
-        Promise.all([
+        return Promise.all([
             tftChampionsPromise,
             tftItemsPromise,
             tftTraitsPromise,

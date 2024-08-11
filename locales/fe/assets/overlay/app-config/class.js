@@ -26,7 +26,7 @@ class AppOverlay_AppConfig extends AppOverlay {
     }
 
     ReloadContent = ()=>{
-        $.get(`/app/config/app.json`, {}, (data)=>{
+        return $.get(`/app/config/app.json`, {}, (data)=>{
             Object.entries(data).forEach(([name, value])=>{
                 let inp = $(this.element).find(`input[name="${name}"]`);
                 if($(inp).is("[type='checkbox']")) {

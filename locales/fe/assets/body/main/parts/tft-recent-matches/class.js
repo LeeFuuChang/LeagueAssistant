@@ -95,7 +95,7 @@ class Main_Part_TftRecentMatches extends AppBodyMain_Part {
             $.get(requestURL, {}, (data)=>resolve(Object.fromEntries(data.map((c)=>[c["contentId"], c]))));
         });
 
-        Promise.all([
+        return Promise.all([
             tftChampionsPromise,
             tftItemsPromise,
             tftTraitsPromise,

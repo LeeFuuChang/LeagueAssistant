@@ -1,23 +1,23 @@
-<section class="body-part-container body-part-size-2" data-id="" data-type="settings" data-name="stats" style="display:none">
+<section class="body-part-container body-part-size-2" data-id="" style="display:none">
     <link rel="stylesheet" href="assets/body/main/parts/config-settings-stats/style.css">
     <div class="app-body-block body-main-block config-settings-stats">
         <div class="block-title horizontal-stretched-border">
             <h1 class="block-title-text">戰績查詢</h1>
         </div>
         <ul class="block-inner config-inner y-scrollable">
-            <li class="body-sub-block config-group" data-name="overall">
+            <li class="body-sub-block config-group">
                 <div class="block-title horizontal-stretched-border">
                     <h2 class="block-title-text">戰績通用設定</h2>
                 </div>
-                <div class="block-inner group-inner overall-inner">
-                    <div class="config-item" data-name="options">
+                <div class="block-inner group-inner">
+                    <div class="config-item">
                         <h3 class="item-name">查詢局數</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="games">
+                                <label class="option hover-pointer">
                                     <div class="stepper">
                                         <div class="mask button hover-pointer" data-action="-"></div>
-                                        <input type="text" value="1" min="1" max="5" step="1" decimal="0">
+                                        <input type="text" value="1" min="1" max="5" step="1" decimal="0" path="settings/stats/overall/options.json" key="games">
                                         <div class="mask button hover-pointer" data-action="+"></div>
                                     </div>
                                     <h4 class="text">局</h4>
@@ -29,28 +29,28 @@
                             <p class="block">設定要查詢最近多少局對戰以及<br>發送戰績時要發送近期多少局的數據</p>
                         </div>
                     </div>
-                    <div class="config-item" data-name="queues">
+                    <div class="config-item">
                         <h3 class="item-name">查詢模式</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="blind5" data-id="430">
-                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/overall/queues.json" key="blind5" data-id="430">
                                     <h4 class="text">一般盲選</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="draft5" data-id="400">
-                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/overall/queues.json" key="draft5" data-id="400">
                                     <h4 class="text">一般競技</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="rank5solo" data-id="420">
-                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/overall/queues.json" key="rank5solo" data-id="420">
                                     <h4 class="text">單雙積分</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="rank5flex" data-id="440">
-                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/overall/queues.json" key="rank5flex" data-id="440">
                                     <h4 class="text">彈性積分</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="aram" data-id="450">
-                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/overall/queues.json" key="aram" data-id="450">
                                     <h4 class="text">隨機單中</h4>
                                 </label>
                             </form>
@@ -80,47 +80,47 @@
                             </div>
                         </div>
                     </div>
-                    <div class="config-item" data-name="sending">
+                    <div class="config-item">
                         <h3 class="item-name">發送數據選項</h3>
                         <div class="options-container">
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="avg-kda" style="flex:1">
-                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <label class="option hover-pointer" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/overall/sending.json" key="avg-kda">
                                         <h4 class="text">近期平均KDA</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="avg-winrate" style="flex:1">
-                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <label class="option hover-pointer" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/overall/sending.json" key="avg-winrate">
                                         <h4 class="text">近期平均勝率</h4>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="current-highest" style="flex:1">
-                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <label class="option hover-pointer" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/overall/sending.json" key="current-highest">
                                         <h4 class="text">目前最高排位</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="season-highest" style="flex:1">
-                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <label class="option hover-pointer" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/overall/sending.json" key="season-highest">
                                         <h4 class="text">本季最高排位</h4>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="match-stats" style="flex:1">
-                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <label class="option hover-pointer" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/overall/sending.json" key="match-stats">
                                         <h4 class="text">各對局戰績</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="match-kda" style="flex:1">
-                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <label class="option hover-pointer" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/overall/sending.json" key="match-kda">
                                         <h4 class="text">各對局KDA</h4>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="match-win" style="flex:1">
-                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <label class="option hover-pointer" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/overall/sending.json" key="match-win">
                                         <h4 class="text">各對局勝負</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="match-ignore-early" style="flex:1">
-                                        <input tabindex="-1" class="checkbox" type="checkbox">
+                                    <label class="option hover-pointer" style="flex:1">
+                                        <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/overall/sending.json" key="ignore-early">
                                         <h4 class="text">忽略提早結束的對局</h4>
                                     </label>
                                 </form>
@@ -168,29 +168,29 @@
                     </div>
                 </div>
             </li>
-            <li class="body-sub-block config-group" data-name="select-send">
+            <li class="body-sub-block config-group">
                 <div class="block-title horizontal-stretched-border">
                     <h2 class="block-title-text">選角時發送戰績</h2>
                 </div>
                 <div class="block-inner group-inner select-send-inner">
-                    <div class="config-item" data-name="options">
+                    <div class="config-item">
                         <h3 class="item-name">發送選項</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="winrate-default" data-pair-name="winrate-default">
-                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox nickname-set" type="radio" name="select-send-nickname" path="settings/stats/select-send/options.json" key="winrate-default">
                                     <h4 class="text">勝率+預設稱號</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="winrate-custom" data-pair-name="winrate-custom">
-                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox nickname-set" type="radio" name="select-send-nickname" path="settings/stats/select-send/options.json" key="winrate-custom">
                                     <h4 class="text">勝率+自訂稱號</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="kda-default" data-pair-name="kda-default">
-                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox nickname-set" type="radio" name="select-send-nickname" path="settings/stats/select-send/options.json" key="kda-default">
                                     <h4 class="text">KDA+預設稱號</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="kda-custom" data-pair-name="kda-custom">
-                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox nickname-set" type="radio" name="select-send-nickname" path="settings/stats/select-send/options.json" key="kda-custom">
                                     <h4 class="text">KDA+自訂稱號</h4>
                                 </label>
                             </form>
@@ -224,24 +224,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="config-item" data-name="nickname">
+                    <div class="config-item">
                         <h3 class="item-name">玩家暱稱</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="player1" data-group="select-send-nickname">
-                                    <input tabindex="-1" class="nickname" type="text">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="nickname" name="select-send-nickname" type="text" path="settings/stats/select-send/nickname.json" key="player1">
                                 </label>
-                                <label class="option hover-pointer" data-name="player2" data-group="select-send-nickname">
-                                    <input tabindex="-1" class="nickname" type="text">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="nickname" name="select-send-nickname" type="text" path="settings/stats/select-send/nickname.json" key="player2">
                                 </label>
-                                <label class="option hover-pointer" data-name="player3" data-group="select-send-nickname">
-                                    <input tabindex="-1" class="nickname" type="text">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="nickname" name="select-send-nickname" type="text" path="settings/stats/select-send/nickname.json" key="player3">
                                 </label>
-                                <label class="option hover-pointer" data-name="player4" data-group="select-send-nickname">
-                                    <input tabindex="-1" class="nickname" type="text">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="nickname" name="select-send-nickname" type="text" path="settings/stats/select-send/nickname.json" key="player4">
                                 </label>
-                                <label class="option hover-pointer" data-name="player5" data-group="select-send-nickname">
-                                    <input tabindex="-1" class="nickname" type="text">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="nickname" name="select-send-nickname" type="text" path="settings/stats/select-send/nickname.json" key="player5">
                                 </label>
                             </form>
                         </div>
@@ -250,12 +250,12 @@
                             <p class="block">發送時所用的玩家稱號<br>由左至右分別依次對應發送順序先後的玩家</p>
                         </div>
                     </div>
-                    <div class="config-item" data-name="fast-self">
+                    <div class="config-item">
                         <h3 class="item-name">快捷發送自己</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="keybind" data-group="select-send-keybind">
-                                    <input tabindex="-1" class="keybind" data-key="-1" type="text" readonly>
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="keybind" data-key="-1" name="select-send-keybind" type="text" path="settings/stats/select-send/fast-self.json" key="keybind" readonly>
                                 </label>
                             </form>
                         </div>
@@ -268,19 +268,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="config-item" data-name="fast-team">
+                    <div class="config-item">
                         <h3 class="item-name">快捷發送友方</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="keybind" data-group="select-send-keybind">
-                                    <input tabindex="-1" class="keybind" data-key="-1" type="text" readonly>
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="keybind" data-key="-1" name="select-send-keybind" type="text" path="settings/stats/select-send/fast-team.json" key="keybind" readonly>
                                 </label>
-                                <label class="option hover-pointer" data-name="no-self">
-                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/select-send/fast-team.json" key="no-self">
                                     <h4 class="text">不要發送自己的戰績</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="no-friend">
-                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/select-send/fast-team.json" key="no-friend">
                                     <h4 class="text">不要發送一起排的人的戰績</h4>
                                 </label>
                             </form>
@@ -305,29 +305,29 @@
                     </div>
                 </div>
             </li>
-            <li class="body-sub-block config-group" data-name="progress-send">
+            <li class="body-sub-block config-group">
                 <div class="block-title horizontal-stretched-border">
                     <h2 class="block-title-text">遊戲中發送戰績</h2>
                 </div>
                 <div class="block-inner group-inner progress-send-inner">
-                    <div class="config-item" data-name="options">
+                    <div class="config-item">
                         <h3 class="item-name">發送選項</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="winrate-default" data-pair-name="winrate-default">
-                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox nickname-set" type="radio" name="progress-send-nickname" path="settings/stats/progress-send/options.json" key="winrate-default">
                                     <h4 class="text">勝率+預設稱號</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="winrate-custom" data-pair-name="winrate-custom">
-                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox nickname-set" type="radio" name="progress-send-nickname" path="settings/stats/progress-send/options.json" key="winrate-custom">
                                     <h4 class="text">勝率+自訂稱號</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="kda-default" data-pair-name="kda-default">
-                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox nickname-set" type="radio" name="progress-send-nickname" path="settings/stats/progress-send/options.json" key="kda-default">
                                     <h4 class="text">KDA+預設稱號</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="kda-custom" data-pair-name="kda-custom">
-                                    <input tabindex="-1" class="checkbox" type="radio" name="send-order-nickname">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox nickname-set" type="radio" name="progress-send-nickname" path="settings/stats/progress-send/options.json" key="kda-custom">
                                     <h4 class="text">KDA+自訂稱號</h4>
                                 </label>
                             </form>
@@ -361,24 +361,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="config-item" data-name="nickname">
+                    <div class="config-item">
                         <h3 class="item-name">玩家暱稱</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="player1" data-group="progress-send-nickname">
-                                    <input tabindex="-1" class="nickname" type="text">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="nickname" name="progress-send-nickname" type="text" path="settings/stats/progress-send/nickname.json" key="player1">
                                 </label>
-                                <label class="option hover-pointer" data-name="player2" data-group="progress-send-nickname">
-                                    <input tabindex="-1" class="nickname" type="text">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="nickname" name="progress-send-nickname" type="text" path="settings/stats/progress-send/nickname.json" key="player2">
                                 </label>
-                                <label class="option hover-pointer" data-name="player3" data-group="progress-send-nickname">
-                                    <input tabindex="-1" class="nickname" type="text">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="nickname" name="progress-send-nickname" type="text" path="settings/stats/progress-send/nickname.json" key="player3">
                                 </label>
-                                <label class="option hover-pointer" data-name="player4" data-group="progress-send-nickname">
-                                    <input tabindex="-1" class="nickname" type="text">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="nickname" name="progress-send-nickname" type="text" path="settings/stats/progress-send/nickname.json" key="player4">
                                 </label>
-                                <label class="option hover-pointer" data-name="player5" data-group="progress-send-nickname">
-                                    <input tabindex="-1" class="nickname" type="text">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="nickname" name="progress-send-nickname" type="text" path="settings/stats/progress-send/nickname.json" key="player5">
                                 </label>
                             </form>
                         </div>
@@ -387,19 +387,19 @@
                             <p class="block">發送時所用的玩家稱號<br>由左至右分別依次對應發送順序先後的玩家</p>
                         </div>
                     </div>
-                    <div class="config-item" data-name="fast-team">
+                    <div class="config-item">
                         <h3 class="item-name">快捷發送友方</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="keybind" data-group="progress-send-keybind">
-                                    <input tabindex="-1" class="keybind" data-key="-1" type="text" readonly>
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="keybind" data-key="-1" name="progress-send-keybind" type="text" path="settings/stats/progress-send/fast-team.json" key="keybind" readonly>
                                 </label>
-                                <label class="option hover-pointer" data-name="no-self">
-                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/progress-send/fast-team.json" key="no-self">
                                     <h4 class="text">不要發送自己的戰績</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="no-friend">
-                                    <input tabindex="-1" class="checkbox" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="checkbox" type="checkbox" path="settings/stats/progress-send/fast-team.json" key="no-friend">
                                     <h4 class="text">不要發送一起排的人的戰績</h4>
                                 </label>
                             </form>
@@ -422,12 +422,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="config-item" data-name="fast-enemy">
+                    <div class="config-item">
                         <h3 class="item-name">快捷發送敵方</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="keybind" data-group="progress-send-keybind">
-                                    <input tabindex="-1" class="keybind" data-key="-1" type="text" readonly>
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="keybind" data-key="-1" name="progress-send-keybind" type="text" path="settings/stats/progress-send/fast-enemy.json" key="keybind" readonly>
                                 </label>
                             </form>
                         </div>

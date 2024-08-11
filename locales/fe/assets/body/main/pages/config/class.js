@@ -2,9 +2,9 @@ class Main_Part_Config_Abstract extends AppBodyMain_Part {
     constructor(container, data, index){
         super(container, data, index);
         this.CreateElement(container)
-        .then(()=>this.SetupConfigOptions())
-        .then(()=>this.SetupConfigValues())
-        .then(()=>this.ReloadContent());
+            .then(()=>this.SetupConfigOptions())
+            .then(()=>this.SetupConfigValues())
+            .then(()=>this.ReloadContent());
     }
 
     SetupConfigOptions = ()=>{
@@ -19,11 +19,40 @@ class Main_Part_Config_Abstract extends AppBodyMain_Part {
         $(this.element).find(".config-item .item-options .runepage").on("click", this.data["functions"]["LoadSelectRunePage"]);
 
         $(this.element).find(".config-item .item-options .option .keybind").on({
-            "keydown":this.data["functions"]["CatchKeyPress"],
-            "mousedown":function(e){if(e.button===2){$(this).attr("data-key", "-1").val("").trigger("change", [true,])}},
+            "keydown": (e)=>{
+                if($(e.currentTarget).is(":focus") && e.keyCode in KEYCODE2KEY){
+                    $(e.currentTarget).attr("data-key", e.keyCode).val(KEYCODE2KEY[e.keyCode]).trigger("change").blur();
+                }
+            },
+            "mousedown": (e)=>{
+                if(e.button !== 2) return;
+                $(e.currentTarget).attr("data-key", "-1").val("").trigger("change");
+            },
         });
 
-        $(this.element).find(".config-item .item-options .option input").on("change", this.data["functions"]["OnConfigChange"]);
+        $(this.element).find(".config-item .item-options .option .nickname-set")
+            .on("change", (e)=>{
+                let preset = Object.getPrototypeOf(this).constructor.nicknameSets||{};
+                let values = preset[$(e.currentTarget).attr("key")]||[];
+                $(`.nickname[name="${$(e.currentTarget).attr("name")}"]`).each(function(i){
+                    $(this).val(values[i]||"").prop("readonly", !!values[i]);
+                }).last().trigger("change");
+            });
+
+        $(this.element)
+            .find(".config-item .item-options .option input[path]")
+            .on("change", (e)=>{
+                return new Promise((resolve, reject)=>{
+                    let data = {};
+                    for(let inp of $(`input[path="${$(e.target).attr("path")}"]`)) {
+                        if(!this.CheckInputValid(inp)) continue;
+                        data[$(inp).attr("key")] = this.GetInputValue(inp);
+                    }
+                    return resolve(data);
+                }).then((data)=>{
+                    return $.post(`/app/config/${$(e.target).attr("path")}`, JSON.stringify(data));
+                }).then(()=>this.ReloadContent());
+            });
 
         return Promise.resolve();
     }
@@ -44,90 +73,68 @@ class Main_Part_Config_Abstract extends AppBodyMain_Part {
             let requestURL = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perkstyles.json"
             $.get(requestURL, {}, (data)=>resolve({...icons,...Object.fromEntries(data["styles"].map((p)=>[parseInt(p["id"]), window.ToCDragonPath(p["iconPath"])]))}));
         }));
+        let configPromise = new Promise((resolve, reject)=>{
+            return Promise.all([...new Set($("input[path]").get().map(inp=>$(inp).attr("path")))].map(p=>{
+                return new Promise((res, rej)=>$.get(`/app/config/${p}`).done(data=>res([p, data])).fail(()=>rej()));
+            })).then((entries)=>resolve(Object.fromEntries(entries)));
+        });
         return Promise.all([
             championNamesPromise,
             summonerSpellNamesPromise,
             perkIconsPromise,
+            configPromise,
         ]).then(([
             championNames,
             summonerSpellNames,
             perkIcons,
+            config,
         ])=>{
-            let GetConfigPath = this.data["functions"]["GetConfigPath"];
-            let CheckDefaultCustom = this.data["functions"]["CheckDefaultCustom"];
-            let itemGroups = $(this.element).find(".config-item .item-options").get();
-            return Promise.all(itemGroups.reverse().map((item)=>new Promise((resolve, reject)=>{
-                if($(item).is("[readonly]")) return resolve();
-                $.get(`/app/config/${GetConfigPath($(item))}.json`, {}, (data)=>{
-                    Promise.all(Object.keys(data).map((dataName)=>new Promise((res, rej)=>{
-                        let option = $(item).find(`.option[data-name="${dataName}"]`);
-                        let input = option.find("input");
-                        if(input.is(".switch")){
-                            input.prop("checked", data[dataName]);
-                        }else if($(input).is(".checkbox")){
-                            input.prop("checked", data[dataName]);
-                        }else if(input.is(".slider")){
-                            input.val(parseInt(data[dataName]));
-                        }else if(input.is(".keybind")){
-                            input.attr("data-key", data[dataName]).val(KEYCODE2KEY[data[dataName]]);
-                        }else if(input.is(".champion")){
-                            let championId = data[dataName];
-                            if(championNames[championId] === undefined) championId = -1;
-                            input.attr("data-id", championId);
-                            input.val(championNames[championId]);
-                        }else if(input.is(".spell")){
-                            let spellId = data[dataName];
-                            if(summonerSpellNames[spellId] === undefined) spellId = -1;
-                            input.attr("data-id", spellId);
-                            input.val(spellId>0?summonerSpellNames[spellId]:"無");
-                        }else if(input.is(".rune")){
-                            let perkId = data[dataName];
-                            input.val(perkId).closest(".option").find("img").attr("src",
-                                perkIcons[perkId]?perkIcons[perkId]:"data:image/svg+xml;utf8,<svg></svg>"
-                            );
-                        }else if(input.is(".text-preview")){
-                            input.val("");
-                        }else{
-                            input.val(data[dataName]);
-                        }
-                        input.trigger("change", [false,]);
-                        res(option.is("[data-pair-name]")?CheckDefaultCustom(input):0);
-                    }))).then(()=>resolve());
+            Object.keys(config).forEach((path)=>{
+                Object.keys(config[path]).forEach((key)=>{
+                    let input = $(this.element).find(`input[path="${path}"][key="${key}"]`);
+
+                    if($(input).is(".switch")){
+                        $(input).prop("checked", config[path][key]);
+                    }else if($(input).is(".checkbox")){
+                        $(input).prop("checked", config[path][key]);
+                    }else if($(input).is(".slider")){
+                        $(input).val(parseInt(config[path][key]));
+                    }else if($(input).is(".keybind")){
+                        $(input).attr("data-key", config[path][key]).val(KEYCODE2KEY[config[path][key]]);
+                    }else if($(input).is(".champion")){
+                        let championId = config[path][key];
+                        if(championNames[championId] === undefined) championId = -1;
+                        $(input).attr("data-id", championId);
+                        $(input).val(championNames[championId]);
+                    }else if($(input).is(".spell")){
+                        let spellId = config[path][key];
+                        if(summonerSpellNames[spellId] === undefined) spellId = -1;
+                        $(input).attr("data-id", spellId);
+                        $(input).val(spellId>0?summonerSpellNames[spellId]:"無");
+                    }else if($(input).is(".rune")){
+                        let perkId = config[path][key];
+                        $(input).val(perkId).siblings("img").attr("src",
+                            perkIcons[perkId]?perkIcons[perkId]:"data:image/svg+xml;utf8,<svg></svg>"
+                        );
+                    }else if($(input).is(".text-preview")){
+                        $(input).val("");
+                    }else{
+                        $(input).val(config[path][key]);
+                    }
+
+                    if($(input).is(".nickname-set:checked")){
+                        let preset = Object.getPrototypeOf(this).constructor.nicknameSets||{};
+                        let values = preset[$(input).attr("key")]||[];
+                        $(`.nickname[name="${$(input).attr("name")}"]`).each(function(i){
+                            $(this).prop("readonly", !!values[i]);
+                        });
+                    }
+
+                    this.CheckInputValid(input);
                 });
-            })));
+            });
+            return Promise.resolve();
         });
-    }
-
-    ReloadContent = ()=>{}
-}
-
-class Main_Config extends AppBodyMain {
-    static pageType = "config";
-
-    constructor(container, data){
-        super(container, data);
-        this.LoadComponents([{
-            "name": this.data["identifier"]["name"],
-            "class": this.data["identifier"]["class"],
-            "data": window.MakeData({
-                functions: {
-                    "GetConfigPath": this.GetConfigPath,
-                    "GetInputValue": this.GetInputValue,
-                    "LoadDescription": this.LoadDescription,
-                    "LoadItemDescription": this.LoadItemDescription,
-                    "LoadSelectChampion": this.LoadSelectChampion,
-                    "LoadSelectSpell": this.LoadSelectSpell,
-                    "LoadSelectRunePage": this.LoadSelectRunePage,
-                    "CatchKeyPress": this.CatchKeyPress,
-                    "CheckDefaultCustom": this.CheckDefaultCustom,
-                    "OnConfigChange": this.OnConfigChange,
-                }
-            }),
-        }, {
-            "name": "config-description",
-            "class": Main_Part_ConfigDescription,
-            "data": window.MakeData(),
-        }])
     }
 
     GetInputValue = (input)=>{
@@ -137,7 +144,7 @@ class Main_Config extends AppBodyMain {
         }else if($(input).is(".checkbox")){
             value = $(input).is(":checked");
         }else if($(input).is(".slider")){
-            value = parseInt(input.val());
+            value = parseInt($(input).val());
         }else if($(input).is(".keybind")){
             value = parseInt($(input).attr("data-key"));
         }else if($(input).is(".champion")){
@@ -165,41 +172,30 @@ class Main_Config extends AppBodyMain {
         $(option).toggleClass("invalid", !isValid);
         return isValid;
     }
+}
 
-    CheckDefaultCustom = (input)=>{
-        let path = this.GetConfigPath(input);
-        let name = $(input).closest(".option").attr("data-pair-name");
-        if(!this.GetInputValue(input)) return Promise.resolve();
-        let defaultCustomKey = `${path}/${name}`;
-        return Promise.all(Object.values(this.components).map((component)=>{
-            let pairData = Object.getPrototypeOf(component).constructor.defaultCustomPairs;
-            if(!pairData) return Promise.resolve();
-            let pair = pairData[defaultCustomKey];
-            if(!pair) return Promise.resolve();
-            let updateInputs = (i)=>{
-                if(i >= pair["values"].length) return Promise.resolve();
-                return new Promise((resolve, reject)=>{
-                    let inp = $(pair["inputs"]).eq(i);
-                    if(pair["values"][i]) inp.val(pair["values"][i]);
-                    inp.prop("readonly", pair["isReadOnly"]);
-                    return resolve();
-                }).then(()=>updateInputs(i+1));
-            };
-            return updateInputs(0).then(()=>Promise.resolve($(pair["inputs"]).first().change()));
-        }));
-    }
+class Main_Config extends AppBodyMain {
+    static pageType = "config";
 
-    GetConfigPath = (ele)=>{
-        return [
-            ["section", "data-type"],
-            ["section", "data-name"],
-            [".config-group", "data-name"],
-            [".config-item", "data-name"],
-        ].map(([selector, attrname])=>{
-            return $(ele)
-            .closest(selector)
-            .attr(attrname);
-        }).join("/");
+    constructor(container, data){
+        super(container, data);
+        this.LoadComponents([{
+            "name": this.data["identifier"]["name"],
+            "class": this.data["identifier"]["class"],
+            "data": window.MakeData({
+                functions: {
+                    "LoadDescription": this.LoadDescription,
+                    "LoadItemDescription": this.LoadItemDescription,
+                    "LoadSelectChampion": this.LoadSelectChampion,
+                    "LoadSelectSpell": this.LoadSelectSpell,
+                    "LoadSelectRunePage": this.LoadSelectRunePage,
+                }
+            }),
+        }, {
+            "name": "config-description",
+            "class": Main_Part_ConfigDescription,
+            "data": window.MakeData(),
+        }])
     }
 
     RemoveSelectionComponents = ()=>{
@@ -236,13 +232,12 @@ class Main_Config extends AppBodyMain {
             }), 1);
         });
     }
-    OnChampionSelected = (championElement, componentIdentifier)=>{
+    OnChampionSelected = (lowerAlias, position, championElement, componentIdentifier)=>{
         $(componentIdentifier["triggerElement"])
-        .attr("data-id", $(championElement).attr("data-id"))
-        .val($(championElement).find("span").text())
-        .change();
+            .attr("data-id", $(championElement).attr("data-id"))
+            .val($(championElement).find("span").text()).change();
         this.LoadDescription();
-    };
+    }
 
     LoadSelectSpell = (event)=>{
         return Promise.all([
@@ -259,11 +254,10 @@ class Main_Config extends AppBodyMain {
     }
     OnSpellSelected = (spellElement, componentIdentifier)=>{
         $(componentIdentifier["triggerElement"])
-        .attr("data-id", $(spellElement).attr("data-id"))
-        .val($(spellElement).find("span").text())
-        .change();
+            .attr("data-id", $(spellElement).attr("data-id"))
+            .val($(spellElement).find("span").text()).change();
         this.LoadDescription();
-    };
+    }
 
     LoadSelectRunePage = (event)=>{
         let triggerElement = $(event.currentTarget).closest(".runepage");
@@ -274,7 +268,7 @@ class Main_Config extends AppBodyMain {
             let storedRunes = {};
             triggerElement.find(".option[data-type='rune-step']").get().forEach((option)=>{
                 let stepName = $(option).attr("data-step");
-                let stepPerk = parseInt(this.GetInputValue($(option).find("input")));
+                let stepPerk = parseInt($(option).find("input").val())||-1;
                 if(isNaN(stepPerk) || stepPerk<0) return;
                 if(!storedRunes[stepName]) storedRunes[stepName] = [stepPerk, ];
                 else storedRunes[stepName].push(stepPerk);
@@ -284,11 +278,11 @@ class Main_Config extends AppBodyMain {
             if(this.components["select-rune-page"] !== undefined) return;
             return this.AddComponent("select-rune-page", Main_Part_SelectRunePage, window.MakeData({
                 identifier:{"triggerElement":triggerElement,"runes":storedRunes},
-                functions:{"OnSaveRunePage":this.OnSaveRunePage},
+                functions:{"OnRunePageSelected":this.OnRunePageSelected},
             }), 1);
         });
     }
-    OnSaveRunePage = (runes, componentIdentifier)=>{
+    OnRunePageSelected = (runes, componentIdentifier)=>{
         let steps = $(componentIdentifier["triggerElement"]).find(".option[data-type='rune-step']");
         return new Promise((resolve, reject)=>{
             let requestURL = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json"
@@ -305,51 +299,5 @@ class Main_Config extends AppBodyMain {
                 $(option).find("img").attr("src",icons[pid]?icons[pid]:"data:image/svg+xml;utf8,<svg></svg>");
             })).then(()=>Promise.resolve(steps.last().find("input").change()));
         }).then(()=>this.LoadDescription());
-    };
-
-    CatchKeyPress = (event)=>{
-        if($(event.currentTarget).is(":focus") && event.keyCode in KEYCODE2KEY){
-            $(event.currentTarget).attr("data-key", event.keyCode).val(KEYCODE2KEY[event.keyCode]).trigger("change", [true,]).blur();
-        }
-    }
-
-    TypedConfigChange = (option)=>{
-        let handler = ({
-            "rune-step": (()=>new Promise((resolve, reject)=>{
-                let requestURL = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json"
-                $.get(requestURL, {}, (data)=>resolve(Object.fromEntries(data.map((p)=>[parseInt(p["id"]), window.ToCDragonPath(p["iconPath"])]))));
-            }).then((icons)=>new Promise((resolve, reject)=>{
-                let requestURL = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perkstyles.json"
-                $.get(requestURL, {}, (data)=>resolve({...icons,...Object.fromEntries(data["styles"].map((p)=>[parseInt(p["id"]), window.ToCDragonPath(p["iconPath"])]))}));
-            })).then((icons)=>{
-                let value = parseInt(this.GetInputValue($(option).find("input")));
-                return Promise.resolve($(option).find("img").attr("src",icons[value]?icons[value]:"data:image/svg+xml;utf8,<svg></svg>"));
-            })),
-        }[$(option).attr("data-type")]);
-        return Promise.resolve(handler?handler():0);
-    }
-
-    OnConfigChange = (event, upload=true)=>{
-        if(!upload) return Promise.resolve();
-        return new Promise((resolve, reject)=>{
-            let input = $(event.currentTarget);
-            this.CheckDefaultCustom(input);
-            let item = input.closest(".options-container");
-            let path = this.GetConfigPath(item);
-            return Promise.all(item.find(".option").get().map((option)=>new Promise((res, rej)=>{
-                let inp = $(option).find("input");
-                let val = this.GetInputValue(inp);
-                let vld = this.CheckInputValid(inp);
-                console.log(inp, val, vld);
-                if(!vld) return res([]);
-                res(this.TypedConfigChange(option).then(()=>Promise.resolve(
-                    [$(option).attr("data-name"), val]
-                )));
-            }))).then((pairs)=>resolve([path, Object.fromEntries(pairs.filter((p)=>(p&&p.length===2)))]));
-        }).then(([path, data])=>Promise.resolve(
-            $.post(`/app/config/${path}.json`, JSON.stringify(data), ()=>{console.log("Config updated:", path, data)})
-        )).then(()=>Promise.all(
-            Object.values(this.components).map((c)=>Promise.resolve((c.ReloadContent?c.ReloadContent():0)))
-        ));
     }
 }

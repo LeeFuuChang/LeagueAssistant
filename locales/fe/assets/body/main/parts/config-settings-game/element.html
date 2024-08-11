@@ -1,28 +1,28 @@
-<section class="body-part-container body-part-size-2" data-id="" data-type="settings" data-name="game" style="display:none">
+<section class="body-part-container body-part-size-2" data-id="" style="display:none">
     <link rel="stylesheet" href="assets/body/main/parts/config-settings-game/style.css">
     <div class="app-body-block body-main-block config-settings-game">
         <div class="block-title horizontal-stretched-border">
             <h1 class="block-title-text">自動對局</h1>
         </div>
         <ul class="block-inner config-inner y-scrollable">
-            <li class="body-sub-block config-group" data-name="overall">
+            <li class="body-sub-block config-group">
                 <div class="block-title horizontal-stretched-border">
                     <h2 class="block-title-text">對局通用設定</h2>
                 </div>
-                <div class="block-inner group-inner overall-inner">
-                    <div class="config-item" data-name="options">
+                <div class="block-inner group-inner">
+                    <div class="config-item">
                         <h3 class="item-name">自動對局</h3>
                         <div class="options-container">
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="auto-accept">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/overall/options.json" key="auto-accept">
                                         <h4 class="text">匹配到對局時自動接受</h4>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="auto-requeue">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/overall/options.json" key="auto-requeue">
                                         <h4 class="text">自動跳過點讚重新匹配</h4>
                                     </label>
                                 </form>
@@ -44,86 +44,86 @@
                     </div>
                 </div>
             </li>
-            <li class="body-sub-block config-group" data-name="auto-pick">
+            <li class="body-sub-block config-group">
                 <div class="block-title horizontal-stretched-border">
                     <h2 class="block-title-text">自動選角設定</h2>
                 </div>
                 <div class="block-inner group-inner auto-pick-inner">
-                    <div class="config-item" data-name="top">
+                    <div class="config-item">
                         <h3 class="item-name">上路</h3>
                         <div class="options-container">
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="a-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/top.json" key="a-switch">
                                         <h4 class="text">主要</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-lock">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/top.json" key="a-lock">
                                         <h4 class="text">鎖定</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-c" data-group="auto-pick-top-champion">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">英雄</h4>
-                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="champion" name="auto-pick-top-champion" type="text" value="無" path="settings/game/auto-pick/top.json" key="a-c" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-d" data-group="auto-pick-top-a-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">D</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-top-a-spell" type="text" value="無" path="settings/game/auto-pick/top.json" key="a-d" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-f" data-group="auto-pick-top-a-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">F</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-top-a-spell" type="text" value="無" path="settings/game/auto-pick/top.json" key="a-f" readonly>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="a-rune-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/top.json" key="a-rune-switch">
                                         <h4 class="text">自動符文</h4>
                                     </label>
                                     <div class="runepage hover-pointer">
                                         <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
-                                        <label class="option" data-name="a-rune-0-0" data-type="rune-step" data-step="primary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="a-rune-0-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-1" data-type="rune-step" data-step="primary-keystone">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="a-rune-0-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-2" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="a-rune-0-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-3" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="a-rune-0-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-4" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="a-rune-0-4" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-0" data-type="rune-step" data-step="secondary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="a-rune-1-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-1" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="a-rune-1-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-2" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="a-rune-1-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-1" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="a-rune-2-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-2" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="a-rune-2-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-3" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="a-rune-2-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
                                     </div>
@@ -131,76 +131,76 @@
                             </div>
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="b-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/top.json" key="b-switch">
                                         <h4 class="text">次要</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-lock">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/top.json" key="b-lock">
                                         <h4 class="text">鎖定</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-c" data-group="auto-pick-top-champion">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">英雄</h4>
-                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="champion" name="auto-pick-top-champion" type="text" value="無" path="settings/game/auto-pick/top.json" key="b-c" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-d" data-group="auto-pick-top-b-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">D</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-top-a-spell" type="text" value="無" path="settings/game/auto-pick/top.json" key="b-d" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-f" data-group="auto-pick-top-b-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">F</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-top-a-spell" type="text" value="無" path="settings/game/auto-pick/top.json" key="b-f" readonly>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="b-rune-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/top.json" key="b-rune-switch">
                                         <h4 class="text">自動符文</h4>
                                     </label>
                                     <div class="runepage hover-pointer">
                                         <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
-                                        <label class="option" data-name="b-rune-0-0" data-type="rune-step" data-step="primary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="b-rune-0-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-1" data-type="rune-step" data-step="primary-keystone">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="b-rune-0-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-2" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="b-rune-0-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-3" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="b-rune-0-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-4" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="b-rune-0-4" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-0" data-type="rune-step" data-step="secondary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="b-rune-1-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-1" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="b-rune-1-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-2" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="b-rune-1-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-1" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="b-rune-2-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-2" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="b-rune-2-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-3" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/top.json" key="b-rune-2-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
                                     </div>
@@ -238,81 +238,81 @@
                             <p class="block"><strong>注意：</strong>如果主要和次要英雄皆無法使用則不會進行任何選角動作</p>
                         </div>
                     </div>
-                    <div class="config-item" data-name="jg">
+                    <div class="config-item">
                         <h3 class="item-name">打野</h3>
                         <div class="options-container">
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="a-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/jg.json" key="a-switch">
                                         <h4 class="text">主要</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-lock">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/jg.json" key="a-lock">
                                         <h4 class="text">鎖定</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-c" data-group="auto-pick-jg-champion">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">英雄</h4>
-                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="champion" name="auto-pick-jg-champion" type="text" value="無" path="settings/game/auto-pick/jg.json" key="a-c" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-d" data-group="auto-pick-jg-a-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">D</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-jg-a-spell" type="text" value="無" path="settings/game/auto-pick/jg.json" key="a-d" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-f" data-group="auto-pick-jg-a-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">F</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-jg-a-spell" type="text" value="無" path="settings/game/auto-pick/jg.json" key="a-f" readonly>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="a-rune-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/jg.json" key="a-rune-switch">
                                         <h4 class="text">自動符文</h4>
                                     </label>
                                     <div class="runepage hover-pointer">
                                         <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
-                                        <label class="option" data-name="a-rune-0-0" data-type="rune-step" data-step="primary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="a-rune-0-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-1" data-type="rune-step" data-step="primary-keystone">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="a-rune-0-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-2" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="a-rune-0-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-3" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="a-rune-0-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-4" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="a-rune-0-4" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-0" data-type="rune-step" data-step="secondary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="a-rune-1-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-1" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="a-rune-1-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-2" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="a-rune-1-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-1" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="a-rune-2-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-2" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="a-rune-2-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-3" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="a-rune-2-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
                                     </div>
@@ -320,76 +320,76 @@
                             </div>
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="b-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/jg.json" key="b-switch">
                                         <h4 class="text">次要</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-lock">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/jg.json" key="b-lock">
                                         <h4 class="text">鎖定</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-c" data-group="auto-pick-jg-champion">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">英雄</h4>
-                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="champion" name="auto-pick-jg-champion" type="text" value="無" path="settings/game/auto-pick/jg.json" key="b-c" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-d" data-group="auto-pick-jg-b-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">D</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-jg-a-spell" type="text" value="無" path="settings/game/auto-pick/jg.json" key="b-d" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-f" data-group="auto-pick-jg-b-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">F</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-jg-a-spell" type="text" value="無" path="settings/game/auto-pick/jg.json" key="b-f" readonly>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="b-rune-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/jg.json" key="b-rune-switch">
                                         <h4 class="text">自動符文</h4>
                                     </label>
                                     <div class="runepage hover-pointer">
                                         <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
-                                        <label class="option" data-name="b-rune-0-0" data-type="rune-step" data-step="primary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="b-rune-0-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-1" data-type="rune-step" data-step="primary-keystone">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="b-rune-0-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-2" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="b-rune-0-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-3" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="b-rune-0-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-4" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="b-rune-0-4" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-0" data-type="rune-step" data-step="secondary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="b-rune-1-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-1" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="b-rune-1-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-2" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="b-rune-1-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-1" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="b-rune-2-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-2" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="b-rune-2-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-3" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/jg.json" key="b-rune-2-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
                                     </div>
@@ -427,81 +427,81 @@
                             <p class="block"><strong>注意：</strong>如果主要和次要英雄皆無法使用則不會進行任何選角動作</p>
                         </div>
                     </div>
-                    <div class="config-item" data-name="mid">
+                    <div class="config-item">
                         <h3 class="item-name">中路</h3>
                         <div class="options-container">
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="a-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/mid.json" key="a-switch">
                                         <h4 class="text">主要</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-lock">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/mid.json" key="a-lock">
                                         <h4 class="text">鎖定</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-c" data-group="auto-pick-mid-champion">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">英雄</h4>
-                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="champion" name="auto-pick-mid-champion" type="text" value="無" path="settings/game/auto-pick/mid.json" key="a-c" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-d" data-group="auto-pick-mid-a-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">D</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-mid-a-spell" type="text" value="無" path="settings/game/auto-pick/mid.json" key="a-d" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-f" data-group="auto-pick-mid-a-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">F</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-mid-a-spell" type="text" value="無" path="settings/game/auto-pick/mid.json" key="a-f" readonly>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="a-rune-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/mid.json" key="a-rune-switch">
                                         <h4 class="text">自動符文</h4>
                                     </label>
                                     <div class="runepage hover-pointer">
                                         <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
-                                        <label class="option" data-name="a-rune-0-0" data-type="rune-step" data-step="primary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="a-rune-0-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-1" data-type="rune-step" data-step="primary-keystone">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="a-rune-0-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-2" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="a-rune-0-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-3" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="a-rune-0-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-4" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="a-rune-0-4" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-0" data-type="rune-step" data-step="secondary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="a-rune-1-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-1" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="a-rune-1-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-2" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="a-rune-1-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-1" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="a-rune-2-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-2" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="a-rune-2-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-3" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="a-rune-2-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
                                     </div>
@@ -509,76 +509,76 @@
                             </div>
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="b-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/mid.json" key="b-switch">
                                         <h4 class="text">次要</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-lock">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/mid.json" key="b-lock">
                                         <h4 class="text">鎖定</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-c" data-group="auto-pick-mid-champion">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">英雄</h4>
-                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="champion" name="auto-pick-mid-champion" type="text" value="無" path="settings/game/auto-pick/mid.json" key="b-c" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-d" data-group="auto-pick-mid-b-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">D</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-mid-a-spell" type="text" value="無" path="settings/game/auto-pick/mid.json" key="b-d" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-f" data-group="auto-pick-mid-b-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">F</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-mid-a-spell" type="text" value="無" path="settings/game/auto-pick/mid.json" key="b-f" readonly>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="b-rune-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/mid.json" key="b-rune-switch">
                                         <h4 class="text">自動符文</h4>
                                     </label>
                                     <div class="runepage hover-pointer">
                                         <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
-                                        <label class="option" data-name="b-rune-0-0" data-type="rune-step" data-step="primary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="b-rune-0-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-1" data-type="rune-step" data-step="primary-keystone">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="b-rune-0-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-2" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="b-rune-0-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-3" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="b-rune-0-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-4" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="b-rune-0-4" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-0" data-type="rune-step" data-step="secondary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="b-rune-1-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-1" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="b-rune-1-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-2" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="b-rune-1-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-1" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="b-rune-2-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-2" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="b-rune-2-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-3" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/mid.json" key="b-rune-2-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
                                     </div>
@@ -616,81 +616,81 @@
                             <p class="block"><strong>注意：</strong>如果主要和次要英雄皆無法使用則不會進行任何選角動作</p>
                         </div>
                     </div>
-                    <div class="config-item" data-name="ad">
+                    <div class="config-item">
                         <h3 class="item-name">下路</h3>
                         <div class="options-container">
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="a-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/ad.json" key="a-switch">
                                         <h4 class="text">主要</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-lock">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/ad.json" key="a-lock">
                                         <h4 class="text">鎖定</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-c" data-group="auto-pick-ad-champion">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">英雄</h4>
-                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="champion" name="auto-pick-ad-champion" type="text" value="無" path="settings/game/auto-pick/ad.json" key="a-c" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-d" data-group="auto-pick-ad-a-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">D</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-ad-a-spell" type="text" value="無" path="settings/game/auto-pick/ad.json" key="a-d" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-f" data-group="auto-pick-ad-a-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">F</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-ad-a-spell" type="text" value="無" path="settings/game/auto-pick/ad.json" key="a-f" readonly>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="a-rune-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/ad.json" key="a-rune-switch">
                                         <h4 class="text">自動符文</h4>
                                     </label>
                                     <div class="runepage hover-pointer">
                                         <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
-                                        <label class="option" data-name="a-rune-0-0" data-type="rune-step" data-step="primary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="a-rune-0-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-1" data-type="rune-step" data-step="primary-keystone">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="a-rune-0-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-2" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="a-rune-0-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-3" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="a-rune-0-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-4" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="a-rune-0-4" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-0" data-type="rune-step" data-step="secondary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="a-rune-1-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-1" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="a-rune-1-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-2" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="a-rune-1-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-1" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="a-rune-2-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-2" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="a-rune-2-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-3" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="a-rune-2-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
                                     </div>
@@ -698,76 +698,76 @@
                             </div>
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="b-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/ad.json" key="b-switch">
                                         <h4 class="text">次要</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-lock">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/ad.json" key="b-lock">
                                         <h4 class="text">鎖定</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-c" data-group="auto-pick-ad-champion">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">英雄</h4>
-                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="champion" name="auto-pick-ad-champion" type="text" value="無" path="settings/game/auto-pick/ad.json" key="b-c" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-d" data-group="auto-pick-ad-b-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">D</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-ad-a-spell" type="text" value="無" path="settings/game/auto-pick/ad.json" key="b-d" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-f" data-group="auto-pick-ad-b-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">F</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-ad-a-spell" type="text" value="無" path="settings/game/auto-pick/ad.json" key="b-f" readonly>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="b-rune-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/ad.json" key="b-rune-switch">
                                         <h4 class="text">自動符文</h4>
                                     </label>
                                     <div class="runepage hover-pointer">
                                         <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
-                                        <label class="option" data-name="b-rune-0-0" data-type="rune-step" data-step="primary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="b-rune-0-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-1" data-type="rune-step" data-step="primary-keystone">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="b-rune-0-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-2" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="b-rune-0-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-3" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="b-rune-0-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-4" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="b-rune-0-4" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-0" data-type="rune-step" data-step="secondary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="b-rune-1-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-1" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="b-rune-1-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-2" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="b-rune-1-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-1" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="b-rune-2-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-2" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="b-rune-2-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-3" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/ad.json" key="b-rune-2-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
                                     </div>
@@ -805,81 +805,81 @@
                             <p class="block"><strong>注意：</strong>如果主要和次要英雄皆無法使用則不會進行任何選角動作</p>
                         </div>
                     </div>
-                    <div class="config-item" data-name="sup">
+                    <div class="config-item">
                         <h3 class="item-name">輔助</h3>
                         <div class="options-container">
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="a-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/sup.json" key="a-switch">
                                         <h4 class="text">主要</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-lock">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/sup.json" key="a-lock">
                                         <h4 class="text">鎖定</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-c" data-group="auto-pick-sup-champion">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">英雄</h4>
-                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="champion" name="auto-pick-sup-champion" type="text" value="無" path="settings/game/auto-pick/sup.json" key="a-c" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-d" data-group="auto-pick-sup-a-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">D</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-sup-a-spell" type="text" value="無" path="settings/game/auto-pick/sup.json" key="a-d" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-f" data-group="auto-pick-sup-a-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">F</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-sup-a-spell" type="text" value="無" path="settings/game/auto-pick/sup.json" key="a-f" readonly>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="a-rune-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/sup.json" key="a-rune-switch">
                                         <h4 class="text">自動符文</h4>
                                     </label>
                                     <div class="runepage hover-pointer">
                                         <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
-                                        <label class="option" data-name="a-rune-0-0" data-type="rune-step" data-step="primary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="a-rune-0-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-1" data-type="rune-step" data-step="primary-keystone">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="a-rune-0-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-2" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="a-rune-0-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-3" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="a-rune-0-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-4" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="a-rune-0-4" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-0" data-type="rune-step" data-step="secondary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="a-rune-1-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-1" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="a-rune-1-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-2" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="a-rune-1-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-1" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="a-rune-2-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-2" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="a-rune-2-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-3" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="a-rune-2-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
                                     </div>
@@ -887,76 +887,76 @@
                             </div>
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="b-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/sup.json" key="b-switch">
                                         <h4 class="text">次要</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-lock">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/sup.json" key="b-lock">
                                         <h4 class="text">鎖定</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-c" data-group="auto-pick-sup-champion">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">英雄</h4>
-                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="champion" name="auto-pick-sup-champion" type="text" value="無" path="settings/game/auto-pick/sup.json" key="b-c" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-d" data-group="auto-pick-sup-b-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">D</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-sup-a-spell" type="text" value="無" path="settings/game/auto-pick/sup.json" key="b-d" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-f" data-group="auto-pick-sup-b-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">F</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-sup-a-spell" type="text" value="無" path="settings/game/auto-pick/sup.json" key="b-f" readonly>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="b-rune-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/sup.json" key="b-rune-switch">
                                         <h4 class="text">自動符文</h4>
                                     </label>
                                     <div class="runepage hover-pointer">
                                         <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
-                                        <label class="option" data-name="b-rune-0-0" data-type="rune-step" data-step="primary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="b-rune-0-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-1" data-type="rune-step" data-step="primary-keystone">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="b-rune-0-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-2" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="b-rune-0-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-3" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="b-rune-0-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-4" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="b-rune-0-4" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-0" data-type="rune-step" data-step="secondary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="b-rune-1-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-1" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="b-rune-1-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-2" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="b-rune-1-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-1" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="b-rune-2-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-2" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="b-rune-2-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-3" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/sup.json" key="b-rune-2-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
                                     </div>
@@ -994,81 +994,81 @@
                             <p class="block"><strong>注意：</strong>如果主要和次要英雄皆無法使用則不會進行任何選角動作</p>
                         </div>
                     </div>
-                    <div class="config-item" data-name="none">
+                    <div class="config-item">
                         <h3 class="item-name">未分配路線</h3>
                         <div class="options-container">
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="a-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/none.json" key="a-switch">
                                         <h4 class="text">主要</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-lock">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/none.json" key="a-lock">
                                         <h4 class="text">鎖定</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-c" data-group="auto-pick-none-champion">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">英雄</h4>
-                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="champion" name="auto-pick-none-champion" type="text" value="無" path="settings/game/auto-pick/none.json" key="a-c" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-d" data-group="auto-pick-none-a-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">D</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-none-a-spell" type="text" value="無" path="settings/game/auto-pick/none.json" key="a-d" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="a-f" data-group="auto-pick-none-a-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">F</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-none-a-spell" type="text" value="無" path="settings/game/auto-pick/none.json" key="a-f" readonly>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="a-rune-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/none.json" key="a-rune-switch">
                                         <h4 class="text">自動符文</h4>
                                     </label>
                                     <div class="runepage hover-pointer">
                                         <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
-                                        <label class="option" data-name="a-rune-0-0" data-type="rune-step" data-step="primary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="a-rune-0-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-1" data-type="rune-step" data-step="primary-keystone">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="a-rune-0-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-2" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="a-rune-0-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-3" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="a-rune-0-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-0-4" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="a-rune-0-4" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-0" data-type="rune-step" data-step="secondary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="a-rune-1-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-1" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="a-rune-1-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-1-2" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="a-rune-1-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-1" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="a-rune-2-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-2" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="a-rune-2-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="a-rune-2-3" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="a-rune-2-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
                                     </div>
@@ -1076,76 +1076,76 @@
                             </div>
                             <div class="item-group">
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="b-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/none.json" key="b-switch">
                                         <h4 class="text">次要</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-lock">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/none.json" key="b-lock">
                                         <h4 class="text">鎖定</h4>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-c" data-group="auto-pick-none-champion">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">英雄</h4>
-                                        <input tabindex="-1" class="champion" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="champion" name="auto-pick-none-champion" type="text" value="無" path="settings/game/auto-pick/none.json" key="b-c" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-d" data-group="auto-pick-none-b-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">D</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-none-a-spell" type="text" value="無" path="settings/game/auto-pick/none.json" key="b-d" readonly>
                                     </label>
-                                    <label class="option hover-pointer" data-name="b-f" data-group="auto-pick-none-b-spell">
+                                    <label class="option hover-pointer">
                                         <h4 class="text">F</h4>
-                                        <input tabindex="-1" class="spell" type="text" value="無" readonly>
+                                        <input tabindex="-1" class="spell" name="auto-pick-none-a-spell" type="text" value="無" path="settings/game/auto-pick/none.json" key="b-f" readonly>
                                     </label>
                                 </form>
                                 <form class="item-options">
-                                    <label class="option hover-pointer" data-name="b-rune-switch">
-                                        <input tabindex="-1" class="switch" type="checkbox">
+                                    <label class="option hover-pointer">
+                                        <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-pick/none.json" key="b-rune-switch">
                                         <h4 class="text">自動符文</h4>
                                     </label>
                                     <div class="runepage hover-pointer">
                                         <img class="runes-icon" src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/styles/runesicon.png" alt="">
-                                        <label class="option" data-name="b-rune-0-0" data-type="rune-step" data-step="primary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="b-rune-0-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-1" data-type="rune-step" data-step="primary-keystone">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-keystone">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="b-rune-0-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-2" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="b-rune-0-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-3" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="b-rune-0-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-0-4" data-type="rune-step" data-step="primary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="primary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="b-rune-0-4" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-0" data-type="rune-step" data-step="secondary-style">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-style">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="b-rune-1-0" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-1" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="b-rune-1-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-1-2" data-type="rune-step" data-step="secondary-perks">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="secondary-perks">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="b-rune-1-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-1" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="b-rune-2-1" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-2" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="b-rune-2-2" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
-                                        <label class="option" data-name="b-rune-2-3" data-type="rune-step" data-step="statmods">
-                                            <input tabindex="-1" class="rune" type="text" readonly>
+                                        <label class="option" data-type="rune-step" data-step="statmods">
+                                            <input tabindex="-1" class="rune" type="text" path="settings/game/auto-pick/none.json" key="b-rune-2-3" readonly>
                                             <img src="data:image/svg+xml;utf8,<svg></svg>" alt="">
                                         </label>
                                     </div>
@@ -1185,30 +1185,30 @@
                     </div>
                 </div>
             </li>
-            <li class="body-sub-block config-group" data-name="auto-ban">
+            <li class="body-sub-block config-group">
                 <div class="block-title horizontal-stretched-border">
                     <h2 class="block-title-text">自動禁角設定</h2>
                 </div>
                 <div class="block-inner group-inner auto-ban-inner">
-                    <div class="config-item" data-name="top">
+                    <div class="config-item">
                         <h3 class="item-name">上路</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="switch">
-                                    <input tabindex="-1" class="switch" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-ban/top.json" key="switch">
                                     <h4 class="text">啟用</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="lock">
-                                    <input tabindex="-1" class="switch" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-ban/top.json" key="lock">
                                     <h4 class="text">鎖定</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="a-c" data-group="auto-ban-top">
+                                <label class="option hover-pointer">
                                     <h4 class="text">主要</h4>
-                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                    <input tabindex="-1" class="champion" name="auto-ban-top" value="無" type="text" path="settings/game/auto-ban/top.json" key="a-c" readonly>
                                 </label>
-                                <label class="option hover-pointer" data-name="b-c" data-group="auto-ban-top">
+                                <label class="option hover-pointer">
                                     <h4 class="text">備用</h4>
-                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                    <input tabindex="-1" class="champion" name="auto-ban-top" value="無" type="text" path="settings/game/auto-ban/top.json" key="b-c" readonly>
                                 </label>
                             </form>
                         </div>
@@ -1236,25 +1236,25 @@
                             <p class="block"><strong>注意：</strong>如果主要和備用英雄皆無法禁用則不會進行任何禁角動作</p>
                         </div>
                     </div>
-                    <div class="config-item" data-name="jg">
+                    <div class="config-item">
                         <h3 class="item-name">打野</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="switch">
-                                    <input tabindex="-1" class="switch" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-ban/jg.json" key="switch">
                                     <h4 class="text">啟用</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="lock">
-                                    <input tabindex="-1" class="switch" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-ban/jg.json" key="lock">
                                     <h4 class="text">鎖定</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="a-c" data-group="auto-ban-jg">
+                                <label class="option hover-pointer">
                                     <h4 class="text">主要</h4>
-                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                    <input tabindex="-1" class="champion" name="auto-ban-jg" value="無" type="text" path="settings/game/auto-ban/jg.json" key="a-c" readonly>
                                 </label>
-                                <label class="option hover-pointer" data-name="b-c" data-group="auto-ban-jg">
+                                <label class="option hover-pointer">
                                     <h4 class="text">備用</h4>
-                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                    <input tabindex="-1" class="champion" name="auto-ban-jg" value="無" type="text" path="settings/game/auto-ban/jg.json" key="b-c" readonly>
                                 </label>
                             </form>
                         </div>
@@ -1282,25 +1282,25 @@
                             <p class="block"><strong>注意：</strong>如果主要和備用英雄皆無法禁用則不會進行任何禁角動作</p>
                         </div>
                     </div>
-                    <div class="config-item" data-name="mid">
+                    <div class="config-item">
                         <h3 class="item-name">中路</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="switch">
-                                    <input tabindex="-1" class="switch" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-ban/mid.json" key="switch">
                                     <h4 class="text">啟用</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="lock">
-                                    <input tabindex="-1" class="switch" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-ban/mid.json" key="lock">
                                     <h4 class="text">鎖定</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="a-c" data-group="auto-ban-mid">
+                                <label class="option hover-pointer">
                                     <h4 class="text">主要</h4>
-                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                    <input tabindex="-1" class="champion" name="auto-ban-mid" value="無" type="text" path="settings/game/auto-ban/mid.json" key="a-c" readonly>
                                 </label>
-                                <label class="option hover-pointer" data-name="b-c" data-group="auto-ban-mid">
+                                <label class="option hover-pointer">
                                     <h4 class="text">備用</h4>
-                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                    <input tabindex="-1" class="champion" name="auto-ban-mid" value="無" type="text" path="settings/game/auto-ban/mid.json" key="b-c" readonly>
                                 </label>
                             </form>
                         </div>
@@ -1328,25 +1328,25 @@
                             <p class="block"><strong>注意：</strong>如果主要和備用英雄皆無法禁用則不會進行任何禁角動作</p>
                         </div>
                     </div>
-                    <div class="config-item" data-name="ad">
+                    <div class="config-item">
                         <h3 class="item-name">下路</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="switch">
-                                    <input tabindex="-1" class="switch" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-ban/ad.json" key="switch">
                                     <h4 class="text">啟用</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="lock">
-                                    <input tabindex="-1" class="switch" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-ban/ad.json" key="lock">
                                     <h4 class="text">鎖定</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="a-c" data-group="auto-ban-ad">
+                                <label class="option hover-pointer">
                                     <h4 class="text">主要</h4>
-                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                    <input tabindex="-1" class="champion" name="auto-ban-ad" value="無" type="text" path="settings/game/auto-ban/ad.json" key="a-c" readonly>
                                 </label>
-                                <label class="option hover-pointer" data-name="b-c" data-group="auto-ban-ad">
+                                <label class="option hover-pointer">
                                     <h4 class="text">備用</h4>
-                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                    <input tabindex="-1" class="champion" name="auto-ban-ad" value="無" type="text" path="settings/game/auto-ban/ad.json" key="b-c" readonly>
                                 </label>
                             </form>
                         </div>
@@ -1374,25 +1374,25 @@
                             <p class="block"><strong>注意：</strong>如果主要和備用英雄皆無法禁用則不會進行任何禁角動作</p>
                         </div>
                     </div>
-                    <div class="config-item" data-name="sup">
+                    <div class="config-item">
                         <h3 class="item-name">輔助</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="switch">
-                                    <input tabindex="-1" class="switch" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-ban/sup.json" key="switch">
                                     <h4 class="text">啟用</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="lock">
-                                    <input tabindex="-1" class="switch" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-ban/sup.json" key="lock">
                                     <h4 class="text">鎖定</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="a-c" data-group="auto-ban-sup">
+                                <label class="option hover-pointer">
                                     <h4 class="text">主要</h4>
-                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                    <input tabindex="-1" class="champion" name="auto-ban-sup" value="無" type="text" path="settings/game/auto-ban/sup.json" key="a-c" readonly>
                                 </label>
-                                <label class="option hover-pointer" data-name="b-c" data-group="auto-ban-sup">
+                                <label class="option hover-pointer">
                                     <h4 class="text">備用</h4>
-                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                    <input tabindex="-1" class="champion" name="auto-ban-sup" value="無" type="text" path="settings/game/auto-ban/sup.json" key="b-c" readonly>
                                 </label>
                             </form>
                         </div>
@@ -1420,25 +1420,25 @@
                             <p class="block"><strong>注意：</strong>如果主要和備用英雄皆無法禁用則不會進行任何禁角動作</p>
                         </div>
                     </div>
-                    <div class="config-item" data-name="none">
+                    <div class="config-item">
                         <h3 class="item-name">未分配路線</h3>
                         <div class="options-container">
                             <form class="item-options">
-                                <label class="option hover-pointer" data-name="switch">
-                                    <input tabindex="-1" class="switch" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-ban/none.json" key="switch">
                                     <h4 class="text">啟用</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="lock">
-                                    <input tabindex="-1" class="switch" type="checkbox">
+                                <label class="option hover-pointer">
+                                    <input tabindex="-1" class="switch" type="checkbox" path="settings/game/auto-ban/none.json" key="lock">
                                     <h4 class="text">鎖定</h4>
                                 </label>
-                                <label class="option hover-pointer" data-name="a-c" data-group="auto-ban-none">
+                                <label class="option hover-pointer">
                                     <h4 class="text">主要</h4>
-                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                    <input tabindex="-1" class="champion" name="auto-ban-none" value="無" type="text" path="settings/game/auto-ban/none.json" key="a-c" readonly>
                                 </label>
-                                <label class="option hover-pointer" data-name="b-c" data-group="auto-ban-none">
+                                <label class="option hover-pointer">
                                     <h4 class="text">備用</h4>
-                                    <input tabindex="-1" class="champion" value="無" type="text" readonly>
+                                    <input tabindex="-1" class="champion" name="auto-ban-none" value="無" type="text" path="settings/game/auto-ban/none.json" key="b-c" readonly>
                                 </label>
                             </form>
                         </div>

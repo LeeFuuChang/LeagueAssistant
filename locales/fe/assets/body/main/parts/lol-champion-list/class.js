@@ -22,7 +22,7 @@ class Main_Part_LolChampionList extends AppBodyMain_Part {
     }
 
     ReloadContent = ()=>{
-        new Promise((resolve, reject)=>{
+        return new Promise((resolve, reject)=>{
             let championSummaryRequestURL = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/zh_tw/v1/champion-summary.json";
             $.get(championSummaryRequestURL, {}, (data)=>resolve(Object.fromEntries(data.map((c)=>[parseInt(c.id),c]))));
         }).then((championSummary)=>{
@@ -44,8 +44,9 @@ class Main_Part_LolChampionList extends AppBodyMain_Part {
                 ele.attr("data-filter", dataFilter);
                 ele.find("img").attr("src", imageSrc);
                 ele.find("span").text(name);
+                let identifier = this.data["identifier"];
                 let OnChampionSelected = this.data["functions"]["OnChampionSelected"];
-                ele.on("click", function(){OnChampionSelected(lowerAlias, positions[0])});
+                ele.on("click", function(){OnChampionSelected(lowerAlias, positions[0], $(this), identifier)});
             };
 
             new Promise((resolve, reject)=>{

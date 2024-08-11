@@ -25,7 +25,7 @@ class Main_Part_LolChallengeList extends AppBodyMain_Part {
     ReloadContent = ()=>{
         let container = $(this.element).find(".challenge-wrapper").empty();
         let optionsCategoryId = parseInt($(this.element).find(".filter-by-category .drop-down-menu-selected").attr("data-label"));
-        new Promise((resolve, reject)=>{
+        return new Promise((resolve, reject)=>{
             $.get("/riot/lcu/0/lol-challenges/v1/challenges/category-data", {}, (response)=>{
                 if(!response["success"]) return reject();
                 resolve(Object.fromEntries(Object.values(response["response"]).map((category)=>[
