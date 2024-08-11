@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QWidget, QDesktopWidget, QGridLayout, QLabel, QGraph
 from PyQt5.QtCore import QObject, QEvent, Qt, pyqtSignal
 from PyQt5.QtGui import QCursor, QPixmap, QIcon
 
+from flask import current_app
 import difflib
 import logging
 import time
@@ -154,7 +155,7 @@ class SpellHelperPlayer(QWidget):
 
 
     def reloadPixmap(self):
-        with self._parent.server.test_client() as client:
+        with current_app.test_client() as client:
             champRequest = client.get(self.data["championImageURL"])
             self.data["championPixmap"].loadFromData(champRequest.data)
             spell1Request = client.get(self.data["spell1"]["imageURL"])
@@ -215,7 +216,7 @@ class SpellHelperPlayer(QWidget):
             description = description[begIndex:]
             if(not description.isnumeric()): return 0
             else: return int(description)
-        with self._parent.server.test_client() as client:
+        with current_app.test_client() as client:
             name = self.data["summonerName"]
             playerItems = []
             try: playerItemsRequest = client.get(f"/riot/ingame/playeritems", query_string={"summonerName":name}).get_json(force=True)
@@ -372,7 +373,6 @@ class SpellHelperPlayer(QWidget):
 
 
 class SpellHelperUI(QWidget):
-    server = None
     setupCompleted = False
 
     baseSize = size = 24
@@ -455,7 +455,7 @@ class SpellHelperUI(QWidget):
     }
 
 
-    def __init__(self, server, localTeam, gameStats):
+    def __init__(self, localTeam, gameStats):
         self.setContentsMargins(0, 0, 0, 0)
         self.setWindowFlags(Qt.Window | Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
@@ -475,8 +475,6 @@ class SpellHelperUI(QWidget):
 
         self.format = None
 
-        self.server = server
-
         self.localTeam = localTeam
         self.gameStats = gameStats
         if(self.gameStats):
@@ -485,7 +483,7 @@ class SpellHelperUI(QWidget):
         self.players = {}
 
 
-    def __new__(cls, server, localTeam, gameStats):
+    def __new__(cls, localTeam, gameStats):
         if hasattr(cls, "_instance"): return cls._instance
         cls._instance = QWidget.__new__(cls)
         self = cls._instance
@@ -555,8 +553,7 @@ class SpellHelperUI(QWidget):
         self.setupThread = None
 
     def setup(self):
-        if(not self.server): return False
-        with self.server.test_client() as client:
+        with current_app.test_client() as client:
             itemsData = None
             try: itemsData = client.get(f"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json").get_json(force=True)
             except: itemsData = None
@@ -603,7 +600,7 @@ class SpellHelperUI(QWidget):
 
     def update(self):
         if(not self.setupCompleted): return logging.error("[SpellHelper] Setup Incomplete")
-        with self.server.test_client() as client:
+        with current_app.test_client() as client:
             playerList = []
             try: playerListRequest = client.get("/riot/ingame/playerlist").get_json(force=True)
             except: playerListRequest = {"success": False}

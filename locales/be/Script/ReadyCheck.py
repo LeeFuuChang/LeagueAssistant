@@ -2,6 +2,7 @@ from .abstract import AbstractPhase
 
 from .utils.thread import TaskThread
 
+from flask import current_app
 import logging
 import json
 import sys
@@ -30,7 +31,7 @@ class ReadyCheck(AbstractPhase):
 
     def postAutoAccept(self):
         logging.info(f"[{self.__class__.__name__}] Posting AutoAccept")
-        with self.parent.server.test_client() as client:
+        with current_app.test_client() as client:
             response = client.post("/riot/lcu/0/lol-matchmaking/v1/ready-check/accept")
             if(not response): return False
             return (response.status_code//100) == 2

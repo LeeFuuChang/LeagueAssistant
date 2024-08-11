@@ -4,6 +4,7 @@ from .utils.Collector import StatsDataCollector
 from .utils.thread import TaskThread, SteppedTaskThread
 from .utils import Chat
 
+from flask import current_app
 import win32api
 import logging
 import json
@@ -41,7 +42,7 @@ class ChampSelect(AbstractPhase):
 
 
     def getChampSelectData(self):
-        with self.parent.server.test_client() as client:
+        with current_app.test_client() as client:
             participants = []
             champSelectCID = None
             try: chatParticipantsRequest = client.get("/riot/lcu/1/chat/v5/participants/champ-select").get_json(force=True)
@@ -77,7 +78,7 @@ class ChampSelect(AbstractPhase):
             target=Chat.sendPublicity,
             delay=1,
             tries=10,
-            fargs=(self.parent.server, champSelectCID),
+            fargs=(champSelectCID, ),
             onFinished=self.endAutoPublicity,
         ).start()
         return True
@@ -153,7 +154,7 @@ class ChampSelect(AbstractPhase):
         if(pickedChampionData.get("f",-1) > 0): payload["spell2Id"] = pickedChampionData["f"]
         if(not payload): self.autoSpellCompleted = True
         if(self.autoSpellCompleted): return
-        with self.parent.server.test_client() as client:
+        with current_app.test_client() as client:
             response = client.patch("/riot/lcu/0/lol-champ-select/v1/session/my-selection", json=payload)
             self.autoSpellCompleted = (response and getattr(response, "json", {}).get("success", False))
             logging.info(f"[{self.__class__.__name__}] Auto Spell: {+self.autoSpellCompleted} {payload} {response}")
@@ -171,7 +172,7 @@ class ChampSelect(AbstractPhase):
                 [payload["primaryStyleId"], payload["subStyleId"], *payload["selectedPerkIds"]
         ]])): self.autoRunesCompleted = True
         if(self.autoRunesCompleted): return
-        with self.parent.server.test_client() as client:
+        with current_app.test_client() as client:
             readyToBuildPage = False
             try: currentPageRequest = client.get("/riot/lcu/0/lol-perks/v1/currentpage").get_json(force=True)
             except: currentPageRequest = {"success": False}
@@ -222,7 +223,7 @@ class ChampSelect(AbstractPhase):
                 if(not banningAvailable): 
                     self.autoBanCompleted = True
                     continue
-                with self.parent.server.test_client() as client:
+                with current_app.test_client() as client:
                     for champId in banningAvailable:
                         payload = {"completed":banningData["champions"][champId]["lock"], "championId":champId}
                         response = client.patch(actionRequestURL, json=payload)
@@ -237,7 +238,7 @@ class ChampSelect(AbstractPhase):
                 if(not pickingAvailable): 
                     self.autoPickCompleted = True
                     continue
-                with self.parent.server.test_client() as client:
+                with current_app.test_client() as client:
                     for champId in pickingAvailable:
                         payload = {"completed":pickingData["champions"][champId]["lock"], "championId":champId}
                         response = client.patch(actionRequestURL, json=payload)
@@ -291,7 +292,7 @@ class ChampSelect(AbstractPhase):
     def sendStatsDataStrings(self, champSelectCID, dataStrings):
         if(self.sendStatsDataThread is not None): self.sendStatsDataThread.event.set()
         self.sendStatsDataThread = SteppedTaskThread(
-            targets=[(lambda cid,_s=s:Chat.sendChampSelect(self.parent.server, cid, _s)) for s in dataStrings],
+            targets=[(lambda cid,_s=s:Chat.sendChampSelect(cid, _s)) for s in dataStrings],
             delay=0, tries=30, fargs=(champSelectCID, ), onFinished=self.endSendStatsDataThread
         ).start()
 

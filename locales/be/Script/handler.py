@@ -5,6 +5,7 @@ from .ChampSelect import ChampSelect
 from .InProgress import InProgress
 
 from PyQt5.QtCore import QObject, QTimer, pyqtSignal
+from flask import current_app
 import logging
 import time
 import json
@@ -16,9 +17,8 @@ class PhaseHandler(QObject):
 
     updateSignal = pyqtSignal()
 
-    def __init__(self, server):
+    def __init__(self):
         super(self.__class__, self).__init__()
-        self.server = server
 
         self.currentPhase = "None"
 
@@ -76,7 +76,7 @@ class PhaseHandler(QObject):
 
 
     def update(self):
-        with self.server.test_client() as client:
+        with current_app.test_client() as client:
             if(not client.get("/riot/lcu").get_json(force=True)): return
             phase = None
             try: phaseRequest = client.get("/riot/lcu/0/lol-gameflow/v1/gameflow-phase").get_json(force=True)

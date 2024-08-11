@@ -5,6 +5,7 @@ from .utils import Chat
 
 from .abstract import AbstractPhase
 
+from flask import current_app
 import win32api
 import logging
 import json
@@ -23,7 +24,7 @@ class InProgress(AbstractPhase):
         super().reset()
 
         self.endInGameSpellHelper()
-        self.InGameSpellHelperUI = SpellHelperUI(self.parent.server, None, None)
+        self.InGameSpellHelperUI = SpellHelperUI(None, None)
         self.gameMode = None
 
         self.sendStatsDataThread = None
@@ -32,7 +33,7 @@ class InProgress(AbstractPhase):
 
 
     def getInProgressData(self):
-        with self.parent.server.test_client() as client:
+        with current_app.test_client() as client:
             localName = None
             try: localNameRequest = client.get("/riot/ingame/activeplayername").get_json(force=True)
             except: localNameRequest = {"success": False}
@@ -60,7 +61,7 @@ class InProgress(AbstractPhase):
 
 
     def startInGameSpellHelper(self, localTeam, gameStats):
-        self.InGameSpellHelperUI = SpellHelperUI(self.parent.server, localTeam, gameStats)
+        self.InGameSpellHelperUI = SpellHelperUI(localTeam, gameStats)
         self.InGameSpellHelperUI.show()
         logging.info(f"[{self.__class__.__name__}] Starting InGameSpellHelper")
 
