@@ -109,7 +109,6 @@ class Phase():
         return [_["name"] for _ in cls._phases[aid:bid+1]]
 
 
-
 class AbstractPhase:
     def __new__(cls, parent):
         if not hasattr(cls, "_instance"):
@@ -123,5 +122,3 @@ class AbstractPhase:
             if(not attr.startswith("end")): continue
             if(not callable(getattr(self, attr))): continue
             getattr(self, attr)()
-
-

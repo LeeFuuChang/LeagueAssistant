@@ -1,6 +1,6 @@
 # LeagueAssistant
 
-<img src="screenshots/Banner.jpg" /> 
+<img src="locales/Banner.jpg" /> 
 
 > 🫰 [提供建議](https://discord.com/channels/1062726976370126968/1064135225787035648)
 > 🚨 [錯誤回報](https://discord.com/channels/1062726976370126968/1064135225787035648)
@@ -15,7 +15,6 @@
 💡 	特殊功能：「 自動接受、秒選英雄、秒禁英雄、自動更換符文頁、自動更換召喚師技能 」
 
 💡 	特殊功能：「 召喚師技能冷卻浮窗、遊戲中紀錄召喚師技能冷卻、一鍵發送召喚師技能冷卻 」
-
 
 ## 玩家查詢－對戰紀錄
 <img src="screenshots/1.png" /> 
