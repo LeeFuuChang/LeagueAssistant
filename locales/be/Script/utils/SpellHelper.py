@@ -8,6 +8,8 @@ from PyQt5.QtGui import QCursor, QPixmap, QIcon
 import difflib
 import logging
 import time
+import json
+import sys
 import os
 
 
@@ -292,23 +294,21 @@ class SpellHelperPlayer(QWidget):
 
 
     def broadcastSpellCooldown(self):
-        nowTime = time.time()
-        with self._parent.server.test_client() as client:
-            try: spellOverallNickname = client.get("/app/config/settings/spell/overall/nickname.json").get_json(force=True)
-            except: spellOverallNickname = {}
-            if(not spellOverallNickname): return False
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "spell", "overall", "nickname.json"
+        ), "r") as f: spellOverallNickname = json.load(f)
 
-            try: spellSendOptions = client.get("/app/config/settings/spell/send/options.json").get_json(force=True)
-            except: spellSendOptions = {}
-            if(not spellSendOptions): return False
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "spell", "send", "options.json"
+        ), "r") as f: spellSendOptions = json.load(f)
 
-            try: spellSendFormat = client.get("/app/config/settings/spell/send/format.json").get_json(force=True)
-            except: spellSendFormat = {}
-            if(not spellSendFormat): return False
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "spell", "send", "format.json"
+        ), "r") as f: spellSendFormat = json.load(f)
 
-            try: spellSendNickname = client.get("/app/config/settings/spell/send/nickname.json").get_json(force=True)
-            except: spellSendNickname = {}
-            if(not spellSendNickname): return False
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "spell", "send", "nickname.json"
+        ), "r") as f: spellSendNickname = json.load(f)
 
         if(spellSendOptions["champion-name"]): playerNick = self.data["championName"]
         else: playerNick = spellOverallNickname[f"player{self.data['index']+1}"]
@@ -325,7 +325,7 @@ class SpellHelperPlayer(QWidget):
                         spellNick = self.data[key]["hotkey"]
 
                     timeString = "ready"
-                    upLeftTime = max(self.data[key]["cooldown"]-int(nowTime-self.data[key]["castTime"]), 0)
+                    upLeftTime = max(self.data[key]["cooldown"]-int(time.time()-self.data[key]["castTime"]), 0)
                     upGameTime = self.data[key]["castTime"]-self._parent.gameStartTime+self.data[key]["cooldown"]
                     if(not upLeftTime): 
                         timeString = "ready"
@@ -566,16 +566,22 @@ class SpellHelperUI(QWidget):
 
 
     def reloadStyle(self):
-        with self.server.test_client() as client:
-            try: overallOptions = client.get(f"/app/config/appearance/spell/overall/options.json").get_json(force=True)
-            except: overallOptions = {}
-            try: overallNotify = client.get(f"/app/config/appearance/spell/overall/notify-color.json").get_json(force=True)
-            except: overallNotify = {}
-            try: overallCounter = client.get(f"/app/config/appearance/spell/overall/counter-color.json").get_json(force=True)
-            except: overallCounter = {}
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "appearance", "spell", "overall", "options.json"
+        ), "r") as f: overallOptions = json.load(f)
+
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "appearance", "spell", "overall", "notify-color.json"
+        ), "r") as f: overallNotify = json.load(f)
+
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "appearance", "spell", "overall", "counter-color.json"
+        ), "r") as f: overallCounter = json.load(f)
+
         for helper in self.players.values():
             helper.data["styles"]["notify-color"] = overallNotify
             helper.data["styles"]["counter-color"] = overallCounter
+
         self.format = sorted(["format-u","format-d","format-l","format-r"], key=lambda k:overallOptions.get(k,0))[-1]
         self.size = (self.baseSize * (overallOptions.get("size", 10)/10))
 

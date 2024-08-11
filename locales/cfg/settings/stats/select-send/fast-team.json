@@ -1,5 +1,5 @@
 {
     "keybind": 35,
     "no-self": true,
-    "no-friend": false
+    "no-friend": true
 }

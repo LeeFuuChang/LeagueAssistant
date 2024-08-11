@@ -7,6 +7,8 @@ from .abstract import AbstractPhase
 
 import win32api
 import logging
+import json
+import sys
 
 
 
@@ -68,19 +70,17 @@ class InProgress(AbstractPhase):
             logging.info(f"[{self.__class__.__name__}] Closing InGameSpellHelper")
 
     def update_InGameSpellHelper(self, localTeam, gameStats):
-        with self.parent.server.test_client() as client:
-            spellOverallOptions = None
-            try: spellOverallOptions = client.get("/app/config/settings/spell/overall/options.json").get_json(force=True)
-            except: spellOverallOptions = None
-            if(spellOverallOptions is None): return
-            if(not spellOverallOptions["switch"]):
-                self.endInGameSpellHelper()
-            elif(self.InGameSpellHelperUI):
-                if(not self.InGameSpellHelperUI.isVisible()):
-                    if(localTeam is None or gameStats is None): return
-                    self.startInGameSpellHelper(localTeam, gameStats)
-                else:
-                    self.InGameSpellHelperUI.update()
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "spell", "overall", "options.json"
+        ), "r") as f: spellOverallOptions = json.load(f)
+        if(not spellOverallOptions.get("switch", False)):
+            self.endInGameSpellHelper()
+        elif(self.InGameSpellHelperUI):
+            if(not self.InGameSpellHelperUI.isVisible()):
+                if(localTeam is None or gameStats is None): return
+                self.startInGameSpellHelper(localTeam, gameStats)
+            else:
+                self.InGameSpellHelperUI.update()
 
 
 
@@ -110,65 +110,26 @@ class InProgress(AbstractPhase):
     def update_SendStatsData(self, localTeam, playerListByTeamByName):
         if(self.isSendingStatsData()): return True
         enemyOf = {"ORDER":"CHAOS", "CHAOS":"ORDER"}
-        with self.parent.server.test_client() as client:
+        fastRef = {"fast-team":localTeam, "fast-enemy":enemyOf[localTeam]}
+        for fastType, fastTeam in fastRef.items():
             if(self.isSendingStatsData()): return True
-            try: fastTeamData = client.get(f"/app/config/settings/stats/progress-send/fast-team.json").get_json(force=True)
-            except: fastTeamData = {}
-            if(fastTeamData and win32api.GetAsyncKeyState(fastTeamData["keybind"])):
-                if(self.isSendingStatsData()): return True
-                logging.info(f"[Phase InProgress] fastTeamData: {fastTeamData}")
-                playerNames = [n for n,p in playerListByTeamByName[localTeam].items() if not p["isBot"]]
+            with open(sys.modules["StorageManager"].LocalStorage.path(
+                "cfg", "settings", "stats", "progress-send", f"{fastType}.json"
+            ), "r") as f: fastData = json.load(f)
+            if(fastData.get("keybind", -1) > 0 and win32api.GetAsyncKeyState(fastData["keybind"])):
+                playerNames = [n for n,p in playerListByTeamByName.get(fastTeam,{}).items() if not p["isBot"]]
+                sendSelf = (not fastData.get("no-self", True))
+                sendFriends = (not fastData.get("no-friend", True))
+                isAlly = (fastTeam == localTeam)
                 self.collectStatsDataThread = TaskThread(
                     target=StatsDataCollector.sendStatsData, 
                     delay=0, tries=30, fargs=(
                         self.sendStatsDataStrings, playerNames, 
-                        not fastTeamData["no-self"], not fastTeamData["no-friend"], True, True,
+                        sendSelf, sendFriends, True, isAlly,
                         self.__class__.__name__
                     ), onFinished=self.endCollectStatsDataThread
                 ).start()
                 return True
-            if(self.isSendingStatsData()): return True
-            try: fastEnemyData = client.get(f"/app/config/settings/stats/progress-send/fast-enemy.json").get_json(force=True)
-            except: fastEnemyData = {}
-            if(fastEnemyData and win32api.GetAsyncKeyState(fastEnemyData["keybind"])):
-                if(self.isSendingStatsData()): return True
-                logging.info(f"[Phase InProgress] fastEnemyData: {fastEnemyData}")
-                playerNames = [n for n,p in playerListByTeamByName[enemyOf[localTeam]].items() if not p["isBot"]]
-                self.collectStatsDataThread = TaskThread(
-                    target=StatsDataCollector.sendStatsData, 
-                    delay=0, tries=30, fargs=(
-                        self.sendStatsDataStrings, playerNames, 
-                        False, False, True, False,
-                        self.__class__.__name__
-                    ), onFinished=self.endCollectStatsDataThread
-                ).start()
-                return True
-        return True
-
-    def update_SendStatsData(self, localTeam, playerListByTeamByName):
-        if(self.isSendingStatsData()): return True
-        enemyOf = {"ORDER":"CHAOS", "CHAOS":"ORDER"}
-        fastRef = {"fast-team": localTeam, "fast-enemy": enemyOf[localTeam]}
-        with self.parent.server.test_client() as client:
-            for fastType, fastTeam in fastRef.items():
-                if(self.isSendingStatsData()): return True
-                try: fastData = client.get(f"/app/config/settings/stats/progress-send/{fastType}.json").get_json(force=True)
-                except: fastData = {}
-                if(not fastData): continue
-                if(win32api.GetAsyncKeyState(fastData["keybind"])):
-                    playerNames = [n for n,p in playerListByTeamByName.get(fastTeam,{}).items() if not p["isBot"]]
-                    sendSelf = (not fastData.get("no-self", True))
-                    sendFriends = (not fastData.get("no-friend", True))
-                    isAlly = (fastTeam == localTeam)
-                    self.collectStatsDataThread = TaskThread(
-                        target=StatsDataCollector.sendStatsData, 
-                        delay=0, tries=30, fargs=(
-                            self.sendStatsDataStrings, playerNames, 
-                            sendSelf, sendFriends, True, isAlly,
-                            self.__class__.__name__
-                        ), onFinished=self.endCollectStatsDataThread
-                    ).start()
-                    break
         return True
 
 

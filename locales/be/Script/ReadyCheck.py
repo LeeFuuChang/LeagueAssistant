@@ -3,6 +3,8 @@ from .abstract import AbstractPhase
 from .utils.thread import TaskThread
 
 import logging
+import json
+import sys
 
 
 
@@ -36,15 +38,14 @@ class ReadyCheck(AbstractPhase):
 
 
     def update(self):
-        with self.parent.server.test_client() as client:
-            try: gameOverallOptions = client.get(f"/app/config/settings/game/overall/options.json").get_json(force=True)
-            except: gameOverallOptions = {}
-            if(gameOverallOptions and gameOverallOptions["auto-accept"] and not self.isAutoAccepting()):
+        if(not self.isAutoAccepting()):
+            with open(sys.modules["StorageManager"].LocalStorage.path(
+                "cfg", "settings", "game", "overall", "options.json"
+            ), "r") as f: gameOverallOptions = json.load(f)
+            if(gameOverallOptions.get("auto-accept", False)):
                 self.autoAcceptThread = TaskThread(
                     target=self.postAutoAccept,
                     delay=1,
                     tries=30,
                     onFinished=self.endAutoAccept
                 ).start()
-
-

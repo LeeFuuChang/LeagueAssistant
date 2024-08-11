@@ -1,4 +1,6 @@
 from flask import current_app
+import json
+import sys
 
 
 class StatsDataCollector:
@@ -62,28 +64,28 @@ class StatsDataCollector:
 
     @staticmethod
     def getSendingConfig(currentPhase):
-        with current_app.test_client() as client:
-            statsOverallOptions = None
-            try: statsOverallOptions = client.get("/app/config/settings/stats/overall/options.json").get_json(force=True)
-            except: statsOverallOptions = None
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", "overall", "options.json"
+        ), "r") as f: statsOverallOptions = json.load(f)
 
-            statsOverallQueues = None
-            try: statsOverallQueues = client.get("/app/config/settings/stats/overall/queues.json").get_json(force=True)
-            except: statsOverallQueues = None
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", "overall", "queues.json"
+        ), "r") as f: statsOverallQueues = json.load(f)
 
-            statsOverallSending = None
-            try: statsOverallSending = client.get("/app/config/settings/stats/overall/sending.json").get_json(force=True)
-            except: statsOverallSending = None
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", "overall", "sending.json"
+        ), "r") as f: statsOverallSending = json.load(f)
 
-            phase = {"ChampSelect":"select", "InProgress":"progress"}[currentPhase]
+        phase = {"ChampSelect":"select", "InProgress":"progress"}[currentPhase]
 
-            statsSendOptions = None
-            try: statsSendOptions = client.get(f"/app/config/settings/stats/{phase}-send/options.json").get_json(force=True)
-            except: statsSendOptions = None
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", f"{phase}-send", "options.json"
+        ), "r") as f: statsSendOptions = json.load(f)
 
-            statsSendNickname = None
-            try: statsSendNickname = client.get(f"/app/config/settings/stats/{phase}-send/nickname.json").get_json(force=True)
-            except: statsSendNickname = None
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", f"{phase}-send", "nickname.json"
+        ), "r") as f: statsSendNickname = json.load(f)
+
         return statsOverallOptions, statsOverallQueues, statsOverallSending, statsSendOptions, statsSendNickname
 
 
@@ -284,4 +286,3 @@ class StatsDataCollector:
 
             sendingFunction(statsStrings)
         return True
-

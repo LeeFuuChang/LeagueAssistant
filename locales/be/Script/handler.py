@@ -7,6 +7,8 @@ from .InProgress import InProgress
 from PyQt5.QtCore import QObject, QTimer, pyqtSignal
 import logging
 import time
+import json
+import sys
 
 
 class PhaseHandler(QObject):
@@ -33,9 +35,10 @@ class PhaseHandler(QObject):
 
 
     def autoRequeue(self, client):
-        try: gameOverallOptions = client.get(f"/app/config/settings/game/overall/options.json").get_json(force=True)
-        except: gameOverallOptions = {}
-        if(not gameOverallOptions or not gameOverallOptions["auto-requeue"]): return
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "game", "overall", "options.json"
+        ), "r") as f: gameOverallOptions = json.load(f)
+        if(not gameOverallOptions.get("auto-requeue", False)): return
 
         matchData = None
         matchesURL = "/riot/lcu/0/lol-match-history/v1/products/lol/current-summoner/matches"

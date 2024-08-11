@@ -6,6 +6,8 @@ from .utils import Chat
 
 import win32api
 import logging
+import json
+import sys
 
 
 
@@ -67,17 +69,17 @@ class ChampSelect(AbstractPhase):
 
     def update_AutoPublicity(self, champSelectCID):
         if(self.autoPublicityCompleted or self.autoPublicityThread is not None): return True
-        with self.parent.server.test_client() as client:
-            try: appOptions = client.get("/app/config/app.json").get_json(force=True)
-            except: return False
-            if(not appOptions.get("allow-publicity", False)): return True
-            self.autoPublicityThread = TaskThread(
-                target=Chat.sendPublicity,
-                delay=1,
-                tries=10,
-                fargs=(self.parent.server, champSelectCID),
-                onFinished=self.endAutoPublicity,
-            ).start()
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "app.json"
+        ), "r") as f: appOptions = json.load(f)
+        if(not appOptions.get("allow-publicity", False)): return True
+        self.autoPublicityThread = TaskThread(
+            target=Chat.sendPublicity,
+            delay=1,
+            tries=10,
+            fargs=(self.parent.server, champSelectCID),
+            onFinished=self.endAutoPublicity,
+        ).start()
         return True
 
 
@@ -97,54 +99,51 @@ class ChampSelect(AbstractPhase):
         self.hasIncompleteBanPick = False
 
     def getAutoBanData(self, shortenedPosition):
-        print(shortenedPosition)
         banningData = {"enabled":False, "champions":{}}
-        with self.parent.server.test_client() as client:
-            try: autoBanCfg = client.get(f"/app/config/settings/game/auto-ban/{shortenedPosition}.json").get_json(force=True)
-            except: autoBanCfg = {}
-            if(not autoBanCfg): return False
-            filterFunc = (lambda i:(autoBanCfg.get("switch", False) and autoBanCfg.get(f"{chr(i)}-c", -1)>0))
-            autoBanningChars = [chr(i) for i in range(ord("a"), ord("z")+1) if filterFunc(i)]
-            banningData["enabled"] = (len(autoBanningChars) > 0)
-            if(banningData["enabled"]):
-                banningData["champions"] = {autoBanCfg[f"{c}-c"]:{
-                    "available": True,
-                    "index": ord(c),
-                    "lock": autoBanCfg["lock"],
-                    "c": autoBanCfg[f"{c}-c"],
-                } for c in autoBanningChars}
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "game", "auto-ban", f"{shortenedPosition}.json"
+        ), "r") as f: autoBanCfg = json.load(f)
+        filterFunc = (lambda i:(autoBanCfg.get("switch", False) and autoBanCfg.get(f"{chr(i)}-c", -1)>0))
+        autoBanningChars = [chr(i) for i in range(ord("a"), ord("z")+1) if filterFunc(i)]
+        banningData["enabled"] = (len(autoBanningChars) > 0)
+        if(banningData["enabled"]):
+            banningData["champions"] = {autoBanCfg[f"{c}-c"]:{
+                "available": True,
+                "index": ord(c),
+                "lock": autoBanCfg["lock"],
+                "c": autoBanCfg[f"{c}-c"],
+            } for c in autoBanningChars}
         self.autoBanCompleted = (self.autoBanCompleted or not banningData["enabled"])
         return banningData
 
     def getAutoPickData(self, shortenedPosition):
         pickingData = {"enabled":False, "champions":{}}
-        with self.parent.server.test_client() as client:
-            try: autoPickCfg = client.get(f"/app/config/settings/game/auto-pick/{shortenedPosition}.json").get_json(force=True)
-            except: autoPickCfg = {}
-            if(not autoPickCfg): return False
-            filterFunc = (lambda i:(autoPickCfg.get(f"{chr(i)}-switch", False) and autoPickCfg.get(f"{chr(i)}-c", -1)>0))
-            autoPickingChars = [chr(i) for i in range(ord("a"), ord("z")+1) if filterFunc(i)]
-            pickingData["enabled"] = (len(autoPickingChars) > 0)
-            if(pickingData["enabled"]):
-                pickingData["champions"] = {autoPickCfg[f"{c}-c"]:{
-                    "available": True,
-                    "index": ord(c),
-                    "lock": autoPickCfg[f"{c}-lock"],
-                    "c": autoPickCfg[f"{c}-c"],
-                    "d": autoPickCfg[f"{c}-d"],
-                    "f": autoPickCfg[f"{c}-f"],
-                    "r": {
-                        "switch": autoPickCfg[f"{c}-rune-switch"],
-                        "primaryStyleId": autoPickCfg[f"{c}-rune-0-0"],
-                        "subStyleId": autoPickCfg[f"{c}-rune-1-0"],
-                        "selectedPerkIds": [
-                            autoPickCfg[f"{c}-rune-{a}-{b}"] 
-                            for a in range(0, 10) 
-                            for b in range(1, 10)
-                            if(f"{c}-rune-{a}-{b}" in autoPickCfg)
-                        ],
-                    },
-                } for c in autoPickingChars}
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "game", "auto-pick", f"{shortenedPosition}.json"
+        ), "r") as f: autoPickCfg = json.load(f)
+        filterFunc = (lambda i:(autoPickCfg.get(f"{chr(i)}-switch", False) and autoPickCfg.get(f"{chr(i)}-c", -1)>0))
+        autoPickingChars = [chr(i) for i in range(ord("a"), ord("z")+1) if filterFunc(i)]
+        pickingData["enabled"] = (len(autoPickingChars) > 0)
+        if(pickingData["enabled"]):
+            pickingData["champions"] = {autoPickCfg[f"{c}-c"]:{
+                "available": True,
+                "index": ord(c),
+                "lock": autoPickCfg[f"{c}-lock"],
+                "c": autoPickCfg[f"{c}-c"],
+                "d": autoPickCfg[f"{c}-d"],
+                "f": autoPickCfg[f"{c}-f"],
+                "r": {
+                    "switch": autoPickCfg[f"{c}-rune-switch"],
+                    "primaryStyleId": autoPickCfg[f"{c}-rune-0-0"],
+                    "subStyleId": autoPickCfg[f"{c}-rune-1-0"],
+                    "selectedPerkIds": [
+                        autoPickCfg[f"{c}-rune-{a}-{b}"] 
+                        for a in range(0, 10) 
+                        for b in range(1, 10)
+                        if(f"{c}-rune-{a}-{b}" in autoPickCfg)
+                    ],
+                },
+            } for c in autoPickingChars}
         self.autoPickCompleted = (self.autoPickCompleted or not pickingData["enabled"])
         return pickingData
 
@@ -162,7 +161,7 @@ class ChampSelect(AbstractPhase):
     def update_AutoRunes(self, pickedChampionData):
         autoRuneData = pickedChampionData.get("r", {})
         payload = {
-            "name": "LA - 自動符文",
+            "name": "LA - Auto Rune",
             "primaryStyleId": autoRuneData.get("primaryStyleId", -1),
             "subStyleId": autoRuneData.get("subStyleId", -1),
             "selectedPerkIds": autoRuneData.get("selectedPerkIds", []),
@@ -298,35 +297,21 @@ class ChampSelect(AbstractPhase):
 
     def update_SendStatsData(self, champSelectCID, champSelectParticipants):
         if(self.isSendingStatsData()): return True
-        with self.parent.server.test_client() as client:
+        for fastType in ["fast-self", "fast-team"]:
             if(self.isSendingStatsData()): return True
-            try: fastSelfData = client.get(f"/app/config/settings/stats/select-send/fast-self.json").get_json(force=True)
-            except: fastSelfData = {}
-            if(fastSelfData and win32api.GetAsyncKeyState(fastSelfData["keybind"])):
-                if(self.isSendingStatsData()): return True
-                logging.info(f"[{self.__class__.__name__}] Sending SelfData: {fastSelfData}")
+            with open(sys.modules["StorageManager"].LocalStorage.path(
+                "cfg", "settings", "stats", "select-send", f"{fastType}.json"
+            ), "r") as f: fastData = json.load(f)
+            if(fastData.get("keybind", -1) > 0 and win32api.GetAsyncKeyState(fastData["keybind"])):
+                sendSelf = (fastType == "fast-self" or not fastData.get("no-self", True))
+                sendFriends = (not fastData.get("no-friend", True))
+                sendOthers = (fastType == "fast-team")
                 self.collectStatsDataThread = TaskThread(
                     target=StatsDataCollector.sendStatsData, 
                     delay=0, tries=30, fargs=(
                         lambda strings: self.sendStatsDataStrings(champSelectCID, strings), 
                         [p["name"] for p in champSelectParticipants], 
-                        True, False, False, True,
-                        self.__class__.__name__
-                    ), onFinished=self.endCollectStatsDataThread
-                ).start()
-                return True
-            if(self.isSendingStatsData()): return True
-            try: fastTeamData = client.get(f"/app/config/settings/stats/select-send/fast-team.json").get_json(force=True)
-            except: fastTeamData = {}
-            if(fastTeamData and win32api.GetAsyncKeyState(fastTeamData["keybind"])):
-                if(self.isSendingStatsData()): return True
-                logging.info(f"[{self.__class__.__name__}] Sending TeamData: {fastTeamData}")
-                self.collectStatsDataThread = TaskThread(
-                    target=StatsDataCollector.sendStatsData, 
-                    delay=0, tries=30, fargs=(
-                        lambda strings: self.sendStatsDataStrings(champSelectCID, strings), 
-                        [p["name"] for p in champSelectParticipants], 
-                        not fastTeamData["no-self"], not fastTeamData["no-friend"], True, True,
+                        sendSelf, sendFriends, sendOthers, True,
                         self.__class__.__name__
                     ), onFinished=self.endCollectStatsDataThread
                 ).start()
