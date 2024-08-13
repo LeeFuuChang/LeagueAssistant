@@ -6,12 +6,11 @@ import time
 
 class TaskThread(threading.Thread):
     running = {}
-    def __init__(self, target, interval=0, delay=0, tries=5, fargs=(), onFinished=lambda:None):
+    def __init__(self, target, delay=0, tries=5, fargs=(), onFinished=lambda:None):
         super(self.__class__, self).__init__(target=self.wrappedFunction, daemon=True)
         self.target = target
         self.threadName = self.target.__name__
         self.event = threading.Event()
-        self.interval = interval
         self.delay = delay
         self.tries = tries
         self.fargs = fargs
@@ -25,17 +24,14 @@ class TaskThread(threading.Thread):
             self.onFinished()
 
     def wrappedFunction(self):
-        passed = False
         time.sleep(self.delay)
-        while(not self.event.is_set() and not passed and self.tries != 0):
+        while(not self.event.is_set() and self.tries != 0):
             try:
-                passed = self.target(*self.fargs)
+                self.tries -= 1
+                if(bool(self.target(*self.fargs))): break
             except Exception as e:
                 logging.error(traceback.format_exc())
-            finally:
-                self.tries -= 1
-                time.sleep(self.interval)
-        else: self.finish()
+        self.finish()
 
     def start(self):
         if(self.threadName not in self.running):
@@ -65,17 +61,14 @@ class SteppedTaskThread(threading.Thread):
             self.onFinished()
 
     def wrappedFunction(self):
-        passed = False
         time.sleep(self.delay)
         while(not self.event.is_set() and self.targetIndex<len(self.targets) and self.tries != 0):
             try:
-                passed = self.targets[self.targetIndex](*self.fargs)
+                self.tries -= 1
+                self.targetIndex += bool(self.targets[self.targetIndex](*self.fargs))
             except Exception as e:
                 logging.error(traceback.format_exc())
-            finally:
-                self.targetIndex += passed
-                self.tries -= 1
-        else: self.finish()
+        self.finish()
 
     def start(self):
         if(self.threadName not in self.running):

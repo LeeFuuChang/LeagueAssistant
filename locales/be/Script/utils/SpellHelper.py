@@ -238,9 +238,8 @@ class SpellHelperPlayer(QWidget):
         self.data[key]["castTime"] = time.time()
         self.data[key]["thread"] = TaskThread(
             target=self.calculateSpellCastTime,
-            interval=0,
             delay=0,
-            tries=50,
+            tries=10,
             fargs=(key, ),
             onFinished=lambda:self.endSetSpellCastTime(key)
         ).start()
@@ -357,9 +356,8 @@ class SpellHelperPlayer(QWidget):
         self.endBroadcastSpellCooldown()
         self.data["thread"] = TaskThread(
             target=self.broadcastSpellCooldown,
-            interval=0,
             delay=0,
-            tries=50,
+            tries=10,
             fargs=(),
             onFinished=self.endBroadcastSpellCooldown
         ).start()
@@ -495,7 +493,6 @@ class SpellHelperUI(QWidget):
         self.setLayout(self.layout)
         self.setupThread = TaskThread(
             target=self.setup,
-            interval=0,
             delay=0,
             tries=-1,
             fargs=(),
