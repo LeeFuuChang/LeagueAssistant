@@ -1,4 +1,4 @@
-from .abstract import AbstractPhase
+from .abstract import ReadyCheck
 
 from .utils.thread import TaskThread
 
@@ -9,7 +9,7 @@ import sys
 
 
 
-class ReadyCheck(AbstractPhase):
+class ReadyCheck(ReadyCheck):
     autoAccepted = False
     autoAcceptThread = None
 
@@ -46,7 +46,7 @@ class ReadyCheck(AbstractPhase):
             if(gameOverallOptions.get("auto-accept", False)):
                 self.autoAcceptThread = TaskThread(
                     target=self.postAutoAccept,
-                    delay=1,
-                    tries=30,
+                    delay=0,
+                    tries=10,
                     onFinished=self.endAutoAccept
                 ).start()

@@ -1,4 +1,4 @@
-from .abstract import AbstractPhase
+from .abstract import ChampSelect
 
 from .utils.Collector import StatsDataCollector
 from .utils.thread import TaskThread, SteppedTaskThread
@@ -9,10 +9,11 @@ import win32api
 import logging
 import json
 import sys
+import os
 
 
 
-class ChampSelect(AbstractPhase):
+class ChampSelect(ChampSelect):
     autoPublicityCompleted = False
     autoPublicityThread = None
 
@@ -74,11 +75,16 @@ class ChampSelect(AbstractPhase):
             "cfg", "app.json"
         ), "r") as f: appOptions = json.load(f)
         if(not appOptions.get("allow-publicity", False)): return True
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "static", "PublicitySlogan.txt"
+        ), "r") as f: publicity = f.read()
+        if(not publicity): return True
+        logging.info(f"[{self.__class__.__name__}] Publicity: {publicity}")
         self.autoPublicityThread = TaskThread(
-            target=Chat.sendPublicity,
+            target=Chat.sendChampSelect,
             delay=1,
             tries=10,
-            fargs=(champSelectCID, ),
+            fargs=(champSelectCID, publicity),
             onFinished=self.endAutoPublicity,
         ).start()
         return True
@@ -293,7 +299,7 @@ class ChampSelect(AbstractPhase):
         if(self.sendStatsDataThread is not None): self.sendStatsDataThread.event.set()
         self.sendStatsDataThread = SteppedTaskThread(
             targets=[(lambda cid,_s=s:Chat.sendChampSelect(cid, _s)) for s in dataStrings],
-            delay=0, tries=30, fargs=(champSelectCID, ), onFinished=self.endSendStatsDataThread
+            delay=0, tries=10, fargs=(champSelectCID, ), onFinished=self.endSendStatsDataThread
         ).start()
 
     def update_SendStatsData(self, champSelectCID, champSelectParticipants):
@@ -309,7 +315,7 @@ class ChampSelect(AbstractPhase):
                 sendOthers = (fastType == "fast-team")
                 self.collectStatsDataThread = TaskThread(
                     target=StatsDataCollector.sendStatsData, 
-                    delay=0, tries=30, fargs=(
+                    delay=0, tries=10, fargs=(
                         lambda strings: self.sendStatsDataStrings(champSelectCID, strings), 
                         [p["name"] for p in champSelectParticipants], 
                         sendSelf, sendFriends, sendOthers, True,

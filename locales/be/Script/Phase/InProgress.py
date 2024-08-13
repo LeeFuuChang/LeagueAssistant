@@ -3,7 +3,7 @@ from .utils.Collector import StatsDataCollector
 from .utils.thread import TaskThread
 from .utils import Chat
 
-from .abstract import AbstractPhase
+from .abstract import InProgress
 
 from flask import current_app
 import win32api
@@ -13,7 +13,7 @@ import sys
 
 
 
-class InProgress(AbstractPhase):
+class InProgress(InProgress):
     InGameSpellHelperUI = None
     gameMode = None
 
@@ -104,7 +104,7 @@ class InProgress(AbstractPhase):
         if(self.sendStatsDataThread is not None): self.sendStatsDataThread.event.set()
         self.sendStatsDataThread = TaskThread(
             target=Chat.sendInProgress,
-            delay=0, tries=30, fargs=(dataStrings, ),
+            delay=0, tries=10, fargs=(dataStrings, ),
             onFinished=self.endSendStatsDataThread
         ).start()
 
@@ -124,7 +124,7 @@ class InProgress(AbstractPhase):
                 isAlly = (fastTeam == localTeam)
                 self.collectStatsDataThread = TaskThread(
                     target=StatsDataCollector.sendStatsData, 
-                    delay=0, tries=30, fargs=(
+                    delay=0, tries=10, fargs=(
                         self.sendStatsDataStrings, playerNames, 
                         sendSelf, sendFriends, True, isAlly,
                         self.__class__.__name__
