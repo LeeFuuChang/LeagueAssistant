@@ -83,9 +83,9 @@ class PhaseHandler(QObject):
                 logging.info(f"[Phase Handler] Phase changed from {self.currentPhase} to {phase}")
                 for handler in self.handlers.values(): handler.reset()
                 self.currentPhase = phase
+                self.autoRequeue(client)
 
             if(self.currentPhase in self.handlers): self.handlers[self.currentPhase].update()
-            self.autoRequeue(client)
 
 
     def run(self):
