@@ -150,6 +150,7 @@ def run():
     ).start()
 
     try:
+        logging.info(f"Setting AppUserID to: '{os.environ['APP_USER_MODEL_ID']}'")
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(os.environ["APP_USER_MODEL_ID"])
     except Exception as e:
         logging.error(f"Failed to set AppUserID:\n{''.join(traceback.format_exception(e.__class__, e, e.__traceback__))}")

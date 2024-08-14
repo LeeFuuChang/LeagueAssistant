@@ -44,7 +44,7 @@ class ReadyCheck(ReadyCheck):
         if(not self.isAutoAccepting()):
             with open(sys.modules["StorageManager"].LocalStorage.path(
                 "cfg", "settings", "game", "overall", "options.json"
-            ), "r") as f: gameOverallOptions = json.load(f)
+            ), "r", encoding="UTF-8") as f: gameOverallOptions = json.load(f)
             if(gameOverallOptions.get("auto-accept", False)):
                 self.autoAcceptThread = TaskThread(
                     target=self.postAutoAccept,

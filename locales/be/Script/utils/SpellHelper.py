@@ -296,19 +296,19 @@ class SpellHelperPlayer(QWidget):
     def broadcastSpellCooldown(self):
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "settings", "spell", "overall", "nickname.json"
-        ), "r") as f: spellOverallNickname = json.load(f)
+        ), "r", encoding="UTF-8") as f: spellOverallNickname = json.load(f)
 
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "settings", "spell", "send", "options.json"
-        ), "r") as f: spellSendOptions = json.load(f)
+        ), "r", encoding="UTF-8") as f: spellSendOptions = json.load(f)
 
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "settings", "spell", "send", "format.json"
-        ), "r") as f: spellSendFormat = json.load(f)
+        ), "r", encoding="UTF-8") as f: spellSendFormat = json.load(f)
 
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "settings", "spell", "send", "nickname.json"
-        ), "r") as f: spellSendNickname = json.load(f)
+        ), "r", encoding="UTF-8") as f: spellSendNickname = json.load(f)
 
         if(spellSendOptions["champion-name"]): playerNick = self.data["championName"]
         else: playerNick = spellOverallNickname[f"player{self.data['index']+1}"]
@@ -562,15 +562,15 @@ class SpellHelperUI(QWidget):
     def reloadStyle(self):
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "appearance", "spell", "overall", "options.json"
-        ), "r") as f: overallOptions = json.load(f)
+        ), "r", encoding="UTF-8") as f: overallOptions = json.load(f)
 
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "appearance", "spell", "overall", "notify-color.json"
-        ), "r") as f: overallNotify = json.load(f)
+        ), "r", encoding="UTF-8") as f: overallNotify = json.load(f)
 
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "appearance", "spell", "overall", "counter-color.json"
-        ), "r") as f: overallCounter = json.load(f)
+        ), "r", encoding="UTF-8") as f: overallCounter = json.load(f)
 
         for helper in self.players.values():
             helper.data["styles"]["notify-color"] = overallNotify

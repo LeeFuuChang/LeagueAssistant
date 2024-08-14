@@ -203,19 +203,19 @@ class StatsDataCollector:
     def collectSendingStrings(cls, names, isAlly, currentPhase):
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "settings", "stats", "overall", "options.json"
-        ), "r") as f: statsOverallOptions = json.load(f)
+        ), "r", encoding="UTF-8") as f: statsOverallOptions = json.load(f)
         gameCount = int(statsOverallOptions["games"])
 
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "settings", "stats", "overall", "queues.json"
-        ), "r") as f: statsOverallQueues = json.load(f)
+        ), "r", encoding="UTF-8") as f: statsOverallQueues = json.load(f)
         queueIds = {int(qid) for qid, v in statsOverallQueues.items() if v}
 
         phase = {"ChampSelect":"select", "InProgress":"progress"}[currentPhase]
 
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "settings", "stats", f"{phase}-send", "options.json"
-        ), "r") as f: statsSendOptions = json.load(f)
+        ), "r", encoding="UTF-8") as f: statsSendOptions = json.load(f)
         sorting = [*[key.split("-")[0] for key, v in statsSendOptions.items() if v], "winrate"][0]
 
         collectedData = [cls.collectSendingStatsData(name, gameCount, queueIds) for name in names]
@@ -224,11 +224,11 @@ class StatsDataCollector:
 
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "settings", "stats", f"{phase}-send", "nickname.json"
-        ), "r") as f: statsSendNickname = json.load(f)
+        ), "r", encoding="UTF-8") as f: statsSendNickname = json.load(f)
 
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "settings", "stats", "overall", "sending.json"
-        ), "r") as f: statsOverallSending = json.load(f)
+        ), "r", encoding="UTF-8") as f: statsOverallSending = json.load(f)
 
         return [cls.constructSendingString(
             statsSendNickname[f"player{idx+1}"], data, statsOverallSending, isAlly

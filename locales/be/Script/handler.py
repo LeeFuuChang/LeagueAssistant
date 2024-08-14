@@ -50,7 +50,7 @@ class PhaseHandler(QObject):
 
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "settings", "game", "overall", "options.json"
-        ), "r") as f: gameOverallOptions = json.load(f)
+        ), "r", encoding="UTF-8") as f: gameOverallOptions = json.load(f)
         if(not gameOverallOptions.get("auto-requeue", False)): return
 
         matchesURL = "/riot/lcu/0/lol-match-history/v1/products/lol/current-summoner/matches"

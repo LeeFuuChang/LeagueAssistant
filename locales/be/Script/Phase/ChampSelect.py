@@ -74,11 +74,11 @@ class ChampSelect(ChampSelect):
         if(self.autoPublicityCompleted or self.autoPublicityThread is not None): return True
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "app.json"
-        ), "r") as f: appOptions = json.load(f)
+        ), "r", encoding="UTF-8") as f: appOptions = json.load(f)
         if(not appOptions.get("allow-publicity", False)): return True
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "static", "PublicitySlogan.txt"
-        ), "r") as f: publicity = f.read()
+        ), "r", encoding="UTF-8") as f: publicity = f.read()
         if(not publicity): return True
         logging.info(f"[{self.__class__.__name__}] Publicity: {publicity}")
         self.autoPublicityThread = TaskThread(
@@ -110,7 +110,7 @@ class ChampSelect(ChampSelect):
         banningData = {"enabled":False, "champions":{}}
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "settings", "game", "auto-ban", f"{shortenedPosition}.json"
-        ), "r") as f: autoBanCfg = json.load(f)
+        ), "r", encoding="UTF-8") as f: autoBanCfg = json.load(f)
         filterFunc = (lambda i:(autoBanCfg.get("switch", False) and autoBanCfg.get(f"{chr(i)}-c", -1)>0))
         autoBanningChars = [chr(i) for i in range(ord("a"), ord("z")+1) if filterFunc(i)]
         banningData["enabled"] = (len(autoBanningChars) > 0)
@@ -128,7 +128,7 @@ class ChampSelect(ChampSelect):
         pickingData = {"enabled":False, "champions":{}}
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "settings", "game", "auto-pick", f"{shortenedPosition}.json"
-        ), "r") as f: autoPickCfg = json.load(f)
+        ), "r", encoding="UTF-8") as f: autoPickCfg = json.load(f)
         filterFunc = (lambda i:(autoPickCfg.get(f"{chr(i)}-switch", False) and autoPickCfg.get(f"{chr(i)}-c", -1)>0))
         autoPickingChars = [chr(i) for i in range(ord("a"), ord("z")+1) if filterFunc(i)]
         pickingData["enabled"] = (len(autoPickingChars) > 0)
@@ -309,7 +309,7 @@ class ChampSelect(ChampSelect):
             if(self.isSendingStatsData()): return True
             with open(sys.modules["StorageManager"].LocalStorage.path(
                 "cfg", "settings", "stats", "select-send", f"{fastType}.json"
-            ), "r") as f: fastData = json.load(f)
+            ), "r", encoding="UTF-8") as f: fastData = json.load(f)
             if(fastData.get("keybind", -1) > 0 and win32api.GetAsyncKeyState(fastData["keybind"])):
                 sendSelf = (fastType == "fast-self" or not fastData.get("no-self", True))
                 sendFriends = (not fastData.get("no-friend", True))

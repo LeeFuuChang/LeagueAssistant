@@ -75,7 +75,7 @@ class InProgress(InProgress):
     def update_InGameSpellHelper(self, localTeam, gameStats):
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "settings", "spell", "overall", "options.json"
-        ), "r") as f: spellOverallOptions = json.load(f)
+        ), "r", encoding="UTF-8") as f: spellOverallOptions = json.load(f)
         if(not spellOverallOptions.get("switch", False)):
             self.endInGameSpellHelper()
         elif(self.InGameSpellHelperUI):
@@ -118,7 +118,7 @@ class InProgress(InProgress):
             if(self.isSendingStatsData()): return True
             with open(sys.modules["StorageManager"].LocalStorage.path(
                 "cfg", "settings", "stats", "progress-send", f"{fastType}.json"
-            ), "r") as f: fastData = json.load(f)
+            ), "r", encoding="UTF-8") as f: fastData = json.load(f)
             if(fastData.get("keybind", -1) > 0 and win32api.GetAsyncKeyState(fastData["keybind"])):
                 playerNames = [n for n,p in playerListByTeamByName.get(fastTeam,{}).items() if not p["isBot"]]
                 sendSelf = (not fastData.get("no-self", True))
