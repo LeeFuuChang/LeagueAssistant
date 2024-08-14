@@ -41,10 +41,9 @@ def sendInProgress(messages):
     for hwnd in hwnds:
         win32api.SendMessage(hwnd, win32con.WM_INPUTLANGCHANGEREQUEST, 0, 0x409)
 
-        # win32gui.SetWindowPos(hwnds[0], win32con.HWND_TOPMOST, 0,0,0,0, win32con.SWP_NOMOVE | win32con.SWP_NOSIZE)
-        # win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
-        # win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
+        keyboard.press("alt")
         win32gui.SetForegroundWindow(hwnd)
+        keyboard.release("alt")
 
         for message in messages:
             logging.info(f"[LolChatInProgress] send({hwnd}): {repr(message)}")
