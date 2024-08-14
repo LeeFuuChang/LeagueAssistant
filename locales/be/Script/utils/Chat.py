@@ -1,4 +1,5 @@
-from flask import current_app
+from Server.Flask import WebServer
+
 import win32process
 import win32gui
 import win32api
@@ -12,7 +13,7 @@ import time
 def sendChampSelect(cid, message):
     if(not message): return True
     logging.info(f"[LolChatChampSelect] send({cid}): {repr(message)}")
-    with current_app.test_client() as client:
+    with WebServer().test_client() as client:
         response = client.post(
             f"/riot/lcu/0/lol-chat/v1/conversations/{cid}/messages",
             json={"type":"chat", "body":message}

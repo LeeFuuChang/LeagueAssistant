@@ -1,11 +1,12 @@
-from thread import TaskThread
-import Chat
+from .thread import TaskThread
+from . import Chat
 
 from PyQt5.QtWidgets import QWidget, QDesktopWidget, QGridLayout, QLabel, QGraphicsOpacityEffect, QMenu, QAction
 from PyQt5.QtCore import QObject, QEvent, Qt, pyqtSignal
 from PyQt5.QtGui import QCursor, QPixmap, QIcon
 
-from flask import current_app
+from Server.Flask import WebServer
+
 import difflib
 import logging
 import time
@@ -155,7 +156,7 @@ class SpellHelperPlayer(QWidget):
 
 
     def reloadPixmap(self):
-        with current_app.test_client() as client:
+        with WebServer().test_client() as client:
             champRequest = client.get(self.data["championImageURL"])
             self.data["championPixmap"].loadFromData(champRequest.data)
             spell1Request = client.get(self.data["spell1"]["imageURL"])
@@ -216,7 +217,7 @@ class SpellHelperPlayer(QWidget):
             description = description[begIndex:]
             if(not description.isnumeric()): return 0
             else: return int(description)
-        with current_app.test_client() as client:
+        with WebServer().test_client() as client:
             name = self.data["summonerName"]
             playerItems = []
             try: playerItemsRequest = client.get(f"/riot/ingame/playeritems", query_string={"summonerName":name}).get_json(force=True)
@@ -550,7 +551,7 @@ class SpellHelperUI(QWidget):
         self.setupThread = None
 
     def setup(self):
-        with current_app.test_client() as client:
+        with WebServer().test_client() as client:
             itemsData = None
             try: itemsData = client.get(f"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json").get_json(force=True)
             except: itemsData = None
@@ -597,7 +598,7 @@ class SpellHelperUI(QWidget):
 
     def update(self):
         if(not self.setupCompleted): return logging.error("[SpellHelper] Setup Incomplete")
-        with current_app.test_client() as client:
+        with WebServer().test_client() as client:
             playerList = []
             try: playerListRequest = client.get("/riot/ingame/playerlist").get_json(force=True)
             except: playerListRequest = {"success": False}

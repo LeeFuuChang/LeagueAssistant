@@ -1,11 +1,12 @@
-from .utils.SpellHelper import SpellHelperUI
-from .utils.Collector import StatsDataCollector
-from .utils.thread import TaskThread
-from .utils import Chat
+from ..utils.SpellHelper import SpellHelperUI
+from ..utils.Collector import StatsDataCollector
+from ..utils.thread import TaskThread
+from ..utils import Chat
 
 from .abstract import InProgress
 
-from flask import current_app
+from Server.Flask import WebServer
+
 import win32api
 import logging
 import json
@@ -23,7 +24,7 @@ class InProgress(InProgress):
 
 
     def reset(self):
-        super().reset()
+        super(self.__class__, self).reset()
 
         self.endInGameSpellHelper()
         self.InGameSpellHelperUI = SpellHelperUI(None, None)
@@ -35,7 +36,7 @@ class InProgress(InProgress):
 
 
     def getInProgressData(self):
-        with current_app.test_client() as client:
+        with WebServer().test_client() as client:
             localName = None
             try: localNameRequest = client.get("/riot/ingame/activeplayername").get_json(force=True)
             except: localNameRequest = {"success": False}

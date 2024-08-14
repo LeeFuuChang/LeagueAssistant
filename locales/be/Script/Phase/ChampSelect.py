@@ -1,10 +1,11 @@
+from ..utils.Collector import StatsDataCollector
+from ..utils.thread import TaskThread, SteppedTaskThread
+from ..utils import Chat
+
 from .abstract import ChampSelect
 
-from .utils.Collector import StatsDataCollector
-from .utils.thread import TaskThread, SteppedTaskThread
-from .utils import Chat
+from Server.Flask import WebServer
 
-from flask import current_app
 import win32api
 import logging
 import json
@@ -28,7 +29,8 @@ class ChampSelect(ChampSelect):
 
 
     def reset(self):
-        super().reset()
+        super(self.__class__, self).reset()
+
         self.autoPublicityCompleted = False
         self.autoPublicityThread = None
 
@@ -44,7 +46,7 @@ class ChampSelect(ChampSelect):
 
 
     def getChampSelectData(self):
-        with current_app.test_client() as client:
+        with WebServer().test_client() as client:
             participants = []
             champSelectCID = None
             try: chatParticipantsRequest = client.get("/riot/lcu/1/chat/v5/participants/champ-select").get_json(force=True)
@@ -161,7 +163,7 @@ class ChampSelect(ChampSelect):
         if(pickedChampionData.get("f",-1) > 0): payload["spell2Id"] = pickedChampionData["f"]
         if(not payload): self.autoSpellCompleted = True
         if(self.autoSpellCompleted): return
-        with current_app.test_client() as client:
+        with WebServer().test_client() as client:
             response = client.patch("/riot/lcu/0/lol-champ-select/v1/session/my-selection", json=payload)
             self.autoSpellCompleted = (response and getattr(response, "json", {}).get("success", False))
             logging.info(f"[{self.__class__.__name__}] Auto Spell: {+self.autoSpellCompleted} {payload} {response}")
@@ -179,7 +181,7 @@ class ChampSelect(ChampSelect):
                 [payload["primaryStyleId"], payload["subStyleId"], *payload["selectedPerkIds"]
         ]])): self.autoRunesCompleted = True
         if(self.autoRunesCompleted): return
-        with current_app.test_client() as client:
+        with WebServer().test_client() as client:
             readyToBuildPage = False
             try: currentPageRequest = client.get("/riot/lcu/0/lol-perks/v1/currentpage").get_json(force=True)
             except: currentPageRequest = {"success": False}
@@ -230,7 +232,7 @@ class ChampSelect(ChampSelect):
                 if(not banningAvailable): 
                     self.autoBanCompleted = True
                     continue
-                with current_app.test_client() as client:
+                with WebServer().test_client() as client:
                     for champId in banningAvailable:
                         payload = {"completed":banningData["champions"][champId]["lock"], "championId":champId}
                         response = client.patch(actionRequestURL, json=payload)
@@ -245,7 +247,7 @@ class ChampSelect(ChampSelect):
                 if(not pickingAvailable): 
                     self.autoPickCompleted = True
                     continue
-                with current_app.test_client() as client:
+                with WebServer().test_client() as client:
                     for champId in pickingAvailable:
                         payload = {"completed":pickingData["champions"][champId]["lock"], "championId":champId}
                         response = client.patch(actionRequestURL, json=payload)

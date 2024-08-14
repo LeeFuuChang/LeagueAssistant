@@ -1,4 +1,5 @@
-from flask import current_app
+from Server.Flask import WebServer
+
 import json
 import sys
 
@@ -64,7 +65,7 @@ class StatsDataCollector:
 
     @staticmethod
     def fetchPlayer(name):
-        with current_app.test_client() as client:
+        with WebServer().test_client() as client:
             summonerData = None
             try: 
                 summonerData = client.get(
@@ -237,7 +238,7 @@ class StatsDataCollector:
 
     @classmethod
     def sendStatsData(cls, sendingFunction, names, sendSelf, sendFriends, sendOthers, isAlly, currentPhase):
-        with current_app.test_client() as client:
+        with WebServer().test_client() as client:
             try: selfData = client.get(f"/riot/lcu/0/lol-summoner/v1/current-summoner").get_json(force=True)
             except: return False
             if(not selfData["success"]): return False

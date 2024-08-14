@@ -1,7 +1,8 @@
 from . import Phase
 
+from Server.Flask import WebServer
+
 from PyQt5.QtCore import QObject, QTimer, pyqtSignal
-from flask import current_app
 import logging
 import time
 import json
@@ -69,7 +70,7 @@ class PhaseHandler(QObject):
 
 
     def update(self):
-        with current_app.test_client() as client:
+        with WebServer().test_client() as client:
             if(not client.get("/riot/lcu").get_json(force=True)): return
 
             try: phaseRequest = client.get("/riot/lcu/0/lol-gameflow/v1/gameflow-phase").get_json(force=True)

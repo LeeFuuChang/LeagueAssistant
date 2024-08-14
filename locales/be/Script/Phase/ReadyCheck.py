@@ -1,8 +1,9 @@
+from ..utils.thread import TaskThread
+
 from .abstract import ReadyCheck
 
-from .utils.thread import TaskThread
+from Server.Flask import WebServer
 
-from flask import current_app
 import logging
 import json
 import sys
@@ -16,7 +17,7 @@ class ReadyCheck(ReadyCheck):
 
 
     def reset(self):
-        super().reset()
+        super(self.__class__, self).reset()
 
         self.autoAccepted = False
         self.autoAcceptThread = None
@@ -33,7 +34,7 @@ class ReadyCheck(ReadyCheck):
 
     def postAutoAccept(self):
         logging.info(f"[{self.__class__.__name__}] Posting AutoAccept")
-        with current_app.test_client() as client:
+        with WebServer().test_client() as client:
             response = client.post("/riot/lcu/0/lol-matchmaking/v1/ready-check/accept")
             if(not response): return False
             return (response.status_code//100) == 2
