@@ -236,7 +236,14 @@ class SummonerIdentifier {
     }
 
     static FromPuuid = (puuid)=>{
-
+        let promise = new Promise((resolve, reject)=>{
+            let requestURL = `/riot/lcu/0/lol-summoner/v2/summoners/puuid/${puuid}`;
+            $.get(requestURL, {}, (data)=>{
+                let identifier = (data["success"]?data["response"]:this.CreateTemplate());
+                this.ResolveWrapper(resolve, identifier)
+            });
+        });
+        return promise;
     }
 
     static FromSummonerId = (summonerId)=>{
