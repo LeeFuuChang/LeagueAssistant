@@ -63,33 +63,6 @@ class StatsDataCollector:
 
 
     @staticmethod
-    def getSendingConfig(currentPhase):
-        with open(sys.modules["StorageManager"].LocalStorage.path(
-            "cfg", "settings", "stats", "overall", "options.json"
-        ), "r") as f: statsOverallOptions = json.load(f)
-
-        with open(sys.modules["StorageManager"].LocalStorage.path(
-            "cfg", "settings", "stats", "overall", "queues.json"
-        ), "r") as f: statsOverallQueues = json.load(f)
-
-        with open(sys.modules["StorageManager"].LocalStorage.path(
-            "cfg", "settings", "stats", "overall", "sending.json"
-        ), "r") as f: statsOverallSending = json.load(f)
-
-        phase = {"ChampSelect":"select", "InProgress":"progress"}[currentPhase]
-
-        with open(sys.modules["StorageManager"].LocalStorage.path(
-            "cfg", "settings", "stats", f"{phase}-send", "options.json"
-        ), "r") as f: statsSendOptions = json.load(f)
-
-        with open(sys.modules["StorageManager"].LocalStorage.path(
-            "cfg", "settings", "stats", f"{phase}-send", "nickname.json"
-        ), "r") as f: statsSendNickname = json.load(f)
-
-        return statsOverallOptions, statsOverallQueues, statsOverallSending, statsSendOptions, statsSendNickname
-
-
-    @staticmethod
     def fetchPlayer(name):
         with current_app.test_client() as client:
             summonerData = None
@@ -127,7 +100,7 @@ class StatsDataCollector:
 
 
     @classmethod
-    def collectSendingStatsData(cls, name, gameCount, queueIds, ignoreEarly):
+    def collectSendingStatsData(cls, name, gameCount, queueIds):
         collectedData = {
             "name": "",
             "games": [],
@@ -155,7 +128,7 @@ class StatsDataCollector:
         for game in matchData:
             if(len(collectedData["games"]) >= gameCount): break
             if(game["queueId"] not in queueIds): continue
-            if(ignoreEarly and game["gameDuration"] < 300): continue
+            if(game["gameDuration"] < 300): continue
             stats = game["participants"][0]["stats"]
             collectedData["wins"] += stats["win"]
             collectedData["kills"] += stats["kills"]
@@ -228,58 +201,64 @@ class StatsDataCollector:
 
     @classmethod
     def collectSendingStrings(cls, names, isAlly, currentPhase):
-        queueIdReference = {
-            "blind5": 430,
-            "draft5": 400,
-            "rank5solo": 420,
-            "rank5flex": 440,
-            "aram": 450
-        }
-        statsConfig = cls.getSendingConfig(currentPhase)
-        if(statsConfig is None): return None
-        statsOverallOptions, statsOverallQueues, statsOverallSending, statsSendOptions, statsSendNickname = statsConfig
-        sorting = [key for key, v in statsSendOptions.items() if v]
-        if(not sorting): sorting = "winrate"
-        else: sorting = sorting[0].split("-")[0]
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", "overall", "options.json"
+        ), "r") as f: statsOverallOptions = json.load(f)
         gameCount = int(statsOverallOptions["games"])
-        queueIds = {queueIdReference[qid] for qid, v in statsOverallQueues.items() if v}
-        ignoreEarly = statsOverallSending["ignore-early"]
 
-        collectedData = [cls.collectSendingStatsData(name, gameCount, queueIds, ignoreEarly) for name in names]
-        if(None in collectedData): return None
-        collectedData.sort(key=lambda p:p.get(sorting, 0), reverse=True)
-        return [
-            cls.constructSendingString(statsSendNickname[f"player{idx+1}"], data, statsOverallSending, isAlly) 
-            for idx, data in enumerate(collectedData)
-        ]
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", "overall", "queues.json"
+        ), "r") as f: statsOverallQueues = json.load(f)
+        queueIds = {int(qid) for qid, v in statsOverallQueues.items() if v}
+
+        phase = {"ChampSelect":"select", "InProgress":"progress"}[currentPhase]
+
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", f"{phase}-send", "options.json"
+        ), "r") as f: statsSendOptions = json.load(f)
+        sorting = [*[key.split("-")[0] for key, v in statsSendOptions.items() if v], "winrate"][0]
+
+        collectedData = [cls.collectSendingStatsData(name, gameCount, queueIds) for name in names]
+        collectedData = sorted(filter(lambda p:p, collectedData), key=lambda p:p.get(sorting, 0), reverse=True)
+        if(len(collectedData) != len(names)): return None
+
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", f"{phase}-send", "nickname.json"
+        ), "r") as f: statsSendNickname = json.load(f)
+
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", "overall", "sending.json"
+        ), "r") as f: statsOverallSending = json.load(f)
+
+        return [cls.constructSendingString(
+            statsSendNickname[f"player{idx+1}"], data, statsOverallSending, isAlly
+        ) for idx, data in enumerate(collectedData)]
 
 
     @classmethod
     def sendStatsData(cls, sendingFunction, names, sendSelf, sendFriends, sendOthers, isAlly, currentPhase):
         with current_app.test_client() as client:
-            selfName = None
             try: selfData = client.get(f"/riot/lcu/0/lol-summoner/v1/current-summoner").get_json(force=True)
-            except: selfData = {"success": False}
+            except: return False
             if(not selfData["success"]): return False
-            else: selfName = selfData["response"]["displayName"]
+            selfName = selfData.get("response", {}).get("displayName", None)
             if(selfName is None): return False
 
             friendNames = []
-            otherNames = []
+            othersNames = []
             if(sendOthers):
-                friendNames = None
                 try: friendData = client.get(f"/riot/lcu/0/lol-lobby/v2/lobby/members").get_json(force=True)
-                except: friendData = {"success": False}
+                except: return False
                 if(not friendData["success"]): return False
-                else: friendNames = [p["summonerName"] for p in friendData["response"] if p["summonerName"] != selfName]
-                if(friendNames is None): return False
-
-                otherNames = [name for name in names if(name != selfName and name not in friendNames)]
+                friendNames = [p["summonerName"] for p in friendData["response"] if p["summonerName"] != selfName]
+                othersNames = [name for name in names if(name != selfName and name not in friendNames)]
 
             sendingNames = set()
             if(sendSelf): sendingNames.add(selfName)
             if(sendFriends): sendingNames.update(friendNames)
-            if(sendOthers): sendingNames.update(otherNames)
+            if(sendOthers): sendingNames.update(othersNames)
+
+            if(not sendingNames): return False
 
             statsStrings = cls.collectSendingStrings(sendingNames, isAlly, currentPhase)
             if(None in statsStrings): return False
