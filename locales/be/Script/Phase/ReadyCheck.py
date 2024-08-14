@@ -13,6 +13,8 @@ class ReadyCheck(ReadyCheck):
     autoAccepted = False
     autoAcceptThread = None
 
+
+
     def reset(self):
         super().reset()
 

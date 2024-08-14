@@ -20,6 +20,8 @@ class InProgress(InProgress):
     sendStatsDataThread = None
     collectStatsDataThread = None
 
+
+
     def reset(self):
         super().reset()
 

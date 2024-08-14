@@ -9,7 +9,6 @@ import win32api
 import logging
 import json
 import sys
-import os
 
 
 
@@ -25,6 +24,8 @@ class ChampSelect(ChampSelect):
 
     sendStatsDataThread = None
     collectStatsDataThread = None
+
+
 
     def reset(self):
         super().reset()
