@@ -37,7 +37,7 @@ $(document).ready(function(){
             $(element).find(".text-filter-input").on("input", function(){
                 let value = $(this).val();
                 $(".text-filter-item").each(function(){
-                    if(!$(this).attr("data-filter").includes(value)){
+                    if(!$(this).attr("data-filter").includes(value.toLowerCase())){
                         $(this).addClass("hide-by-text-filter");
                     }else{
                         $(this).removeClass("hide-by-text-filter");
