@@ -1,14 +1,15 @@
-from ..utils.SpellHelper import SpellHelperUI
-from ..utils.Collector import StatsDataCollector
-from ..utils.thread import TaskThread
-from ..utils import Chat
-
 from .abstract import InProgress
+
+from Script.utils.Collector import StatsDataCollector
+from Script.utils.thread import TaskThread
+from Script.utils import Chat
 
 from Server.Flask import WebServer
 
+# from Script.SpellHelper import SpellHelper
+from Script.utils.SpellHelper import SpellHelperUI as SpellHelper
+
 import win32api
-import logging
 import json
 import sys
 
@@ -19,7 +20,7 @@ ENEMY_OF = {"ORDER":"CHAOS", "CHAOS":"ORDER"}
 
 
 class InProgress(InProgress):
-    InGameSpellHelperUI = None
+    InGameSpellHelper = None
     gameMode = None
 
     sendStatsDataThread = None
@@ -30,8 +31,8 @@ class InProgress(InProgress):
     def reset(self):
         super(self.__class__, self).reset()
 
-        self.endInGameSpellHelper()
-        self.InGameSpellHelperUI = SpellHelperUI(None, None)
+        self.InGameSpellHelper = SpellHelper()
+        self.InGameSpellHelper.setVisibility(False)
         self.gameMode = None
 
         self.sendStatsDataThread = None
@@ -68,28 +69,11 @@ class InProgress(InProgress):
 
 
 
-    def startInGameSpellHelper(self, localTeam, gameStats):
-        self.InGameSpellHelperUI = SpellHelperUI(localTeam, gameStats)
-        self.InGameSpellHelperUI.show()
-        logging.info(f"[{self.__class__.__name__}] Starting InGameSpellHelper")
-
-    def endInGameSpellHelper(self):
-        if(self.InGameSpellHelperUI and self.InGameSpellHelperUI.isVisible()):
-            self.InGameSpellHelperUI.close()
-            logging.info(f"[{self.__class__.__name__}] Closing InGameSpellHelper")
-
     def update_InGameSpellHelper(self, localTeam, gameStats):
-        with open(sys.modules["StorageManager"].LocalStorage.path(
-            "cfg", "settings", "spell", "overall", "options.json"
-        ), "r", encoding="UTF-8") as f: spellOverallOptions = json.load(f)
-        if(not spellOverallOptions.get("switch", False)):
-            self.endInGameSpellHelper()
-        elif(self.InGameSpellHelperUI):
-            if(not self.InGameSpellHelperUI.isVisible()):
-                if(localTeam is None or gameStats is None): return
-                self.startInGameSpellHelper(localTeam, gameStats)
-            else:
-                self.InGameSpellHelperUI.update()
+        if(not self.InGameSpellHelper.isVisible()):
+            self.InGameSpellHelper.setVisibility(True)
+        else:
+            self.InGameSpellHelper.update(localTeam, gameStats)
 
 
 

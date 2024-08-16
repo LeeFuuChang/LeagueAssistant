@@ -8,6 +8,8 @@ from PyQt5.QtGui import QCursor, QPixmap, QIcon
 from Server.Flask import WebServer
 
 import requests as rq
+import win32process
+import win32gui
 import logging
 import time
 import json
@@ -379,7 +381,7 @@ class SpellHelperUI(QWidget):
     baseSize = size = 24
 
 
-    def __init__(self, localTeam, gameStats):
+    def __init__(self):
         self.setContentsMargins(0, 0, 0, 0)
 
         self.setWindowTitle(os.environ["PROJECT_NAME"])
@@ -395,15 +397,11 @@ class SpellHelperUI(QWidget):
 
         self.format = None
 
-        self.localTeam = localTeam
-        self.gameStats = gameStats
-        if(self.gameStats):
-            self.gameStartTime = time.time()-self.gameStats["gameTime"]
-        else: self.gameStartTime = 0
         self.players = {}
+        self.gameStartTime = 0
 
 
-    def __new__(cls, localTeam, gameStats):
+    def __new__(cls):
         if hasattr(cls, "_instance"): return cls._instance
         cls._instance = QWidget.__new__(cls)
         self = cls._instance
@@ -487,7 +485,7 @@ class SpellHelperUI(QWidget):
         return True
 
 
-    def reloadStyle(self):
+    def updateStyle(self):
         with open(sys.modules["StorageManager"].LocalStorage.path(
             "cfg", "appearance", "spell", "overall", "options.json"
         ), "r", encoding="UTF-8") as f: overallOptions = json.load(f)
@@ -505,11 +503,23 @@ class SpellHelperUI(QWidget):
             helper.data["styles"]["counter-color"] = overallCounter
 
         self.format = sorted(["format-u","format-d","format-l","format-r"], key=lambda k:overallOptions.get(k,0))[-1]
-        self.size = (self.baseSize * (overallOptions.get("size", 10)/10))
+        self.size = (self.baseSize * (overallOptions.get("scale", 10)/10))
+
+
+    def setVisibility(self, boolean):
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "spell", "overall", "options.json"
+        ), "r", encoding="UTF-8") as f: spellOverallOptions = json.load(f)
+        isVisible = boolean and spellOverallOptions.get("switch", False)
+
+        focusPID = win32process.GetWindowThreadProcessId(win32gui.GetForegroundWindow())[1]
+        if(focusPID == os.getpid() and isVisible): self.updateStyle()
+
+        self.setVisible(isVisible)
 
 
     def updateLayout(self):
-        self.reloadStyle()
+        self.updateStyle()
         if(any([(not helper.format or helper.format != self.format) for helper in self.players.values()])):
             for i in reversed(range(self.layout.count())):
                 self.layout.itemAt(i).widget().setParent(None)
@@ -523,7 +533,10 @@ class SpellHelperUI(QWidget):
             helper.updateSize(self.size)
         self.setFixedSize(self.layout.sizeHint())
 
-    def update(self):
+    def update(self, localTeam, gameStats):
+        if(gameStats):
+            self.gameStartTime = time.time()-gameStats["gameTime"]
+        else: self.gameStartTime = 0
         if(not self.setupCompleted): return logging.error("[SpellHelper] Setup Incomplete")
         with WebServer().test_client() as client:
             playerList = []
@@ -535,7 +548,7 @@ class SpellHelperUI(QWidget):
                 if(name in playerListNames): continue
                 self.layout.removeWidget(helper)
             for idx, player in enumerate(playerList):
-                if(player["team"] == self.localTeam): continue
+                if(player["team"] == localTeam): continue
                 if(player["summonerName"] in self.players):
                     if(self.players[player["summonerName"]].data["index"] == idx): continue
                     self.players[player["summonerName"]].data["index"] = idx

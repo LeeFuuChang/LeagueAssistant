@@ -57,16 +57,16 @@ class SpellHelperPlayer(QWidget):
             }
         }
 
-        # self.data["champion"]["label"].leftButtonClicked.connect(self.startBroadcastSpellCooldown)
-        # self.data["champion"]["label"].rightButtonClicked.connect(lambda:[self.setSpellCastTime(k) for k in self.data["spells"]])
+        self.data["champion"]["label"].leftButtonClicked.connect(self.startBroadcastSpellCooldown)
+        self.data["champion"]["label"].rightButtonClicked.connect(lambda:[self.setSpellCastTime(k) for k in self.data["spells"]])
 
-        # for spellKey in self.data["spells"]:
-        #     self.data["spells"][spellKey]["label"].leftButtonClicked.connect(lambda:self.setSpellCastTime(spellKey))
-        #     self.data["spells"][spellKey]["label"].rightButtonClicked.connect(lambda:self.resetSpellCastTime(spellKey))
-        #     self.data["spells"][spellKey]["notify"].leftButtonClicked.connect(lambda:self.setSpellCastTime(spellKey))
-        #     self.data["spells"][spellKey]["notify"].rightButtonClicked.connect(lambda:self.resetSpellCastTime(spellKey))
-        #     self.data["spells"][spellKey]["counter"].leftButtonClicked.connect(lambda:self.setSpellCastTime(spellKey))
-        #     self.data["spells"][spellKey]["counter"].rightButtonClicked.connect(lambda:self.resetSpellCastTime(spellKey))
+        for spellKey in self.data["spells"]:
+            self.data["spells"][spellKey]["label"].leftButtonClicked.connect(lambda:self.setSpellCastTime(spellKey))
+            self.data["spells"][spellKey]["label"].rightButtonClicked.connect(lambda:self.resetSpellCastTime(spellKey))
+            self.data["spells"][spellKey]["notify"].leftButtonClicked.connect(lambda:self.setSpellCastTime(spellKey))
+            self.data["spells"][spellKey]["notify"].rightButtonClicked.connect(lambda:self.resetSpellCastTime(spellKey))
+            self.data["spells"][spellKey]["counter"].leftButtonClicked.connect(lambda:self.setSpellCastTime(spellKey))
+            self.data["spells"][spellKey]["counter"].rightButtonClicked.connect(lambda:self.resetSpellCastTime(spellKey))
 
 
 
@@ -79,9 +79,9 @@ class SpellHelperPlayer(QWidget):
 
     def updatePixmap(self) -> None:
         self.data["champion"]["pixmap"].loadFromData(rq.get(self.data["champion"]["imageURL"]).content)
-        # for spellData in self.data["spells"].values():
-        #     if(not spellData["imageURL"]): continue
-        #     spellData["pixmap"].loadFromData(rq.get(spellData["imageURL"]).content)
+        for spellData in self.data["spells"].values():
+            if(not spellData["imageURL"]): continue
+            spellData["pixmap"].loadFromData(rq.get(spellData["imageURL"]).content)
 
 
     def updateSize(self, size:int) -> None:

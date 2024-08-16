@@ -1,6 +1,6 @@
-from ..utils.thread import TaskThread
-
 from .abstract import ReadyCheck
+
+from Script.utils.thread import TaskThread
 
 from Server.Flask import WebServer
 
