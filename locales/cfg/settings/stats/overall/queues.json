@@ -1,7 +1,7 @@
 {
-    "blind5": true,
-    "draft5": true,
-    "rank5solo": true,
-    "rank5flex": true,
-    "aram": false
+    "430": true,
+    "400": true,
+    "420": true,
+    "440": true,
+    "450": false
 }

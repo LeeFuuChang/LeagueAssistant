@@ -5,6 +5,5 @@
     "season-highest": false,
     "match-stats": true,
     "match-kda": true,
-    "match-win": true,
-    "ignore-early": true
+    "match-win": true
 }

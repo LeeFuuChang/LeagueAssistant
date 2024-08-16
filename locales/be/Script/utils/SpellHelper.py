@@ -1,14 +1,19 @@
-from thread import TaskThread
-import Chat
+from .thread import TaskThread
+from . import Chat
 
 from PyQt5.QtWidgets import QWidget, QDesktopWidget, QGridLayout, QLabel, QGraphicsOpacityEffect, QMenu, QAction
 from PyQt5.QtCore import QObject, QEvent, Qt, pyqtSignal
 from PyQt5.QtGui import QCursor, QPixmap, QIcon
 
-import difflib
+from Server.Flask import WebServer
+
+import requests as rq
 import logging
 import time
+import json
+import sys
 import os
+import re
 
 
 
@@ -59,6 +64,7 @@ class SpellHelperPlayer(QWidget):
         self.data = {
             "index": index,
             "thread": None,
+            "riotId": "",
             "summonerName": "",
             "championName": "",
             "rawChampionName": "",
@@ -133,6 +139,7 @@ class SpellHelperPlayer(QWidget):
         self.data["championLabel"].customContextMenuRequested.connect(self.emptySpaceMenu)
 
 
+
     def emptySpaceMenu(self):
         clickPos = QCursor.pos()
         contents = [
@@ -151,14 +158,15 @@ class SpellHelperPlayer(QWidget):
         menu.exec_(clickPos)
 
 
+
     def reloadPixmap(self):
-        with self._parent.server.test_client() as client:
-            champRequest = client.get(self.data["championImageURL"])
-            self.data["championPixmap"].loadFromData(champRequest.data)
-            spell1Request = client.get(self.data["spell1"]["imageURL"])
-            self.data["spell1"]["pixmap"].loadFromData(spell1Request.data)
-            spell2Request = client.get(self.data["spell2"]["imageURL"])
-            self.data["spell2"]["pixmap"].loadFromData(spell2Request.data)
+        if(self.data["championImageURL"]):
+            self.data["championPixmap"].loadFromData(rq.get(self.data["championImageURL"]).content)
+        if(self.data["spell1"]["imageURL"]):
+            self.data["spell1"]["pixmap"].loadFromData(rq.get(self.data["spell1"]["imageURL"]).content)
+        if(self.data["spell2"]["imageURL"]):
+            self.data["spell2"]["pixmap"].loadFromData(rq.get(self.data["spell2"]["imageURL"]).content)
+
 
     def updateSize(self, size=None):
         if(size): self.size = size
@@ -167,80 +175,73 @@ class SpellHelperPlayer(QWidget):
         self.data["championLabel"].setFixedSize(2*self.size, 2*self.size)
         self.data["championLabel"].setPixmap(self.data["championPixmap"].scaled(2*self.size, 2*self.size))
 
-        def resizeSpell(key):
-            self.data[key]["counter"]["label"].setFixedSize(self.size, self.size)
-            self.data[key]["notify"]["label"].setFixedSize(self.size, self.size)
-            self.data[key]["label"].setFixedSize(self.size, self.size)
-            self.data[key]["label"].setPixmap(self.data[key]["pixmap"].scaled(self.size, self.size))
-        resizeSpell("spell1")
-        resizeSpell("spell2")
+        for spell in ["spell1", "spell2"]:
+            self.data[spell]["counter"]["label"].setFixedSize(self.size, self.size)
+            self.data[spell]["notify"]["label"].setFixedSize(self.size, self.size)
+            self.data[spell]["label"].setFixedSize(self.size, self.size)
+            self.data[spell]["label"].setPixmap(self.data[spell]["pixmap"].scaled(self.size, self.size))
 
         self.setFixedSize(self.layout.sizeHint())
 
+
     def updateLayout(self, layoutFormat=None):
         if(not layoutFormat): layoutFormat = self._parent.format
+
         if(layoutFormat == "format-u"): pos = [(0, 0), (0, 1), (1, 0)]
         if(layoutFormat == "format-d"): pos = [(2, 0), (2, 1), (0, 0)]
         if(layoutFormat == "format-l"): pos = [(0, 0), (1, 0), (0, 1)]
         if(layoutFormat == "format-r"): pos = [(0, 3), (1, 3), (0, 0)]
+
         self.format = layoutFormat
-        def replaceSpell(key, p):
+
+        for idx, key in enumerate(["spell1", "spell2"]):
             self.layout.removeWidget(self.data[key]["counter"]["label"])
             self.layout.removeWidget(self.data[key]["notify"]["label"])
             self.layout.removeWidget(self.data[key]["label"])
-            self.layout.addWidget(self.data[key]["counter"]["label"], *p, 1, 1, Qt.AlignCenter)
-            self.layout.addWidget(self.data[key]["notify"]["label"], *p, 1, 1, Qt.AlignCenter)
-            self.layout.addWidget(self.data[key]["label"], *p, 1, 1, Qt.AlignCenter)
-        replaceSpell("spell1", pos[0])
-        replaceSpell("spell2", pos[1])
+            self.layout.addWidget(self.data[key]["counter"]["label"], *pos[idx], 1, 1, Qt.AlignCenter)
+            self.layout.addWidget(self.data[key]["notify"]["label"], *pos[idx], 1, 1, Qt.AlignCenter)
+            self.layout.addWidget(self.data[key]["label"], *pos[idx], 1, 1, Qt.AlignCenter)
+
         self.layout.removeWidget(self.data["championLabel"])
         self.layout.addWidget(self.data["championLabel"], *pos[2], 2, 2, Qt.AlignCenter)
 
 
-    def calculateCooldown(self, baseCooldown, abilityHaste):
-        # https://leagueoflegends.fandom.com/wiki/Haste
-        return int( baseCooldown * ( 100 / (100+abilityHaste) ) )
-
     def calculateSpellCastTime(self, key):
         self.endBroadcastSpellCooldown()
-        def getAbilityHaste(description):
-            begString = "<attention> "
-            endString = "</attention> Ability Haste"
-            if(endString not in description): return 0
-            endIndex = description.find(endString)
-            description = description[:endIndex]
-            begIndex = description.rfind(begString)+len(begString)
-            description = description[begIndex:]
-            if(not description.isnumeric()): return 0
-            else: return int(description)
-        with self._parent.server.test_client() as client:
-            name = self.data["summonerName"]
-            playerItems = []
-            try: playerItemsRequest = client.get(f"/riot/ingame/playeritems", query_string={"summonerName":name}).get_json(force=True)
-            except: playerItemsRequest = {"success": False}
-            if(not playerItemsRequest["success"]): return False
-            else: playerItems = playerItemsRequest["response"]
-            hasteList = [getAbilityHaste(self._parent.itemsData.get(i["itemID"], "")) for i in playerItems]
-            abilityHaste = sum(hasteList)
-            self.data[key]["cooldown"] = self.calculateCooldown(self.data[key]["fullCooldown"], abilityHaste)
+        with WebServer().test_client() as client:
+            try: playersRequest = client.get(f"/riot/ingame/playerlist").get_json(force=True)
+            except: playersRequest = {"success": False}
+            if(not playersRequest["success"]): return False
+            playerItems = [p["items"] for p in playersRequest["response"] if p["riotId"] == self.data["riotId"]][0]
+
+            abilityHaste = 0
+            abilityHasteRegex = r"\<attention\>\s*(\d+)\s*\<\/attention\>\s*Ability\s*Haste"
+            for item in playerItems:
+                found = re.search(abilityHasteRegex, self._parent.itemsData.get(item["itemID"], ""))
+                if found: abilityHaste += int(found.group(1))
+
+            self.data[key]["cooldown"] = int( self.data[key]["fullCooldown"] * ( 100 / (100+abilityHaste) ) ) # https://leagueoflegends.fandom.com/wiki/Haste
+
             logging.info(f"[SpellHelper] recorded {key} cast time (abilityHaste: {abilityHaste:>2}) ( {self.data['championName']} )")
             return True
+
 
     def endSetSpellCastTime(self, key):
         if(self.data[key]["thread"] is not None):
             self.data[key]["thread"].event.set()
         self.data[key]["thread"] = None
 
+
     def setSpellCastTime(self, key):
         self.data[key]["castTime"] = time.time()
         self.data[key]["thread"] = TaskThread(
             target=self.calculateSpellCastTime,
-            interval=0,
             delay=0,
-            tries=50,
+            tries=10,
             fargs=(key, ),
             onFinished=lambda:self.endSetSpellCastTime(key)
         ).start()
+
 
     def resetSpellCastTime(self, key):
         self.endBroadcastSpellCooldown()
@@ -248,16 +249,17 @@ class SpellHelperPlayer(QWidget):
         self.data[key]["castTime"] = 0
         self.data[key]["cooldown"] = 0
 
+
     def connectSpellCallbacks(self, key):
-        spl_L = self.data[key]["label"]
-        cnt_L = self.data[key]["counter"]["label"]
-        not_L = self.data[key]["notify"]["label"]
-        setLeftClickable(spl_L).connect(lambda:self.setSpellCastTime(key))
-        setLeftClickable(cnt_L).connect(lambda:self.setSpellCastTime(key))
-        setLeftClickable(not_L).connect(lambda:self.setSpellCastTime(key))
-        setRightClickable(spl_L).connect(lambda:self.resetSpellCastTime(key))
-        setRightClickable(cnt_L).connect(lambda:self.resetSpellCastTime(key))
-        setRightClickable(not_L).connect(lambda:self.resetSpellCastTime(key))
+        setLeftClickable(self.data[key]["label"]).connect(lambda:self.setSpellCastTime(key))
+        setRightClickable(self.data[key]["label"]).connect(lambda:self.resetSpellCastTime(key))
+
+        setLeftClickable(self.data[key]["counter"]["label"]).connect(lambda:self.setSpellCastTime(key))
+        setRightClickable(self.data[key]["counter"]["label"]).connect(lambda:self.resetSpellCastTime(key))
+
+        setLeftClickable(self.data[key]["notify"]["label"]).connect(lambda:self.setSpellCastTime(key))
+        setRightClickable(self.data[key]["notify"]["label"]).connect(lambda:self.resetSpellCastTime(key))
+
 
     def updateSpellDisplay(self, key):
         cover = self.data[key]["castTime"]>0
@@ -280,6 +282,7 @@ class SpellHelperPlayer(QWidget):
         not_L.stackUnder(cnt_L)
         spl_L.stackUnder(not_L)
 
+
     def updateSpell(self, key, base):
         castTime = self.data[key]["castTime"]
         if(castTime): 
@@ -292,23 +295,21 @@ class SpellHelperPlayer(QWidget):
 
 
     def broadcastSpellCooldown(self):
-        nowTime = time.time()
-        with self._parent.server.test_client() as client:
-            try: spellOverallNickname = client.get("/app/config/settings/spell/overall/nickname.json").get_json(force=True)
-            except: spellOverallNickname = {}
-            if(not spellOverallNickname): return False
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "spell", "overall", "nickname.json"
+        ), "r", encoding="UTF-8") as f: spellOverallNickname = json.load(f)
 
-            try: spellSendOptions = client.get("/app/config/settings/spell/send/options.json").get_json(force=True)
-            except: spellSendOptions = {}
-            if(not spellSendOptions): return False
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "spell", "send", "options.json"
+        ), "r", encoding="UTF-8") as f: spellSendOptions = json.load(f)
 
-            try: spellSendFormat = client.get("/app/config/settings/spell/send/format.json").get_json(force=True)
-            except: spellSendFormat = {}
-            if(not spellSendFormat): return False
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "spell", "send", "format.json"
+        ), "r", encoding="UTF-8") as f: spellSendFormat = json.load(f)
 
-            try: spellSendNickname = client.get("/app/config/settings/spell/send/nickname.json").get_json(force=True)
-            except: spellSendNickname = {}
-            if(not spellSendNickname): return False
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "spell", "send", "nickname.json"
+        ), "r", encoding="UTF-8") as f: spellSendNickname = json.load(f)
 
         if(spellSendOptions["champion-name"]): playerNick = self.data["championName"]
         else: playerNick = spellOverallNickname[f"player{self.data['index']+1}"]
@@ -325,7 +326,7 @@ class SpellHelperPlayer(QWidget):
                         spellNick = self.data[key]["hotkey"]
 
                     timeString = "ready"
-                    upLeftTime = max(self.data[key]["cooldown"]-int(nowTime-self.data[key]["castTime"]), 0)
+                    upLeftTime = max(self.data[key]["cooldown"]-int(time.time()-self.data[key]["castTime"]), 0)
                     upGameTime = self.data[key]["castTime"]-self._parent.gameStartTime+self.data[key]["cooldown"]
                     if(not upLeftTime): 
                         timeString = "ready"
@@ -347,18 +348,19 @@ class SpellHelperPlayer(QWidget):
 
         return Chat.sendInProgress([res, ])
 
+
     def endBroadcastSpellCooldown(self):
         if(self.data["thread"] is not None):
             self.data["thread"].event.set()
         self.data["thread"] = None
 
+
     def startBroadcastSpellCooldown(self):
         self.endBroadcastSpellCooldown()
         self.data["thread"] = TaskThread(
             target=self.broadcastSpellCooldown,
-            interval=0,
             delay=0,
-            tries=50,
+            tries=10,
             fargs=(),
             onFinished=self.endBroadcastSpellCooldown
         ).start()
@@ -372,101 +374,19 @@ class SpellHelperPlayer(QWidget):
 
 
 class SpellHelperUI(QWidget):
-    server = None
     setupCompleted = False
 
     baseSize = size = 24
 
-    supportedModes = ["CLASSIC", "ARAM"]
 
-    spellsData = {
-        "SummonerBarrier": {
-            "cooldown": 180,
-            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summonerbarrier.png",
-            "tw": "光盾",
-            "en": "Barrier",
-        },
-        "SummonerBoost": {
-            "cooldown": 210,
-            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_boost.png",
-            "tw": "淨化",
-            "en": "Cleanse",
-        },
-        "SummonerDot": {
-            "cooldown": 180,
-            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summonerignite.png",
-            "tw": "點燃",
-            "en": "Ignite",
-        },
-        "SummonerExhaust": {
-            "cooldown": 210,
-            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_exhaust.png",
-            "tw": "虛弱",
-            "en": "Exhaust",
-        },
-        "SummonerFlash": {
-            "cooldown": 300,
-            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_flash.png",
-            "tw": "閃現",
-            "en": "Flash",
-        },
-        "SummonerHaste": {
-            "cooldown": 210,
-            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_haste.png",
-            "tw": "鬼步",
-            "en": "Ghost",
-        },
-        "SummonerHeal": {
-            "cooldown": 240,
-            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_heal.png",
-            "tw": "治癒",
-            "en": "Heal",
-        },
-        "SummonerMana": {
-            "cooldown": 240,
-            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summonermana.png",
-            "tw": "清晰",
-            "en": "Mana",
-        },
-        "SummonerSmite": {
-            "cooldown": 15,
-            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_smite.png",
-            "tw": "重擊",
-            "en": "Smite",
-        },
-        "SummonerSnowURFSnowball_Mark": {
-            "cooldown": 80,
-            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_mark.png",
-            "tw": "雪球",
-            "en": "Snowball",
-        },
-        "SummonerSnowball": {
-            "cooldown": 80,
-            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_mark.png",
-            "tw": "雪球",
-            "en": "Snowball",
-        },
-        "SummonerTeleport": {
-            "cooldown": 360,
-            "icon": "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner_teleport.png",
-            "tw": "傳送",
-            "en": "Teleport",
-        },
-    }
-
-
-    def __init__(self, server, localTeam, gameStats):
+    def __init__(self, localTeam, gameStats):
         self.setContentsMargins(0, 0, 0, 0)
-        self.setWindowFlags(Qt.Window | Qt.CustomizeWindowHint | Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint)
-        self.setAttribute(Qt.WA_TranslucentBackground, True)
-        self.setAutoFillBackground(True)
 
         self.setWindowTitle(os.environ["PROJECT_NAME"])
         self.setWindowIcon(QIcon(os.environ["ICON_PATH"]))
-        self.setWindowFlags(Qt.Window|Qt.WindowStaysOnTopHint|Qt.FramelessWindowHint|Qt.WindowMinMaxButtonsHint)
+        self.setWindowFlags(Qt.Window | Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint | Qt.WindowMinMaxButtonsHint)
         self.setAttribute(Qt.WA_NoSystemBackground, True)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
-        self.setAttribute(Qt.WA_TransparentForMouseEvents, True)
         self.setAutoFillBackground(True)
 
         self.layout.setSpacing(0)
@@ -474,8 +394,6 @@ class SpellHelperUI(QWidget):
         self.setFixedSize(self.layout.sizeHint())
 
         self.format = None
-
-        self.server = server
 
         self.localTeam = localTeam
         self.gameStats = gameStats
@@ -485,7 +403,7 @@ class SpellHelperUI(QWidget):
         self.players = {}
 
 
-    def __new__(cls, server, localTeam, gameStats):
+    def __new__(cls, localTeam, gameStats):
         if hasattr(cls, "_instance"): return cls._instance
         cls._instance = QWidget.__new__(cls)
         self = cls._instance
@@ -497,7 +415,6 @@ class SpellHelperUI(QWidget):
         self.setLayout(self.layout)
         self.setupThread = TaskThread(
             target=self.setup,
-            interval=0,
             delay=0,
             tries=-1,
             fargs=(),
@@ -506,40 +423,32 @@ class SpellHelperUI(QWidget):
         return cls._instance
 
 
-    def getSpellKey(self, rawDisplayName):
-        best = 0
-        matched = [*self.spellsData.keys()][0]
-        for key in self.spellsData.keys():
-            result = difflib.SequenceMatcher(None, key, rawDisplayName)
-            if(result.ratio() <= best): continue
-            best = result.ratio()
-            matched = key
-        return matched
-
-
     def addPlayer(self, playerData, index):
         helper = SpellHelperPlayer(self, index)
 
+        spellRef = {
+            "spell1": "summonerSpellOne",
+            "spell2": "summonerSpellTwo",
+        }
+
+        helper.data["riotId"] = playerData["riotId"]
         helper.data["summonerName"] = playerData["summonerName"]
         helper.data["championName"] = playerData["championName"]
         helper.data["rawChampionName"] = playerData["rawChampionName"]
         helper.data["championImageURL"] = f"https://cdn.communitydragon.org/latest/champion/{playerData['rawChampionName'].split('_')[3]}/square"
 
-        spell1key = self.getSpellKey("".join(playerData["summonerSpells"]["summonerSpellOne"]["rawDisplayName"].split("_")[2:-1]))
-        helper.data["spell1"]["tw"] = self.spellsData[spell1key]["tw"]
-        helper.data["spell1"]["en"] = self.spellsData[spell1key]["en"]
-        helper.data["spell1"]["imageURL"] = self.spellsData[spell1key]["icon"]
-        helper.data["spell1"]["fullCooldown"] = self.spellsData[spell1key]["cooldown"]
-        helper.data["spell1"]["displayName"] = playerData["summonerSpells"]["summonerSpellOne"]["displayName"]
-        helper.data["spell1"]["rawDisplayName"] = playerData["summonerSpells"]["summonerSpellOne"]["rawDisplayName"]
+        for ref in spellRef:
+            spellData = playerData["summonerSpells"][spellRef[ref]]
+            if(not re.match(r"SummonerSpell\_(\S+)\_DisplayName", spellData["rawDisplayName"])): continue
 
-        spell2key = self.getSpellKey("".join(playerData["summonerSpells"]["summonerSpellTwo"]["rawDisplayName"].split("_")[2:-1]))
-        helper.data["spell2"]["tw"] = self.spellsData[spell2key]["tw"]
-        helper.data["spell2"]["en"] = self.spellsData[spell2key]["en"]
-        helper.data["spell2"]["imageURL"] = self.spellsData[spell2key]["icon"]
-        helper.data["spell2"]["fullCooldown"] = self.spellsData[spell2key]["cooldown"]
-        helper.data["spell2"]["displayName"] = playerData["summonerSpells"]["summonerSpellTwo"]["displayName"]
-        helper.data["spell2"]["rawDisplayName"] = playerData["summonerSpells"]["summonerSpellTwo"]["rawDisplayName"]
+            spell = re.search(r"SummonerSpell\_(\S+)\_DisplayName", spellData["rawDisplayName"]).group(1)
+
+            helper.data[ref]["tw"] = self.spellsData[spell]["tw"]
+            helper.data[ref]["en"] = self.spellsData[spell]["en"]
+            helper.data[ref]["imageURL"] = self.spellsData[spell]["icon"]
+            helper.data[ref]["fullCooldown"] = self.spellsData[spell]["cooldown"]
+            helper.data[ref]["displayName"] = spellData["displayName"]
+            helper.data[ref]["rawDisplayName"] = spellData["rawDisplayName"]
 
         helper.reloadPixmap()
 
@@ -555,27 +464,46 @@ class SpellHelperUI(QWidget):
         self.setupThread = None
 
     def setup(self):
-        if(not self.server): return False
-        with self.server.test_client() as client:
-            itemsData = None
-            try: itemsData = client.get(f"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json").get_json(force=True)
-            except: itemsData = None
-            if(itemsData is None): return False
-            self.itemsData = {i["id"]:i["description"] for i in itemsData}
+        ddragonVersion = rq.get("https://ddragon.leagueoflegends.com/api/versions.json").json()[0]
+
+        ddragonSpells = rq.get(f"https://ddragon.leagueoflegends.com/cdn/{ddragonVersion}/data/en_US/summoner.json").json()["data"]
+
+        cdragonSpells = rq.get(f"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/zh_tw/v1/summoner-spells.json").json()
+        numId_2_Spell = {str(spell["id"]):spell for spell in cdragonSpells}
+
+        self.spellsData = {}
+        for strId in ddragonSpells:
+            communityDragonAssetsURL = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/"
+            self.spellsData[strId] = {
+                "en": ddragonSpells[strId]["name"],
+                "tw": numId_2_Spell[ddragonSpells[strId]["key"]]["name"],
+                "icon": communityDragonAssetsURL + numId_2_Spell[ddragonSpells[strId]["key"]]["iconPath"].replace("/lol-game-data/assets/", "").lower(),
+                "cooldown": ddragonSpells[strId]["cooldown"][0],
+            }
+
+        cdragonItems = rq.get("https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json").json()
+        self.itemsData = {i["id"]:i["description"] for i in cdragonItems}
+
         return True
 
 
     def reloadStyle(self):
-        with self.server.test_client() as client:
-            try: overallOptions = client.get(f"/app/config/appearance/spell/overall/options.json").get_json(force=True)
-            except: overallOptions = {}
-            try: overallNotify = client.get(f"/app/config/appearance/spell/overall/notify-color.json").get_json(force=True)
-            except: overallNotify = {}
-            try: overallCounter = client.get(f"/app/config/appearance/spell/overall/counter-color.json").get_json(force=True)
-            except: overallCounter = {}
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "appearance", "spell", "overall", "options.json"
+        ), "r", encoding="UTF-8") as f: overallOptions = json.load(f)
+
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "appearance", "spell", "overall", "notify-color.json"
+        ), "r", encoding="UTF-8") as f: overallNotify = json.load(f)
+
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "appearance", "spell", "overall", "counter-color.json"
+        ), "r", encoding="UTF-8") as f: overallCounter = json.load(f)
+
         for helper in self.players.values():
             helper.data["styles"]["notify-color"] = overallNotify
             helper.data["styles"]["counter-color"] = overallCounter
+
         self.format = sorted(["format-u","format-d","format-l","format-r"], key=lambda k:overallOptions.get(k,0))[-1]
         self.size = (self.baseSize * (overallOptions.get("size", 10)/10))
 
@@ -597,7 +525,7 @@ class SpellHelperUI(QWidget):
 
     def update(self):
         if(not self.setupCompleted): return logging.error("[SpellHelper] Setup Incomplete")
-        with self.server.test_client() as client:
+        with WebServer().test_client() as client:
             playerList = []
             try: playerListRequest = client.get("/riot/ingame/playerlist").get_json(force=True)
             except: playerListRequest = {"success": False}

@@ -1,4 +1,7 @@
-from flask import current_app
+from Server.Flask import WebServer
+
+import json
+import sys
 
 
 class StatsDataCollector:
@@ -61,71 +64,41 @@ class StatsDataCollector:
 
 
     @staticmethod
-    def getSendingConfig(currentPhase):
-        with current_app.test_client() as client:
-            statsOverallOptions = None
-            try: statsOverallOptions = client.get("/app/config/settings/stats/overall/options.json").get_json(force=True)
-            except: statsOverallOptions = None
-
-            statsOverallQueues = None
-            try: statsOverallQueues = client.get("/app/config/settings/stats/overall/queues.json").get_json(force=True)
-            except: statsOverallQueues = None
-
-            statsOverallSending = None
-            try: statsOverallSending = client.get("/app/config/settings/stats/overall/sending.json").get_json(force=True)
-            except: statsOverallSending = None
-
-            phase = {"ChampSelect":"select", "InProgress":"progress"}[currentPhase]
-
-            statsSendOptions = None
-            try: statsSendOptions = client.get(f"/app/config/settings/stats/{phase}-send/options.json").get_json(force=True)
-            except: statsSendOptions = None
-
-            statsSendNickname = None
-            try: statsSendNickname = client.get(f"/app/config/settings/stats/{phase}-send/nickname.json").get_json(force=True)
-            except: statsSendNickname = None
-        return statsOverallOptions, statsOverallQueues, statsOverallSending, statsSendOptions, statsSendNickname
-
-
-    @staticmethod
-    def fetchPlayer(name):
-        with current_app.test_client() as client:
+    def fetchPlayerByPuuid(puuid):
+        with WebServer().test_client() as client:
             summonerData = None
             try: 
-                summonerData = client.get(
-                    "/riot/lcu/0/lol-summoner/v1/summoners", 
-                    query_string={"name":name}
+                summonerRequest = client.get(
+                    f"/riot/lcu/0/lol-summoner/v2/summoners/puuid/{puuid}"
                 ).get_json(force=True)
-            except: summonerData = {"success": False}
-            if(not summonerData["success"]): return None
-            else: summonerData = summonerData["response"]
-            if(summonerData is None): return None
+            except: summonerRequest = {"success": False}
+            if(summonerRequest["success"]):
+                summonerData = summonerRequest["response"]
 
             rankData = None
             try: 
-                rankData = client.get(
-                    f"/riot/lcu/0/lol-ranked/v1/ranked-stats/{summonerData['puuid']}"
+                rankRequest = client.get(
+                    f"/riot/lcu/0/lol-ranked/v1/ranked-stats/{puuid}"
                 ).get_json(force=True)
-            except: rankData = {"success": False}
-            if(not rankData["success"]): return None
-            else: rankData = rankData["response"]
-            if(rankData is None): return None
+            except: rankRequest = {"success": False}
+            if(rankRequest["success"]):
+                rankData = rankRequest["response"]
 
             matchData = None
             try: 
-                matchData = client.get(
-                    f"/riot/lcu/0/lol-match-history/v1/products/lol/{summonerData['puuid']}/matches",
+                matchRequest = client.get(
+                    f"/riot/lcu/0/lol-match-history/v1/products/lol/{puuid}/matches",
                     query_string={"begIndex": 0, "endIndex": 50}
                 ).get_json(force=True)
-            except: matchData = {"success": False}
-            if(not matchData["success"]): return None
-            else: matchData = matchData["response"]["games"]["games"]
-            if(matchData is None): return None
+            except: matchRequest = {"success": False}
+            if(matchRequest["success"]):
+                matchData = matchRequest["response"]["games"]["games"]
+
         return summonerData, rankData, matchData        
 
 
     @classmethod
-    def collectSendingStatsData(cls, name, gameCount, queueIds, ignoreEarly):
+    def collectSendingStatsDataByPuuid(cls, puuid, gameCount, queueIds):
         collectedData = {
             "name": "",
             "games": [],
@@ -141,11 +114,10 @@ class StatsDataCollector:
             "highestDivision": "",
         }
 
-        sendingData = cls.fetchPlayer(name)
-        if(sendingData is None): return None
-        summonerData, rankData, matchData = sendingData
+        summonerData, rankData, matchData = cls.fetchPlayerByPuuid(puuid)
+        if(not summonerData or not rankData or not matchData): return None
 
-        collectedData["name"] = summonerData["displayName"]
+        collectedData["name"] = summonerData["gameName"]
         collectedData["tier"] = rankData["highestRankedEntry"]["tier"]
         collectedData["division"] = rankData["highestRankedEntry"]["division"]
         collectedData["highestTier"] = rankData["highestRankedEntry"]["highestTier"]
@@ -153,7 +125,7 @@ class StatsDataCollector:
         for game in matchData:
             if(len(collectedData["games"]) >= gameCount): break
             if(game["queueId"] not in queueIds): continue
-            if(ignoreEarly and game["gameDuration"] < 300): continue
+            if(game["gameDuration"] < 300): continue
             stats = game["participants"][0]["stats"]
             collectedData["wins"] += stats["win"]
             collectedData["kills"] += stats["kills"]
@@ -225,63 +197,80 @@ class StatsDataCollector:
 
 
     @classmethod
-    def collectSendingStrings(cls, names, isAlly, currentPhase):
-        queueIdReference = {
-            "blind5": 430,
-            "draft5": 400,
-            "rank5solo": 420,
-            "rank5flex": 440,
-            "aram": 450
-        }
-        statsConfig = cls.getSendingConfig(currentPhase)
-        if(statsConfig is None): return None
-        statsOverallOptions, statsOverallQueues, statsOverallSending, statsSendOptions, statsSendNickname = statsConfig
-        sorting = [key for key, v in statsSendOptions.items() if v]
-        if(not sorting): sorting = "winrate"
-        else: sorting = sorting[0].split("-")[0]
+    def collectSendingStringsByPuuids(cls, puuids, isAlly, currentPhase):
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", "overall", "options.json"
+        ), "r", encoding="UTF-8") as f: statsOverallOptions = json.load(f)
         gameCount = int(statsOverallOptions["games"])
-        queueIds = {queueIdReference[qid] for qid, v in statsOverallQueues.items() if v}
-        ignoreEarly = statsOverallSending["ignore-early"]
 
-        collectedData = [cls.collectSendingStatsData(name, gameCount, queueIds, ignoreEarly) for name in names]
-        if(None in collectedData): return None
-        collectedData.sort(key=lambda p:p.get(sorting, 0), reverse=True)
-        return [
-            cls.constructSendingString(statsSendNickname[f"player{idx+1}"], data, statsOverallSending, isAlly) 
-            for idx, data in enumerate(collectedData)
-        ]
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", "overall", "queues.json"
+        ), "r", encoding="UTF-8") as f: statsOverallQueues = json.load(f)
+        queueIds = {int(qid) for qid, v in statsOverallQueues.items() if v}
+
+        phase = {"ChampSelect":"select", "InProgress":"progress"}[currentPhase]
+
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", f"{phase}-send", "options.json"
+        ), "r", encoding="UTF-8") as f: statsSendOptions = json.load(f)
+        sorting = [*[key.split("-")[0] for key, v in statsSendOptions.items() if v], "winrate"][0]
+
+        collectedData = [cls.collectSendingStatsDataByPuuid(puuid, gameCount, queueIds) for puuid in puuids]
+        collectedData = sorted(filter(lambda p:p is not None, collectedData), key=lambda p:p.get(sorting, 0), reverse=True)
+        if(len(collectedData) != len(puuids)): return None
+
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", f"{phase}-send", "nickname.json"
+        ), "r", encoding="UTF-8") as f: statsSendNickname = json.load(f)
+
+        with open(sys.modules["StorageManager"].LocalStorage.path(
+            "cfg", "settings", "stats", "overall", "sending.json"
+        ), "r", encoding="UTF-8") as f: statsOverallSending = json.load(f)
+
+        return [cls.constructSendingString(
+            statsSendNickname[f"player{idx+1}"], data, statsOverallSending, isAlly
+        ) for idx, data in enumerate(collectedData)]
 
 
     @classmethod
-    def sendStatsData(cls, sendingFunction, names, sendSelf, sendFriends, sendOthers, isAlly, currentPhase):
-        with current_app.test_client() as client:
-            selfName = None
+    def sendStatsDataByPuuids(cls, sendingFunction, puuids, sendSelf, sendFriends, sendOthers, isAlly, currentPhase):
+        with WebServer().test_client() as client:
             try: selfData = client.get(f"/riot/lcu/0/lol-summoner/v1/current-summoner").get_json(force=True)
-            except: selfData = {"success": False}
+            except: return False
             if(not selfData["success"]): return False
-            else: selfName = selfData["response"]["displayName"]
-            if(selfName is None): return False
+            selfPuuid = selfData.get("response", {}).get("puuid", None)
+            if(selfPuuid is None): return False
 
-            friendNames = []
-            otherNames = []
+            friendPuuids = []
+            othersPuuids = []
             if(sendOthers):
-                friendNames = None
-                try: friendData = client.get(f"/riot/lcu/0/lol-lobby/v2/lobby/members").get_json(force=True)
-                except: friendData = {"success": False}
-                if(not friendData["success"]): return False
-                else: friendNames = [p["summonerName"] for p in friendData["response"] if p["summonerName"] != selfName]
-                if(friendNames is None): return False
+                friendData = client.get(f"/riot/lcu/0/lol-lobby/v2/lobby/members").get_json(force=True)
+                if(friendData["success"]):
+                    friendPuuids = [p["puuid"] for p in friendData["response"] if p["puuid"] != selfPuuid]
+                othersPuuids = [puuid for puuid in puuids if(puuid != selfPuuid and puuid not in friendPuuids)]
 
-                otherNames = [name for name in names if(name != selfName and name not in friendNames)]
+            sendingPuuids = set()
+            if(sendSelf): sendingPuuids.add(selfPuuid)
+            if(sendFriends): sendingPuuids.update(friendPuuids)
+            if(sendOthers): sendingPuuids.update(othersPuuids)
 
-            sendingNames = set()
-            if(sendSelf): sendingNames.add(selfName)
-            if(sendFriends): sendingNames.update(friendNames)
-            if(sendOthers): sendingNames.update(otherNames)
+            if(not sendingPuuids): return False
 
-            statsStrings = cls.collectSendingStrings(sendingNames, isAlly, currentPhase)
+            statsStrings = cls.collectSendingStringsByPuuids(sendingPuuids, isAlly, currentPhase)
             if(None in statsStrings): return False
 
             sendingFunction(statsStrings)
         return True
 
+
+    @classmethod
+    def sendStatsDataByNames(cls, sendingFunction, names, sendSelf, sendFriends, sendOthers, isAlly, currentPhase):
+        puuids = []
+        with WebServer().test_client() as client:
+            for name in names:
+                try:
+                    req = client.get("/riot/lcu/0/lol-summoner/v1/summoners", query_string={"name":name}).get_json(force=True)
+                    if(req["success"]): puuids.append(req["response"]["puuid"])
+                except: continue
+        if(len(puuids) != len(names)): return False
+        return cls.sendStatsDataByPuuids(sendingFunction, puuids, sendSelf, sendFriends, sendOthers, isAlly, currentPhase)

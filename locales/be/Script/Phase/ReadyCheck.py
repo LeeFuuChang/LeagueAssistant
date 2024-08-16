@@ -1,17 +1,23 @@
-from .abstract import AbstractPhase
+from ..utils.thread import TaskThread
 
-from .utils.thread import TaskThread
+from .abstract import ReadyCheck
+
+from Server.Flask import WebServer
 
 import logging
+import json
+import sys
 
 
 
-class ReadyCheck(AbstractPhase):
+class ReadyCheck(ReadyCheck):
     autoAccepted = False
     autoAcceptThread = None
 
+
+
     def reset(self):
-        super().reset()
+        super(self.__class__, self).reset()
 
         self.autoAccepted = False
         self.autoAcceptThread = None
@@ -28,7 +34,7 @@ class ReadyCheck(AbstractPhase):
 
     def postAutoAccept(self):
         logging.info(f"[{self.__class__.__name__}] Posting AutoAccept")
-        with self.parent.server.test_client() as client:
+        with WebServer().test_client() as client:
             response = client.post("/riot/lcu/0/lol-matchmaking/v1/ready-check/accept")
             if(not response): return False
             return (response.status_code//100) == 2
@@ -36,15 +42,14 @@ class ReadyCheck(AbstractPhase):
 
 
     def update(self):
-        with self.parent.server.test_client() as client:
-            try: gameOverallOptions = client.get(f"/app/config/settings/game/overall/options.json").get_json(force=True)
-            except: gameOverallOptions = {}
-            if(gameOverallOptions and gameOverallOptions["auto-accept"] and not self.isAutoAccepting()):
+        if(not self.isAutoAccepting()):
+            with open(sys.modules["StorageManager"].LocalStorage.path(
+                "cfg", "settings", "game", "overall", "options.json"
+            ), "r", encoding="UTF-8") as f: gameOverallOptions = json.load(f)
+            if(gameOverallOptions.get("auto-accept", False)):
                 self.autoAcceptThread = TaskThread(
                     target=self.postAutoAccept,
-                    delay=1,
-                    tries=30,
+                    delay=0,
+                    tries=10,
                     onFinished=self.endAutoAccept
                 ).start()
-
-
