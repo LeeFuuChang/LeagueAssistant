@@ -62,14 +62,6 @@ class SpellHelperPlayer(QWidget):
         self.data["champion"]["label"].leftButtonClicked.connect(self.startBroadcastSpellCooldown)
         self.data["champion"]["label"].rightButtonClicked.connect(lambda:[self.resetSpellCastTime(k) for k in self.data["spells"]])
 
-        for spellKey in self.data["spells"]:
-            self.data["spells"][spellKey]["label"].leftButtonClicked.connect(lambda:self.setSpellCastTime(spellKey))
-            self.data["spells"][spellKey]["label"].rightButtonClicked.connect(lambda:self.resetSpellCastTime(spellKey))
-            self.data["spells"][spellKey]["notify"].leftButtonClicked.connect(lambda:self.setSpellCastTime(spellKey))
-            self.data["spells"][spellKey]["notify"].rightButtonClicked.connect(lambda:self.resetSpellCastTime(spellKey))
-            self.data["spells"][spellKey]["counter"].leftButtonClicked.connect(lambda:self.setSpellCastTime(spellKey))
-            self.data["spells"][spellKey]["counter"].rightButtonClicked.connect(lambda:self.resetSpellCastTime(spellKey))
-
 
 
     def updateCounterStyle(self, style:dict) -> None:
@@ -148,6 +140,15 @@ class SpellHelperPlayer(QWidget):
                     "cooldown": 0,
                     "fullCooldown": 0,
                 }
+
+                self.data["spells"][spellKey]["label"].leftButtonClicked.connect(lambda key=spellKey : self.setSpellCastTime(key))
+                self.data["spells"][spellKey]["label"].rightButtonClicked.connect(lambda key=spellKey : self.resetSpellCastTime(key))
+
+                self.data["spells"][spellKey]["notify"].leftButtonClicked.connect(lambda key=spellKey : self.setSpellCastTime(key))
+                self.data["spells"][spellKey]["notify"].rightButtonClicked.connect(lambda key=spellKey : self.resetSpellCastTime(key))
+
+                self.data["spells"][spellKey]["counter"].leftButtonClicked.connect(lambda key=spellKey : self.setSpellCastTime(key))
+                self.data["spells"][spellKey]["counter"].rightButtonClicked.connect(lambda key=spellKey : self.resetSpellCastTime(key))
 
             oldImageURL = self.data["spells"][spellKey]["imageURL"]
 
@@ -230,8 +231,6 @@ class SpellHelperPlayer(QWidget):
             spellParts.append(f"{spellNick} {timeString}")
 
         res =  " | ".join(filter(lambda x:x, [playerNick, *spellParts]))*bool(spellParts)
-
-        return not print(res)
 
         return Chat.sendInProgress([res, ])
 
