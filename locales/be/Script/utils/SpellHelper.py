@@ -160,9 +160,12 @@ class SpellHelperPlayer(QWidget):
 
 
     def reloadPixmap(self):
-        self.data["championPixmap"].loadFromData(rq.get(self.data["championImageURL"]).content)
-        self.data["spell1"]["pixmap"].loadFromData(rq.get(self.data["spell1"]["imageURL"]).content)
-        self.data["spell2"]["pixmap"].loadFromData(rq.get(self.data["spell2"]["imageURL"]).content)
+        if(self.data["championImageURL"]):
+            self.data["championPixmap"].loadFromData(rq.get(self.data["championImageURL"]).content)
+        if(self.data["spell1"]["imageURL"]):
+            self.data["spell1"]["pixmap"].loadFromData(rq.get(self.data["spell1"]["imageURL"]).content)
+        if(self.data["spell2"]["imageURL"]):
+            self.data["spell2"]["pixmap"].loadFromData(rq.get(self.data["spell2"]["imageURL"]).content)
 
 
     def updateSize(self, size=None):
