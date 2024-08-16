@@ -1,8 +1,8 @@
-from ..utils.Collector import StatsDataCollector
-from ..utils.thread import TaskThread, SteppedTaskThread
-from ..utils import Chat
-
 from .abstract import ChampSelect
+
+from Script.utils.Collector import StatsDataCollector
+from Script.utils.thread import TaskThread, SteppedTaskThread
+from Script.utils import Chat
 
 from Server.Flask import WebServer
 
@@ -59,7 +59,6 @@ class ChampSelect(ChampSelect):
                 try: participantsRequest = client.get(f"/riot/lcu/0/lol-chat/v1/conversations/{champSelectCID}/participants").get_json(force=True)
                 except: participantsRequest = {"success": False}
                 if(participantsRequest["success"]): 
-                    with open("a.json", "w") as f: json.dump(participantsRequest, f, indent=4, ensure_ascii=False)
                     champSelectParticipantPuuids = [player["puuid"] for player in participantsRequest.get("response", [])]
 
             champSelectSession = None

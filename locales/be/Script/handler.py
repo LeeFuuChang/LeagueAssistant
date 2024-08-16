@@ -39,7 +39,6 @@ class PhaseHandler(QObject):
         self.currentPhase = Phase.get(None).name
 
         self.handlers = {cls.name:cls() for cls in Phase.phases}
-        for h in self.handlers.values(): print(h.__class__)
 
         self.loopThread = None
         self.updateSignal.connect(self.update)
