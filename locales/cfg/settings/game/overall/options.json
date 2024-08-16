@@ -1,4 +1,4 @@
 {
-    "auto-accept": false,
+    "auto-accept": true,
     "auto-requeue": false
 }

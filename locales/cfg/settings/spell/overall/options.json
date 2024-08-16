@@ -1,6 +1,6 @@
 {
     "switch": true,
-    "lane-nickname": true,
-    "number-nickname": false,
+    "lane-nickname": false,
+    "number-nickname": true,
     "custom-nickname": false
 }
