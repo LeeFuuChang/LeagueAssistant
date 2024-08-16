@@ -19,14 +19,16 @@ import re
 
 
 class SpellHelperPlayer(QWidget):
+    _thread:TaskThread
+
     _parent:QWidget
     _layout:QGridLayout
-
-    _thread:TaskThread
 
     def __init__(self, parent:QWidget) -> None:
         super(self.__class__, self).__init__(parent)
         self.setContentsMargins(0, 0, 0, 0)
+
+        self._thread = None
 
         self._parent = parent
         self._layout = QGridLayout()
@@ -58,7 +60,7 @@ class SpellHelperPlayer(QWidget):
         }
 
         self.data["champion"]["label"].leftButtonClicked.connect(self.startBroadcastSpellCooldown)
-        self.data["champion"]["label"].rightButtonClicked.connect(lambda:[self.setSpellCastTime(k) for k in self.data["spells"]])
+        self.data["champion"]["label"].rightButtonClicked.connect(lambda:[self.resetSpellCastTime(k) for k in self.data["spells"]])
 
         for spellKey in self.data["spells"]:
             self.data["spells"][spellKey]["label"].leftButtonClicked.connect(lambda:self.setSpellCastTime(spellKey))
@@ -84,17 +86,19 @@ class SpellHelperPlayer(QWidget):
             spellData["pixmap"].loadFromData(rq.get(spellData["imageURL"]).content)
 
 
-    def updateSize(self, size:int) -> None:
+    def updateSize(self, size=None):
         self._layout.setContentsMargins(size//16, size//16, size//16, size//16)
 
         self.data["champion"]["label"].setFixedSize(size*2, size*2)
+        self.data["champion"]["label"].setPixmap(self.data["champion"]["pixmap"].scaled(size*2, size*2))
 
         for spellData in self.data["spells"].values():
-            spellData["label"].setFixedSize(size, size)
-            spellData["notify"].setFixedSize(size, size)
             spellData["counter"].setFixedSize(size, size)
+            spellData["notify"].setFixedSize(size, size)
+            spellData["label"].setFixedSize(size, size)
+            spellData["label"].setPixmap(spellData["pixmap"].scaled(size, size))
 
-        return self.setFixedSize(self._layout.sizeHint())
+        self.setFixedSize(self._layout.sizeHint())
 
 
     def updateLayout(self, layoutFormat:str) -> None:
@@ -130,10 +134,10 @@ class SpellHelperPlayer(QWidget):
             if(spellKey not in self.data["spells"]):
                 self.data["spells"][spellKey] = {
                     "hotkey": "D" if("One" in spellKey)else "F",
-                    "pixmap": QPixmap(),
                     "label": ClickableLabel(self),
                     "notify": ClickableLabel(self),
                     "counter": ClickableLabel(self),
+                    "pixmap": QPixmap(),
                     "imageURL": "",
                     "thread": None,
                     "tw": "",

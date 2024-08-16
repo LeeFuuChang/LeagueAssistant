@@ -2,7 +2,6 @@ from PyQt5.QtWidgets import QWidget, QLabel, QGraphicsOpacityEffect
 from PyQt5.QtCore import QObject, QEvent, Qt, pyqtSignal
 
 
-
 class ClickableLabel(QLabel):
     leftButtonClicked:pyqtSignal = pyqtSignal()
     rightButtonClicked:pyqtSignal = pyqtSignal()
@@ -26,17 +25,16 @@ class ClickableLabel(QLabel):
 
 
     def eventFilter(self, obj:QObject, event:QEvent) -> bool:
+        if obj != self: return False
         if event.type() == QEvent.MouseButtonRelease:
-            print(obj, self)
-            if obj.rect().contains(event.pos()):
-                if event.button() == Qt.LeftButton:
-                    self.leftButtonClicked.emit()
-                    event.accept()
-                    return True
-                if event.button() == Qt.RightButton:
-                    self.rightButtonClicked.emit()
-                    event.accept()
-                    return True
+            if event.button() == Qt.LeftButton:
+                self.leftButtonClicked.emit()
+                event.accept()
+                return True
+            if event.button() == Qt.RightButton:
+                self.rightButtonClicked.emit()
+                event.accept()
+                return True
         return False
 
 

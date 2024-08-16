@@ -6,8 +6,7 @@ from Script.utils import Chat
 
 from Server.Flask import WebServer
 
-# from Script.SpellHelper import SpellHelper
-from Script.utils.SpellHelper import SpellHelperUI as SpellHelper
+from Script.SpellHelper import SpellHelper
 
 import win32api
 import json

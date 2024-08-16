@@ -16,13 +16,12 @@ import time
 import json
 import sys
 import os
-import re
 
 
 
 class SpellHelper(QWidget):
     setupCompleted:bool = False
-    setupThread:TaskThread
+    setupThread:TaskThread = None
 
     _size:int = 24
 
@@ -46,22 +45,21 @@ class SpellHelper(QWidget):
         self.setFixedSize(self._layout.sizeHint())
 
         self.players = {}
+        self.gameStartTime = 0
 
 
 
     def __new__(cls):
         if hasattr(cls, "_instance"): return cls._instance
         
-        self = super(cls, cls).__new__(cls)
-        super(self.__class__, self).__init__()
+        cls.instance = super(cls, cls).__new__(cls)
+        super(cls.instance.__class__, cls.instance).__init__()
 
-        self.setupThread = TaskThread(
-            target=self.setup,
+        cls.instance.setupThread = TaskThread(
+            target=cls.instance.setup,
             delay=0,
             tries=-1,
         ).start()
-
-        cls.instance = self
 
         return cls.instance
 
@@ -133,30 +131,12 @@ class SpellHelper(QWidget):
     def addPlayer(self, playerData):
         helper = SpellHelperPlayer(self)
 
-        spellRef = {
-            "spell1": "summonerSpellOne",
-            "spell2": "summonerSpellTwo",
-        }
-
         helper.data["riotId"] = playerData["riotId"]
         helper.data["summonerName"] = playerData["summonerName"]
 
         helper.data["champion"]["championName"] = playerData["championName"]
         helper.data["champion"]["rawChampionName"] = playerData["rawChampionName"]
         helper.data["champion"]["imageURL"] = f"https://cdn.communitydragon.org/latest/champion/{playerData['rawChampionName'].split('_')[3]}/square"
-
-        for ref in spellRef:
-            spellData = playerData["summonerSpells"][spellRef[ref]]
-
-            if(not re.match(r"SummonerSpell\_(\S+)\_DisplayName", spellData["rawDisplayName"])): continue
-            spell = re.search(r"SummonerSpell\_(\S+)\_DisplayName", spellData["rawDisplayName"]).group(1)
-
-            helper.data["spells"][ref]["tw"] = self.spellsData[spell]["tw"]
-            helper.data["spells"][ref]["en"] = self.spellsData[spell]["en"]
-            helper.data["spells"][ref]["imageURL"] = self.spellsData[spell]["icon"]
-            helper.data["spells"][ref]["fullCooldown"] = self.spellsData[spell]["cooldown"]
-            helper.data["spells"][ref]["displayName"] = spellData["displayName"]
-            helper.data["spells"][ref]["rawDisplayName"] = spellData["rawDisplayName"]
 
         helper.updatePixmap()
 
@@ -200,12 +180,13 @@ class SpellHelper(QWidget):
             playerWidget.updateNotifyStyle(overallNotify)
             playerWidget.updateCounterStyle(overallCounter)
 
+        self.setFixedSize(self._layout.sizeHint())
+
 
 
     def update(self, localTeam, gameStats):
         if(not self.setupCompleted): return logging.error("[SpellHelper] Setup Incomplete")
 
-        self.localTeam = localTeam
         if(gameStats):
             self.gameStartTime = time.time() - gameStats["gameTime"]
         else:
@@ -218,16 +199,16 @@ class SpellHelper(QWidget):
             if(playerListRequest["success"]): playerList = playerListRequest["response"]
             playerListNames = {player["summonerName"] for player in playerList}
 
-        for name in self.players:
+        for name, helper in self.players.items():
             if(name in playerListNames): continue
-            self._layout.removeWidget(self.players[name])
-            self.players[name].deleteLater()
+            self._layout.removeWidget(helper)
+            helper.deleteLater()
             del self.players[name]
 
         for idx, playerData in enumerate(playerList):
-            if(playerData["team"] == self.localTeam): continue
+            if(playerData["team"] == localTeam): continue
             if(playerData["summonerName"] not in self.players): self.addPlayer(playerData)
             self.players[playerData["summonerName"]].data["index"] = idx
             self.players[playerData["summonerName"]].update(playerData)
 
-        self.setFixedSize(self._layout.sizeHint())
+        self.updateStyle()
