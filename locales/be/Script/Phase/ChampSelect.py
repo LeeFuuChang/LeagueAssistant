@@ -47,22 +47,27 @@ class ChampSelect(ChampSelect):
 
     def getChampSelectData(self):
         with WebServer().test_client() as client:
-            participants = []
             champSelectCID = None
-            try: chatParticipantsRequest = client.get("/riot/lcu/1/chat/v5/participants/champ-select").get_json(force=True)
-            except: chatParticipantsRequest = {"success": False}
-            if(chatParticipantsRequest["success"]): participants = chatParticipantsRequest["response"]["participants"]
-            if(participants): champSelectCID = participants[-1]["cid"]
+            try: conversationsRequest = client.get("/riot/lcu/0/lol-chat/v1/conversations").get_json(force=True)
+            except: conversationsRequest = {"success": False}
+            if(conversationsRequest["success"]):
+                champSelectConversions = filter(lambda c:(c["type"]=="championSelect"), conversationsRequest.get("response", []))
+                champSelectCID = [*champSelectConversions, {"id":None}][0]["id"]
 
-            champSelectParticipants = []
+            champSelectParticipantPuuids = []
             if(champSelectCID is not None):
-                champSelectParticipants = [p for p in participants if p["cid"] == champSelectCID]
+                try: participantsRequest = client.get(f"/riot/lcu/0/lol-chat/v1/conversations/{champSelectCID}/participants").get_json(force=True)
+                except: participantsRequest = {"success": False}
+                if(participantsRequest["success"]): 
+                    with open("a.json", "w") as f: json.dump(participantsRequest, f, indent=4, ensure_ascii=False)
+                    champSelectParticipantPuuids = [player["puuid"] for player in participantsRequest.get("response", [])]
 
             champSelectSession = None
             try: champSelectSessionRequest = client.get("/riot/lcu/0/lol-champ-select/v1/session").get_json(force=True)
             except: champSelectSessionRequest = {"success": False}
             if(champSelectSessionRequest["success"]): champSelectSession = champSelectSessionRequest["response"]
-        return champSelectCID, champSelectParticipants, champSelectSession
+
+        return champSelectCID, champSelectParticipantPuuids, champSelectSession
 
 
 
@@ -305,7 +310,7 @@ class ChampSelect(ChampSelect):
             delay=0, tries=10, fargs=(champSelectCID, ), onFinished=self.endSendStatsDataThread
         ).start()
 
-    def update_SendStatsData(self, champSelectCID, champSelectParticipants):
+    def update_SendStatsData(self, champSelectCID, champSelectParticipantPuuids):
         if(self.isSendingStatsData()): return True
         for fastType in ["fast-self", "fast-team"]:
             if(self.isSendingStatsData()): return True
@@ -313,16 +318,17 @@ class ChampSelect(ChampSelect):
                 "cfg", "settings", "stats", "select-send", f"{fastType}.json"
             ), "r", encoding="UTF-8") as f: fastData = json.load(f)
             if(fastData.get("keybind", -1) > 0 and win32api.GetAsyncKeyState(fastData["keybind"])):
+                if(not champSelectParticipantPuuids): return True
                 sendSelf = (fastType == "fast-self" or not fastData.get("no-self", True))
                 sendFriends = (not fastData.get("no-friend", True))
                 sendOthers = (fastType == "fast-team")
                 self.collectStatsDataThread = TaskThread(
-                    target=StatsDataCollector.sendStatsData, 
+                    target=StatsDataCollector.sendStatsDataByPuuids, 
                     delay=0, tries=10, fargs=(
-                        lambda strings: self.sendStatsDataStrings(champSelectCID, strings), 
-                        [p["name"] for p in champSelectParticipants], 
+                        lambda strings: self.sendStatsDataStrings(champSelectCID, strings),
+                        champSelectParticipantPuuids,
                         sendSelf, sendFriends, sendOthers, True,
-                        self.__class__.__name__
+                        self.__class__.name,
                     ), onFinished=self.endCollectStatsDataThread
                 ).start()
                 return True
@@ -331,12 +337,13 @@ class ChampSelect(ChampSelect):
 
 
     def update(self):
-        champSelectCID, champSelectParticipants, champSelectSession = self.getChampSelectData()
-        if(champSelectCID is not None and champSelectParticipants and not self.isSendingStatsData()):
-            self.update_SendStatsData(champSelectCID, champSelectParticipants)
+        champSelectCID, champSelectParticipantPuuids, champSelectSession = self.getChampSelectData()
+        if(champSelectCID is not None):
+            self.update_AutoPublicity(champSelectCID)
+        if(champSelectCID is not None and champSelectParticipantPuuids and not self.isSendingStatsData()):
+            self.update_SendStatsData(champSelectCID, champSelectParticipantPuuids)
         if(champSelectSession is not None):
             assignedPosition = self.getAssignedPosition(champSelectSession)
             if(assignedPosition):
                 if(not (self.autoBanCompleted and self.autoPickCompleted and self.autoSpellCompleted and self.autoRunesCompleted)):
                     self.update_AutoBanPick(assignedPosition, champSelectSession)
-        if(champSelectCID is not None): self.update_AutoPublicity(champSelectCID)

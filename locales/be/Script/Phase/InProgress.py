@@ -14,6 +14,10 @@ import sys
 
 
 
+ENEMY_OF = {"ORDER":"CHAOS", "CHAOS":"ORDER"}
+
+
+
 class InProgress(InProgress):
     InGameSpellHelperUI = None
     gameMode = None
@@ -40,10 +44,10 @@ class InProgress(InProgress):
             localName = None
             try: localNameRequest = client.get("/riot/ingame/activeplayername").get_json(force=True)
             except: localNameRequest = {"success": False}
-            if(localNameRequest["success"]): localName = localNameRequest["response"][:localNameRequest["response"].rfind("#")]
+            if(localNameRequest["success"]): localName = localNameRequest["response"]
 
             localTeam = None
-            playerListByTeamByName = {}
+            playerListByTeam = {}
             if(localName is not None):
                 playerList = []
                 try: playerListRequest = client.get("/riot/ingame/playerlist").get_json(force=True)
@@ -51,15 +55,16 @@ class InProgress(InProgress):
                 if(playerListRequest["success"]): playerList = playerListRequest["response"]
                 for player in playerList:
                     if(player["summonerName"] == localName): localTeam = player["team"]
-                    if(player["team"] not in playerListByTeamByName):
-                        playerListByTeamByName[player["team"]] = {}
-                    playerListByTeamByName[player["team"]][player["summonerName"]] = player
+                    if(player["team"] not in playerListByTeam):
+                        playerListByTeam[player["team"]] = []
+                    playerListByTeam[player["team"]].append(player)
 
             gameStats = None
             try: gameStatsRequest = client.get("/riot/ingame/gamestats").get_json(force=True)
             except: gameStatsRequest = {"success": False}
             if(gameStatsRequest["success"]): gameStats = gameStatsRequest["response"]
-        return localTeam, playerListByTeamByName, gameStats
+
+        return localTeam, playerListByTeam, gameStats
 
 
 
@@ -111,26 +116,26 @@ class InProgress(InProgress):
             onFinished=self.endSendStatsDataThread
         ).start()
 
-    def update_SendStatsData(self, localTeam, playerListByTeamByName):
+    def update_SendStatsData(self, localTeam, playerListByTeam):
         if(self.isSendingStatsData()): return True
-        enemyOf = {"ORDER":"CHAOS", "CHAOS":"ORDER"}
-        fastRef = {"fast-team":localTeam, "fast-enemy":enemyOf[localTeam]}
+        fastRef = {"fast-team":localTeam, "fast-enemy":ENEMY_OF.get(localTeam, "")}
         for fastType, fastTeam in fastRef.items():
             if(self.isSendingStatsData()): return True
             with open(sys.modules["StorageManager"].LocalStorage.path(
                 "cfg", "settings", "stats", "progress-send", f"{fastType}.json"
             ), "r", encoding="UTF-8") as f: fastData = json.load(f)
             if(fastData.get("keybind", -1) > 0 and win32api.GetAsyncKeyState(fastData["keybind"])):
-                playerNames = [n for n,p in playerListByTeamByName.get(fastTeam,{}).items() if not p["isBot"]]
+                playerNames = [p["summonerName"] for p in playerListByTeam.get(fastTeam, []) if not p["isBot"]]
+                if(not playerNames): return True
                 sendSelf = (not fastData.get("no-self", True))
                 sendFriends = (not fastData.get("no-friend", True))
                 isAlly = (fastTeam == localTeam)
                 self.collectStatsDataThread = TaskThread(
-                    target=StatsDataCollector.sendStatsData, 
+                    target=StatsDataCollector.sendStatsDataByNames,
                     delay=0, tries=10, fargs=(
                         self.sendStatsDataStrings, playerNames, 
                         sendSelf, sendFriends, True, isAlly,
-                        self.__class__.__name__
+                        self.__class__.name
                     ), onFinished=self.endCollectStatsDataThread
                 ).start()
                 return True
@@ -139,9 +144,9 @@ class InProgress(InProgress):
 
 
     def update(self):
-        localTeam, playerListByTeamByName, gameStats = self.getInProgressData()
-        if(gameStats is None): return
-        if(gameStats["gameMode"] not in ["CLASSIC", "ARAM"]): return
-        if(localTeam is not None and playerListByTeamByName and not self.isSendingStatsData()):
-            self.update_SendStatsData(localTeam, playerListByTeamByName)
-        self.update_InGameSpellHelper(localTeam, gameStats)
+        localTeam, playerListByTeam, gameStats = self.getInProgressData()
+        if(gameStats is None or gameStats["gameMode"] not in ["CLASSIC", "ARAM"]): return
+        if(localTeam is not None and playerListByTeam and not self.isSendingStatsData()):
+            self.update_SendStatsData(localTeam, playerListByTeam)
+        if(playerListByTeam.get(ENEMY_OF.get(localTeam, ""), [])):
+            self.update_InGameSpellHelper(localTeam, gameStats)
