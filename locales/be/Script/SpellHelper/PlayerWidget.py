@@ -11,6 +11,7 @@ from PyQt5.QtGui import QPixmap
 
 import requests as rq
 import logging
+import difflib
 import time
 import json
 import sys
@@ -116,12 +117,28 @@ class SpellHelperPlayer(QWidget):
             self._layout.addWidget(spellData["counter"], *labelPosition, 1, 1, Qt.AlignCenter)
 
 
+
+    def guessSpellId(self, rawDisplayName):
+        best = 0
+        matched = [*self._parent.spellsData.keys()][0]
+        for key in self._parent.spellsData.keys():
+            result = difflib.SequenceMatcher(None, key, rawDisplayName)
+            if(result.ratio() <= best): continue
+            best = result.ratio()
+            matched = key
+        return matched
+
+
     def updateSpell(self, playerData) -> None:
+        for spellKey in self.data["spells"].keys():
+            if(spellKey in playerData["summonerSpells"]): continue
+            del self.data["spells"][spellKey]
+
         for spellKey, spellData in playerData["summonerSpells"].items():
             regex = r"SummonerSpell\_(\S+)\_DisplayName"
             found = re.search(regex, spellData["rawDisplayName"])
             if(not found): continue
-            spellId = found.group(1)
+            spellId = self.guessSpellId(found.group(1))
 
             if(spellKey not in self.data["spells"]):
                 self.data["spells"][spellKey] = {

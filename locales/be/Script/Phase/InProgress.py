@@ -30,8 +30,10 @@ class InProgress(InProgress):
     def reset(self):
         super(self.__class__, self).reset()
 
+        if(self.InGameSpellHelper):
+            self.InGameSpellHelper.setVisibility(False)
+            self.InGameSpellHelper.deleteLater()
         self.InGameSpellHelper = SpellHelper()
-        self.InGameSpellHelper.setVisibility(False)
         self.gameMode = None
 
         self.sendStatsDataThread = None
