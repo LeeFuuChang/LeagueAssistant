@@ -1,636 +1,585 @@
-<folder name="LeagueAssistant-LS" version="146">
-    <folder name="logo">
-        <file updated="1B" name="Filled" type="ico" path="logo"/>
-        <file updated="1B" name="Filled" type="png" path="logo"/>
-        <file updated="1B" name="NoFill" type="ico" path="logo"/>
-        <file updated="1B" name="NoFill" type="png" path="logo"/>
-    </folder>
-    <folder name="be">
-        <file updated="130" name="app" type="pyd" path="be"/>
-        <file updated="12C" name="ProjectUtility" type="pyd" path="be"/>
-        <folder name="modules">
-            <file updated="12C" name="thread" type="pyd" path="be/modules"/>
-            <folder name="Client">
-                <file updated="12C" name="__init__" type="py" path="be/modules/Client"/>
-                <file updated="12C" name="constants" type="pyd" path="be/modules/Client"/>
-                <file updated="12E" name="utility" type="pyd" path="be/modules/Client"/>
-                <folder name="PhaseHandler">
-                    <file updated="12C" name="__init__" type="py" path="be/modules/Client/PhaseHandler"/>
-                    <file updated="13D" name="ChampSelect" type="pyd" path="be/modules/Client/PhaseHandler"/>
-                    <file updated="13C" name="handler" type="pyd" path="be/modules/Client/PhaseHandler"/>
-                    <file updated="13C" name="InProgress" type="pyd" path="be/modules/Client/PhaseHandler"/>
-                    <file updated="13C" name="ReadyCheck" type="pyd" path="be/modules/Client/PhaseHandler"/>
-                    <file updated="13C" name="utility" type="pyd" path="be/modules/Client/PhaseHandler"/>
-                </folder>
-                <folder name="Renderer">
-                    <file updated="12C" name="__init__" type="py" path="be/modules/Client/Renderer"/>
-                    <file updated="131" name="browser" type="pyd" path="be/modules/Client/Renderer"/>
-                    <file updated="13C" name="spellHelper" type="pyd" path="be/modules/Client/Renderer"/>
-                    <file updated="12C" name="utility" type="pyd" path="be/modules/Client/Renderer"/>
-                </folder>
-                <folder name="Server">
-                    <file updated="12C" name="__init__" type="py" path="be/modules/Client/Server"/>
-                    <file updated="12C" name="scraper" type="pyd" path="be/modules/Client/Server"/>
-                    <file updated="12C" name="utility" type="pyd" path="be/modules/Client/Server"/>
-                    <folder name="AD">
-                        <file updated="12C" name="__init__" type="py" path="be/modules/Client/Server/AD"/>
-                        <file updated="12C" name="blueprint" type="pyd" path="be/modules/Client/Server/AD"/>
-                    </folder>
-                    <folder name="APP">
-                        <file updated="12C" name="__init__" type="py" path="be/modules/Client/Server/APP"/>
-                        <file updated="137" name="blueprint" type="pyd" path="be/modules/Client/Server/APP"/>
-                    </folder>
-                    <folder name="CDRAGON">
-                        <file updated="12C" name="__init__" type="py" path="be/modules/Client/Server/CDRAGON"/>
-                        <file updated="12C" name="blueprint" type="pyd" path="be/modules/Client/Server/CDRAGON"/>
-                    </folder>
-                    <folder name="CONFIG">
-                        <file updated="12C" name="__init__" type="py" path="be/modules/Client/Server/CONFIG"/>
-                        <file updated="12C" name="blueprint" type="pyd" path="be/modules/Client/Server/CONFIG"/>
-                    </folder>
-                    <folder name="DDRAGON">
-                        <file updated="12C" name="__init__" type="py" path="be/modules/Client/Server/DDRAGON"/>
-                        <file updated="12C" name="blueprint" type="pyd" path="be/modules/Client/Server/DDRAGON"/>
-                    </folder>
-                    <folder name="OPGG">
-                        <file updated="12C" name="__init__" type="py" path="be/modules/Client/Server/OPGG"/>
-                        <file updated="140" name="blueprint" type="pyd" path="be/modules/Client/Server/OPGG"/>
-                    </folder>
-                    <folder name="QQ">
-                        <file updated="12C" name="__init__" type="py" path="be/modules/Client/Server/QQ"/>
-                        <file updated="140" name="blueprint" type="pyd" path="be/modules/Client/Server/QQ"/>
-                    </folder>
-                    <folder name="RIOT">
-                        <file updated="12C" name="__init__" type="py" path="be/modules/Client/Server/RIOT"/>
-                        <file updated="12C" name="blueprint" type="pyd" path="be/modules/Client/Server/RIOT"/>
-                        <file updated="130" name="LeagueClientAPI" type="pyd" path="be/modules/Client/Server/RIOT"/>
-                        <file updated="12C" name="LiveClientAPI" type="pyd" path="be/modules/Client/Server/RIOT"/>
-                    </folder>
-                    <folder name="STORAGE">
-                        <file updated="12C" name="__init__" type="py" path="be/modules/Client/Server/STORAGE"/>
-                        <file updated="13C" name="blueprint" type="pyd" path="be/modules/Client/Server/STORAGE"/>
-                    </folder>
-                    <folder name="UI">
-                        <file updated="12C" name="__init__" type="py" path="be/modules/Client/Server/UI"/>
-                        <file updated="12C" name="blueprint" type="pyd" path="be/modules/Client/Server/UI"/>
-                    </folder>
-                </folder>
-            </folder>
-        </folder>
-    </folder>
-    <folder name="fe">
-        <file updated="13C" name="index" type="html" path="fe"/>
-        <folder name="assets">
-            <file updated="139" name="algorithm" type="js" path="fe/assets"/>
-            <file updated="146" name="index" type="js" path="fe/assets"/>
-            <file updated="132" name="style" type="css" path="fe/assets"/>
-            <file updated="131" name="update" type="js" path="fe/assets"/>
-            <folder name="body">
-                <file updated="93" name="script" type="js" path="fe/assets/body"/>
-                <file updated="34" name="style" type="css" path="fe/assets/body"/>
-                <folder name="main">
-                    <file updated="71" name="class" type="js" path="fe/assets/body/main"/>
-                    <file updated="0" name="style" type="css" path="fe/assets/body/main"/>
-                    <folder name="pages">
-                        <folder name="config">
-                            <file updated="138" name="class" type="js" path="fe/assets/body/main/pages/config"/>
-                            <file updated="61" name="classes" type="json" path="fe/assets/body/main/pages/config"/>
-                        </folder>
-                        <folder name="live-inspect">
-                            <file updated="93" name="class" type="js" path="fe/assets/body/main/pages/live-inspect"/>
-                            <file updated="0" name="classes" type="json" path="fe/assets/body/main/pages/live-inspect"/>
-                        </folder>
-                        <folder name="lol-challenges">
-                            <file updated="93" name="class" type="js" path="fe/assets/body/main/pages/lol-challenges"/>
-                            <file updated="42" name="classes" type="json" path="fe/assets/body/main/pages/lol-challenges"/>
-                        </folder>
-                        <folder name="lol-match-history">
-                            <file updated="129" name="class" type="js" path="fe/assets/body/main/pages/lol-match-history"/>
-                            <file updated="0" name="classes" type="json" path="fe/assets/body/main/pages/lol-match-history"/>
-                        </folder>
-                        <folder name="lol-trend">
-                            <file updated="140" name="class" type="js" path="fe/assets/body/main/pages/lol-trend"/>
-                            <file updated="0" name="classes" type="json" path="fe/assets/body/main/pages/lol-trend"/>
-                        </folder>
-                        <folder name="summoner">
-                            <file updated="93" name="class" type="js" path="fe/assets/body/main/pages/summoner"/>
-                            <file updated="0" name="classes" type="json" path="fe/assets/body/main/pages/summoner"/>
-                        </folder>
-                        <folder name="summoner-recent-performance">
-                            <file updated="0" name="class" type="js" path="fe/assets/body/main/pages/summoner-recent-performance"/>
-                            <file updated="0" name="classes" type="json" path="fe/assets/body/main/pages/summoner-recent-performance"/>
-                        </folder>
-                        <folder name="tft-match-history">
-                            <file updated="93" name="class" type="js" path="fe/assets/body/main/pages/tft-match-history"/>
-                            <file updated="0" name="classes" type="json" path="fe/assets/body/main/pages/tft-match-history"/>
-                        </folder>
-                        <folder name="tft-trend">
-                            <file updated="93" name="class" type="js" path="fe/assets/body/main/pages/tft-trend"/>
-                            <file updated="3F" name="classes" type="json" path="fe/assets/body/main/pages/tft-trend"/>
-                        </folder>
-                    </folder>
-                    <folder name="parts">
-                        <folder name="config-appearance-spell">
-                            <file updated="85" name="class" type="js" path="fe/assets/body/main/parts/config-appearance-spell"/>
-                            <file updated="47" name="dark" type="css" path="fe/assets/body/main/parts/config-appearance-spell"/>
-                            <file updated="85" name="element" type="html" path="fe/assets/body/main/parts/config-appearance-spell"/>
-                            <file updated="47" name="light" type="css" path="fe/assets/body/main/parts/config-appearance-spell"/>
-                            <file updated="84" name="style" type="css" path="fe/assets/body/main/parts/config-appearance-spell"/>
-                        </folder>
-                        <folder name="config-description">
-                            <file updated="47" name="class" type="js" path="fe/assets/body/main/parts/config-description"/>
-                            <file updated="47" name="dark" type="css" path="fe/assets/body/main/parts/config-description"/>
-                            <file updated="49" name="element" type="html" path="fe/assets/body/main/parts/config-description"/>
-                            <file updated="47" name="light" type="css" path="fe/assets/body/main/parts/config-description"/>
-                            <file updated="47" name="style" type="css" path="fe/assets/body/main/parts/config-description"/>
-                        </folder>
-                        <folder name="config-settings-game">
-                            <file updated="0" name="class" type="js" path="fe/assets/body/main/parts/config-settings-game"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/config-settings-game"/>
-                            <file updated="13E" name="element" type="html" path="fe/assets/body/main/parts/config-settings-game"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/config-settings-game"/>
-                            <file updated="0" name="style" type="css" path="fe/assets/body/main/parts/config-settings-game"/>
-                        </folder>
-                        <folder name="config-settings-spell">
-                            <file updated="12E" name="class" type="js" path="fe/assets/body/main/parts/config-settings-spell"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/config-settings-spell"/>
-                            <file updated="49" name="element" type="html" path="fe/assets/body/main/parts/config-settings-spell"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/config-settings-spell"/>
-                            <file updated="0" name="style" type="css" path="fe/assets/body/main/parts/config-settings-spell"/>
-                        </folder>
-                        <folder name="config-settings-stats">
-                            <file updated="138" name="class" type="js" path="fe/assets/body/main/parts/config-settings-stats"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/config-settings-stats"/>
-                            <file updated="138" name="element" type="html" path="fe/assets/body/main/parts/config-settings-stats"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/config-settings-stats"/>
-                            <file updated="0" name="style" type="css" path="fe/assets/body/main/parts/config-settings-stats"/>
-                        </folder>
-                        <folder name="live-game-player-list">
-                            <file updated="141" name="class" type="js" path="fe/assets/body/main/parts/live-game-player-list"/>
-                            <file updated="128" name="dark" type="css" path="fe/assets/body/main/parts/live-game-player-list"/>
-                            <file updated="76" name="element" type="html" path="fe/assets/body/main/parts/live-game-player-list"/>
-                            <file updated="128" name="light" type="css" path="fe/assets/body/main/parts/live-game-player-list"/>
-                            <file updated="128" name="style" type="css" path="fe/assets/body/main/parts/live-game-player-list"/>
-                        </folder>
-                        <folder name="lol-challenge-list">
-                            <file updated="8D" name="class" type="js" path="fe/assets/body/main/parts/lol-challenge-list"/>
-                            <file updated="42" name="dark" type="css" path="fe/assets/body/main/parts/lol-challenge-list"/>
-                            <file updated="49" name="element" type="html" path="fe/assets/body/main/parts/lol-challenge-list"/>
-                            <file updated="42" name="light" type="css" path="fe/assets/body/main/parts/lol-challenge-list"/>
-                            <file updated="7C" name="style" type="css" path="fe/assets/body/main/parts/lol-challenge-list"/>
-                        </folder>
-                        <folder name="lol-challenge-thresholds">
-                            <file updated="139" name="class" type="js" path="fe/assets/body/main/parts/lol-challenge-thresholds"/>
-                            <file updated="42" name="dark" type="css" path="fe/assets/body/main/parts/lol-challenge-thresholds"/>
-                            <file updated="49" name="element" type="html" path="fe/assets/body/main/parts/lol-challenge-thresholds"/>
-                            <file updated="42" name="light" type="css" path="fe/assets/body/main/parts/lol-challenge-thresholds"/>
-                            <file updated="7C" name="style" type="css" path="fe/assets/body/main/parts/lol-challenge-thresholds"/>
-                        </folder>
-                        <folder name="lol-champion-build">
-                            <file updated="141" name="class" type="js" path="fe/assets/body/main/parts/lol-champion-build"/>
-                            <file updated="127" name="dark" type="css" path="fe/assets/body/main/parts/lol-champion-build"/>
-                            <file updated="126" name="element" type="html" path="fe/assets/body/main/parts/lol-champion-build"/>
-                            <file updated="127" name="light" type="css" path="fe/assets/body/main/parts/lol-champion-build"/>
-                            <file updated="126" name="style" type="css" path="fe/assets/body/main/parts/lol-champion-build"/>
-                        </folder>
-                        <folder name="lol-champion-list">
-                            <file updated="140" name="class" type="js" path="fe/assets/body/main/parts/lol-champion-list"/>
-                            <file updated="5A" name="dark" type="css" path="fe/assets/body/main/parts/lol-champion-list"/>
-                            <file updated="5A" name="element" type="html" path="fe/assets/body/main/parts/lol-champion-list"/>
-                            <file updated="5A" name="light" type="css" path="fe/assets/body/main/parts/lol-champion-list"/>
-                            <file updated="120" name="style" type="css" path="fe/assets/body/main/parts/lol-champion-list"/>
-                        </folder>
-                        <folder name="lol-champion-tiers">
-                            <file updated="140" name="class" type="js" path="fe/assets/body/main/parts/lol-champion-tiers"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/lol-champion-tiers"/>
-                            <file updated="49" name="element" type="html" path="fe/assets/body/main/parts/lol-champion-tiers"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/lol-champion-tiers"/>
-                            <file updated="7C" name="style" type="css" path="fe/assets/body/main/parts/lol-champion-tiers"/>
-                        </folder>
-                        <folder name="lol-match-detail">
-                            <file updated="140" name="class" type="js" path="fe/assets/body/main/parts/lol-match-detail"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/lol-match-detail"/>
-                            <file updated="94" name="element" type="html" path="fe/assets/body/main/parts/lol-match-detail"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/lol-match-detail"/>
-                            <file updated="135" name="style" type="css" path="fe/assets/body/main/parts/lol-match-detail"/>
-                        </folder>
-                        <folder name="lol-recent-matches">
-                            <file updated="141" name="class" type="js" path="fe/assets/body/main/parts/lol-recent-matches"/>
-                            <file updated="128" name="dark" type="css" path="fe/assets/body/main/parts/lol-recent-matches"/>
-                            <file updated="7C" name="element" type="html" path="fe/assets/body/main/parts/lol-recent-matches"/>
-                            <file updated="128" name="light" type="css" path="fe/assets/body/main/parts/lol-recent-matches"/>
-                            <file updated="83" name="style" type="css" path="fe/assets/body/main/parts/lol-recent-matches"/>
-                        </folder>
-                        <folder name="select-rune-page">
-                            <file updated="92" name="class" type="js" path="fe/assets/body/main/parts/select-rune-page"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/select-rune-page"/>
-                            <file updated="0" name="element" type="html" path="fe/assets/body/main/parts/select-rune-page"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/select-rune-page"/>
-                            <file updated="0" name="style" type="css" path="fe/assets/body/main/parts/select-rune-page"/>
-                        </folder>
-                        <folder name="summoner-recent-performance">
-                            <file updated="145" name="class" type="js" path="fe/assets/body/main/parts/summoner-recent-performance"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/summoner-recent-performance"/>
-                            <file updated="142" name="element" type="html" path="fe/assets/body/main/parts/summoner-recent-performance"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/summoner-recent-performance"/>
-                            <file updated="7C" name="style" type="css" path="fe/assets/body/main/parts/summoner-recent-performance"/>
-                        </folder>
-                        <folder name="summoner-season-overview">
-                            <file updated="139" name="class" type="js" path="fe/assets/body/main/parts/summoner-season-overview"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/summoner-season-overview"/>
-                            <file updated="49" name="element" type="html" path="fe/assets/body/main/parts/summoner-season-overview"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/summoner-season-overview"/>
-                            <file updated="54" name="style" type="css" path="fe/assets/body/main/parts/summoner-season-overview"/>
-                        </folder>
-                        <folder name="summoner-spell-list">
-                            <file updated="92" name="class" type="js" path="fe/assets/body/main/parts/summoner-spell-list"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/summoner-spell-list"/>
-                            <file updated="0" name="element" type="html" path="fe/assets/body/main/parts/summoner-spell-list"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/summoner-spell-list"/>
-                            <file updated="0" name="style" type="css" path="fe/assets/body/main/parts/summoner-spell-list"/>
-                        </folder>
-                        <folder name="tft-comp-build">
-                            <file updated="134" name="class" type="js" path="fe/assets/body/main/parts/tft-comp-build"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/tft-comp-build"/>
-                            <file updated="49" name="element" type="html" path="fe/assets/body/main/parts/tft-comp-build"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/tft-comp-build"/>
-                            <file updated="133" name="style" type="css" path="fe/assets/body/main/parts/tft-comp-build"/>
-                        </folder>
-                        <folder name="tft-comp-tiers">
-                            <file updated="134" name="class" type="js" path="fe/assets/body/main/parts/tft-comp-tiers"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/tft-comp-tiers"/>
-                            <file updated="49" name="element" type="html" path="fe/assets/body/main/parts/tft-comp-tiers"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/tft-comp-tiers"/>
-                            <file updated="133" name="style" type="css" path="fe/assets/body/main/parts/tft-comp-tiers"/>
-                        </folder>
-                        <folder name="tft-recent-matches">
-                            <file updated="133" name="class" type="js" path="fe/assets/body/main/parts/tft-recent-matches"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/main/parts/tft-recent-matches"/>
-                            <file updated="133" name="element" type="html" path="fe/assets/body/main/parts/tft-recent-matches"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/main/parts/tft-recent-matches"/>
-                            <file updated="133" name="style" type="css" path="fe/assets/body/main/parts/tft-recent-matches"/>
-                        </folder>
-                    </folder>
-                    <folder name="type-styles">
-                        <folder name="config">
-                            <file updated="61" name="dark" type="css" path="fe/assets/body/main/type-styles/config"/>
-                            <file updated="61" name="light" type="css" path="fe/assets/body/main/type-styles/config"/>
-                            <file updated="120" name="style" type="css" path="fe/assets/body/main/type-styles/config"/>
-                        </folder>
-                        <folder name="tft">
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/main/type-styles/tft"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/main/type-styles/tft"/>
-                            <file updated="133" name="style" type="css" path="fe/assets/body/main/type-styles/tft"/>
-                        </folder>
-                    </folder>
-                </folder>
-                <folder name="side">
-                    <file updated="71" name="class" type="js" path="fe/assets/body/side"/>
-                    <file updated="0" name="style" type="css" path="fe/assets/body/side"/>
-                    <folder name="pages">
-                        <folder name="summoner">
-                            <file updated="93" name="class" type="js" path="fe/assets/body/side/pages/summoner"/>
-                            <file updated="0" name="classes" type="json" path="fe/assets/body/side/pages/summoner"/>
-                        </folder>
-                    </folder>
-                    <folder name="parts">
-                        <folder name="summoner-basic">
-                            <file updated="139" name="class" type="js" path="fe/assets/body/side/parts/summoner-basic"/>
-                            <file updated="120" name="dark" type="css" path="fe/assets/body/side/parts/summoner-basic"/>
-                            <file updated="120" name="element" type="html" path="fe/assets/body/side/parts/summoner-basic"/>
-                            <file updated="120" name="light" type="css" path="fe/assets/body/side/parts/summoner-basic"/>
-                            <file updated="13C" name="style" type="css" path="fe/assets/body/side/parts/summoner-basic"/>
-                        </folder>
-                        <folder name="summoner-mastery">
-                            <file updated="145" name="class" type="js" path="fe/assets/body/side/parts/summoner-mastery"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/side/parts/summoner-mastery"/>
-                            <file updated="139" name="element" type="html" path="fe/assets/body/side/parts/summoner-mastery"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/side/parts/summoner-mastery"/>
-                            <file updated="135" name="style" type="css" path="fe/assets/body/side/parts/summoner-mastery"/>
-                        </folder>
-                        <folder name="summoner-position-preference">
-                            <file updated="139" name="class" type="js" path="fe/assets/body/side/parts/summoner-position-preference"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/side/parts/summoner-position-preference"/>
-                            <file updated="135" name="element" type="html" path="fe/assets/body/side/parts/summoner-position-preference"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/side/parts/summoner-position-preference"/>
-                            <file updated="135" name="style" type="css" path="fe/assets/body/side/parts/summoner-position-preference"/>
-                        </folder>
-                        <folder name="summoner-rank">
-                            <file updated="92" name="class" type="js" path="fe/assets/body/side/parts/summoner-rank"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/side/parts/summoner-rank"/>
-                            <file updated="0" name="element" type="html" path="fe/assets/body/side/parts/summoner-rank"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/side/parts/summoner-rank"/>
-                            <file updated="0" name="style" type="css" path="fe/assets/body/side/parts/summoner-rank"/>
-                        </folder>
-                        <folder name="summoner-recent-champion">
-                            <file updated="142" name="class" type="js" path="fe/assets/body/side/parts/summoner-recent-champion"/>
-                            <file updated="0" name="dark" type="css" path="fe/assets/body/side/parts/summoner-recent-champion"/>
-                            <file updated="139" name="element" type="html" path="fe/assets/body/side/parts/summoner-recent-champion"/>
-                            <file updated="0" name="light" type="css" path="fe/assets/body/side/parts/summoner-recent-champion"/>
-                            <file updated="135" name="style" type="css" path="fe/assets/body/side/parts/summoner-recent-champion"/>
-                        </folder>
-                    </folder>
-                </folder>
-            </folder>
-            <folder name="fonts">
-                <folder name="default">
-                    <file updated="0" name="fonts" type="css" path="fe/assets/fonts/default"/>
-                    <file updated="0" name="fonts-main" type="css" path="fe/assets/fonts/default"/>
-                    <file updated="0" name="master" type="css" path="fe/assets/fonts/default"/>
-                </folder>
-                <folder name="fonts">
-                    <folder name="beaufort">
-                        <file updated="0" name="BeaufortForLoL-Bold" type="otf" path="fe/assets/fonts/fonts/beaufort"/>
-                        <file updated="0" name="BeaufortForLoL-BoldItalic" type="otf" path="fe/assets/fonts/fonts/beaufort"/>
-                        <file updated="0" name="BeaufortForLoL-Heavy" type="otf" path="fe/assets/fonts/fonts/beaufort"/>
-                        <file updated="0" name="BeaufortForLoL-HeavyItalic" type="otf" path="fe/assets/fonts/fonts/beaufort"/>
-                        <file updated="0" name="BeaufortForLoL-Italic" type="otf" path="fe/assets/fonts/fonts/beaufort"/>
-                        <file updated="0" name="BeaufortForLoL-Light" type="otf" path="fe/assets/fonts/fonts/beaufort"/>
-                        <file updated="0" name="BeaufortForLoL-LightItalic" type="otf" path="fe/assets/fonts/fonts/beaufort"/>
-                        <file updated="0" name="BeaufortForLoL-Medium" type="otf" path="fe/assets/fonts/fonts/beaufort"/>
-                        <file updated="0" name="BeaufortForLoL-MediumItalic" type="otf" path="fe/assets/fonts/fonts/beaufort"/>
-                        <file updated="0" name="BeaufortForLoL-Regular" type="otf" path="fe/assets/fonts/fonts/beaufort"/>
-                    </folder>
-                    <folder name="noto-sans">
-                        <file updated="0" name="NotoSansCJKtc-Black" type="otf" path="fe/assets/fonts/fonts/noto-sans"/>
-                        <file updated="0" name="NotoSansCJKtc-Bold" type="otf" path="fe/assets/fonts/fonts/noto-sans"/>
-                        <file updated="0" name="NotoSansCJKtc-Light" type="otf" path="fe/assets/fonts/fonts/noto-sans"/>
-                        <file updated="0" name="NotoSansCJKtc-Medium" type="otf" path="fe/assets/fonts/fonts/noto-sans"/>
-                        <file updated="0" name="NotoSansCJKtc-Regular" type="otf" path="fe/assets/fonts/fonts/noto-sans"/>
-                    </folder>
-                    <folder name="spiegel">
-                        <file updated="0" name="Spiegel-Bold" type="otf" path="fe/assets/fonts/fonts/spiegel"/>
-                        <file updated="0" name="Spiegel-BoldItalic" type="otf" path="fe/assets/fonts/fonts/spiegel"/>
-                        <file updated="0" name="Spiegel-Regular" type="otf" path="fe/assets/fonts/fonts/spiegel"/>
-                        <file updated="0" name="Spiegel-RegularItalic" type="otf" path="fe/assets/fonts/fonts/spiegel"/>
-                        <file updated="0" name="Spiegel-SemiBold" type="otf" path="fe/assets/fonts/fonts/spiegel"/>
-                        <file updated="0" name="Spiegel-SemiBoldItalic" type="otf" path="fe/assets/fonts/fonts/spiegel"/>
-                    </folder>
-                </folder>
-                <folder name="zh_tw">
-                    <file updated="0" name="fonts" type="css" path="fe/assets/fonts/zh_tw"/>
-                    <file updated="0" name="fonts-main" type="css" path="fe/assets/fonts/zh_tw"/>
-                    <file updated="0" name="master" type="css" path="fe/assets/fonts/zh_tw"/>
-                </folder>
-            </folder>
-            <folder name="footer">
-                <file updated="120" name="dark" type="css" path="fe/assets/footer"/>
-                <file updated="120" name="light" type="css" path="fe/assets/footer"/>
-                <file updated="131" name="script" type="js" path="fe/assets/footer"/>
-                <file updated="120" name="style" type="css" path="fe/assets/footer"/>
-            </folder>
-            <folder name="header">
-                <file updated="0" name="dark" type="css" path="fe/assets/header"/>
-                <file updated="0" name="light" type="css" path="fe/assets/header"/>
-                <file updated="141" name="script" type="js" path="fe/assets/header"/>
-                <file updated="139" name="style" type="css" path="fe/assets/header"/>
-            </folder>
-            <folder name="media">
-                <folder name="actions">
-                    <file updated="0" name="cross" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="down1" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="down2" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="download" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="flat" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="home" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="left1" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="left2" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="reload" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="right1" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="right2" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="search1" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="search2" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="up1" type="png" path="fe/assets/media/actions"/>
-                    <file updated="0" name="up2" type="png" path="fe/assets/media/actions"/>
-                </folder>
-                <folder name="app-community">
-                    <file updated="0" name="discord" type="png" path="fe/assets/media/app-community"/>
-                </folder>
-                <folder name="app-control">
-                    <file updated="0" name="close" type="png" path="fe/assets/media/app-control"/>
-                    <file updated="0" name="hide" type="png" path="fe/assets/media/app-control"/>
-                    <file updated="0" name="settings" type="png" path="fe/assets/media/app-control"/>
-                    <file updated="0" name="size" type="png" path="fe/assets/media/app-control"/>
-                    <file updated="0" name="support" type="png" path="fe/assets/media/app-control"/>
-                    <file updated="0" name="theme" type="png" path="fe/assets/media/app-control"/>
-                </folder>
-                <folder name="app-logo">
-                    <file updated="120" name="Animated" type="gif" path="fe/assets/media/app-logo"/>
-                    <file updated="0" name="Combine" type="png" path="fe/assets/media/app-logo"/>
-                    <file updated="0" name="Icon" type="png" path="fe/assets/media/app-logo"/>
-                    <file updated="0" name="Logo" type="png" path="fe/assets/media/app-logo"/>
-                </folder>
-                <folder name="app-indication">
-                    <file updated="E" name="empty" type="png" path="fe/assets/media/app-indication"/>
-                </folder>
-                <folder name="app-navigation">
-                    <file updated="0" name="appearance" type="png" path="fe/assets/media/app-navigation"/>
-                    <file updated="E" name="fast" type="png" path="fe/assets/media/app-navigation"/>
-                    <file updated="0" name="profile" type="png" path="fe/assets/media/app-navigation"/>
-                    <file updated="0" name="settings" type="png" path="fe/assets/media/app-navigation"/>
-                    <file updated="0" name="stats-normal" type="png" path="fe/assets/media/app-navigation"/>
-                    <file updated="1E" name="stats" type="png" path="fe/assets/media/app-navigation"/>
-                    <file updated="0" name="update" type="png" path="fe/assets/media/app-navigation"/>
-                </folder>
-                <folder name="menu-icons">
-                    <file updated="0" name="day" type="png" path="fe/assets/media/menu-icons"/>
-                    <file updated="0" name="month" type="png" path="fe/assets/media/menu-icons"/>
-                    <file updated="0" name="rating" type="png" path="fe/assets/media/menu-icons"/>
-                    <file updated="0" name="shield" type="png" path="fe/assets/media/menu-icons"/>
-                    <file updated="0" name="sword" type="png" path="fe/assets/media/menu-icons"/>
-                    <file updated="0" name="week" type="png" path="fe/assets/media/menu-icons"/>
-                </folder>
-                <folder name="trends">
-                    <file updated="0" name="pr" type="png" path="fe/assets/media/trends"/>
-                    <file updated="0" name="star" type="png" path="fe/assets/media/trends"/>
-                    <file updated="0" name="T0" type="svg" path="fe/assets/media/trends"/>
-                    <file updated="0" name="T1" type="svg" path="fe/assets/media/trends"/>
-                    <file updated="0" name="T2" type="svg" path="fe/assets/media/trends"/>
-                    <file updated="0" name="T3" type="svg" path="fe/assets/media/trends"/>
-                    <file updated="0" name="T4" type="svg" path="fe/assets/media/trends"/>
-                    <file updated="0" name="T5" type="svg" path="fe/assets/media/trends"/>
-                    <file updated="0" name="wr" type="png" path="fe/assets/media/trends"/>
-                </folder>
-            </folder>
-            <folder name="overlay">
-                <file updated="0" name="classes" type="json" path="fe/assets/overlay"/>
-                <file updated="91" name="script" type="js" path="fe/assets/overlay"/>
-                <file updated="32" name="style" type="css" path="fe/assets/overlay"/>
-                <folder name="about-info">
-                    <file updated="98" name="class" type="js" path="fe/assets/overlay/about-info"/>
-                    <file updated="90" name="dark" type="css" path="fe/assets/overlay/about-info"/>
-                    <file updated="90" name="element" type="html" path="fe/assets/overlay/about-info"/>
-                    <file updated="90" name="light" type="css" path="fe/assets/overlay/about-info"/>
-                    <file updated="97" name="style" type="css" path="fe/assets/overlay/about-info"/>
-                </folder>
-                <folder name="app-config">
-                    <file updated="120" name="class" type="js" path="fe/assets/overlay/app-config"/>
-                    <file updated="0" name="dark" type="css" path="fe/assets/overlay/app-config"/>
-                    <file updated="120" name="element" type="html" path="fe/assets/overlay/app-config"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/overlay/app-config"/>
-                    <file updated="120" name="style" type="css" path="fe/assets/overlay/app-config"/>
-                </folder>
-                <folder name="report-history">
-                    <file updated="8D" name="class" type="js" path="fe/assets/overlay/report-history"/>
-                    <file updated="0" name="dark" type="css" path="fe/assets/overlay/report-history"/>
-                    <file updated="0" name="element" type="html" path="fe/assets/overlay/report-history"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/overlay/report-history"/>
-                    <file updated="0" name="style" type="css" path="fe/assets/overlay/report-history"/>
-                </folder>
-                <folder name="report-select">
-                    <file updated="8D" name="class" type="js" path="fe/assets/overlay/report-select"/>
-                    <file updated="0" name="dark" type="css" path="fe/assets/overlay/report-select"/>
-                    <file updated="0" name="element" type="html" path="fe/assets/overlay/report-select"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/overlay/report-select"/>
-                    <file updated="0" name="style" type="css" path="fe/assets/overlay/report-select"/>
-                </folder>
-            </folder>
-            <folder name="theme">
-                <file updated="131" name="dark" type="css" path="fe/assets/theme"/>
-                <file updated="131" name="light" type="css" path="fe/assets/theme"/>
-                <file updated="95" name="master" type="css" path="fe/assets/theme"/>
-            </folder>
-            <folder name="widgets">
-                <file updated="120" name="master" type="css" path="fe/assets/widgets"/>
-                <file updated="7C" name="script" type="js" path="fe/assets/widgets"/>
-                <folder name="app-cover">
-                    <file updated="0" name="dark" type="css" path="fe/assets/widgets/app-cover"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/widgets/app-cover"/>
-                    <file updated="120" name="style" type="css" path="fe/assets/widgets/app-cover"/>
-                </folder>
-                <folder name="checkbox">
-                    <file updated="0" name="dark" type="css" path="fe/assets/widgets/checkbox"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/widgets/checkbox"/>
-                    <file updated="0" name="style" type="css" path="fe/assets/widgets/checkbox"/>
-                </folder>
-                <folder name="circle-progress-bar">
-                    <file updated="0" name="dark" type="css" path="fe/assets/widgets/circle-progress-bar"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/widgets/circle-progress-bar"/>
-                    <file updated="29" name="style" type="css" path="fe/assets/widgets/circle-progress-bar"/>
-                </folder>
-                <folder name="color-picker">
-                    <file updated="0" name="dark" type="css" path="fe/assets/widgets/color-picker"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/widgets/color-picker"/>
-                    <file updated="0" name="style" type="css" path="fe/assets/widgets/color-picker"/>
-                </folder>
-                <folder name="drop-down-menu">
-                    <file updated="0" name="dark" type="css" path="fe/assets/widgets/drop-down-menu"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/widgets/drop-down-menu"/>
-                    <file updated="7C" name="style" type="css" path="fe/assets/widgets/drop-down-menu"/>
-                </folder>
-                <folder name="hover-detail">
-                    <file updated="0" name="dark" type="css" path="fe/assets/widgets/hover-detail"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/widgets/hover-detail"/>
-                    <file updated="135" name="style" type="css" path="fe/assets/widgets/hover-detail"/>
-                </folder>
-                <folder name="marquee">
-                    <file updated="120" name="style" type="css" path="fe/assets/widgets/marquee"/>
-                </folder>
-                <folder name="percentage-bar">
-                    <file updated="0" name="dark" type="css" path="fe/assets/widgets/percentage-bar"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/widgets/percentage-bar"/>
-                    <file updated="2E" name="style" type="css" path="fe/assets/widgets/percentage-bar"/>
-                </folder>
-                <folder name="scrollable">
-                    <file updated="0" name="dark" type="css" path="fe/assets/widgets/scrollable"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/widgets/scrollable"/>
-                    <file updated="59" name="style" type="css" path="fe/assets/widgets/scrollable"/>
-                </folder>
-                <folder name="slider">
-                    <file updated="0" name="dark" type="css" path="fe/assets/widgets/slider"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/widgets/slider"/>
-                    <file updated="0" name="style" type="css" path="fe/assets/widgets/slider"/>
-                </folder>
-                <folder name="stepper">
-                    <file updated="0" name="dark" type="css" path="fe/assets/widgets/stepper"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/widgets/stepper"/>
-                    <file updated="7B" name="style" type="css" path="fe/assets/widgets/stepper"/>
-                </folder>
-                <folder name="switch">
-                    <file updated="0" name="dark" type="css" path="fe/assets/widgets/switch"/>
-                    <file updated="0" name="light" type="css" path="fe/assets/widgets/switch"/>
-                    <file updated="0" name="style" type="css" path="fe/assets/widgets/switch"/>
-                </folder>
-                <folder name="text-filter">
-                    <file updated="0" name="style" type="css" path="fe/assets/widgets/text-filter"/>
-                </folder>
-            </folder>
-        </folder>
-    </folder>
-    <folder name="cfg">
-        <folder name="app">
-            <file updated="0" name="options" type="json" path="cfg/app"/>
-            <file updated="0" name="live-inspect" type="json" path="cfg/app"/>
-            <file updated="0" name="window-zoom" type="json" path="cfg/app"/>
-        </folder>
-        <folder name="appearance">
-            <folder name="spell">
-                <folder name="overall">
-                    <file updated="0" name="counter-color" type="json" path="cfg/appearance/spell/overall"/>
-                    <file updated="0" name="notify-color" type="json" path="cfg/appearance/spell/overall"/>
-                    <file updated="0" name="options" type="json" path="cfg/appearance/spell/overall"/>
-                </folder>
-            </folder>
-        </folder>
-        <folder name="settings">
-            <folder name="game">
-                <folder name="auto-ban">
-                    <file updated="5A" name="ad" type="json" path="cfg/settings/game/auto-ban"/>
-                    <file updated="5A" name="jg" type="json" path="cfg/settings/game/auto-ban"/>
-                    <file updated="5A" name="mid" type="json" path="cfg/settings/game/auto-ban"/>
-                    <file updated="13D" name="none" type="json" path="cfg/settings/game/auto-ban"/>
-                    <file updated="5A" name="sup" type="json" path="cfg/settings/game/auto-ban"/>
-                    <file updated="5A" name="top" type="json" path="cfg/settings/game/auto-ban"/>
-                </folder>
-                <folder name="auto-lane">
-                    <file updated="0" name="message" type="json" path="cfg/settings/game/auto-lane"/>
-                    <file updated="0" name="options" type="json" path="cfg/settings/game/auto-lane"/>
-                </folder>
-                <folder name="auto-pick">
-                    <file updated="61" name="ad" type="json" path="cfg/settings/game/auto-pick"/>
-                    <file updated="61" name="jg" type="json" path="cfg/settings/game/auto-pick"/>
-                    <file updated="61" name="mid" type="json" path="cfg/settings/game/auto-pick"/>
-                    <file updated="13D" name="none" type="json" path="cfg/settings/game/auto-pick"/>
-                    <file updated="61" name="sup" type="json" path="cfg/settings/game/auto-pick"/>
-                    <file updated="61" name="top" type="json" path="cfg/settings/game/auto-pick"/>
-                </folder>
-                <folder name="overall">
-                    <file updated="12D" name="options" type="json" path="cfg/settings/game/overall"/>
-                </folder>
-            </folder>
-            <folder name="spell">
-                <folder name="overall">
-                    <file updated="0" name="nickname" type="json" path="cfg/settings/spell/overall"/>
-                    <file updated="0" name="options" type="json" path="cfg/settings/spell/overall"/>
-                </folder>
-                <folder name="send">
-                    <file updated="0" name="format" type="json" path="cfg/settings/spell/send"/>
-                    <file updated="0" name="nickname" type="json" path="cfg/settings/spell/send"/>
-                    <file updated="0" name="options" type="json" path="cfg/settings/spell/send"/>
-                </folder>
-            </folder>
-            <folder name="stats">
-                <folder name="overall">
-                    <file updated="0" name="options" type="json" path="cfg/settings/stats/overall"/>
-                    <file updated="0" name="queues" type="json" path="cfg/settings/stats/overall"/>
-                    <file updated="0" name="sending" type="json" path="cfg/settings/stats/overall"/>
-                </folder>
-                <folder name="progress-send">
-                    <file updated="138" name="fast-enemy" type="json" path="cfg/settings/stats/progress-send"/>
-                    <file updated="138" name="fast-team" type="json" path="cfg/settings/stats/progress-send"/>
-                    <file updated="138" name="nickname" type="json" path="cfg/settings/stats/progress-send"/>
-                    <file updated="138" name="options" type="json" path="cfg/settings/stats/progress-send"/>
-                </folder>
-                <folder name="select-send">
-                    <file updated="138" name="fast-self" type="json" path="cfg/settings/stats/select-send"/>
-                    <file updated="138" name="fast-team" type="json" path="cfg/settings/stats/select-send"/>
-                    <file updated="138" name="nickname" type="json" path="cfg/settings/stats/select-send"/>
-                    <file updated="138" name="options" type="json" path="cfg/settings/stats/select-send"/>
-                </folder>
-            </folder>
-        </folder>
-    </folder>
-    <folder name="auth">
-        <file updated="0" name="riot" type="pem" path="auth"/>
-    </folder>
+<?xml version="1.0" ?>
+<folder name="LeagueAssistant-LS" version="147">
+	<folder name="be">
+		<file updated="147" name="app" type="pyc" path=""/>
+		<folder name="Script">
+			<file updated="147" name="handler" type="pyc" path=""/>
+			<folder name="Phase">
+				<file updated="147" name="abstract" type="pyc" path=""/>
+				<file updated="147" name="ChampSelect" type="pyc" path=""/>
+				<file updated="147" name="InProgress" type="pyc" path=""/>
+				<file updated="147" name="ReadyCheck" type="pyc" path=""/>
+				<file updated="147" name="__init__" type="pyc" path=""/>
+			</folder>
+			<folder name="SpellHelper">
+				<file updated="147" name="ClickableLabel" type="pyc" path=""/>
+				<file updated="147" name="PlayerWidget" type="pyc" path=""/>
+				<file updated="147" name="__init__" type="pyc" path=""/>
+			</folder>
+			<folder name="utils">
+				<file updated="147" name="Chat" type="pyc" path=""/>
+				<file updated="147" name="Collector" type="pyc" path=""/>
+				<file updated="147" name="thread" type="pyc" path=""/>
+			</folder>
+		</folder>
+		<folder name="Server">
+			<file updated="147" name="Flask" type="pyc" path=""/>
+			<folder name="blueprints">
+				<file updated="147" name="App" type="pyc" path=""/>
+				<file updated="147" name="Opgg" type="pyc" path=""/>
+				<file updated="147" name="Qq" type="pyc" path=""/>
+				<file updated="147" name="Ui" type="pyc" path=""/>
+				<folder name="Riot">
+					<file updated="147" name="blueprint" type="pyc" path=""/>
+					<file updated="147" name="RiotAPI" type="pyc" path=""/>
+					<file updated="147" name="__init__" type="pyc" path=""/>
+				</folder>
+			</folder>
+		</folder>
+	</folder>
+	<folder name="cfg">
+		<file updated="147" name="app" type="json" path=""/>
+		<folder name="appearance">
+			<folder name="spell">
+				<folder name="overall">
+					<file updated="147" name="counter-color" type="json" path=""/>
+					<file updated="147" name="notify-color" type="json" path=""/>
+					<file updated="147" name="options" type="json" path=""/>
+				</folder>
+			</folder>
+		</folder>
+		<folder name="settings">
+			<folder name="game">
+				<folder name="auto-ban">
+					<file updated="147" name="ad" type="json" path=""/>
+					<file updated="147" name="jg" type="json" path=""/>
+					<file updated="147" name="mid" type="json" path=""/>
+					<file updated="147" name="none" type="json" path=""/>
+					<file updated="147" name="sup" type="json" path=""/>
+					<file updated="147" name="top" type="json" path=""/>
+				</folder>
+				<folder name="auto-pick">
+					<file updated="147" name="ad" type="json" path=""/>
+					<file updated="147" name="jg" type="json" path=""/>
+					<file updated="147" name="mid" type="json" path=""/>
+					<file updated="147" name="none" type="json" path=""/>
+					<file updated="147" name="sup" type="json" path=""/>
+					<file updated="147" name="top" type="json" path=""/>
+				</folder>
+				<folder name="overall">
+					<file updated="147" name="options" type="json" path=""/>
+				</folder>
+			</folder>
+			<folder name="spell">
+				<folder name="overall">
+					<file updated="147" name="nickname" type="json" path=""/>
+					<file updated="147" name="options" type="json" path=""/>
+				</folder>
+				<folder name="send">
+					<file updated="147" name="format" type="json" path=""/>
+					<file updated="147" name="nickname" type="json" path=""/>
+					<file updated="147" name="options" type="json" path=""/>
+				</folder>
+			</folder>
+			<folder name="stats">
+				<folder name="overall">
+					<file updated="147" name="options" type="json" path=""/>
+					<file updated="147" name="queues" type="json" path=""/>
+					<file updated="147" name="sending" type="json" path=""/>
+				</folder>
+				<folder name="progress-send">
+					<file updated="147" name="fast-enemy" type="json" path=""/>
+					<file updated="147" name="fast-team" type="json" path=""/>
+					<file updated="147" name="nickname" type="json" path=""/>
+					<file updated="147" name="options" type="json" path=""/>
+				</folder>
+				<folder name="select-send">
+					<file updated="147" name="fast-self" type="json" path=""/>
+					<file updated="147" name="fast-team" type="json" path=""/>
+					<file updated="147" name="nickname" type="json" path=""/>
+					<file updated="147" name="options" type="json" path=""/>
+				</folder>
+			</folder>
+		</folder>
+	</folder>
+	<folder name="fe">
+		<file updated="147" name="index" type="html" path=""/>
+		<folder name="assets">
+			<file updated="147" name="algorithm" type="js" path=""/>
+			<file updated="147" name="index" type="js" path=""/>
+			<file updated="147" name="style" type="css" path=""/>
+			<file updated="147" name="update" type="js" path=""/>
+			<folder name="body">
+				<file updated="147" name="script" type="js" path=""/>
+				<file updated="147" name="style" type="css" path=""/>
+				<folder name="main">
+					<file updated="147" name="class" type="js" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+					<folder name="pages">
+						<folder name="config">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="classes" type="json" path=""/>
+						</folder>
+						<folder name="live-inspect">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="classes" type="json" path=""/>
+						</folder>
+						<folder name="lol-challenges">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="classes" type="json" path=""/>
+						</folder>
+						<folder name="lol-match-history">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="classes" type="json" path=""/>
+						</folder>
+						<folder name="lol-trend">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="classes" type="json" path=""/>
+						</folder>
+						<folder name="summoner">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="classes" type="json" path=""/>
+						</folder>
+						<folder name="summoner-recent-performance">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="classes" type="json" path=""/>
+						</folder>
+						<folder name="tft-match-history">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="classes" type="json" path=""/>
+						</folder>
+						<folder name="tft-trend">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="classes" type="json" path=""/>
+						</folder>
+					</folder>
+					<folder name="parts">
+						<folder name="config-appearance-spell">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="config-description">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="config-settings-game">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="config-settings-spell">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="config-settings-stats">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="live-game-player-list">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="lol-challenge-list">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="lol-challenge-thresholds">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="lol-champion-build">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="lol-champion-list">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="lol-champion-tiers">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="lol-match-detail">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="lol-recent-matches">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="select-rune-page">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="summoner-recent-performance">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="summoner-spell-list">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="tft-comp-build">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="tft-comp-tiers">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="tft-recent-matches">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+					</folder>
+					<folder name="type-styles">
+						<folder name="config">
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="tft">
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+					</folder>
+				</folder>
+				<folder name="side">
+					<file updated="147" name="class" type="js" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+					<folder name="pages">
+						<folder name="summoner">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="classes" type="json" path=""/>
+						</folder>
+					</folder>
+					<folder name="parts">
+						<folder name="summoner-basic">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="summoner-mastery">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="summoner-position-preference">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="summoner-rank">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+						<folder name="summoner-recent-champion">
+							<file updated="147" name="class" type="js" path=""/>
+							<file updated="147" name="dark" type="css" path=""/>
+							<file updated="147" name="element" type="html" path=""/>
+							<file updated="147" name="light" type="css" path=""/>
+							<file updated="147" name="style" type="css" path=""/>
+						</folder>
+					</folder>
+				</folder>
+			</folder>
+			<folder name="fonts">
+				<folder name="default">
+					<file updated="147" name="fonts-main" type="css" path=""/>
+					<file updated="147" name="fonts" type="css" path=""/>
+					<file updated="147" name="master" type="css" path=""/>
+				</folder>
+				<folder name="fonts">
+					<folder name="beaufort">
+						<file updated="147" name="BeaufortForLoL-Bold" type="otf" path=""/>
+						<file updated="147" name="BeaufortForLoL-BoldItalic" type="otf" path=""/>
+						<file updated="147" name="BeaufortForLoL-Heavy" type="otf" path=""/>
+						<file updated="147" name="BeaufortForLoL-HeavyItalic" type="otf" path=""/>
+						<file updated="147" name="BeaufortForLoL-Italic" type="otf" path=""/>
+						<file updated="147" name="BeaufortForLoL-Light" type="otf" path=""/>
+						<file updated="147" name="BeaufortForLoL-LightItalic" type="otf" path=""/>
+						<file updated="147" name="BeaufortForLoL-Medium" type="otf" path=""/>
+						<file updated="147" name="BeaufortForLoL-MediumItalic" type="otf" path=""/>
+						<file updated="147" name="BeaufortForLoL-Regular" type="otf" path=""/>
+					</folder>
+					<folder name="noto-sans">
+						<file updated="147" name="NotoSansCJKtc-Black" type="otf" path=""/>
+						<file updated="147" name="NotoSansCJKtc-Bold" type="otf" path=""/>
+						<file updated="147" name="NotoSansCJKtc-Light" type="otf" path=""/>
+						<file updated="147" name="NotoSansCJKtc-Medium" type="otf" path=""/>
+						<file updated="147" name="NotoSansCJKtc-Regular" type="otf" path=""/>
+					</folder>
+					<folder name="spiegel">
+						<file updated="147" name="Spiegel-Bold" type="otf" path=""/>
+						<file updated="147" name="Spiegel-BoldItalic" type="otf" path=""/>
+						<file updated="147" name="Spiegel-Regular" type="otf" path=""/>
+						<file updated="147" name="Spiegel-RegularItalic" type="otf" path=""/>
+						<file updated="147" name="Spiegel-SemiBold" type="otf" path=""/>
+						<file updated="147" name="Spiegel-SemiBoldItalic" type="otf" path=""/>
+					</folder>
+				</folder>
+				<folder name="zh_tw">
+					<file updated="147" name="fonts-main" type="css" path=""/>
+					<file updated="147" name="fonts" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+			</folder>
+			<folder name="footer">
+				<file updated="147" name="dark" type="css" path=""/>
+				<file updated="147" name="light" type="css" path=""/>
+				<file updated="147" name="script" type="js" path=""/>
+				<file updated="147" name="style" type="css" path=""/>
+			</folder>
+			<folder name="header">
+				<file updated="147" name="dark" type="css" path=""/>
+				<file updated="147" name="light" type="css" path=""/>
+				<file updated="147" name="script" type="js" path=""/>
+				<file updated="147" name="style" type="css" path=""/>
+			</folder>
+			<folder name="logo">
+				<file updated="147" name="filled" type="png" path=""/>
+				<file updated="147" name="nofill" type="png" path=""/>
+			</folder>
+			<folder name="media">
+				<folder name="actions">
+					<file updated="147" name="cross" type="png" path=""/>
+					<file updated="147" name="down1" type="png" path=""/>
+					<file updated="147" name="down2" type="png" path=""/>
+					<file updated="147" name="download" type="png" path=""/>
+					<file updated="147" name="flat" type="png" path=""/>
+					<file updated="147" name="home" type="png" path=""/>
+					<file updated="147" name="left1" type="png" path=""/>
+					<file updated="147" name="left2" type="png" path=""/>
+					<file updated="147" name="reload" type="png" path=""/>
+					<file updated="147" name="right1" type="png" path=""/>
+					<file updated="147" name="right2" type="png" path=""/>
+					<file updated="147" name="search1" type="png" path=""/>
+					<file updated="147" name="search2" type="png" path=""/>
+					<file updated="147" name="up1" type="png" path=""/>
+					<file updated="147" name="up2" type="png" path=""/>
+				</folder>
+				<folder name="app-community">
+					<file updated="147" name="discord" type="png" path=""/>
+				</folder>
+				<folder name="app-control">
+					<file updated="147" name="close" type="png" path=""/>
+					<file updated="147" name="minimize" type="png" path=""/>
+					<file updated="147" name="settings" type="png" path=""/>
+					<file updated="147" name="size" type="png" path=""/>
+					<file updated="147" name="support" type="png" path=""/>
+					<file updated="147" name="theme" type="png" path=""/>
+				</folder>
+				<folder name="app-indication">
+					<file updated="147" name="empty" type="png" path=""/>
+				</folder>
+				<folder name="app-logo">
+					<file updated="147" name="Animated" type="gif" path=""/>
+					<file updated="147" name="Combine" type="png" path=""/>
+					<file updated="147" name="Icon" type="png" path=""/>
+					<file updated="147" name="Logo" type="png" path=""/>
+				</folder>
+				<folder name="app-navigation">
+					<file updated="147" name="appearance" type="png" path=""/>
+					<file updated="147" name="fast" type="png" path=""/>
+					<file updated="147" name="profile" type="png" path=""/>
+					<file updated="147" name="settings" type="png" path=""/>
+					<file updated="147" name="stats-normal" type="png" path=""/>
+					<file updated="147" name="stats" type="png" path=""/>
+					<file updated="147" name="update" type="png" path=""/>
+				</folder>
+				<folder name="menu-icons">
+					<file updated="147" name="day" type="png" path=""/>
+					<file updated="147" name="month" type="png" path=""/>
+					<file updated="147" name="rating" type="png" path=""/>
+					<file updated="147" name="shield" type="png" path=""/>
+					<file updated="147" name="sword" type="png" path=""/>
+					<file updated="147" name="week" type="png" path=""/>
+				</folder>
+				<folder name="trends">
+					<file updated="147" name="pr" type="png" path=""/>
+					<file updated="147" name="star" type="png" path=""/>
+					<file updated="147" name="T0" type="svg" path=""/>
+					<file updated="147" name="T1" type="svg" path=""/>
+					<file updated="147" name="T2" type="svg" path=""/>
+					<file updated="147" name="T3" type="svg" path=""/>
+					<file updated="147" name="T4" type="svg" path=""/>
+					<file updated="147" name="T5" type="svg" path=""/>
+					<file updated="147" name="wr" type="png" path=""/>
+				</folder>
+			</folder>
+			<folder name="overlay">
+				<file updated="147" name="classes" type="json" path=""/>
+				<file updated="147" name="script" type="js" path=""/>
+				<file updated="147" name="style" type="css" path=""/>
+				<folder name="about-info">
+					<file updated="147" name="class" type="js" path=""/>
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="element" type="html" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="app-config">
+					<file updated="147" name="class" type="js" path=""/>
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="element" type="html" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="report-history">
+					<file updated="147" name="class" type="js" path=""/>
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="element" type="html" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="report-select">
+					<file updated="147" name="class" type="js" path=""/>
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="element" type="html" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+			</folder>
+			<folder name="theme">
+				<file updated="147" name="dark" type="css" path=""/>
+				<file updated="147" name="light" type="css" path=""/>
+				<file updated="147" name="style" type="css" path=""/>
+			</folder>
+			<folder name="widgets">
+				<file updated="147" name="script" type="js" path=""/>
+				<file updated="147" name="style" type="css" path=""/>
+				<folder name="app-cover">
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="checkbox">
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="circle-progress-bar">
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="color-picker">
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="drop-down-menu">
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="hover-detail">
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="marquee">
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="percentage-bar">
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="scrollable">
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="slider">
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="stepper">
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="switch">
+					<file updated="147" name="dark" type="css" path=""/>
+					<file updated="147" name="light" type="css" path=""/>
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+				<folder name="text-filter">
+					<file updated="147" name="style" type="css" path=""/>
+				</folder>
+			</folder>
+		</folder>
+	</folder>
+	<folder name="static">
+		<file updated="147" name="PublicitySlogan" type="txt" path=""/>
+		<file updated="147" name="riot" type="pem" path=""/>
+	</folder>
 </folder>
