@@ -35,6 +35,7 @@
 }
 
 #app #app-header .app-control {
+    z-index: var(--layer-control);
     position: absolute;
     top: 0;
     right: 0;

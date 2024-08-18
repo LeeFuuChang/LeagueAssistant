@@ -3,6 +3,7 @@
     --zoom: 1;
     --S: calc(var(--base) * var(--zoom));
 
+    --layer-control: 4000;
     --layer-cover: 3000;
     --layer-overlay: 2000;
     --layer-body-block: 1000;

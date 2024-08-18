@@ -317,39 +317,36 @@ class Main_Part_LiveGamePlayerList extends AppBodyMain_Part {
                     let latest = logDates.sort((a, b)=>b.localeCompare(a))[0];
                     if(!latest) return resolve();
                     $.get(`/riot/local/Logs/GameLogs/${latest}/${latest}_r3dlog.txt`, {}, (log)=>{
-                        let teams = [
-                            "TeamChaos", 
-                            "TeamOrder",
-                        ].map((t)=>{
-                            let isAlly = false;
-                            let members = [];
-                            for(let i = 0; true; i++){
-                                let str = `${t} ${i})`;
-                                let beg = log.indexOf(str);
-                                if(beg <= 0) break;
-                                let res = log.substring(beg+str.length+1, log.indexOf("ConnectionState", beg+str.length+1)).trim();
-                                isAlly = isAlly || res.includes("**LOCAL**");
-                                members.push({
-                                    "champion": res.substring(res.indexOf("Champion(")+9, res.indexOf(")", res.indexOf("Champion(")+9)),
-                                    "summonerName": res.substring(res.indexOf("'")+1, res.indexOf("' ", res.indexOf("'")+1)),
-                                });
-                            }
-                            return {isAlly:isAlly, members:members};
-                        }).sort((a, b)=>{
-                            return b["isAlly"]-a["isAlly"];
-                        });
-                        return Promise.all(teams[0]["members"].map((p)=>{
-                            return SummonerIdentifier.FromDisplayName(p["summonerName"]).then((identifier)=>({"championName":p["champion"],...identifier}));
+                        let localTeam = "";
+                        let playersByTeam = {};
+
+                        let connections = log.match(/Team\S+ \d+\).+ConnectionState/g);
+
+                        for(let conn of connections) {
+                            let team = /(Team\S+)\s+\d+\)/g.exec(conn)[1];
+                            playersByTeam[team] = [];
+                            if(!conn.includes("**LOCAL**")) continue;
+                            localTeam = team;
+                        }
+
+                        for(let conn of connections) {
+                            let team = /(Team\S+)\s+\d+\)/g.exec(conn)[1];
+                            let champion = /Champion\((\S+)\)/g.exec(conn)[1];
+                            let puuid = /PUUID\((\S+)\)/g.exec(conn)[1];
+                            playersByTeam[team].push({"puuid": puuid, "champion": champion});
+                        }
+
+                        return Promise.all(playersByTeam[localTeam].map((p)=>{
+                            return SummonerIdentifier.FromPuuid(p["puuid"]).then((identifier)=>({"championName":p["champion"],...identifier}));
                         })).then((playerIdentifiers)=>this.LoadPlayerGroups(
                             playerListContainer, playerIdentifiers, true
                         )).then(()=>{
-                            let promises = [];
-                            for(let i = 1; i < teams.length; i++) promises.push(
-                                Promise.all(teams[i]["members"].map((p)=>{
-                                    return SummonerIdentifier.FromDisplayName(p["summonerName"]).then((identifier)=>({"championName":p["champion"],...identifier}));
-                                })).then((playerIdentifiers)=>this.LoadPlayerGroups(playerListContainer, playerIdentifiers, false))
-                            );
-                            return Promise.all(promises);
+                            return Promise.all(Object.entries(playersByTeam).map(([team, playerList])=>{
+                                if(team == localTeam) return Promise.resolve();
+                                return Promise.all(playerList.map((p)=>{
+                                    return SummonerIdentifier.FromPuuid(p["puuid"]).then((identifier)=>({"championName":p["champion"],...identifier}));
+                                })).then((playerIdentifiers)=>this.LoadPlayerGroups(playerListContainer, playerIdentifiers, false));
+                            }));
                         }).then(()=>resolve());
                     });
                 });
